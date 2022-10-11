@@ -30,7 +30,7 @@ Comparing BiblioReads to Goodreads.
 ### Speed
 
   [The Hunger Games](https://www.goodreads.com/book/show/2767052-the-hunger-games) Book Page 
-  *(tested on Chrome v106; without scroll; no throttling)*
+  *(Tested on Chrome v106; without scroll; no throttling)*
 
   | Performance              | BiblioReads| Goodreads|
   | ------------------------ | -------- | ------ |
