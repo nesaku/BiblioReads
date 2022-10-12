@@ -56,7 +56,6 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#ff0000" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-
       <main className={styles.main}>
         <h1>BiblioReads</h1>
         <h3>Get Info About A GoodReads Book:</h3>
@@ -88,15 +87,15 @@ export default function Home() {
             {/*<img src={scrapedData.cover} alt={scrapedData.coverAltText} />*/}
             <picture>
               <source
-                srcSet={`https://images.weserv.nl/?url=${scrapedData.cover}&output=webp&maxage=30d`}
+                srcSet={`https://images.weserv.nl/?url=${scrapedData.cover}&default=https://biblioreads.netlify.app/cover-placeholder.png&output=webp&maxage=30d`}
                 type="image/webp"
               />
               <source
-                srcSet={`https://images.weserv.nl/?url=${scrapedData.cover}&maxage=30d`}
+                srcSet={`https://images.weserv.nl/?url=${scrapedData.cover}&default=https://biblioreads.netlify.app/cover-placeholder.png&maxage=30d`}
                 type="image/jpeg"
               />
               <img
-                src={`https://images.weserv.nl/?url=${scrapedData.cover}&maxage=30d`}
+                src={`https://images.weserv.nl/?url=${scrapedData.cover}&default=https://biblioreads.netlify.app/cover-placeholder.png&maxage=30d`}
                 alt={scrapedData.coverAltText}
               />
             </picture>
