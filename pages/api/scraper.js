@@ -8,8 +8,11 @@ const scraper = async (req, res) => {
       {/*const response = await fetch(`${scrapeURL}`);*/}
       const response = await fetch(`${scrapeURL}`, { 
         method: 'GET', 
-        headers: new Headers({
-          "User-Agent"   : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
+        headers: new Headers({         
+        /* 
+        "User-Agent"   : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
+        */
+          "User-Agent"   : process.env.NEXT_PUBLIC_USER_AGENT
         })
       });
       const htmlString = await response.text();
@@ -48,7 +51,7 @@ const scraper = async (req, res) => {
       res.statusCode = 404
       return res.json({
         scrapeURL: scrapeURL,
-        error: `${scrapeURL} not found. An example of a valid query is: https://www.goodreads.com/book/show/5907.The_Hobbit`,
+        error: `${scrapeURL} Not Found. An Example Of A Valid Query Is: https://www.goodreads.com/book/show/5907.The_Hobbit`,
       })
     }
   }

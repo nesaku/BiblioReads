@@ -17,6 +17,12 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 ---
 ## FAQ
 
+### How Do I Use This?
+There are two ways you can use BiblioReads:
+- Visit [biblioreads.netlify.app](biblioreads.netlify.app) and paste the GoodReads book url into the input box. 
+Or
+- Prepend the Goodreads URL of any book page with `biblioreads.netlify.app/?path=`. Then click the "Fetch Data" button. For example: '[www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit)' to '[biblioreads.netlify.app/?path=https://www.goodreads.com/book/show/5907.The_Hobbit](https://biblioreads.netlify.app/?path=https://www.goodreads.com/book/show/5907.The_Hobbit)'.  
+
 ### How Does This Work? - Scraping
 Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of the their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads, goes to the Goodreads book page and scrapes the required content. 
 
@@ -47,7 +53,35 @@ Goodreads collects information about your device and uses tracking cookies for a
 - See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.netlify.app
 
 ---
-## Development 
+## Installation:
+
+### Manual Installation
+
+**Prerequisites:**
+- [Node.js](https://nodejs.org/en/)
+- [Git](https://github.com/git-guides/install-git)
+
+1. Clone the Git Repository
+```bash
+git clone https://github.com/nesaku/BiblioReads.git
+cd BiblioReads
+```
+
+2. Install & Start The Project
+
+```bash
+npm install
+npm run start
+# or
+yarn install
+yarn start
+```
+
+### Docker Installation
+- [] To Do
+
+---
+## Development:
 
 ### Built Using
 - Next.js
@@ -57,6 +91,9 @@ Goodreads collects information about your device and uses tracking cookies for a
 To run the development server:
 
 ```bash
+git clone https://github.com/nesaku/BiblioReads.git
+cd BiblioReads
+# then
 npm install
 npm run dev
 # or
