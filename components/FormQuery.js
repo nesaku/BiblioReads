@@ -1,16 +1,17 @@
 import { useState } from "react";
-
 import styles from "../styles/Home.module.css";
 import ResultData from "./ResultData";
 import LoadingSpinner from "./LoadingSpinner";
 
-const Homepage = ({ path }) => {
+const FormQuery = () => {
   const [inputValue, setInputValue] = useState("");
   const [scrapedData, setscrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isQuery, setIsQuery] = useState(true);
 
-  {/* When the button or form is clicked/submitted send a fetch request to the scraper API*/}
+  {
+    /* When the button is clicked/submitted send a fetch request to the scraper API*/
+  }
 
   const handleSubmit = (e) => {
     setIsLoading(true);
@@ -29,50 +30,19 @@ const Homepage = ({ path }) => {
         setIsQuery(false);
       });
   };
-  
-  const handleClick = async () => {
-    setIsLoading(true);
-
-    fetch("/api/scraper", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ queryURL: path }),
-    })
-      .then((res) => res.json())
-      .then((userData) => {
-        setscrapedData(userData);
-        setIsLoading(false);
-        setIsQuery(false);
-      });
-  };
 
   return (
     <div>
       <main className={styles.main}>
-        <h1>BiblioReads</h1>
+        <h1>
+          <a href={process.env.NEXT_PUBLIC_HOST_URL}>BiblioReads</a>
+        </h1>
         <h3>Get Info About A GoodReads Book:</h3>
-      {/* Show the button if the query path is used & hide when there is no query path*/}
-        <div
-          name="Query Path"
-          className={path ? styles.visible : styles.hidden}
-        >
-          <code>{path}</code>
-          <br />
-          <button onClick={handleClick}>Fetch Data</button>
-        </div>
-
-        {/* Hide the input form if the query path is used & show when there is no query path*/}
-        <div
-          name="Query Form"
-          className={path ? styles.hidden : styles.visible}
-        >
+        <div>
           <form onSubmit={handleSubmit}>
             <label>
               Enter A GoodReads Book URL: &nbsp;
               <input
-                placeholder=""
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 disabled={isLoading}
@@ -87,7 +57,7 @@ const Homepage = ({ path }) => {
 
         <div className={styles.error}>
           <p>{scrapedData.error}</p>
-        </div> 
+        </div>
         {/* If there is no query don't show the results component */}
         <section className={isQuery ? styles.hidden : styles.visible}>
           <ResultData scrapedData={scrapedData} />
@@ -97,5 +67,4 @@ const Homepage = ({ path }) => {
   );
 };
 
-export default Homepage;
-
+export default FormQuery;

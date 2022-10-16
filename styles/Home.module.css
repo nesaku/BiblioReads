@@ -49,14 +49,14 @@
 .description {
   text-align: center;
   line-height: 1.8;
-  max-width: 800px
+  max-width: 800px;
 }
 
 .descriptionContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .code {
@@ -115,7 +115,7 @@
   text-align: center;
 }
 
-.cover img{
+.cover img {
   border-radius: 40px;
   padding: 20px;
   max-width: 500px;
@@ -139,7 +139,7 @@
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
-    border-color: #1E1E1E
+    border-color: #1e1e1e;
   }
   .code {
     background-color: #161616;
@@ -149,26 +149,25 @@
   }
 }
 
-
 .containerdiv {
   border: 0;
   float: left;
   position: relative;
   width: 300px;
-} 
+}
 .cornerimage {
   border: 0;
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
- } 
- .containerdiv img{
-   max-width: 300px;
- }
+}
+.containerdiv img {
+  max-width: 300px;
+}
 
 .error {
-  color:  #ff4747 ;
+  color: #ff4747;
 }
 
 .hidden {

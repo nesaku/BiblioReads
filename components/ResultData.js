@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "../styles/Home.module.css";
 
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
@@ -8,8 +7,8 @@ const ResultData = ({ scrapedData }) => {
     <div>
       <div className={styles.cover}>
         <h1>Cover:</h1>
-        {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/} 
-        <picture> 
+        {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
+        <picture>
           <source
             srcSet={`https://images.weserv.nl/?url=${scrapedData.cover}&default=${process.env.NEXT_PUBLIC_HOST_URL}/cover-placeholder.png&output=webp&maxage=30d`}
             type="image/webp"
@@ -49,4 +48,3 @@ const ResultData = ({ scrapedData }) => {
 };
 
 export default ResultData;
-
