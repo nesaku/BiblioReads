@@ -22,7 +22,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 There are two ways you can use BiblioReads:
 
 1. Visit [biblioreads.netlify.app](biblioreads.netlify.app) and paste the GoodReads book url into the input box.
-2. Relplace the `https://www.goodreads.com` of any book page with `biblioreads.netlify.app`. Then click the "Fetch Data" button. For example: '[www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit)' to '[biblioreads.netlify.app/book/show/5907.The_Hobbit](https://biblioreads.netlify.app/book/show/5907.The_Hobbit)'.
+2. Relplace the `https://www.goodreads.com` of any book page with `biblioreads.netlify.app`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.netlify.app/book/show/5907.The_Hobbit](https://biblioreads.netlify.app/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
