@@ -43,7 +43,7 @@ const Header = () => {
               href={`${process.env.NEXT_PUBLIC_HOST_URL}/about#faq`}
               className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
             >
-              FAQs
+              FAQ
             </a>
           </li>
           <li className="flex">

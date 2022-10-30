@@ -6,6 +6,13 @@ Scrapes content from the Goodreads book page and presents the results without an
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
 
+## Screenshots
+
+Dark Mode:
+![BiblioReads Website Dark Mode](/public/readme/dark.png?raw=true "BiblioReads Website Dark Mode")
+Light Mode:
+![BiblioReads Website Light Mode](/public/readme/light.png?raw=true "BiblioReads Website Light Mode")
+
 ## Features
 
 - No ads - Simple. We don't show ads.

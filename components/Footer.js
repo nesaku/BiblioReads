@@ -39,7 +39,7 @@ const Footer = () => {
                   target="_self"
                   rel="noreferrer"
                 >
-                  FAQs
+                  FAQ
                 </a>
               </li>
 

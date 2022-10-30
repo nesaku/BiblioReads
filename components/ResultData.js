@@ -52,12 +52,12 @@ const ResultData = ({ scrapedData }) => {
           Number Of Ratings & Reviews:
         </h2>
         <span className="text-md capitalize">{scrapedData.ratingCount}</span>
-        <div className="max-w-xl lg:max-w-4xl md:max-w-2xl xl:px-0 lg:px-10">
+        <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl  xl:px-0 lg:px-10">
           <h2 className="font-bold text-2xl my-2 underline">Desciption: </h2>
           <ReadMore>{scrapedData.desc ? scrapedData.desc : "Loading"}</ReadMore>
         </div>
         <h2 className="font-bold text-2xl my-2 underline">Publishing Date:</h2>
-        <span className="text-md">{scrapedData.publishDate}</span>
+        <span className="max-w-lg text-md">{scrapedData.publishDate}</span>
         <h2
           className={
             scrapedData.isbn ? "font-bold text-2xl my-2 underline" : "hidden"

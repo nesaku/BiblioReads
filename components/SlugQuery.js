@@ -44,7 +44,7 @@ const SlugQuery = ({ path }) => {
           }
         >
           <div className="justify-center items-center text-center pt-40">
-            <h1 className="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
+            <h1 className="font-extrabold text-transparent text-6xl md:text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
               <a href={process.env.NEXT_PUBLIC_HOST_URL}>BiblioReads</a>
             </h1>
             <h2 className="my-10 text-4xl font-bold">
@@ -52,7 +52,7 @@ const SlugQuery = ({ path }) => {
             </h2>
           </div>
           <div className="flex flex-col items-center justify-center text-center">
-            <code>{`https://www.goodreads.com/book/show/${path}`}</code>
+            <code className="text-xs md:text-lg">{`https://www.goodreads.com/book/show/${path}`}</code>
             <br />
             <button
               onClick={handleClick}

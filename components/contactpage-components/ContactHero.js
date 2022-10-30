@@ -10,16 +10,16 @@ const ContactHero = () => {
           </h1>
           <h2 className="mt-20 text-2xl">
             {" "}
-            Have something to say? Please feel free to open an issue on{" "}
+            Have something to say? Please feel free to open an{" "}
             <a
               className="text-blue-600 dark:text-blue-500 underline"
               href="https://github.com/nesaku/BiblioReads/issues"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
+              issue
             </a>{" "}
-            or use the contact form below.
+            on GitHub or use the contact form below.
           </h2>
         </div>
       </div>

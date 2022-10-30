@@ -44,12 +44,12 @@ const FormQuery = () => {
         <div
           className={
             isQuery
-              ? "flex flex-col xl:flex-row justify-center items-center text-center p-10 mt-64 mb-48 xl:mt-96"
+              ? "flex flex-col xl:flex-row justify-center items-center text-center p-10 mt-20 md:mt-64 mb-48 xl:mt-96 w-full"
               : "hidden"
           }
         >
           <div className={isQuery ? "mr-0 xl:mr-40" : "hidden"}>
-            <h1 className="font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
+            <h1 className="font-extrabold text-transparent text-6xl sm:text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
               <a href={process.env.NEXT_PUBLIC_HOST_URL}>BiblioReads</a>
             </h1>
             <h2 className="my-10 text-4xl text-transparent font-bold text-black dark:text-gray-200">
