@@ -44,7 +44,7 @@ const FormQuery = () => {
         <div
           className={
             isQuery
-              ? "flex flex-col xl:flex-row justify-center items-center text-center p-10 mt-20 md:mt-64 mb-48 xl:mt-96 w-full"
+              ? "flex flex-col xl:flex-row justify-center items-center text-center p-10 mt-20 md:mt-30 lg:mt-30 xl:mt-60 2xl:mt-64 mb-40 sm:mb-40 md:mb-80 xl:mb-80 2xl:mb-96 w-full"
               : "hidden"
           }
         >
@@ -75,7 +75,7 @@ const FormQuery = () => {
               <div className="mx-10 my-6 font-semibold text-lg text-red-600">
                 <p>{scrapedData.error}</p>
               </div>
-              <button className="font-semibold text-md bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
+              <button className="font-semibold text-md text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
                 Submit
               </button>
             </div>

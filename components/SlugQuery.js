@@ -56,7 +56,7 @@ const SlugQuery = ({ path }) => {
             <br />
             <button
               onClick={handleClick}
-              className="font-semibold text-md bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-6 my-12 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
+              className="font-semibold text-md text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-6 my-12 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
             >
               Fetch Data
             </button>
