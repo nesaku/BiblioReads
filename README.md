@@ -1,4 +1,4 @@
-# Biblioreads
+# BiblioReads
 
 BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
@@ -8,10 +8,12 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Features
 
-- No ads or tracking
-- No sign up required
+- No ads - Simple. We don't show ads.
+- No tracking or data collection - No personal information is ever collected. Tracking cookies are not used.
+- No sign up required - Use BiblioReads without signing up for an account and never deal with those anoying sign up popups.
 - All requests are proxied - your requests are never directly made to Goodreads
 - Lightweight
+- Modern Design - Responsive design with built-in light & dark mode support
 
 ---
 
@@ -22,7 +24,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 There are two ways you can use BiblioReads:
 
 1. Visit [biblioreads.netlify.app](biblioreads.netlify.app) and paste the GoodReads book url into the input box.
-2. Relplace the `https://www.goodreads.com` of any book page with `biblioreads.netlify.app`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.netlify.app/book/show/5907.The_Hobbit](https://biblioreads.netlify.app/book/show/5907.The_Hobbit).
+2. Replace the `https://www.goodreads.com` of any book page with `biblioreads.netlify.app`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.netlify.app/book/show/5907.The_Hobbit](https://biblioreads.netlify.app/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
@@ -31,6 +33,14 @@ Since Goodreads stopped issuing new developer keys for their [public developer A
 ### Why Is This Slower Than Goodreads?
 
 When you make a request for a book on BiblioReads, your request needs to be first scraped by the scraper from Goodreads before the result can be shown to you. This causes a delay from when you make the request to when the result is shown.
+
+### What Do You Do With My Data?
+
+Nothing. Since we don't collect any user data we can't use it
+
+### Why Is This Missing Functionality?
+
+BiblioReads, is still a work in progress and new functionality is continually being developed. If you have a certain feature that you would like to see, feel free to open an issue on GitHub
 
 ---
 
@@ -97,6 +107,7 @@ yarn start
 
 - Next.js
 - Cheerio
+- TailwindCSS
 
 ### Getting Started
 
@@ -114,8 +125,3 @@ yarn dev
 ```
 
 **ⓘ If you want use the API directly or run any kind of automation. Please host the API on your own server.**
-
-## Thank You:
-
-- [Images.weserv.nl](https://images.weserv.nl/) - For image cache and manipulation service
-- [rawpixel.com](https://www.rawpixel.com/image/6723403/open-book-education-icon-flat-graphic-vector) - For logo/favicon

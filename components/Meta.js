@@ -27,9 +27,9 @@ const Meta = () => {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6378f9" />
-      <meta name="msapplication-TileColor" content="#ff0000" />
-      <meta name="theme-color" content="#c026d3" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#121212" />
+      <meta name="msapplication-TileColor" content="#121212" />
+      <meta name="theme-color" content="#881337" />
       <meta property="og:title" content="BiblioReads" />
       <meta
         property="og:description"
@@ -38,7 +38,7 @@ const Meta = () => {
       <meta property="og:site_name" content="BiblioReads" />
       <meta
         property="og:image"
-        content={`${process.env.NEXT_PUBLIC_HOST_URL}/logo.png`}
+        content={`${process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
       />
     </Head>
   );
