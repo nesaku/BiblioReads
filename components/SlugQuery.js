@@ -3,6 +3,7 @@ import ResultData from "./ResultData";
 import Loader from "./Loader";
 import Header from "./Header";
 import Footer from "./Footer";
+import Meta from "./Meta";
 
 const SlugQuery = ({ path }) => {
   const [scrapedData, setscrapedData] = useState({});
@@ -34,10 +35,11 @@ const SlugQuery = ({ path }) => {
 
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
+      <Meta text={"Query"} />
       <Header />
       {isLoading && <Loader />}
       {/* Hide the Hero section when the ResultsData are present and when the page is loading*/}
-      <main className={isLoading ? "hidden" : "dark:bg-gradientedge"}>
+      <main className={isLoading ? "hidden" : "visible"}>
         <div
           className={
             isQuery ? "visible dark:bg-gradienthero min-h-screen" : "hidden"
@@ -66,8 +68,8 @@ const SlugQuery = ({ path }) => {
           </div>
         </div>
         {/* If there is no query don't show the results component */}
-        <div className="flex">
-          <section className={isQuery ? "hidden" : "justify-center mx-auto"}>
+        <div>
+          <section className={isQuery ? "hidden" : "visible"}>
             <ResultData scrapedData={scrapedData} />
           </section>
         </div>

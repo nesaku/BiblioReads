@@ -44,7 +44,7 @@ const FormQuery = () => {
         <div
           className={
             isQuery
-              ? "flex flex-col xl:flex-row justify-center items-center text-center p-10 mt-20 md:mt-30 lg:mt-30 xl:mt-60 2xl:mt-64 mb-40 sm:mb-40 md:mb-80 xl:mb-80 2xl:mb-96 w-full"
+              ? "flex flex-col xl:flex-row justify-center items-center text-center h-[80vh] w-full"
               : "hidden"
           }
         >
@@ -82,11 +82,11 @@ const FormQuery = () => {
           </form>
         </div>
         {/* If there is no query don't show the results component */}
-        <section className={isQuery ? "hidden" : "flex"}>
+        <section className={isQuery ? "hidden" : "flex mb-12"}>
           <ResultData scrapedData={scrapedData} />
         </section>
       </main>
-      <div className={isLoading ? "hidden" : "flex"}>
+      <div className={isLoading ? "hidden" : ""}>
         <Footer />
       </div>
     </div>

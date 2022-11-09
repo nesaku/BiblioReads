@@ -1,11 +1,13 @@
 import React from "react";
 import Head from "next/head";
 
-const Meta = () => {
+const Meta = (props) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>BiblioReads</title>
+      <title>
+        {props.text ? `${props.text} - BiblioReads` : `BiblioReads`}
+      </title>
       <meta
         name="description"
         content="BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
@@ -36,6 +38,7 @@ const Meta = () => {
         content="BiblioReads - An Alternative Private Goodreads Front-End"
       />
       <meta property="og:site_name" content="BiblioReads" />
+      <meta property="og:type" content="website" />
       <meta
         property="og:image"
         content={`${process.env.NEXT_PUBLIC_HOST_URL}/social.png`}

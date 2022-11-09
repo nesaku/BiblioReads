@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrivacyHero = () => {
+const PrivacyContent = () => {
   return (
     <div>
       <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
@@ -10,7 +10,7 @@ const PrivacyHero = () => {
           </h1>
           <div className="text-left mt-10">
             <p className="mx-auto text-lg mt-12">
-              Last updated: October 29, 2022
+              Last updated: November 7, 2022
             </p>
             <p className="mx-auto text-lg mt-12">
               At BiblioReads, we believe that privacy is a fundemental right and
@@ -90,8 +90,9 @@ const PrivacyHero = () => {
             </h2>
 
             <p className="mx-auto text-lg mt-12">
-              None. BiblioReads does not use analytics, cookies or logging on
-              our website.
+              BiblioReads does not use analytics, cookies or logging on our
+              website. However, our hosting provider may keep logs and collect
+              informaiton such as IP addresses.
             </p>
             <h2 className="text-2xl font-bold my-12 underline">
               Third Party Privacy Policies
@@ -108,32 +109,6 @@ const PrivacyHero = () => {
               content, privacy policies or practices of any third party sites or
               services.
             </p>
-            <ul className="list-disc text-xs sm:text-md pl-4 sm:ml-20 mt-8">
-              <li>
-                BiblioReads&apos;s uses images.weserv.nl for image cache and
-                manipulation services. You can find their privacy policy at:{" "}
-                <a
-                  className="underline"
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://github.com/weserv/images/blob/5.x/Privacy-Policy.md"
-                >
-                  https://github.com/weserv/images/blob/5.x/Privacy-Policy.md
-                </a>
-              </li>
-              <li>
-                BiblioReads&apos;s uses Netlify for web hosting. You can find
-                their privacy policy at:{" "}
-                <a
-                  className="underline"
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://www.netlify.com/privacy/"
-                >
-                  https://www.netlify.com/privacy/
-                </a>
-              </li>
-            </ul>
             <h2 className="text-2xl font-bold my-12 underline">
               Children&apos;s Information
             </h2>
@@ -193,4 +168,4 @@ const PrivacyHero = () => {
   );
 };
 
-export default PrivacyHero;
+export default PrivacyContent;

@@ -3,7 +3,7 @@ import React from "react";
 const ContactForm = () => {
   return (
     <section>
-      <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blurrounded-2xl">
+      <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
         <form
           action="https://submit-form.com/4GkO3Bo7"
           method="POST"

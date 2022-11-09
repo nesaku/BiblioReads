@@ -1,10 +1,10 @@
+import Error from "next/error";
 import React from "react";
-import SlugQuery from "../../../components/SlugQuery";
 
 const SlugHome = () => {
   return (
     <div>
-      <SlugQuery />
+      <Error statusCode={405} />
     </div>
   );
 };

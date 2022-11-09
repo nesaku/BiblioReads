@@ -8,10 +8,10 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Screenshots
 
-Dark Mode:
-![BiblioReads Website Dark Mode](/public/readme/dark.png?raw=true "BiblioReads Website Dark Mode")
-Light Mode:
-![BiblioReads Website Light Mode](/public/readme/light.png?raw=true "BiblioReads Website Light Mode")
+|                         Dark Mode:                          |                          Light Mode                           |
+| :---------------------------------------------------------: | :-----------------------------------------------------------: |
+| ![Dark Mode - Homepage ](/public/readme/dark.png?raw=true)  |  ![Light Mode - Homepage](/public/readme/light.png?raw=true)  |
+| ![Dark Mode - Results](/public/readme/dark-ui.png?raw=true) | ![Light Mode - Results](/public/readme/light-ui.png?raw=true) |
 
 ## Features
 

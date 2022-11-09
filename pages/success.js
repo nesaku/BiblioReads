@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Meta from "../components/Meta";
 
 const success = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge">
+      <Meta text={"Success"} />
       <Header />
       <div className="grid place-items-center w-full m-auto h-screen ">
         <div className="shadow-lg rounded-2xl p-4 backdrop-blur-lg bg-white/40 dark:bg-gray-800">
