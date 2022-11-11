@@ -12,7 +12,6 @@ const Meta = (props) => {
         name="description"
         content="BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
       />
-      <link rel="canonical" href="https://www.biblioreads.ml" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
