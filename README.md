@@ -1,13 +1,15 @@
-<div align="center" width="100%"">
+<div align="center" width="100%">
 <img src="/public/readme/logo.svg?raw=true" width="256" alt="BiblioReads Logo">
 </div>
 <h1 align="center">BiblioReads</h1>
-
+<div align="center" width="100%">
 BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
+
+</div>
 
 ## Screenshots
 
