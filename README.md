@@ -1,7 +1,8 @@
 <h1 align="center">BiblioReads</h1>
-<p align="center">
-<img src="/public/readme/logo.svg?raw=true" alt="BiblioReads Logo" style="margin: 20px 0;">
-</p>
+<div align="center" width="100%"">
+<img src="/public/readme/logo.svg?raw=true" width="128" alt="BiblioReads Logo">
+</div>
+
 BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
@@ -106,7 +107,27 @@ yarn start
 
 ### Docker Installation
 
-- [ ] To Do
+#### Installation:
+
+##### Docker CLI:
+
+```
+docker run -d \
+  --name biblioreads \
+  -p 3000:3000 \
+  --restart unless-stopped \
+  nesaku/biblioreads:latest
+```
+
+##### Docker-Compose:
+
+1. Download (or copy) `docker-compose.yml` from the repository
+2. Edit the default environment variables with your variables (Optional)
+3. Run the command `docker-compose up -d`
+
+#### More Information:
+
+Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for more information.
 
 ---
 
