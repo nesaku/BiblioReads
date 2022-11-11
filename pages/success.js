@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
@@ -29,14 +30,14 @@ const success = () => {
                 Your Response Was Sent. Thank you.
               </h1>
               <div className="flex items-center justify-center gap-4 w-full mt-8">
-                <a href={process.env.NEXT_PUBLIC_HOST_URL}>
+                <Link href="/">
                   <button
                     type="button"
                     className="py-4 px-6  bg-rose-500 hover:bg-rose-700 focus:ring-rose-500 focus:ring-offset-rose-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   >
                     Go Home
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

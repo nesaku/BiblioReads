@@ -10,16 +10,8 @@ const ContactForm = () => {
           className="space-y-8"
         >
           <div className="hidden">
-            <input
-              type="hidden"
-              name="_redirect"
-              value={`${process.env.NEXT_PUBLIC_HOST_URL}/success`}
-            />
-            <input
-              type="hidden"
-              name="_error"
-              value={`${process.env.NEXT_PUBLIC_HOST_URL}/success`}
-            />
+            <input type="hidden" name="_redirect" value="/success" />
+            <input type="hidden" name="_error" value="/500" />
             <input type="hidden" name="_append" value="false" />
           </div>
           <div>

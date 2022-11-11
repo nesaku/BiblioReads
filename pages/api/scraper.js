@@ -11,10 +11,9 @@ const scraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          /* 
-        "User-Agent"   : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
-        */
-          "User-Agent": process.env.NEXT_PUBLIC_USER_AGENT,
+          "User-Agent":
+            process.env.NEXT_PUBLIC_USER_AGENT ||
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
         }),
       });
       const htmlString = await response.text();

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -11,58 +12,43 @@ const Footer = () => {
           >
             <ul className="flex flex-wrap justify-center items-center gap-6 text-sm font-bold">
               <li>
-                <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}/`}
-                  target="_self"
-                  rel="noreferrer"
-                >
-                  Home
-                </a>
+                <Link href="/">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    Home
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}/about`}
-                  target="_self"
-                  rel="noreferrer"
-                >
-                  About
-                </a>
+                <Link href="/about">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    About
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}/about#faq`}
-                  target="_self"
-                  rel="noreferrer"
-                >
-                  FAQ
-                </a>
+                <Link href="/about#faq">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    FAQ
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}/contact`}
-                  target="_self"
-                  rel="noreferrer"
-                >
-                  Contact
-                </a>
+                <Link href="/contact">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    Contact
+                  </a>
+                </Link>
               </li>
 
               <li>
-                <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
-                  href={`${process.env.NEXT_PUBLIC_HOST_URL}/privacy`}
-                  target="_self"
-                  rel="noreferrer"
-                >
-                  Privacy
-                </a>
+                <Link href="/privacy">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    Privacy
+                  </a>
+                </Link>
               </li>
 
               <li>

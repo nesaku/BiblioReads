@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import ResultData from "./ResultData";
 import Loader from "./Loader";
 import Footer from "./Footer";
@@ -50,7 +51,7 @@ const FormQuery = () => {
         >
           <div className={isQuery ? "mr-0 xl:mr-40" : "hidden"}>
             <h1 className="font-extrabold text-transparent text-6xl sm:text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
-              <a href={process.env.NEXT_PUBLIC_HOST_URL}>BiblioReads</a>
+              <Link href="/">BiblioReads</Link>
             </h1>
             <h2 className="my-10 text-4xl text-transparent font-bold text-black dark:text-gray-200">
               Get Info About A GoodReads Book:

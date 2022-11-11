@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const PrivacyContent = () => {
   return (
@@ -26,9 +27,13 @@ const PrivacyContent = () => {
                 className="underline"
                 target="_blank"
                 rel="noreferrer"
-                href="https://biblioreads.netlify.app/"
+                href={
+                  process.env.NEXT_PUBLIC_HOST_URL ||
+                  "https://www.biblioreads.ml"
+                }
               >
-                https://biblioreads.netlify.app/
+                {process.env.NEXT_PUBLIC_HOST_URL ||
+                  "https://www.biblioreads.ml"}
               </a>{" "}
               website.
             </p>
@@ -139,13 +144,9 @@ const PrivacyContent = () => {
                 issue
               </a>{" "}
               or by using the form on our{" "}
-              <a
-                className="underline"
-                rel="noreferrer"
-                href={`${process.env.NEXT_PUBLIC_HOST_URL}/contact`}
-              >
-                contact page
-              </a>
+              <Link href="/contact">
+                <a className="underline">contact page</a>
+              </Link>
               .
             </p>
 

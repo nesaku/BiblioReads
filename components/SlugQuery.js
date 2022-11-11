@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import ResultData from "./ResultData";
 import Loader from "./Loader";
 import Header from "./Header";
@@ -47,7 +48,7 @@ const SlugQuery = ({ path }) => {
         >
           <div className="justify-center items-center text-center pt-40">
             <h1 className="font-extrabold text-transparent text-6xl md:text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
-              <a href={process.env.NEXT_PUBLIC_HOST_URL}>BiblioReads</a>
+              <Link href="/">BiblioReads</Link>
             </h1>
             <h2 className="my-10 text-4xl font-bold">
               Get Info About A GoodReads Book:

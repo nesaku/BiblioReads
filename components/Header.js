@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Header = () => {
@@ -6,8 +8,7 @@ const Header = () => {
     <header className="p-4 dark:bg-rose-800 dark:text-rose-100 border-b-2 dark:border-b-0 border-rose-300">
       <div className="container flex justify-between items-center h-16 mx-auto">
         <a
-          rel="noopener noreferrer"
-          href={process.env.NEXT_PUBLIC_HOST_URL}
+          href="/"
           aria-label="Back to homepage"
           className="flex items-center mx-auto lg:mx-32"
         >
@@ -20,49 +21,39 @@ const Header = () => {
         </a>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href={process.env.NEXT_PUBLIC_HOST_URL}
-              className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
-            >
-              Home
-            </a>
+            <Link href="/">
+              <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                Home
+              </a>
+            </Link>
           </li>
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href={`${process.env.NEXT_PUBLIC_HOST_URL}/about`}
-              className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
-            >
-              About
-            </a>
+            <Link href="/about">
+              <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                About
+              </a>
+            </Link>
           </li>
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href={`${process.env.NEXT_PUBLIC_HOST_URL}/about#faq`}
-              className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
-            >
-              FAQ
-            </a>
+            <Link href="/about#faq">
+              <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                FAQ
+              </a>
+            </Link>
           </li>
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href={`${process.env.NEXT_PUBLIC_HOST_URL}/contact`}
-              className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
-            >
-              Contact
-            </a>
+            <Link href="/contact">
+              <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                Contact
+              </a>
+            </Link>
           </li>
           <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href={`${process.env.NEXT_PUBLIC_HOST_URL}/privacy`}
-              className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300"
-            >
-              Privacy
-            </a>
+            <Link href="/privacy">
+              <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                Privacy
+              </a>
+            </Link>
           </li>
           <li className="flex">
             <a

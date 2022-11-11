@@ -56,25 +56,29 @@ const FAQ = () => {
               <br />- Visit{" "}
               <a
                 className="underline text-green-600 dark:text-green-500/80"
-                href="https://biblioreads.netlify.app"
+                href={
+                  process.env.NEXT_PUBLIC_HOST_URL ||
+                  "https://www.biblioreads.ml"
+                }
                 target="_blank"
                 rel="noreferrer"
               >
-                biblioreads.netlify.app
+                {process.env.NEXT_PUBLIC_HOST_URL ||
+                  "https://www.biblioreads.ml"}
               </a>{" "}
               and paste the GoodReads book URL into the input box.
               <br />
               <b>OR</b>
               <br />- Replace the{" "}
-              <a
-                className="underline text-green-600 dark:text-green-500/80"
-                href="https://www.goodreads.com"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <span className="text-green-600 dark:text-green-500/80">
                 https://www.goodreads.com
-              </a>{" "}
-              of any book page with biblioreads.netlify.app. Then click the
+              </span>{" "}
+              of any book page url with{" "}
+              <span className="text-green-600 dark:text-green-500/80">
+                {process.env.NEXT_PUBLIC_HOST_URL ||
+                  "https://www.biblioreads.ml"}
+              </span>
+              . Then click the
               <code> &quot;Fetch Data&quot;</code> button.
             </p>
           </details>
