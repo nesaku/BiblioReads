@@ -11,10 +11,10 @@ const PrivacyContent = () => {
           </h1>
           <div className="text-left mt-10">
             <p className="mx-auto text-lg mt-12">
-              Last updated: November 7, 2022
+              Last updated: November 11, 2022
             </p>
             <p className="mx-auto text-lg mt-12">
-              At BiblioReads, we believe that privacy is a fundemental right and
+              At BiblioReads, we believe that privacy is a fundamental right and
               strive to be as transparent as possible about how we use your
               information. We will not sell, lease, or exchange your personal
               data to, or otherwise share your personal data with, third parties
@@ -28,12 +28,10 @@ const PrivacyContent = () => {
                 target="_blank"
                 rel="noreferrer"
                 href={
-                  process.env.NEXT_PUBLIC_HOST_URL ||
-                  "https://www.biblioreads.ml"
+                  process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
                 }
               >
-                {process.env.NEXT_PUBLIC_HOST_URL ||
-                  "https://www.biblioreads.ml"}
+                {process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"}
               </a>{" "}
               website.
             </p>
@@ -95,9 +93,12 @@ const PrivacyContent = () => {
             </h2>
 
             <p className="mx-auto text-lg mt-12">
-              BiblioReads does not use analytics, cookies or logging on our
-              website. However, our hosting provider may keep logs and collect
-              informaiton such as IP addresses.
+              BiblioReads does not use analytics, third-party cookies or logging
+              on our website. We use local storage to remember your theme
+              preferences, you may erase local storage by deleting your browser
+              history. We do not use cookies or local storage objects for any
+              other purpose. Our hosting provider may keep logs and collect
+              information such as IP addresses.
             </p>
             <h2 className="text-2xl font-bold my-12 underline">
               Third Party Privacy Policies

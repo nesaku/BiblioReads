@@ -34,21 +34,21 @@ const ResultData = ({ scrapedData }) => {
           <picture>
             <source
               srcSet={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                process.env.NEXT_PUBLIC_HOST_URL || "https://www.biblioreads.ml"
+                process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&output=webp&maxage=30d`}
               type="image/webp"
               className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"
             />
             <source
               srcSet={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                process.env.NEXT_PUBLIC_HOST_URL || "https://www.biblioreads.ml"
+                process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&maxage=30d`}
               type="image/jpeg"
               className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"
             />
             <img
               src={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                process.env.NEXT_PUBLIC_HOST_URL || "https://www.biblioreads.ml"
+                process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&maxage=30d`}
               alt={scrapedData.coverAltText}
               className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"

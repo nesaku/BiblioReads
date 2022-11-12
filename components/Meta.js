@@ -12,6 +12,7 @@ const Meta = (props) => {
         name="description"
         content="BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
       />
+      <link rel="canonical" href="https://biblioreads.ml" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -44,7 +45,7 @@ const Meta = (props) => {
         content={
           process.env.NEXT_PUBLIC_HOST_URL
             ? `${process.env.NEXT_PUBLIC_HOST_URL}/social.png`
-            : "https://www.biblioreads.ml/social.png"
+            : "https://biblioreads.ml/social.png"
         }
       />
     </Head>

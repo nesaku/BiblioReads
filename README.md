@@ -27,6 +27,14 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 - Lightweight
 - Modern Design - Responsive design with built-in light & dark mode support
 
+## Instances
+
+|                           URLs:                            |
+| :--------------------------------------------------------: |
+|          [biblioreads.ml](https://biblioreads.ml)          |
+|          [biblioreads.ga](https://biblioreads.ga)          |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app) |
+
 ---
 
 ## FAQ
@@ -35,8 +43,8 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 There are two ways you can use BiblioReads:
 
-1. Visit [www.biblioreads.ml](https://www.biblioreads.ml) and paste the GoodReads book url into the input box.
-2. Replace the `https://www.goodreads.com` of any book page url with `https://www.biblioreads.ml`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [www.biblioreads.ml/book/show/5907.The_Hobbit](https://www.biblioreads.ml/book/show/5907.The_Hobbit).
+1. Visit [biblioreads.ml](https://biblioreads.ml) and paste the GoodReads book url into the input box.
+2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
@@ -77,7 +85,7 @@ _(Tested on Chrome v106; without scroll; no throttling)_
 Goodreads collects information about your device and uses tracking cookies for advertising among other reasons, this can be found in their [privacy policy](https://www.goodreads.com/about/privacy). [Blacklight](https://themarkup.org/blacklight) found 16 ad trackers and 40 third-party cookies.
 
 - See what cookies and trackers Goodreads uses: https://themarkup.org/blacklight?url=www.goodreads.com
-- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=www.biblioreads.ml
+- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.ml
 
 ---
 
@@ -140,6 +148,7 @@ Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for 
 - Next.js
 - Cheerio
 - TailwindCSS
+- next-themes
 
 ### Getting Started
 
