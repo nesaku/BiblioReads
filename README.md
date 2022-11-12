@@ -26,6 +26,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 - All requests are proxied - your requests are never directly made to Goodreads
 - Lightweight
 - Modern Design - Responsive design with built-in light & dark mode support
+- PWA Support - Installable as a PWA on desktop and mobile
 
 ## Instances
 

@@ -12,7 +12,6 @@ const Meta = (props) => {
         name="description"
         content="BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
       />
-      <link rel="canonical" href="https://biblioreads.ml" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -31,6 +30,7 @@ const Meta = (props) => {
         href="/favicon-16x16.png"
       />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#121212" />
+      <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="msapplication-TileColor" content="#121212" />
       <meta name="theme-color" content="#881337" />
       <meta property="og:title" content="BiblioReads" />

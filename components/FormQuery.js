@@ -65,7 +65,7 @@ const FormQuery = () => {
                   Enter A GoodReads Book URL: &nbsp;
                 </h3>
                 <input
-                  className="rounded-md mx-10 py-3 px-5 text-left text-black text-sm  bg-slate-200 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300"
+                  className="rounded-md mx-10 py-3 px-5 text-left text-black text-sm bg-slate-200 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   disabled={isLoading}
@@ -76,7 +76,7 @@ const FormQuery = () => {
               <div className="mx-10 my-6 font-semibold text-lg text-red-600">
                 <p>{scrapedData.error}</p>
               </div>
-              <button className="font-semibold text-md text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
+              <button className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
                 Submit
               </button>
             </div>

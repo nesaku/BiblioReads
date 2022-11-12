@@ -57,14 +57,12 @@ const FAQ = () => {
               <a
                 className="underline text-green-600 dark:text-green-500/80"
                 href={
-                  process.env.NEXT_PUBLIC_HOST_URL ||
-                  "https://biblioreads.ml"
+                  process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
                 }
                 target="_blank"
                 rel="noreferrer"
               >
-                {process.env.NEXT_PUBLIC_HOST_URL ||
-                  "https://biblioreads.ml"}
+                {process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"}
               </a>{" "}
               and paste the GoodReads book URL into the input box.
               <br />
@@ -75,8 +73,7 @@ const FAQ = () => {
               </span>{" "}
               of any book page url with{" "}
               <span className="text-green-600 dark:text-green-500/80">
-                {process.env.NEXT_PUBLIC_HOST_URL ||
-                  "https://biblioreads.ml"}
+                {process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"}
               </span>
               . Then click the
               <code> &quot;Fetch Data&quot;</code> button.
