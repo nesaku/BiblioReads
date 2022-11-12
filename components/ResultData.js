@@ -1,6 +1,6 @@
 import React from "react";
-import Meta from "./Meta";
 import ReadMore from "./ReadMore";
+import Meta from "./global-components/Meta";
 
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {

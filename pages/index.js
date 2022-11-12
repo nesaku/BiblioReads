@@ -1,6 +1,6 @@
 import React from "react";
 import FormQuery from "../components/FormQuery";
-import Header from "../components/Header";
+import Header from "../components/global-components/Header";
 
 const Home = () => {
   return (

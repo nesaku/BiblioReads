@@ -1,26 +1,23 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { useTheme } from "next-themes";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
-  const { theme, setTheme } = useTheme();
   return (
     <header className="p-4 dark:bg-rose-800 dark:text-rose-100 border-b-2 dark:border-b-0 border-rose-300">
-      <div className="container flex justify-between items-center h-16 mx-auto">
-        <a
-          href="/"
-          aria-label="Back to homepage"
-          className="flex items-center mx-auto lg:mx-32"
-        >
-          <Image
-            src="/logo.svg"
-            alt="BiblioReads Logo"
-            width="64px"
-            height="64px"
-          />
-        </a>
+      <div className="flex justify-center lg:justify-evenly  items-center h-16">
+        <div className="flex">
+          <a href="/" aria-label="Back to homepage">
+            <Image
+              src="/logo.svg"
+              alt="BiblioReads Logo"
+              width="64px"
+              height="64px"
+            />
+          </a>
+        </div>
         <div>
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
@@ -60,7 +57,7 @@ const Header = () => {
             </li>
             <li className="flex">
               <a
-                className="ml-2 h-full w-8 text-gray-900 hover:text-gray-900/75 dark:text-gray-300 dark:hover:text-gray-300/75"
+                className="ml-2 mt-0.5 h-full w-8 text-gray-900 hover:text-gray-900/75 dark:text-gray-300 dark:hover:text-gray-300/75"
                 href="https://github.com/nesaku/BiblioReads"
                 target="_blank"
                 rel="noreferrer"
@@ -77,37 +74,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-
-        <button
-          aria-label="Toggle Dark Mode"
-          type="button"
-          className="p-2 border-2 rounded-lg"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            stroke="currentColor"
-            className="h-6 w-6 text-gray-800 dark:text-gray-200"
-          >
-            {theme === "dark" ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            )}
-          </svg>
-        </button>
+        <ThemeToggle />
       </div>
     </header>
   );

@@ -117,8 +117,6 @@ yarn start
 
 ### Docker Installation
 
-#### Installation:
-
 ##### Docker CLI:
 
 ```
@@ -141,7 +139,7 @@ Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for 
 
 ---
 
-## Development:
+## Development
 
 ### Built Using
 

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import ResultData from "./ResultData";
-import Loader from "./Loader";
-import Header from "./Header";
-import Footer from "./Footer";
-import Meta from "./Meta";
+import Meta from "./global-components/Meta";
+import Loader from "./global-components/Loader";
+import Header from "./global-components/Header";
+import Footer from "./global-components/Footer";
 
 const SlugQuery = ({ path }) => {
   const [scrapedData, setscrapedData] = useState({});

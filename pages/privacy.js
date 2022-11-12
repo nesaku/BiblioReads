@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Meta from "../components/Meta";
+import Meta from "../components/global-components/Meta";
+import Header from "../components/global-components/Header";
+import Footer from "../components/global-components/Footer";
 import PrivacyContent from "../components/privacypage-components/PrivacyContent";
 
 const privacy = () => {

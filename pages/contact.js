@@ -1,9 +1,9 @@
 import React from "react";
+import Meta from "../components/global-components/Meta";
+import Header from "../components/global-components/Header";
+import Footer from "../components/global-components/Footer";
 import ContactForm from "../components/contactpage-components/ContactForm";
 import ContactHero from "../components/contactpage-components/ContactHero";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Meta from "../components/Meta";
 
 const contact = () => {
   return (
