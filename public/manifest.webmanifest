@@ -5,8 +5,8 @@
     "orientation": "portrait",
     "scope": "/",
     "start_url": "/",
-    "name": "BibilioReads",
-    "short_name": "BibilioReads",
+    "name": "BiblioReads",
+    "short_name": "BiblioReads",
     "description": "A free and open source alternative Goodreads front-end focused on privacy.",
     "icons": [
         {
