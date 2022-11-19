@@ -35,6 +35,9 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 |          [biblioreads.ml](https://biblioreads.ml)          |
 |          [biblioreads.ga](https://biblioreads.ga)          |
 | [biblioreads.netlify.app](https://biblioreads.netlify.app) |
+|             [bl.vern.cc](https://bl.vern.cc)               |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p) |
 
 ---
 
