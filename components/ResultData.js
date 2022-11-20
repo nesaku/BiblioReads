@@ -123,7 +123,7 @@ const ResultData = ({ scrapedData }) => {
         <span className="text-md">{scrapedData.lang}</span>
         <h2
           className={
-            scrapedData.lang ? "font-bold text-2xl my-2 underline" : "hidden"
+            scrapedData.related ? "font-bold text-2xl my-2 underline" : "hidden"
           }
         >
           Similar Books:{" "}
