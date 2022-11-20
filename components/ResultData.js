@@ -4,6 +4,15 @@ import Meta from "./global-components/Meta";
 
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
+  const slideLeft = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 500;
+  };
+
+  const slideRight = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 500;
+  };
   return (
     /* Don't show result data if the title is not loaded */
     <div
@@ -19,12 +28,14 @@ const ResultData = ({ scrapedData }) => {
           scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
         }
       />
+
       <div className="text-center mx-auto">
         <span className="text-md italic text-left">{scrapedData.series}</span>
-        <h2 className="font-bold text-3xl xl:text-4xl my-1 uppercase">
+        <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl">
           {scrapedData.title}
         </h2>
-        <p className="mt-2 max-w-sm xl:max-w-md">
+
+        <p className="mt-2 mx-auto max-w-sm xl:max-w-md">
           <span className="font-semibold">By:</span>{" "}
           <span className="text-md">{scrapedData.author}</span>
         </p>
@@ -37,27 +48,27 @@ const ResultData = ({ scrapedData }) => {
                 process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&output=webp&maxage=30d`}
               type="image/webp"
-              className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"
+              className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
             />
             <source
               srcSet={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
                 process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&maxage=30d`}
               type="image/jpeg"
-              className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"
+              className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
             />
             <img
               src={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
                 process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
               }/cover-placeholder.svg&maxage=30d`}
               alt={scrapedData.coverAltText}
-              className="rounded-2xl w-fit h-fit mx-auto shadow-2xl drop-shadow-xl"
+              className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
               loading="eager"
             />
           </picture>
         </div>
       </div>
-      <div className="max-w-sm md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 lg:p-0 text-center lg:text-left">
+      <div className="max-w-full md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 lg:p-0 text-center lg:text-left">
         <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline ">
           Rating:{" "}
         </h2>
@@ -86,7 +97,7 @@ const ResultData = ({ scrapedData }) => {
         <span className="text-md capitalize -ml-3">
           {scrapedData.ratingCount}
         </span>
-        <div className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl">
+        <div className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0">
           <h2 className="font-bold text-2xl my-2 underline">Description: </h2>
           <ReadMore>{scrapedData.desc ? scrapedData.desc : "Loading"}</ReadMore>
         </div>
@@ -110,7 +121,91 @@ const ResultData = ({ scrapedData }) => {
           Language:{" "}
         </h2>
         <span className="text-md">{scrapedData.lang}</span>
-        <h2 className="font-bold text-2xl my-2 underline">Last Scraped: </h2>
+        <h2
+          className={
+            scrapedData.lang ? "font-bold text-2xl my-2 underline" : "hidden"
+          }
+        >
+          Similar Books:{" "}
+        </h2>
+
+        {scrapedData.related && (
+          <div
+            id="slider"
+            className="no-scrollbar max-w-4xl h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14"
+          >
+            {scrapedData.related.map((data, i) => (
+              <div key={i} className="snap-center shrink-0 first:-ml-12">
+                <a href={`${data.url}`}>
+                  <picture>
+                    <source
+                      srcSet={`https://wsrv.nl/?url=${data.src}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "https://biblioreads.ml"
+                      }/cover-placeholder.svg&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <source
+                      srcSet={`https://wsrv.nl/?url=${data.src}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "https://biblioreads.ml"
+                      }/cover-placeholder.svg&maxage=30d`}
+                      type="image/jpeg"
+                      className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <img
+                      src={`https://wsrv.nl/?url=${data.src}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "https://biblioreads.ml"
+                      }/cover-placeholder.svg&maxage=30d`}
+                      alt={scrapedData.coverAltText}
+                      className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      loading="eager"
+                    />
+                  </picture>
+
+                  <div className="group w-36 h-20 text-center mx-auto mt-4">
+                    <span className="break-words text-md">
+                      {data.title.slice(0, 40)}
+                      <span className="inline group-hover:hidden">...</span>
+                    </span>
+                    <span className="hidden group-hover:inline text-md">
+                      {data.title.slice(40)}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="hidden md:flex max-w-4xl justify-center lg:justify-start">
+          <button className="mx-3" onClick={slideLeft}>
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              className="fill-gray-900 dark:fill-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16 0C7.16408 0 0 7.16408 0 16C0 24.8359 7.16408 32 16 32C24.8359 32 32 24.8359 32 16C32 7.16408 24.8359 0 16 0ZM20.1273 21.9102L17.3388 24.6988L11.4286 18.7886L8.64 16L11.4286 13.2114L17.3388 7.30122L20.1273 10.0898L14.2237 16L20.1273 21.9102Z" />
+            </svg>
+          </button>
+          <button className="mx-3" onClick={slideRight}>
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              className="fill-gray-900 dark:fill-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16 0C7.16408 0 0 7.16408 0 16C0 24.8359 7.16408 32 16 32C24.8359 32 32 24.8359 32 16C32 7.16408 24.8359 0 16 0ZM20.5714 18.7886L14.6612 24.6988L11.8727 21.9102L17.7829 16L11.8727 10.0898L14.6612 7.30122L20.5714 13.2114L23.36 16L20.5714 18.7886Z" />
+            </svg>
+          </button>
+        </div>
+        <h2 className="font-bold text-2xl my-2 underline mt-12">
+          Last Scraped:{" "}
+        </h2>
         <span className="text-md">
           <code>{scrapedData.lastScraped}</code>
         </span>

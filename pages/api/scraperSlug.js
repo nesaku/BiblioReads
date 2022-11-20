@@ -35,6 +35,18 @@ const scraperSlug = async (req, res) => {
       const publishDate = $("#details > div:nth-child(2)").text();
       const isbn = $("*[itemprop = 'isbn']").text();
       const lang = $("*[itemprop = 'inLanguage']").text();
+      const related = $(".cover")
+        .map((_, info) => {
+          const $info = $(info);
+          const src = $info.find("a > img").attr("src");
+          const title = $info.find("a > img").attr("alt");
+          const url = $info
+            .find("a")
+            .attr("href")
+            .replace("https://www.goodreads.com", "");
+          return { src: src, title: title, url: url };
+        })
+        .toArray();
       const lastScraped = new Date().toISOString();
 
       res.statusCode = 200;
@@ -51,6 +63,7 @@ const scraperSlug = async (req, res) => {
         publishDate: publishDate,
         isbn: isbn,
         lang: lang,
+        related: related,
         lastScraped: lastScraped,
       });
     } catch (e) {
