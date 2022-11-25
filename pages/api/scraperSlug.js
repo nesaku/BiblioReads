@@ -25,13 +25,16 @@ const scraperSlug = async (req, res) => {
         .text()
         .replace("by", "")
         .replace("(Goodreads Author)", "");
-      const desc = $("#description").text().replace("...more", "");
       const rating = $("*[itemprop = 'ratingValue']").text();
       const ratingCount = $(
         "#reviewControls > div.reviewControls--left.greyText"
       )
         .text()
         .replace("·", "");
+      const desc = $("#description").text().replace("...more", "");
+      const genres = $(".actionLinkLite.bookPageGenreLink")
+        .map((i, el) => $(el).text())
+        .get();
       const publishDate = $("#details > div:nth-child(2)").text();
       const isbn = $("*[itemprop = 'isbn']").text();
       const lang = $("*[itemprop = 'inLanguage']").text();
@@ -57,9 +60,10 @@ const scraperSlug = async (req, res) => {
         series: series,
         title: title,
         author: author,
-        desc: desc,
         rating: rating,
         ratingCount: ratingCount,
+        desc: desc,
+        genres: genres,
         publishDate: publishDate,
         isbn: isbn,
         lang: lang,
