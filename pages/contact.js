@@ -8,7 +8,7 @@ import ContactHero from "../components/contactpage-components/ContactHero";
 const contact = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
-      <Meta text={"Contact"} />
+      <Meta title={"Contact"} />
       <Header />
       <ContactHero />
       <ContactForm />

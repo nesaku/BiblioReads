@@ -7,7 +7,7 @@ import PrivacyContent from "../components/privacypage-components/PrivacyContent"
 const privacy = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
-      <Meta text={"Privacy"} />
+      <Meta title={"Privacy"} />
       <Header />
       <PrivacyContent />
       <Footer />

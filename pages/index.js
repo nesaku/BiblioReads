@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradienthero min-h-screen flex flex-col">
       <Header />
-      {/* HomePage (Form Query Page) */}
       <FormQuery />
     </div>
   );

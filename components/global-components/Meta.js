@@ -2,16 +2,22 @@ import React from "react";
 import Head from "next/head";
 
 const Meta = (props) => {
+  const title = `BiblioReads ${props.title && `- ${props.title}`}`;
+  const description = `${
+    props.desc
+      ? `${props.desc}`
+      : "BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
+  }`;
+  const descriptionOG = `${
+    props.desc
+      ? `${props.desc}`
+      : "BiblioReads - An Alternative Private Goodreads Front-End"
+  }`;
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>
-        {props.text ? `${props.text} - BiblioReads` : `BiblioReads`}
-      </title>
-      <meta
-        name="description"
-        content="BiblioReads is a free and open source alternative Goodreads front-end focused on privacy."
-      />
+      <title>{title}</title>
+      <meta name="description" content={description} />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -34,10 +40,7 @@ const Meta = (props) => {
       <meta name="msapplication-TileColor" content="#121212" />
       <meta name="theme-color" content="#881337" />
       <meta property="og:title" content="BiblioReads" />
-      <meta
-        property="og:description"
-        content="BiblioReads - An Alternative Private Goodreads Front-End"
-      />
+      <meta property="og:description" content={descriptionOG} />
       <meta property="og:site_name" content="BiblioReads" />
       <meta property="og:type" content="website" />
       <meta

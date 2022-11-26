@@ -23,10 +23,8 @@ const ResultData = ({ scrapedData }) => {
       }
     >
       <Meta
-        text={scrapedData.title ? `${scrapedData.title}` : ""}
-        description={
-          scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
-        }
+        title={scrapedData.title ? `${scrapedData.title}` : ""}
+        desc={scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""}
       />
 
       <div id="sideContent" className="text-center mx-auto">
