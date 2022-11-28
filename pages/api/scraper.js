@@ -50,8 +50,26 @@ const scraper = async (req, res) => {
           return { src: src, title: title, url: url };
         })
         .toArray();
+      const reviews = $("*[itemprop = 'reviews']")
+        .map((_, info) => {
+          const $info = $(info);
+          const image = $info.find("a > img").attr("src");
+          const author = $info.find("*[itemprop = 'author'] > a").attr("title");
+          const date = $info.find(".reviewDate").text();
+          const stars = $info.find(".staticStars").attr("title");
+          const text = $info
+            .find(".reviewText.stacked > .readable > span")
+            .text();
+          return {
+            image: image,
+            author: author,
+            date: date,
+            stars: stars,
+            text: text,
+          };
+        })
+        .toArray();
       const lastScraped = new Date().toISOString();
-
       res.statusCode = 200;
       return res.json({
         scrapeURL: scrapeURL,
@@ -68,6 +86,7 @@ const scraper = async (req, res) => {
         isbn: isbn,
         lang: lang,
         related: related,
+        reviews: reviews,
         lastScraped: lastScraped,
       });
     } catch (e) {

@@ -12,7 +12,7 @@ const SlugQuery = ({ path }) => {
   const [isQuery, setIsQuery] = useState(true);
 
   {
-    /* When the button is clicked/submitted send a fetch request to the scraper API*/
+    /* When the button is clicked/submitted send a fetch request to the scraper API */
   }
 
   const handleClick = async () => {
@@ -54,7 +54,7 @@ const SlugQuery = ({ path }) => {
             </h2>
           </div>
           <div className="flex flex-col items-center justify-center text-center">
-            <code className="text-xs md:text-lg">{`https://www.goodreads.com/book/show/${path}`}</code>
+            <code className="max-w-xs sm:max-w-full text-xs md:text-lg break-words">{`https://www.goodreads.com/book/show/${path}`}</code>
             <br />
             <button
               onClick={handleClick}
