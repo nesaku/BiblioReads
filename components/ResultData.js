@@ -10,33 +10,32 @@ const ResultData = ({ scrapedData }) => {
   return (
     /* Don't show result data if the title is not loaded */
     <>
-      <div
-        className={
-          scrapedData.title
-            ? "hidden"
-            : "flex flex-col justify-center max-w-2xl text-center mx-auto h-[74vh]"
-        }
-      >
-        <h1 className="text-red-600 font-bold text-5xl uppercase">
-          Error - Book Not Found
-        </h1>
-        <h2 className="my-12 text-lg text-black font-bold dark:text-gray-100">
-          An Example Of A Valid Query Is:
-          <p className="font-normal">
-            https://www.goodreads.com/book/show/5907.The_Hobbit
-          </p>
-        </h2>
-        <div className="mx-auto">
-          <a
-            href="/"
-            className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-5 px-2 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
-          >
-            Go Back Home
-          </a>
+      {!scrapedData.title && (
+        <div className="flex flex-col justify-center max-w-2xl text-center mx-auto h-[74vh]">
+          <h1 id="error" className="text-red-600 font-bold text-5xl uppercase">
+            Error - Book Not Found
+          </h1>
+          <h2 className="my-12 text-lg text-black font-bold dark:text-gray-100">
+            An Example Of A Valid Query Is:
+            <p className="font-normal">
+              https://www.goodreads.com/book/show/5907.The_Hobbit
+            </p>
+          </h2>
+          <div className="mx-auto">
+            <a
+              href="/"
+              className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-5 px-2 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
+            >
+              Go Back Home
+            </a>
+          </div>
         </div>
-      </div>
+      )}
       {scrapedData.title && (
-        <div className="flex flex-col lg:flex-row justify-center text-gray-900 dark:text-gray-200 my-[5vh] lg:my-[10vh] xl:my-[12vh]">
+        <div
+          id="wrapper"
+          className="flex flex-col lg:flex-row justify-center text-gray-900 dark:text-gray-200 my-[5vh] lg:my-[10vh] xl:my-[12vh]"
+        >
           <Meta
             title={scrapedData.title ? `${scrapedData.title}` : ""}
             desc={
