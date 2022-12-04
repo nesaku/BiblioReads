@@ -15,7 +15,7 @@ const Slug = ({ data }) => {
 export async function getServerSideProps(context) {
   const res = await fetch(
     `${
-      process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+      process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
     }/api/scraperSlug`,
     {
       method: "POST",

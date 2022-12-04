@@ -24,21 +24,21 @@ const SimilarBooks = (props) => {
               <picture>
                 <source
                   srcSet={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&output=webp&maxage=30d`}
                   type="image/webp"
                   className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                 />
                 <source
                   srcSet={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
                   type="image/jpeg"
                   className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                 />
                 <img
                   src={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
                   alt="Images of similar books"
                   className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"

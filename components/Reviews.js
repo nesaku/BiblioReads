@@ -38,21 +38,21 @@ const Reviews = (props) => {
                   <source
                     srcSet={`https://wsrv.nl/?url=${data.image}&default=${
                       process.env.NEXT_PUBLIC_HOST_URL ||
-                      "https://biblioreads.ml"
+                      "http://localhost:3000"
                     }/cover-placeholder.svg&output=webp&maxage=30d`}
                     type="image/webp"
                   />
                   <source
                     srcSet={`https://wsrv.nl/?url=${data.image}&default=${
                       process.env.NEXT_PUBLIC_HOST_URL ||
-                      "https://biblioreads.ml"
+                      "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     type="image/jpeg"
                   />
                   <img
                     src={`https://wsrv.nl/?url=${data.image}&default=${
                       process.env.NEXT_PUBLIC_HOST_URL ||
-                      "https://biblioreads.ml"
+                      "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     alt="An image of the review author"
                     loading="lazy"

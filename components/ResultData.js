@@ -60,21 +60,21 @@ const ResultData = ({ scrapedData }) => {
               <picture>
                 <source
                   srcSet={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&output=webp&maxage=30d`}
                   type="image/webp"
                   className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
                 />
                 <source
                   srcSet={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
                   type="image/jpeg"
                   className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
                 />
                 <img
                   src={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
                   alt={scrapedData.coverAltText}
                   className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"

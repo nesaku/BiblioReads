@@ -28,10 +28,10 @@ const PrivacyContent = () => {
                 target="_blank"
                 rel="noreferrer"
                 href={
-                  process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"
+                  process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                 }
               >
-                {process.env.NEXT_PUBLIC_HOST_URL || "https://biblioreads.ml"}
+                {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
               </a>{" "}
               website.
             </p>

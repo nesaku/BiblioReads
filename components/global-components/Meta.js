@@ -48,7 +48,7 @@ const Meta = (props) => {
         content={
           process.env.NEXT_PUBLIC_HOST_URL
             ? `${process.env.NEXT_PUBLIC_HOST_URL}/social.png`
-            : "https://biblioreads.ml/social.png"
+            : "http://localhost:3000/social.png"
         }
       />
     </Head>
