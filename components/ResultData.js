@@ -180,6 +180,27 @@ const ResultData = ({ scrapedData }) => {
               </h2>
               <span className="text-md">{scrapedData.lang}</span>
             </div>
+            <div id="bookURL">
+              <h2
+                className={
+                  scrapedData.lang
+                    ? "font-bold text-2xl my-2 underline"
+                    : "hidden"
+                }
+              >
+                Goodreads URL:{" "}
+              </h2>
+              <a
+                className="text-blue-600 dark:text-blue-500 underline"
+                target="_blank"
+                rel="noreferrer"
+                href={`https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
+              >
+                <span className="text-md">
+                  {`https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
+                </span>
+              </a>
+            </div>
             {scrapedData.related && <SimilarBooks data={scrapedData.related} />}
             {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
             <div id="lastScraped">
