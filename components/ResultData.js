@@ -12,15 +12,15 @@ const ResultData = ({ scrapedData }) => {
     <>
       {!scrapedData.title && (
         <div className="flex flex-col justify-center max-w-2xl text-center mx-auto h-[74vh]">
-          <h2 id="error" className="text-red-600 font-bold text-5xl uppercase">
+          <h1 id="error" className="text-red-600 font-bold text-5xl uppercase">
             Error - Book Not Found
-          </h2>
-          <h3 className="my-12 text-lg text-black font-bold dark:text-gray-100">
+          </h1>
+          <h2 className="my-12 text-lg text-black font-bold dark:text-gray-100">
             An Example Of A Valid Query Is:
-            <span className="font-normal">
+            <p className="font-normal">
               https://www.goodreads.com/book/show/5907.The_Hobbit
-            </span>
-          </h3>
+            </p>
+          </h2>
           <div className="mx-auto">
             <a
               href="/"
@@ -183,7 +183,7 @@ const ResultData = ({ scrapedData }) => {
             <div id="bookURL">
               <h2
                 className={
-                  scrapedData.lang
+                  scrapedData.scrapeURL
                     ? "font-bold text-2xl my-2 underline"
                     : "hidden"
                 }
@@ -194,10 +194,16 @@ const ResultData = ({ scrapedData }) => {
                 className="text-blue-600 dark:text-blue-500 underline"
                 target="_blank"
                 rel="noreferrer"
-                href={`https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
+                href={
+                  scrapedData.scrapeURL.includes("https://www.goodreads.com")
+                    ? scrapedData.scrapeURL
+                    : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`
+                }
               >
                 <span className="text-md">
-                  {`https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
+                  {scrapedData.scrapeURL.includes("https://www.goodreads.com")
+                    ? scrapedData.scrapeURL
+                    : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
                 </span>
               </a>
             </div>
