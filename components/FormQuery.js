@@ -60,7 +60,7 @@ const FormQuery = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col items-center justify-center text-center">
-              <label className="flex flex-col">
+              <div className="flex flex-col">
                 <h3 className="text-xl sm:text-2xl text-black dark:text-gray-200 font-semibold mb-10">
                   Enter A GoodReads Book URL: &nbsp;
                 </h3>
@@ -72,7 +72,7 @@ const FormQuery = () => {
                   type="url"
                   required
                 />
-              </label>
+              </div>
               <div className="mx-10 my-6 font-semibold text-lg text-red-600">
                 <p>{scrapedData.error}</p>
               </div>
