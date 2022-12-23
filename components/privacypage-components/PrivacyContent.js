@@ -11,7 +11,7 @@ const PrivacyContent = () => {
           </h1>
           <div className="text-left mt-10">
             <p className="mx-auto text-lg mt-12">
-              Last updated: November 13, 2022
+              Last updated: December 23, 2022
             </p>
             <p className="mx-auto text-lg mt-12">
               At BiblioReads, we believe that privacy is a fundamental right and
@@ -22,17 +22,28 @@ const PrivacyContent = () => {
             </p>
             <p className="mx-auto text-lg mt-12">
               BiblioReads (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;)
-              operates the{" "}
-              <a
-                className="underline"
-                target="_blank"
-                rel="noreferrer"
-                href={
-                  process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
-                }
-              >
-                {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
-              </a>{" "}
+              operates
+              {process.env.NEXT_PUBLIC_HOST_URL ? (
+                <span>
+                  {" "}
+                  the{" "}
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={
+                      process.env.NEXT_PUBLIC_HOST_URL ||
+                      "http://localhost:3000"
+                    }
+                  >
+                    <span className="underline">
+                      {process.env.NEXT_PUBLIC_HOST_URL ||
+                        "http://localhost:3000"}
+                    </span>
+                  </a>{" "}
+                </span>
+              ) : (
+                <span> this </span>
+              )}
               website.
             </p>
             <h2 className="text-2xl font-bold my-12 underline">
@@ -69,8 +80,8 @@ const PrivacyContent = () => {
             <p className="mx-auto text-lg mt-12">
               If you are a resident of the European Economic Area (EEA), you
               have certain data protection rights. If you wish to be informed
-              what Personal Information we hold about you and if you want it to
-              be removed from our systems, please contact us.
+              about what Personal Information we hold about you and if you want
+              it to be removed from our systems, please contact us.
             </p>
             <p className="mx-auto text-lg mt-12">
               In certain circumstances, you have the following data protection
@@ -78,7 +89,7 @@ const PrivacyContent = () => {
             </p>
             <ul className="list-disc ml-20 mt-8">
               <li>
-                The right to access, update or to delete the information we have
+                The right to access, update, or delete the information we have
                 on you.
               </li>
               <li>The right of rectification.</li>
@@ -94,12 +105,19 @@ const PrivacyContent = () => {
 
             <p className="mx-auto text-lg mt-12">
               BiblioReads does not use analytics, third-party cookies or ad
-              trackers on our website. Cache Storage and a service worker is
+              trackers on our website. Cache Storage and a service worker are
               used to enable progressive web app (PWA) support. We use local
               storage to remember your theme preferences, you may erase local
               storage by deleting your browser history. We do not use cookies or
               local storage objects for any other purpose. Our hosting provider
               may keep logs and collect information such as IP addresses.
+            </p>
+            <p className="mx-auto text-lg mt-12">
+              Information voluntarily provided to BiblioReads will be recorded,
+              such as contact information when the contact form is used. This
+              information will be solely used to receive and respond to
+              questions or comments. This information will be kept until the
+              purpose for which it was collected is met.
             </p>
             <h2 className="text-2xl font-bold my-12 underline">
               Third Party Privacy Policies
@@ -108,7 +126,7 @@ const PrivacyContent = () => {
             <p className="mx-auto text-lg mt-12">
               BiblioReads&apos;s Privacy Policy does not apply to other
               third-party websites and/or services. Thus, we are advising you to
-              consult the respective Privacy Policies of these third-party ad
+              consult the respective privacy policies of these third-party ad
               servers for more detailed information.
             </p>
             <p className="mx-auto text-lg mt-12">
@@ -125,8 +143,7 @@ const PrivacyContent = () => {
               Information from children under the age of 13. If you think that
               your child provided this kind of information on our website, we
               strongly encourage you to contact us immediately and we will do
-              our best efforts to promptly remove such information from our
-              records.
+              our best to promptly remove such information from our records.
             </p>
 
             <h2 className="text-2xl font-bold my-12 underline">

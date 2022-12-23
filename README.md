@@ -1,5 +1,5 @@
 <div align="center" width="100%">
-<img src="/public/readme/logo.svg?raw=true" width="256" alt="BiblioReads Logo">
+<img src="https://cdn.jsdelivr.net/gh/nesaku/BiblioReads@main/public/readme/logo.svg" width="256" alt="BiblioReads Logo">
 </div>
 <h1 align="center">BiblioReads</h1>
 <div align="center" width="100%">
@@ -8,6 +8,8 @@ BiblioReads is a free and open source alternative Goodreads front-end focused on
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
+
+Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](https://codeberg.org/nesaku/BiblioReads).
 
 </div>
 
@@ -30,14 +32,14 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Instances
 
-|                           URLs:                            |
-| :--------------------------------------------------------: |
-|          [biblioreads.ml](https://biblioreads.ml)          |
-|          [biblioreads.ga](https://biblioreads.ga)          |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app) |
-|             [bl.vern.cc](https://bl.vern.cc)               |
+|                                                                 Instance URL:                                                                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                   [biblioreads.ml](https://biblioreads.ml)                                                    |
+|                                                   [biblioreads.ga](https://biblioreads.ga)                                                    |
+|                                          [biblioreads.netlify.app](https://biblioreads.netlify.app)                                           |
+|                                                       [bl.vern.cc](https://bl.vern.cc)                                                        |
 | [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p) |
+|      [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)      |
 
 ---
 
@@ -77,12 +79,12 @@ Comparing BiblioReads to Goodreads.
 [The Hunger Games](https://www.goodreads.com/book/show/2767052-the-hunger-games) Book Page
 _(Tested on Chrome v106; without scroll; no throttling)_
 
-| Performance       | BiblioReads | Goodreads |
-| ----------------- | ----------- | --------- |
-| Request Count     | 13          | +180      |
-| Data Transferred  | 179 kB      | +24 MB    |
-| DOMContentLoaded: | 224ms       | 1.94s     |
-| Finish Time:      | 10.62s      | 16.68s    |
+|    Performance    | BiblioReads | Goodreads |
+| :---------------: | :---------: | :-------: |
+|   Request Count   |     13      |   +180    |
+| Data Transferred  |   179 kB    |  +24 MB   |
+| DOMContentLoaded: |    224ms    |   1.94s   |
+|   Finish Time:    |   10.62s    |  16.68s   |
 
 ### Privacy
 

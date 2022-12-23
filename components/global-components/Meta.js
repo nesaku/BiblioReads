@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 const Meta = (props) => {
-  const title = `BiblioReads ${props.title && `- ${props.title}`}`;
+  const title = `BiblioReads ${props.title ? `- ${props.title}` : ""}  `;
   const description = `${
     props.desc
       ? `${props.desc}`

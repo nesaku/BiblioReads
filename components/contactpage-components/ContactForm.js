@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const ContactForm = () => {
@@ -16,7 +17,7 @@ const ContactForm = () => {
           </div>
           <div>
             <label
-              for="email"
+              htmlFor="email"
               className="block mb-2 text-md font-medium text-gray-900 text-center dark:text-gray-300"
             >
               Your email
@@ -30,7 +31,7 @@ const ContactForm = () => {
           </div>
           <div>
             <label
-              for="subject"
+              htmlFor="subject"
               className="block mb-2 text-md font-medium text-gray-900 text-center dark:text-gray-300"
             >
               Subject
@@ -43,7 +44,7 @@ const ContactForm = () => {
           </div>
           <div className="sm:col-span-2">
             <label
-              for="message"
+              htmlFor="message"
               className="block mb-2 text-md font-medium text-gray-900 text-center dark:text-gray-300"
             >
               Your message
@@ -55,6 +56,13 @@ const ContactForm = () => {
               required
             ></textarea>
           </div>
+          <p className="text-gray-900 dark:text-gray-400 p-4">
+            By submitting this form you agree to our{" "}
+            <Link href="/privacy">
+              <a className="underline">Privacy Policy</a>
+            </Link>
+            .
+          </p>
           <button
             type="submit"
             className="font-semibold text-md text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-5 rounded-2xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
