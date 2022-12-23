@@ -12,15 +12,15 @@ const ResultData = ({ scrapedData }) => {
     <>
       {!scrapedData.title && (
         <div className="flex flex-col justify-center max-w-2xl text-center mx-auto h-[74vh]">
-          <h1 id="error" className="text-red-600 font-bold text-5xl uppercase">
+          <h2 id="error" className="text-red-600 font-bold text-5xl uppercase">
             Error - Book Not Found
-          </h1>
-          <h2 className="my-12 text-lg text-black font-bold dark:text-gray-100">
-            An Example Of A Valid Query Is:
-            <p className="font-normal">
-              https://www.goodreads.com/book/show/5907.The_Hobbit
-            </p>
           </h2>
+          <h3 className="my-12 text-lg text-black font-bold dark:text-gray-100">
+            An Example Of A Valid Query Is:
+            <span className="font-normal">
+              https://www.goodreads.com/book/show/5907.The_Hobbit
+            </span>
+          </h3>
           <div className="mx-auto">
             <a
               href="/"

@@ -10,9 +10,13 @@ const Stats = () => {
           </h2>
 
           <p className="mt-4 text-gray-500 dark:text-gray-400 sm:text-xl">
-            <a src="https://www.goodreads.com/book/show/2767052-the-hunger-games">
-              The Hunger Games Book Page
-            </a>
+            The{" "}
+            <a
+              href="https://www.goodreads.com/book/show/2767052-the-hunger-games"
+              className="underline"
+            >
+              Hunger Games Book Page
+            </a>{" "}
             (Tested on Chrome v106; without scroll; no throttling)
           </p>
         </div>
