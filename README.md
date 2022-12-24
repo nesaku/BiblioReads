@@ -1,5 +1,5 @@
 <div align="center" width="100%">
-<img src="https://cdn.jsdelivr.net/gh/nesaku/BiblioReads@main/public/readme/logo.svg" width="256" alt="BiblioReads Logo">
+<img src="https://cdn.jsdelivr.net/gh/nesaku/BiblioReads@main/public/readme/logo.svg" width="256" alt="">
 </div>
 <h1 align="center">BiblioReads</h1>
 <div align="center" width="100%">

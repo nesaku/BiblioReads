@@ -40,7 +40,7 @@ const SimilarBooks = (props) => {
                   src={`https://wsrv.nl/?url=${data.src}&default=${
                     process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
-                  alt="Images of similar books"
+                  alt={`${data.title} book cover`}
                   className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                   loading="lazy"
                 />

@@ -76,7 +76,7 @@ const ResultData = ({ scrapedData }) => {
                   src={`https://wsrv.nl/?url=${scrapedData.cover}&default=${
                     process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
                   }/cover-placeholder.svg&maxage=30d`}
-                  alt={scrapedData.coverAltText}
+                  alt={`${scrapedData.coverAltText} book cover`}
                   className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
                   loading="eager"
                 />
@@ -209,7 +209,7 @@ const ResultData = ({ scrapedData }) => {
             </div>
             {scrapedData.related && <SimilarBooks data={scrapedData.related} />}
             {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
-            <div id="lastScraped">
+            <div id="lastScraped" className="hidden">
               <h2 className="font-bold text-2xl my-2 underline mt-12">
                 Last Scraped:{" "}
               </h2>

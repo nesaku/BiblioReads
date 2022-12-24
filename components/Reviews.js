@@ -73,7 +73,7 @@ const Reviews = (props) => {
                         process.env.NEXT_PUBLIC_HOST_URL ||
                         "http://localhost:3000"
                       }/cover-placeholder.svg&maxage=30d`}
-                      alt="An image of the review author"
+                      alt=""
                       loading="lazy"
                     />
                   </picture>
