@@ -21,30 +21,35 @@ const SimilarBooks = (props) => {
         {props.data.map((data, i) => (
           <div key={i} className="snap-center shrink-0 first:-ml-12">
             <a href={`${data.url}`}>
-              <picture>
-                <source
-                  srcSet={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
-                  }/cover-placeholder.svg&output=webp&maxage=30d`}
-                  type="image/webp"
-                  className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                />
-                <source
-                  srcSet={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
-                  }/cover-placeholder.svg&maxage=30d`}
-                  type="image/jpeg"
-                  className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                />
-                <img
-                  src={`https://wsrv.nl/?url=${data.src}&default=${
-                    process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
-                  }/cover-placeholder.svg&maxage=30d`}
-                  alt={`${data.title} book cover`}
-                  className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                  loading="lazy"
-                />
-              </picture>
+              {data.src && (
+                <picture>
+                  <source
+                    srcSet={`/img?url=${data.src}&default=${
+                      process.env.NEXT_PUBLIC_HOST_URL ||
+                      "http://localhost:3000"
+                    }/cover-placeholder.svg&output=webp&maxage=30d`}
+                    type="image/webp"
+                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                  />
+                  <source
+                    srcSet={`/img?url=${data.src}&default=${
+                      process.env.NEXT_PUBLIC_HOST_URL ||
+                      "http://localhost:3000"
+                    }/cover-placeholder.svg&maxage=30d`}
+                    type="image/jpeg"
+                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                  />
+                  <img
+                    src={`/img?url=${data.src}&default=${
+                      process.env.NEXT_PUBLIC_HOST_URL ||
+                      "http://localhost:3000"
+                    }/cover-placeholder.svg&maxage=30d`}
+                    alt={`${data.title} book cover`}
+                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    loading="lazy"
+                  />
+                </picture>
+              )}
               <div className="group w-36 h-20 text-center mx-auto mt-4">
                 <span className="break-words text-md">
                   {data.title.slice(0, 40)}

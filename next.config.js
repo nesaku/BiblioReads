@@ -13,6 +13,14 @@ const nextConfig = withPWA({
     locales: ["en"],
     defaultLocale: "en",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/img",
+        destination: "https://wsrv.nl/",
+      },
+    ];
+  },
 });
 
 module.exports = nextConfig;

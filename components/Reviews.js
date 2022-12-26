@@ -64,30 +64,32 @@ const Reviews = (props) => {
                 <div className="flex items-center">
                   {showAvatars && (
                     <div className="mr-2 w-12 h-12 overflow-hidden shadow rounded-full border-gray-500">
-                      <picture>
-                        <source
-                          srcSet={`https://wsrv.nl/?url=${data.image}&default=${
-                            process.env.NEXT_PUBLIC_HOST_URL ||
-                            "http://localhost:3000"
-                          }/cover-placeholder.svg&output=webp&maxage=30d`}
-                          type="image/webp"
-                        />
-                        <source
-                          srcSet={`https://wsrv.nl/?url=${data.image}&default=${
-                            process.env.NEXT_PUBLIC_HOST_URL ||
-                            "http://localhost:3000"
-                          }/cover-placeholder.svg&maxage=30d`}
-                          type="image/jpeg"
-                        />
-                        <img
-                          src={`https://wsrv.nl/?url=${data.image}&default=${
-                            process.env.NEXT_PUBLIC_HOST_URL ||
-                            "http://localhost:3000"
-                          }/cover-placeholder.svg&maxage=30d`}
-                          alt=""
-                          loading="lazy"
-                        />
-                      </picture>
+                      {data.image && (
+                        <picture>
+                          <source
+                            srcSet={`/img?url=${data.image}&default=${
+                              process.env.NEXT_PUBLIC_HOST_URL ||
+                              "http://localhost:3000"
+                            }/cover-placeholder.svg&output=webp&maxage=30d`}
+                            type="image/webp"
+                          />
+                          <source
+                            srcSet={`/img?url=${data.image}&default=${
+                              process.env.NEXT_PUBLIC_HOST_URL ||
+                              "http://localhost:3000"
+                            }/cover-placeholder.svg&maxage=30d`}
+                            type="image/jpeg"
+                          />
+                          <img
+                            src={`/img?url=${data.image}&default=${
+                              process.env.NEXT_PUBLIC_HOST_URL ||
+                              "http://localhost:3000"
+                            }/cover-placeholder.svg&maxage=30d`}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </picture>
+                      )}
                     </div>
                   )}
 

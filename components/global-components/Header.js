@@ -10,12 +10,7 @@ const Header = () => {
       <div className="flex justify-center lg:justify-evenly  items-center h-16">
         <div className="flex">
           <a href="/" aria-label="Back to homepage">
-            <Image
-              src="/logo.svg"
-              alt="BiblioReads Logo"
-              width="64px"
-              height="64px"
-            />
+            <Image src="/logo.svg" alt="" width="64px" height="64px" />
           </a>
         </div>
         <div>
