@@ -82,6 +82,10 @@ const ResultData = ({ scrapedData }) => {
                 />
               </picture>
             </div>
+
+            <div className="hidden lg:block mt-32 px-20">
+              {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
+            </div>
           </div>
           <div
             id="bookContent"
@@ -180,7 +184,7 @@ const ResultData = ({ scrapedData }) => {
               </h2>
               <span className="text-md">{scrapedData.lang}</span>
             </div>
-            <div id="bookURL">
+            <div id="bookURL" className="mb-6">
               <h2
                 className={
                   scrapedData.scrapeURL
@@ -200,7 +204,7 @@ const ResultData = ({ scrapedData }) => {
                     : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`
                 }
               >
-                <span className="text-md">
+                <span className=" text-xs lg:text-md">
                   {scrapedData.scrapeURL.includes("https://www.goodreads.com")
                     ? scrapedData.scrapeURL
                     : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
@@ -208,8 +212,10 @@ const ResultData = ({ scrapedData }) => {
               </a>
             </div>
             {scrapedData.related && <SimilarBooks data={scrapedData.related} />}
-            {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
-            <div id="lastScraped" className="hidden">
+            <div className="block lg:hidden">
+              {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
+            </div>
+            <div id="lastScraped" className="hidden lg:block">
               <h2 className="font-bold text-2xl my-2 underline mt-12">
                 Last Scraped:{" "}
               </h2>

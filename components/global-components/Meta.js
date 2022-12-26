@@ -43,14 +43,12 @@ const Meta = (props) => {
       <meta property="og:description" content={descriptionOG} />
       <meta property="og:site_name" content="BiblioReads" />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:image"
-        content={
-          process.env.NEXT_PUBLIC_HOST_URL
-            ? `${process.env.NEXT_PUBLIC_HOST_URL}/social.png`
-            : "http://localhost:3000/social.png"
-        }
-      />
+      {process.env.NEXT_PUBLIC_HOST_URL && (
+        <meta
+          property="og:image"
+          content={`{process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
+        />
+      )}
     </Head>
   );
 };
