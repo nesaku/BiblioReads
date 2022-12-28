@@ -13,7 +13,9 @@ const SimilarBooks = (props) => {
 
   return (
     <div id="bookRelated">
-      <h2 className="font-bold text-2xl my-2 underline">Similar Books: </h2>
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600">
+        Similar Books:{" "}
+      </h2>
       <div
         id="slider"
         className="no-scrollbar max-w-4xl h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14"

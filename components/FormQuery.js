@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
-import ResultData from "./ResultData";
 import Loader from "./global-components/Loader";
 import Footer from "./global-components/Footer";
+import ResultData from "../components/resultpage-components/ResultData";
 
 const FormQuery = () => {
   const [inputValue, setInputValue] = useState("");

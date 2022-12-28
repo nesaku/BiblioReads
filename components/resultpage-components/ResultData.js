@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React from "react";
 import ReadMore from "./ReadMore";
-import Meta from "./global-components/Meta";
 import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
+import Meta from "../global-components/Meta";
 
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
@@ -97,7 +97,7 @@ const ResultData = ({ scrapedData }) => {
             className="max-w-full md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 lg:p-0 text-center lg:text-left"
           >
             <div id="bookRating">
-              <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline">
+              <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline decoration-rose-600">
                 Rating:{" "}
               </h2>
               <div className="flex justify-center lg:justify-start">
@@ -121,7 +121,7 @@ const ResultData = ({ scrapedData }) => {
               </div>
             </div>
             <div id="bookRatingsAndReviews">
-              <h2 className="font-bold text-2xl my-2 underline ">
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Number Of Ratings & Reviews:
               </h2>
               <span className="text-md capitalize -ml-3">
@@ -132,7 +132,7 @@ const ResultData = ({ scrapedData }) => {
               id="bookDescription"
               className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
             >
-              <h2 className="font-bold text-2xl my-2 underline">
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Description:{" "}
               </h2>
               <ReadMore>
@@ -143,11 +143,13 @@ const ResultData = ({ scrapedData }) => {
               id="bookGenres"
               className={
                 scrapedData.genres
-                  ? "max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl  m-auto lg:m-0"
+                  ? "max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
                   : "hidden"
               }
             >
-              <h2 className="font-bold text-2xl my-2 underline">Genres: </h2>
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                Genres:{" "}
+              </h2>
               <span>
                 {scrapedData.genres &&
                   JSON.stringify(scrapedData.genres)
@@ -158,7 +160,7 @@ const ResultData = ({ scrapedData }) => {
               </span>
             </div>
             <div id="bookPublishDate">
-              <h2 className="font-bold text-2xl my-2 underline">
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Publishing Date:
               </h2>
               <span className="flex mx-auto lg:mx-0 max-w-md text-md">
@@ -169,7 +171,7 @@ const ResultData = ({ scrapedData }) => {
               <h2
                 className={
                   scrapedData.isbn
-                    ? "font-bold text-2xl my-2 underline"
+                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
                     : "hidden"
                 }
               >
@@ -181,7 +183,7 @@ const ResultData = ({ scrapedData }) => {
               <h2
                 className={
                   scrapedData.lang
-                    ? "font-bold text-2xl my-2 underline"
+                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
                     : "hidden"
                 }
               >
@@ -193,7 +195,7 @@ const ResultData = ({ scrapedData }) => {
               <h2
                 className={
                   scrapedData.scrapeURL
-                    ? "font-bold text-2xl my-2 underline"
+                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
                     : "hidden"
                 }
               >
@@ -221,7 +223,7 @@ const ResultData = ({ scrapedData }) => {
               {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
             </div>
             <div id="lastScraped" className="hidden lg:block">
-              <h2 className="font-bold text-2xl my-2 underline mt-12">
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600 mt-12">
                 Last Scraped:{" "}
               </h2>
               <span className="text-md">

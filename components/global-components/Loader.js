@@ -10,7 +10,7 @@ const Loader = () => {
       </div>
       <div className="mt-10">
         <h1 className="animate-pulse text-lg font-md text-gray-900 dark:text-gray-100">
-          Scraping Your Content...
+          Scraping Your Book...
         </h1>
       </div>
     </div>
