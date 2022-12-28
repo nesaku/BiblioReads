@@ -38,6 +38,7 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 |                                                   [biblioreads.ga](https://biblioreads.ga)                                                    |
 |                                          [biblioreads.netlify.app](https://biblioreads.netlify.app)                                           |
 |                                                       [bl.vern.cc](https://bl.vern.cc)                                                        |
+|                                            [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                             |
 | [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |
 |      [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)      |
 
@@ -49,24 +50,28 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) and paste the GoodReads book url into the input box.
-2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml`. Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
+1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the GoodReads book url into the input box.
+2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
 Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of the their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads, goes to the Goodreads book page and scrapes the required content.
 
-### Why Is This Slower Than Goodreads?
+### How Did You Come Up With The Name?
 
-When you make a request for a book on BiblioReads, your request needs to be first scraped by the scraper from Goodreads before the result can be shown to you. This causes a delay from when you make the request to when the result is shown.
+The "Biblio" in BiblioReads comes from the prefix biblio- meaning book and "Reads" comes from the ending of GoodReads which is what this website is an alternative front-end for.
 
 ### What Do You Do With My Data?
 
 Nothing. Since we don't collect any user data we can't use it
 
+### Why Is This Slower Than Goodreads?
+
+When you make a request for a book on BiblioReads, your request needs to be first scraped by the scraper from Goodreads before the result can be shown to you. This causes a delay from when you make the request to when the result is shown.
+
 ### Why Is This Missing Functionality?
 
-BiblioReads, is still a work in progress and new functionality is continually being developed. If you have a certain feature that you would like to see, feel free to open an issue on GitHub
+If you have a certain feature that you would like to see, feel free to open an issue on GitHub
 
 ---
 
