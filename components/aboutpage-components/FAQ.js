@@ -175,9 +175,9 @@ const FAQ = () => {
 
             <p className="mt-4 mx-8 leading-relaxed text-gray-800 dark:text-gray-200">
               The &quot;Biblio&quot; in <i>BiblioReads</i> comes from the prefix{" "}
-              <span className="underline">biblio-</span> meaning book and
-              &quot;Reads&quot; comes from the ending of GoodReads which is what
-              this website is an alternative front-end for.
+              <i>biblio-</i> meaning book and &quot;Reads&quot; comes from the
+              ending of GoodReads which is what this website is an alternative
+              front-end for.
             </p>
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
