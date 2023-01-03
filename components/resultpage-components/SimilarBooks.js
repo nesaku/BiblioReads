@@ -55,7 +55,6 @@ const SimilarBooks = (props) => {
               <div className="group w-36 h-20 text-center mx-auto mt-4">
                 <span className="break-words text-md">
                   {data.title.slice(0, 40)}
-                  <span className="inline group-hover:hidden">...</span>
                 </span>
                 <span className="hidden group-hover:inline text-md">
                   {data.title.slice(40)}
