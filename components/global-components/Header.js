@@ -7,7 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   return (
     <header className="p-4 dark:bg-rose-800 dark:text-rose-100 border-b-2 dark:border-b-0 border-rose-300">
-      <div className="flex justify-center lg:justify-evenly  items-center h-16">
+      <div className="flex justify-evenly items-center h-16">
         <div className="flex">
           <a href="/" aria-label="Back to homepage">
             <img src="/logo.svg" alt="" width="64px" height="64px" />

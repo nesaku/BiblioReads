@@ -23,7 +23,7 @@ const ThemeToggle = () => {
       <button
         aria-label="Dark Mode Toggle"
         type="button"
-        className="hidden lg:flex p-2 border-2 rounded-lg border-rose-200 bg-rose-900"
+        className="flex p-2 border-2 rounded-lg border-rose-200 bg-rose-900"
         onClick={themeSelector}
       >
         {isDefaultTheme ? (
