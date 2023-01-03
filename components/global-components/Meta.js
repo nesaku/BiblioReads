@@ -13,6 +13,7 @@ const Meta = (props) => {
       ? `${props.desc}`
       : "BiblioReads - An Alternative Private Goodreads Front-End"
   }`;
+
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,7 +47,7 @@ const Meta = (props) => {
       {process.env.NEXT_PUBLIC_HOST_URL && (
         <meta
           property="og:image"
-          content={`{process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
+          content={`${process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
         />
       )}
     </Head>

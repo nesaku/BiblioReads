@@ -11,7 +11,11 @@ const ContactForm = () => {
           className="space-y-8"
         >
           <div className="hidden">
-            <input type="hidden" name="_redirect" value="/success" />
+            <input
+              type="hidden"
+              name="_redirect"
+              value="https://biblioreads.ml/success"
+            />
             <input type="hidden" name="_error" value="/500" />
             <input type="hidden" name="_append" value="false" />
           </div>
