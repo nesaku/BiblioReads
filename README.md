@@ -59,7 +59,7 @@ Since Goodreads stopped issuing new developer keys for their [public developer A
 
 ### How Did You Come Up With The Name?
 
-The "Biblio" in BiblioReads comes from the prefix biblio- meaning book and "Reads" comes from the ending of GoodReads which is what this website is an alternative front-end for.
+The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of GoodReads which is what this website is an alternative front-end for.
 
 ### What Do You Do With My Data?
 
