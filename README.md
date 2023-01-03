@@ -32,15 +32,17 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Instances
 
-|                                                                 Instance URL:                                                                 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                   [biblioreads.ml](https://biblioreads.ml)                                                    |
-|                                                   [biblioreads.ga](https://biblioreads.ga)                                                    |
-|                                          [biblioreads.netlify.app](https://biblioreads.netlify.app)                                           |
-|                                                       [bl.vern.cc](https://bl.vern.cc)                                                        |
-|                                            [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                             |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |
-|      [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)      |
+| Instance URL:                                                                                                                                 |       Country :        | CDN: |                 Notes:                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | :--: | :------------------------------------: |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          |  No  | Run by [me](https://github.com/nesaku) |
+| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Yes  | Run by [me](https://github.com/nesaku) |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          |  No  | Run by [me](https://github.com/nesaku) |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
+| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Yes  | Run by [Lunar.ICU](https://lunar.icu)  |
+| Onion:                                                                                                                                        |                        |      |                                        |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
+| I2P:                                                                                                                                          |                        |      |                                        |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
 
 ---
 
