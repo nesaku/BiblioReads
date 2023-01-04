@@ -32,17 +32,17 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Instances
 
-| Instance URL:                                                                                                                                 |       Country :        | CDN: |                 Notes:                 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | :--: | :------------------------------------: |
-| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          |  No  | Run by [me](https://github.com/nesaku) |
-| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Yes  | Run by [me](https://github.com/nesaku) |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          |  No  | Run by [me](https://github.com/nesaku) |
-| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
-| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Yes  | Run by [Lunar.ICU](https://lunar.icu)  |
-| Onion:                                                                                                                                        |                        |      |                                        |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
-| I2P:                                                                                                                                          |                        |      |                                        |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          |  No  |    Run by [~vern](https://vern.cc)     |
+| Instance URL:                                                                                                                                 |        Country:        | Provider:  |                 Notes:                 |
+| :-------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | :--------: | :------------------------------------: |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          |   Vercel   | Run by [me](https://github.com/nesaku) |
+| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku) |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          |  Netlify   | Run by [me](https://github.com/nesaku) |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
+| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)  |
+| Onion:                                                                                                                                        |                        |            |                                        |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
+| I2P:                                                                                                                                          |                        |            |                                        |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
 
 ---
 
