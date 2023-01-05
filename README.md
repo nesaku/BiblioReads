@@ -15,10 +15,10 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Screenshots
 
-|                         Dark Mode:                          |                          Light Mode                           |
-| :---------------------------------------------------------: | :-----------------------------------------------------------: |
-| ![Dark Mode - Homepage ](/public/readme/dark.png?raw=true)  |  ![Light Mode - Homepage](/public/readme/light.png?raw=true)  |
-| ![Dark Mode - Results](/public/readme/dark-ui.png?raw=true) | ![Light Mode - Results](/public/readme/light-ui.png?raw=true) |
+|                Dark Mode:                |                Light Mode                 |
+| :--------------------------------------: | :---------------------------------------: |
+|  ![](/public/readme/dark.png?raw=true)   |  ![](/public/readme/light.png?raw=true)   |
+| ![](/public/readme/dark-ui.png?raw=true) | ![](/public/readme/light-ui.png?raw=true) |
 
 ## Features
 
@@ -65,7 +65,7 @@ The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "
 
 ### What Do You Do With My Data?
 
-Nothing. Since we don't collect any user data we can't use it
+Nothing. Since we don't collect any user data, we can't use any user data.
 
 ### Why Is This Slower Than Goodreads?
 
@@ -73,13 +73,13 @@ When you make a request for a book on BiblioReads, your request needs to be firs
 
 ### Why Is This Missing Functionality?
 
-If you have a certain feature that you would like to see, feel free to open an issue on GitHub
+If you have a certain feature that you would like to see, feel free to open an issue on GitHub or Codeberg.
 
 ---
 
 ## Comparison
 
-Comparing BiblioReads to Goodreads.
+Comparing BiblioReads to Goodreads
 
 ### Speed
 

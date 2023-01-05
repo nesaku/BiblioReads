@@ -26,8 +26,8 @@ const ContactHero = () => {
               rel="noreferrer"
             >
               Codeberg
-            </a>{" "}
-            Alternatively, you can use the contact form below.
+            </a>
+            . Alternatively, you can use the contact form below.
           </h2>
         </div>
       </div>
