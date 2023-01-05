@@ -3,7 +3,7 @@
 </div>
 <h1 align="center">BiblioReads</h1>
 <div align="center" width="100%">
-BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
+BiblioReads is a free and open-source alternative Goodreads front-end focused on privacy.
 
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
 
@@ -24,11 +24,11 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 - No ads - Simple. We don't show ads.
 - No tracking or data collection - No personal information is ever collected. Tracking cookies are not used.
-- No sign up required - Use BiblioReads without signing up for an account and never deal with those anoying sign up popups.
+- No sign-up required - Use BiblioReads without signing up for an account and never deal with those annoying sign-up popups.
 - All requests are proxied - your requests are never directly made to Goodreads
 - Lightweight
-- Modern Design - Responsive design with built-in light & dark mode support
-- PWA Support - Installable as a PWA on desktop and mobile
+- Modern Design - responsive design with built-in light & dark mode support
+- PWA Support - installable as a PWA on desktop and mobile
 
 ## Instances
 
