@@ -1,55 +1,27 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import Loader from "./global-components/Loader";
 import Footer from "./global-components/Footer";
 import ResultData from "../components/resultpage-components/ResultData";
 
 const FormQuery = () => {
+  const router = useRouter();
   const [inputValue, setInputValue] = useState("");
-  const [scrapedData, setscrapedData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isQuery, setIsQuery] = useState(true);
 
   {
-    /* When the button is clicked/submitted send a fetch request to the scraper API*/
+    /* When the button is clicked/submitted push input value to url*/
   }
 
   const handleSubmit = (e) => {
-    setIsLoading(true);
     e.preventDefault();
-    fetch("/api/scraper", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ queryURL: inputValue }),
-    })
-      .then((res) => res.json())
-      .then((userData) => {
-        setscrapedData(userData);
-        setIsLoading(false);
-        setIsQuery(false);
-      });
+    router.push(`/${inputValue.replace("https://www.goodreads.com", "")}`);
   };
 
   return (
-    <div className={isQuery ? "bg-transparent" : "dark:bg-gradientedge"}>
-      {/* Show the loader when the page is loading*/}
-      {isLoading && <Loader />}
-      <main
-        className={
-          isLoading ? "hidden" : "flex justify-center items-center align-middle"
-        }
-      >
-        {/* Once query results are loaded, don't show the title text*/}
-        <div
-          className={
-            isQuery
-              ? "flex flex-col xl:flex-row justify-center items-center text-center h-[80vh] w-full"
-              : "hidden"
-          }
-        >
-          <div className={isQuery ? "mr-0 xl:mr-40" : "hidden"}>
+    <div className="dark:bg-gradientedge">
+      <main className="flex justify-center items-center align-middle">
+        <div className="flex flex-col xl:flex-row justify-center items-center text-center h-[80vh] w-full">
+          <div className="mr-0 xl:mr-40">
             <h1 className="font-extrabold text-transparent text-6xl sm:text-8xl bg-clip-text bg-gradient-to-br from-pink-400 to-rose-600">
               <Link href="/">BiblioReads</Link>
             </h1>
@@ -68,26 +40,18 @@ const FormQuery = () => {
                   className="rounded-md mx-10 py-3 px-5 text-left text-black text-sm bg-slate-200 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  disabled={isLoading}
                   type="url"
                   required
                 />
               </div>
-              <div className="mx-10 my-6 font-semibold text-lg text-red-600">
-                <p>{scrapedData.error}</p>
-              </div>
-              <button className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
+              <button className="mt-10 my-6 ont-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
                 Submit
               </button>
             </div>
           </form>
         </div>
-        {/* If there is no query don't show the results component */}
-        <section className={isQuery ? "hidden" : "flex mb-12"}>
-          <ResultData scrapedData={scrapedData} />
-        </section>
       </main>
-      <div className={isLoading ? "hidden" : ""}>
+      <div>
         <Footer />
       </div>
     </div>

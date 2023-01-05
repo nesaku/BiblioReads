@@ -14,6 +14,8 @@ const Meta = (props) => {
       : "BiblioReads - An Alternative Private Goodreads Front-End"
   }`;
 
+  const version = "Version: 230105";
+
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,6 +52,7 @@ const Meta = (props) => {
           content={`${process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
         />
       )}
+      {console.log(`%c${version}`, `color:green`)};
     </Head>
   );
 };
