@@ -46,6 +46,22 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ---
 
+## Automatically Redirect Links
+
+### Redirector
+
+You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance url):
+
+- Description: Goodreads to BiblioReads
+- Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
+- Include pattern: `https://www.goodreads.com/book/show/*`
+- Redirect to: `https://biblioreads.ml/book/show/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description Redirects all Goodreads book page urls to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
 ## FAQ
 
 ### How Do I Use This?
