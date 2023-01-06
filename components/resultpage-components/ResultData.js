@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
 import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
@@ -6,6 +7,7 @@ import Meta from "../global-components/Meta";
 
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <>
       {scrapedData.title && (
@@ -33,38 +35,49 @@ const ResultData = ({ scrapedData }) => {
             </p>
             <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
-              {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
+
               {scrapedData.cover && (
-                <picture>
-                  <source
-                    srcSet={`/img?url=${scrapedData.cover}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&output=webp&maxage=30d`}
-                    type="image/webp"
-                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                  />
-                  <source
-                    srcSet={`/img?url=${scrapedData.cover}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
-                    type="image/jpeg"
-                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                  />
+                <>
                   <img
-                    src={`/img?url=${scrapedData.cover}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
-                    alt={`${scrapedData.coverAltText} book cover`}
-                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                    src="/cover-placeholder.svg"
+                    alt=""
+                    className={imageLoaded && "hidden"}
                     width="620"
                     height="962"
-                    fetchpriority="high"
-                    loading="eager"
                   />
-                </picture>
+                  {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
+                  <picture className={imageLoaded ? "" : "hidden"}>
+                    <source
+                      srcSet={`/img?url=${scrapedData.cover}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "http://localhost:3000"
+                      }/cover-placeholder.svg&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                    />
+                    <source
+                      srcSet={`/img?url=${scrapedData.cover}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "http://localhost:3000"
+                      }/cover-placeholder.svg&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                    />
+                    <img
+                      src={`/img?url=${scrapedData.cover}&default=${
+                        process.env.NEXT_PUBLIC_HOST_URL ||
+                        "http://localhost:3000"
+                      }/cover-placeholder.svg&maxage=30d`}
+                      alt={`${scrapedData.coverAltText} book cover`}
+                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                      width="620"
+                      height="962"
+                      fetchpriority="high"
+                      loading="eager"
+                      onLoad={() => setImageLoaded(true)}
+                    />
+                  </picture>
+                </>
               )}
             </div>
 
