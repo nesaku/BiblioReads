@@ -192,4 +192,4 @@ yarn install
 yarn dev
 ```
 
-**ⓘ If you want use the API directly or run any kind of automation. Please host the API on your own server.**
+**ⓘ If you want use the API directly or run any kind of automation. Please host the project on your own server.**
