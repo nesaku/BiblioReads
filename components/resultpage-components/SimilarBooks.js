@@ -21,7 +21,10 @@ const SimilarBooks = (props) => {
         className="no-scrollbar max-w-4xl h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14"
       >
         {props.data.map((data, i) => (
-          <div key={i} className="snap-center shrink-0 first:-ml-12">
+          <div
+            key={i}
+            className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm"
+          >
             <a href={`${data.url}`}>
               {data.src && (
                 <picture>
@@ -31,7 +34,7 @@ const SimilarBooks = (props) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&output=webp&maxage=30d`}
                     type="image/webp"
-                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                   />
                   <source
                     srcSet={`/img?url=${data.src}&default=${
@@ -39,7 +42,7 @@ const SimilarBooks = (props) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     type="image/jpeg"
-                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                   />
                   <img
                     src={`/img?url=${data.src}&default=${
@@ -47,7 +50,9 @@ const SimilarBooks = (props) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     alt={`${data.title} book cover`}
-                    className="shrink-0 w-28 h-40 rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    width="98"
+                    height="148"
+                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                     loading="lazy"
                   />
                 </picture>
@@ -65,7 +70,7 @@ const SimilarBooks = (props) => {
         ))}
       </div>
       <div className="flex max-w-4xl justify-center lg:justify-start">
-        <button className="mx-3" onClick={slideLeft}>
+        <button className="mx-3" aria-label="slide left" onClick={slideLeft}>
           <svg
             width="32"
             height="32"
@@ -76,7 +81,7 @@ const SimilarBooks = (props) => {
             <path d="M16 0C7.16408 0 0 7.16408 0 16C0 24.8359 7.16408 32 16 32C24.8359 32 32 24.8359 32 16C32 7.16408 24.8359 0 16 0ZM20.1273 21.9102L17.3388 24.6988L11.4286 18.7886L8.64 16L11.4286 13.2114L17.3388 7.30122L20.1273 10.0898L14.2237 16L20.1273 21.9102Z" />
           </svg>
         </button>
-        <button className="mx-3" onClick={slideRight}>
+        <button className="mx-3" aria-label="slide right" onClick={slideRight}>
           <svg
             width="32"
             height="32"

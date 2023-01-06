@@ -42,7 +42,7 @@ const ResultData = ({ scrapedData }) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&output=webp&maxage=30d`}
                     type="image/webp"
-                    className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
+                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                   />
                   <source
                     srcSet={`/img?url=${scrapedData.cover}&default=${
@@ -50,7 +50,7 @@ const ResultData = ({ scrapedData }) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     type="image/jpeg"
-                    className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
+                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                   />
                   <img
                     src={`/img?url=${scrapedData.cover}&default=${
@@ -58,7 +58,10 @@ const ResultData = ({ scrapedData }) => {
                       "http://localhost:3000"
                     }/cover-placeholder.svg&maxage=30d`}
                     alt={`${scrapedData.coverAltText} book cover`}
-                    className="rounded-2xl w-fit max-h-34 mx-auto shadow-2xl drop-shadow-xl"
+                    className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                    width="620"
+                    height="962"
+                    fetchpriority="high"
                     loading="eager"
                   />
                 </picture>
