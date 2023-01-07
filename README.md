@@ -15,16 +15,16 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Screenshots
 
-|                Dark Mode:                |                Light Mode                 |
-| :--------------------------------------: | :---------------------------------------: |
-|  ![](/public/readme/dark.png?raw=true)   |  ![](/public/readme/light.png?raw=true)   |
-| ![](/public/readme/dark-ui.png?raw=true) | ![](/public/readme/light-ui.png?raw=true) |
+| Dark Mode                                  | Light Mode                                  |
+| ------------------------------------------ | ------------------------------------------- |
+| ![](/public/readme/home-dark.png?raw=true) | ![](/public/readme/home-light.png?raw=true) |
+| ![](/public/readme/book-dark.png?raw=true) | ![](/public/readme/book-light.png?raw=true) |
 
 ## Features
 
-- No ads - Simple. We don't show ads.
-- No tracking or data collection - No personal information is ever collected. Tracking cookies are not used.
-- No sign-up required - Use BiblioReads without signing up for an account and never deal with those annoying sign-up popups.
+- No ads - simple. We don't show ads.
+- No tracking or data collection - no personal information is ever collected. Tracking cookies are not used.
+- No sign-up required - use BiblioReads without signing up for an account and never deal with those annoying sign-up popups.
 - All requests are proxied - your requests are never directly made to Goodreads
 - Lightweight
 - Modern Design - responsive design with built-in light & dark mode support
@@ -32,17 +32,17 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Instances
 
-| Instance URL:                                                                                                                                 |        Country:        | Provider:  |                 Notes:                 |
-| :-------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | :--------: | :------------------------------------: |
-| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          |   Vercel   | Run by [me](https://github.com/nesaku) |
+| Instance URL:                                                                                                                                 |        Country:        | Provider:  | Notes:                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | -------------------------------------- |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku) |
 | [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku) |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          |  Netlify   | Run by [me](https://github.com/nesaku) |
-| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          | Netlify    | Run by [me](https://github.com/nesaku) |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
 | [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)  |
 | Onion:                                                                                                                                        |                        |            |                                        |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
 | I2P:                                                                                                                                          |                        |            |                                        |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          |  Hetzner   |    Run by [~vern](https://vern.cc)     |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
 
 ---
 
@@ -89,7 +89,7 @@ When you make a request for a book on BiblioReads, your request needs to be firs
 
 ### Why Is This Missing Functionality?
 
-If you have a certain feature that you would like to see, feel free to open an issue on GitHub or Codeberg.
+If you have a certain feature that you would like to see, feel free to open an issue on [GitHub](https://github.com/nesaku/BiblioReads/issues) or [Codeberg](https://codeberg.org/nesaku/BiblioReads/issues).
 
 ---
 
