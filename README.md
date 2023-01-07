@@ -1,8 +1,8 @@
-<div align="center" width="100%">
+<div align="center">
 <img src="./public/readme/logo.svg?raw=true" width="256" height="256" alt="">
 </div>
 <h1 align="center">BiblioReads</h1>
-<div align="center" width="100%">
+<div align="center">
 BiblioReads is a free and open-source alternative Goodreads front-end focused on privacy.
 
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
