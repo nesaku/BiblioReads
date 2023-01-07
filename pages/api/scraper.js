@@ -93,7 +93,7 @@ const scraper = async (req, res) => {
       res.statusCode = 404;
       return res.json({
         scrapeURL: scrapeURL,
-        error: `${scrapeURL} Not Found. An Example Of A Valid Query Is: https://www.goodreads.com/book/show/5907.The_Hobbit`,
+        error: "Invalid Query",
       });
     }
   }

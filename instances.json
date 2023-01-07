@@ -1,0 +1,39 @@
+[
+  {
+    "url": "https://biblioreads.ml",
+    "countries": [
+      "us"
+    ],
+    "cloudflare": false
+  },
+  {
+    "url": "https://biblioreads.ga",
+    "countries": [
+      "xx"
+    ],
+    "cloudflare": true
+  },
+  {
+    "url": "biblioreads.netlify.app",
+    "countries": [
+      "us"
+    ],
+    "cloudflare": false
+  },
+  {
+    "url": "https://bl.vern.cc",
+    "onion": "http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
+    "i2p": "http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p",
+    "countries": [
+      "us"
+    ],
+    "cloudflare": false
+  },
+  {
+    "url": "https://biblioreads.lunar.icu/",
+    "countries": [
+      "xx"
+    ],
+    "cloudflare": true
+  }
+]
