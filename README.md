@@ -104,10 +104,10 @@ _(Tested on Chrome v106; without scroll; no throttling)_
 
 |    Performance    | BiblioReads | Goodreads |
 | :---------------: | :---------: | :-------: |
-|   Request Count   |     13      |   +180    |
-| Data Transferred  |   179 kB    |  +24 MB   |
-| DOMContentLoaded: |    224ms    |   1.94s   |
-|   Finish Time:    |   10.62s    |  16.68s   |
+|   Request Count   |     45      |   +190    |
+| Data Transferred  |   137 kB    | +24.8 MB  |
+| DOMContentLoaded: |    191ms    |   1.79s   |
+|   Finish Time:    |    3.27s    |   9.26s   |
 
 ### Privacy
 
