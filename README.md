@@ -32,7 +32,7 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Instances
 
-| Instance URL:                                                                                                                                 |        Country:        | Provider:  | Notes:                                 |
+| Instance URL                                                                                                                                  |        Country         | Provider   | Notes                                  |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | -------------------------------------- |
 | [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku) |
 | [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku) |
@@ -68,7 +68,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the GoodReads book url into the input box.
+1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book url into the input box.
 2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
@@ -77,7 +77,7 @@ Since Goodreads stopped issuing new developer keys for their [public developer A
 
 ### How Did You Come Up With The Name?
 
-The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of GoodReads which is what this website is an alternative front-end for.
+The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of Goodreads which is what this website is an alternative front-end for.
 
 ### What Do You Do With My Data?
 

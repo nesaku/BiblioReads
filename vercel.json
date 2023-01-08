@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/api/scraper.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -25,5 +34,8 @@
         }
       ]
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
