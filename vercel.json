@@ -1,15 +1,6 @@
 {
   "headers": [
     {
-      "source": "/api/scraper.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=60"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
@@ -31,6 +22,10 @@
         {
           "key": "X-Frame-Options",
           "value": "DENY"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60"
         }
       ]
     }

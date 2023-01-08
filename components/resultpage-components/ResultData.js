@@ -21,6 +21,7 @@ const ResultData = ({ scrapedData }) => {
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
+            coverIMG={`/img?url=${scrapedData.cover}&maxage=30d`}
           />
           <div id="sideContent" className="text-center mx-auto">
             <span className="text-md italic text-left">
@@ -49,26 +50,17 @@ const ResultData = ({ scrapedData }) => {
                   {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
                   <picture className={imageLoaded ? "" : "hidden"}>
                     <source
-                      srcSet={`/img?url=${scrapedData.cover}&default=${
-                        process.env.NEXT_PUBLIC_HOST_URL ||
-                        "http://localhost:3000"
-                      }/cover-placeholder.svg&output=webp&maxage=30d`}
+                      srcSet={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
                       type="image/webp"
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                     />
                     <source
-                      srcSet={`/img?url=${scrapedData.cover}&default=${
-                        process.env.NEXT_PUBLIC_HOST_URL ||
-                        "http://localhost:3000"
-                      }/cover-placeholder.svg&maxage=30d`}
+                      srcSet={`/img?url=${scrapedData.cover}&maxage=30d`}
                       type="image/jpeg"
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                     />
                     <img
-                      src={`/img?url=${scrapedData.cover}&default=${
-                        process.env.NEXT_PUBLIC_HOST_URL ||
-                        "http://localhost:3000"
-                      }/cover-placeholder.svg&maxage=30d`}
+                      src={`/img?url=${scrapedData.cover}&maxage=30d`}
                       alt={`${scrapedData.coverAltText} book cover`}
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                       width="620"
