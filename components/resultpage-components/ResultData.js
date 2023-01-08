@@ -8,6 +8,7 @@ import Meta from "../global-components/Meta";
 // Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <>
       {scrapedData.title && (
@@ -16,7 +17,7 @@ const ResultData = ({ scrapedData }) => {
           className="flex flex-col lg:flex-row justify-center text-gray-900 dark:text-gray-200 my-[5vh] lg:my-[10vh] xl:my-[12vh]"
         >
           <Meta
-            title={scrapedData.title ? `${scrapedData.title}` : ""}
+            title={scrapedData.title ? `${scrapedData.title}` : " "}
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
@@ -41,7 +42,7 @@ const ResultData = ({ scrapedData }) => {
                   <img
                     src="/cover-placeholder.svg"
                     alt=""
-                    className={imageLoaded && "hidden"}
+                    className={imageLoaded ? "hidden" : ""}
                     width="620"
                     height="962"
                   />

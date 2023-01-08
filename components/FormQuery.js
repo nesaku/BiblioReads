@@ -2,19 +2,18 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Footer from "./global-components/Footer";
-import ResultData from "../components/resultpage-components/ResultData";
 
 const FormQuery = () => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState("");
 
   {
-    /* When the button is clicked/submitted push input value to url*/
+    /* When the button is clicked/submitted push the input value to the url */
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`/${inputValue.replace("https://www.goodreads.com", "")}`);
+    router.push(`${inputValue.replace("https://www.goodreads.com", "")}`);
   };
 
   return (
@@ -40,6 +39,7 @@ const FormQuery = () => {
                   className="rounded-md mx-10 py-3 px-5 text-left text-black text-sm bg-slate-200 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="https://www.goodreads.com/book/show/5907.The_Hobbit"
                   type="url"
                   required
                 />
