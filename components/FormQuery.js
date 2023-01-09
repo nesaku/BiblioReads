@@ -25,7 +25,7 @@ const FormQuery = () => {
               <Link href="/">BiblioReads</Link>
             </h1>
             <h2 className="my-10 px-2 text-xl sm:text-4xl text-transparent font-bold text-black dark:text-gray-200">
-              Get Info About A GoodReads Book:
+              Get Info About A Goodreads Book:
             </h2>
           </div>
 
@@ -33,7 +33,7 @@ const FormQuery = () => {
             <div className="flex flex-col items-center justify-center text-center">
               <div className="flex flex-col">
                 <h3 className="text-xl sm:text-2xl text-black dark:text-gray-200 font-semibold mb-10">
-                  Enter A GoodReads Book URL: &nbsp;
+                  Enter A Goodreads Book URL: &nbsp;
                 </h3>
                 <input
                   className="rounded-md mx-10 py-3 px-5 text-left text-black text-sm bg-slate-200 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300"

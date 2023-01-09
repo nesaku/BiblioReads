@@ -64,7 +64,7 @@ const FAQ = () => {
               >
                 {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
               </a>{" "}
-              and paste the GoodReads book URL into the input box.
+              and paste the Goodreads book URL into the input box.
               <br />
               <b>OR</b>
               <br />- Replace the{" "}
@@ -176,7 +176,7 @@ const FAQ = () => {
             <p className="mt-4 mx-8 leading-relaxed text-gray-800 dark:text-gray-200">
               The &quot;Biblio&quot; in <i>BiblioReads</i> comes from the prefix{" "}
               <i>biblio-</i> meaning book and &quot;Reads&quot; comes from the
-              ending of GoodReads which is what this website is an alternative
+              ending of Goodreads which is what this website is an alternative
               front-end for.
             </p>
           </details>
@@ -246,7 +246,7 @@ const FAQ = () => {
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
               <h2 className="font-semibold capitalize">
-                Why Is This Slower Than GoodReads?
+                Why Is This Slower Than Goodreads?
               </h2>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
