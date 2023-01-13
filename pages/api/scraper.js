@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 
-const scraper = async (req, res) => {
+const Scraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
@@ -102,4 +102,4 @@ const scraper = async (req, res) => {
   }
 };
 
-export default scraper;
+export default Scraper;

@@ -36,7 +36,7 @@ const ResultData = ({ scrapedData }) => {
               <span className="font-semibold">By:</span>{" "}
               <span className="text-md">{scrapedData.author}</span>
             </p>
-            <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
+            <div id="bookCover" className="my-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
               {!imageLoaded && (
                 <img

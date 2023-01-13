@@ -5,7 +5,7 @@ import Footer from "../components/global-components/Footer";
 import ContactForm from "../components/contactpage-components/ContactForm";
 import ContactHero from "../components/contactpage-components/ContactHero";
 
-const contact = () => {
+const Contact = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
       <Meta title={"Contact"} />
@@ -17,4 +17,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
