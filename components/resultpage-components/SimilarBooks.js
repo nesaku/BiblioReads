@@ -1,6 +1,12 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
 
 const SimilarBooks = (props) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  console.log(imageLoaded, imageError);
+
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -18,54 +24,71 @@ const SimilarBooks = (props) => {
       </h2>
       <div
         id="slider"
-        className="no-scrollbar max-w-4xl h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14"
+        className={`no-scrollbar ${
+          props.mobile && "max-w-4xl"
+        } h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14`}
       >
         {props.data.map((data, i) => (
           <div
             key={i}
             className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm"
           >
-            <a href={`${data.url}`}>
-              {data.src && (
-                <picture>
-                  <source
-                    srcSet={`/img?url=${data.src}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&output=webp&maxage=30d`}
-                    type="image/webp"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                  />
-                  <source
-                    srcSet={`/img?url=${data.src}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
-                    type="image/jpeg"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                  />
+            {imageError ? (
+              <a href={`${data.url}`}>
+                {data.src && (
                   <img
-                    src={`/img?url=${data.src}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
-                    alt={`${data.title} book cover`}
-                    width="98"
-                    height="148"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                    loading="lazy"
+                    src="/cover-placeholder.svg"
+                    alt=""
+                    width="100"
+                    height="250"
+                    className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
                   />
-                </picture>
-              )}
-              <div className="group w-36 h-20 text-center mx-auto mt-4">
-                <span className="break-words text-md">
-                  {data.title.slice(0, 40)}
-                </span>
-                <span className="hidden group-hover:inline text-md">
-                  {data.title.slice(40)}
-                </span>
-              </div>
-            </a>
+                )}
+                <div className="group w-36 h-20 text-center mx-auto mt-4">
+                  <span className="break-words text-md">
+                    {data.title.slice(0, 40)}
+                  </span>
+                  <span className="hidden group-hover:inline text-md">
+                    {data.title.slice(40)}
+                  </span>
+                </div>
+              </a>
+            ) : (
+              <a href={`${data.url}`}>
+                {data.src && (
+                  <picture>
+                    <source
+                      srcSet={`/img?url=${data.src}&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <source
+                      srcSet={`/img?url=${data.src}&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <img
+                      src={`/img?url=${data.src}&maxage=30d`}
+                      alt={`${data.title} book cover`}
+                      width="98"
+                      height="148"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      loading="lazy"
+                      onLoad={() => setImageLoaded(true)}
+                      onError={() => setImageError(true)}
+                    />
+                  </picture>
+                )}
+                <div className="group w-36 h-20 text-center mx-auto mt-4">
+                  <span className="break-words text-md">
+                    {data.title.slice(0, 40)}
+                  </span>
+                  <span className="hidden group-hover:inline text-md">
+                    {data.title.slice(40)}
+                  </span>
+                </div>
+              </a>
+            )}
           </div>
         ))}
       </div>

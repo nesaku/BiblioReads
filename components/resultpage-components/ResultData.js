@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
+import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
 import Meta from "../global-components/Meta";
 
@@ -14,7 +15,7 @@ const ResultData = ({ scrapedData }) => {
       {scrapedData.title && (
         <div
           id="wrapper"
-          className="flex flex-col lg:flex-row justify-center text-gray-900 dark:text-gray-200 my-[5vh] lg:my-[10vh] xl:my-[12vh]"
+          className="flex flex-col lg:flex-row justify-center text-gray-900 dark:text-gray-200 mt-[5vh] lg:mt-[10vh] xl:mt-[12vh]"
         >
           <Meta
             title={scrapedData.title ? `${scrapedData.title}` : " "}
@@ -37,16 +38,16 @@ const ResultData = ({ scrapedData }) => {
             </p>
             <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
-
+              {!imageLoaded && (
+                <img
+                  src="/cover-placeholder.svg"
+                  alt=""
+                  width="620"
+                  height="962"
+                />
+              )}
               {scrapedData.cover && (
                 <>
-                  <img
-                    src="/cover-placeholder.svg"
-                    alt=""
-                    className={imageLoaded ? "hidden" : ""}
-                    width="620"
-                    height="962"
-                  />
                   {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
                   <picture className={imageLoaded ? "" : "hidden"}>
                     <source
@@ -72,10 +73,16 @@ const ResultData = ({ scrapedData }) => {
                   </picture>
                 </>
               )}
-            </div>
-
-            <div className="hidden lg:block mt-32 px-20">
-              {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
+              {/* 
+              <div id="lastScraped" className="hidden lg:block">
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600 mt-12">
+                  Last Scraped:{" "}
+                </h2>
+                <span className="text-md">
+                  <code>{scrapedData.lastScraped}</code>
+                </span>
+              </div>
+              */}
             </div>
           </div>
           <div
@@ -204,19 +211,24 @@ const ResultData = ({ scrapedData }) => {
                 </span>
               </a>
             </div>
-            {scrapedData.related && <SimilarBooks data={scrapedData.related} />}
+
             <div className="block lg:hidden">
-              {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
-            </div>
-            <div id="lastScraped" className="hidden lg:block">
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600 mt-12">
-                Last Scraped:{" "}
-              </h2>
-              <span className="text-md">
-                <code>{scrapedData.lastScraped}</code>
-              </span>
+              {scrapedData.related && (
+                <SimilarBooks data={scrapedData.related} mobile={true} />
+              )}
+              {scrapedData.reviews && (
+                <ReviewsMobile data={scrapedData.reviews} />
+              )}
             </div>
           </div>
+        </div>
+      )}
+      {scrapedData.title && (
+        <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
+          {scrapedData.related && (
+            <SimilarBooks data={scrapedData.related} mobile={false} />
+          )}
+          {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
         </div>
       )}
     </>
