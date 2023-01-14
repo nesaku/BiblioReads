@@ -1,23 +1,57 @@
 import React from "react";
 import ReadMore from "./ReadMore";
+import StarIcon from "./StarIcon";
 
 const ReviewCard = (props) => {
+  {
+    /* Display the appropriate number of stars based on the starVal props */
+  }
   function Stars(props) {
     const starVal = props.starVal;
     if (starVal === "it was amazing") {
-      return <span>&#127775; &#127775; &#127775; &#127775; &#127775;</span>;
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
     }
     if (starVal === "really liked it") {
-      return <span>&#127775; &#127775; &#127775; &#127775;</span>;
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
     }
     if (starVal === "liked it") {
-      return <span>&#127775; &#127775; &#127775;</span>;
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
     }
     if (starVal === "it was ok") {
-      return <span>&#127775; &#127775;</span>;
+      return (
+        <>
+          <StarIcon />
+          <StarIcon />
+        </>
+      );
     }
     if (starVal === "did not like it") {
-      return <span>&#127775;</span>;
+      return (
+        <>
+          <StarIcon />
+        </>
+      );
     }
     if (starVal === undefined) {
       return <span>&#63;</span>;
@@ -59,7 +93,7 @@ const ReviewCard = (props) => {
           </span>
         </div>
 
-        <div className="flex items-center bg-rose-800 bg-opacity-80 dark:bg-rose-800 dark:bg-opacity-50 text-white rounded-lg px-3 py-2 group text-sm mr-2 mt-1 capitalize">
+        <div className="flex items-center px-3 py-2 group mr-2 mt-1">
           <Stars starVal={props.stars} />
         </div>
       </div>

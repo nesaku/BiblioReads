@@ -16,7 +16,7 @@ const SimilarBooks = (props) => {
 
   return (
     <div id="bookRelated">
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600">
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
         Similar Books:{" "}
       </h2>
       <div

@@ -23,7 +23,7 @@ const ThemeToggle = () => {
       <button
         aria-label="Dark Mode Toggle"
         type="button"
-        className="flex p-2 border-2 rounded-lg border-rose-200 bg-rose-900"
+        className="flex p-2 border-2 border-rose-200 hover:border-rose-900 dark:border-[#710e2a] hover:dark:border-rose-200 duration-200 delay-150 hover:delay-50 transition rounded-lg bg-rose-800 hover:bg-rose-900 dark:bg-[#710e2a]"
         onClick={themeSelector}
       >
         {isDefaultTheme ? (
@@ -47,7 +47,7 @@ const ThemeToggle = () => {
             viewBox="0 0 24 24"
             fill="currentColor"
             stroke="currentColor"
-            className="h-6 w-6 text-gray-200"
+            className="h-6 w-6 text-gray-100 dark:text-gray-200/80"
           >
             {theme === "dark" ? (
               <path

@@ -13,7 +13,7 @@ const Footer = () => {
             <ul className="flex flex-wrap justify-center items-center gap-6 text-sm font-bold">
               <li>
                 <Link href="/">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Home
                   </a>
                 </Link>
@@ -21,7 +21,7 @@ const Footer = () => {
 
               <li>
                 <Link href="/about">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     About
                   </a>
                 </Link>
@@ -29,7 +29,7 @@ const Footer = () => {
 
               <li>
                 <Link href="/contact">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Contact
                   </a>
                 </Link>
@@ -37,7 +37,7 @@ const Footer = () => {
 
               <li>
                 <Link href="/privacy">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Privacy
                   </a>
                 </Link>
@@ -45,7 +45,7 @@ const Footer = () => {
 
               <li>
                 <Link href="/disclaimer">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Disclaimer
                   </a>
                 </Link>
@@ -53,7 +53,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
                   href="#"
                   target="_self"
                   rel="noreferrer"
@@ -64,7 +64,7 @@ const Footer = () => {
 
               <li className="items-center justify-center align-middle content-center">
                 <a
-                  className="text-gray-900 hover:text-gray-900/75 dark:text-gray-300 dark:hover:text-gray-300/75"
+                  className="text-gray-900 hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
                   href="https://github.com/nesaku/BiblioReads"
                   target="_blank"
                   rel="noreferrer"
@@ -86,15 +86,6 @@ const Footer = () => {
               </li>
             </ul>
           </nav>
-          {/* 
-          <p className="mx-auto max-w-lg text-xs text-gray-500 dark:text-gray-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum,
-            natus tempore illo laborum nam, modi quam sequi amet quo quasi
-            impedit iure eum similique pariatur alias exercitationem, porro
-            perspiciatis esse. Corporis odit consequatur sint sequi.
-            <span className="mt-4 block"> &copy; 2022 BiblioReads </span>
-          </p>
-          */}
         </div>
       </div>
     </footer>

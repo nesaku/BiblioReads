@@ -15,7 +15,7 @@ const Reviews = (props) => {
   return (
     <>
       <div id="bookReviews">
-        <h2 className="font-bold text-2xl mt-12 mb-4 underline decoration-rose-600">
+        <h2 className="font-bold text-2xl mt-12 mb-4 underline decoration-rose-600 dark:text-gray-100/80">
           Reviews:
         </h2>
         <button
@@ -139,7 +139,7 @@ const Reviews = (props) => {
                 />
               </div>
               <div className="flex mt-4 mb-6">
-                <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300">
+                <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-100/80">
                   Show Profile Avatars:
                 </p>
                 <label className="inline-flex relative items-center cursor-pointer">
