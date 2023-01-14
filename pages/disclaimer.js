@@ -23,7 +23,7 @@ const Disclaimer = () => {
             <h1 className="text-2xl font-bold my-4">Disclaimer:</h1>
             <div>
               <p>
-                ​​All the information provided on this website is provided on an
+                All the information provided on this website is provided on an
                 “as is” and “as available” basis and you agree that you use such
                 information entirely at your own risk. BiblioReads gives no
                 warranty and accepts no responsibility or liability for the
@@ -47,8 +47,8 @@ const Disclaimer = () => {
               <p>
                 BiblioReads does not host any content. All content on
                 BiblioReads is sourced from Goodreads. BiblioReads is not
-                affiliated with Goodreads. Goodreads is a trademark of Goodreads
-                LLC.
+                affiliated with Goodreads. Goodreads is a trademark of Amazon
+                Technologies, Inc.
               </p>
             </div>
           </div>

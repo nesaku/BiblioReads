@@ -35,5 +35,13 @@
       "xx"
     ],
     "cloudflare": true
+  },
+  {
+    "url": "https://biblioreads.esmailelbob.xyz/",
+    "onion": "http://biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion",
+    "countries": [
+      "ca"
+    ],
+    "cloudflare": false
   }
 ]
