@@ -202,6 +202,6 @@ yarn dev
 
 Licensed under the [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html). Please see [LICENSE.txt](./LICENSE.txt) for more information.
 
----
+## Disclaimer
 
-_BiblioReads does not host any content. All content on BiblioReads is sourced from Goodreads. BiblioReads is not affiliated with Goodreads. Goodreads is a trademark of Goodreads LLC_
+BiblioReads does not host any content. All content on BiblioReads is sourced from Goodreads. BiblioReads is not affiliated with Goodreads. Goodreads is a trademark of Goodreads LLC.
