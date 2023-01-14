@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer aria-label="Site Footer" className="text-center w-full mt-auto">
+    <footer aria-label="Site Footer" className="text-center w-full">
       <div className="flex justify-center items-center content-center  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl space-y-6">
           <nav
@@ -28,14 +28,6 @@ const Footer = () => {
               </li>
 
               <li>
-                <Link href="/about#faq">
-                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
-                    FAQ
-                  </a>
-                </Link>
-              </li>
-
-              <li>
                 <Link href="/contact">
                   <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
                     Contact
@@ -47,6 +39,14 @@ const Footer = () => {
                 <Link href="/privacy">
                   <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
                     Privacy
+                  </a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/disclaimer">
+                  <a className="text-gray-900 transition hover:text-gray-900/75 dark:text-white dark:hover:text-white/75">
+                    Disclaimer
                   </a>
                 </Link>
               </li>

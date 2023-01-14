@@ -2,10 +2,7 @@
 import { useState } from "react";
 
 const SimilarBooks = (props) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
-
-  console.log(imageLoaded, imageError);
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -74,7 +71,6 @@ const SimilarBooks = (props) => {
                       height="148"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
                       loading="lazy"
-                      onLoad={() => setImageLoaded(true)}
                       onError={() => setImageError(true)}
                     />
                   </picture>

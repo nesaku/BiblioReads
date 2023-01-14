@@ -30,13 +30,6 @@ const Header = () => {
               </Link>
             </li>
             <li className="flex">
-              <Link href="/about#faq">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
-                  FAQ
-                </a>
-              </Link>
-            </li>
-            <li className="flex">
               <Link href="/contact">
                 <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
                   Contact
@@ -47,6 +40,13 @@ const Header = () => {
               <Link href="/privacy">
                 <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
                   Privacy
+                </a>
+              </Link>
+            </li>
+            <li className="flex">
+              <Link href="/disclaimer">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                  Disclaimer
                 </a>
               </Link>
             </li>
