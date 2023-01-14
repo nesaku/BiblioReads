@@ -17,7 +17,8 @@ const Stats = () => {
             >
               Hunger Games Book Page
             </a>{" "}
-            (Tested on Chrome v106; without scroll; no throttling)
+            (Tested on Chrome v108, without scroll, no throttling, cache
+            disabled)
           </p>
         </div>
 
@@ -29,7 +30,7 @@ const Stats = () => {
               </dt>
 
               <dd className="text-4xl font-extrabold text-green-600 md:text-5xl">
-                13
+                45
               </dd>
             </div>
 
@@ -39,7 +40,7 @@ const Stats = () => {
               </dt>
 
               <dd className="text-4xl font-extrabold text-green-600 md:text-5xl">
-                179 kB
+                137 kB
               </dd>
             </div>
 
@@ -48,7 +49,7 @@ const Stats = () => {
                 First Contentful Paint (FCP)
               </dt>
               <dd className="text-4xl font-extrabold text-green-600 md:text-5xl">
-                224 ms
+                1.0 s
               </dd>
             </div>
             <div className="flex flex-col rounded-lg border-2 border-gray-500 px-4 py-8 text-center dark:border-gray-800">
@@ -56,7 +57,7 @@ const Stats = () => {
                 Final Load Time
               </dt>
               <dd className="text-4xl font-extrabold text-green-600 md:text-5xl">
-                10.62 s
+                3.27 s
               </dd>
             </div>
           </dl>
@@ -74,7 +75,7 @@ const Stats = () => {
                   </dt>
 
                   <dd className="text-4xl font-extrabold text-rose-600 md:text-5xl">
-                    +180
+                    +190
                   </dd>
                 </div>
 
@@ -84,7 +85,7 @@ const Stats = () => {
                   </dt>
 
                   <dd className="text-4xl font-extrabold text-rose-600 md:text-5xl">
-                    +24 kB
+                    +24.8 MB
                   </dd>
                 </div>
 
@@ -94,7 +95,7 @@ const Stats = () => {
                   </dt>
 
                   <dd className="text-4xl font-extrabold text-rose-600 md:text-5xl">
-                    1.94 s
+                    8.2 s
                   </dd>
                 </div>
                 <div className="flex flex-col rounded-lg border-2 border-gray-500 px-4 py-8 text-center dark:border-gray-800">
@@ -102,7 +103,7 @@ const Stats = () => {
                     Final Load Time
                   </dt>
                   <dd className="text-4xl font-extrabold text-rose-600 md:text-5xl">
-                    16.68 s
+                    9.26 s
                   </dd>
                 </div>
               </dl>

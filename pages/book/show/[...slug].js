@@ -11,6 +11,7 @@ const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [scrapedData, setScrapedData] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,8 +24,12 @@ const Slug = () => {
           queryURL: `https://www.goodreads.com/book/show/${slug}`,
         }),
       });
-      const data = await res.json();
-      setScrapedData(data);
+      if (res.ok) {
+        const data = await res.json();
+        setScrapedData(data);
+      } else {
+        setError(true);
+      }
     };
     if (slug) {
       fetchData();
@@ -36,10 +41,15 @@ const Slug = () => {
       <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
         <Header />
         {/* Show loader or error based on the scraper data response */}
-        {scrapedData.title === undefined && <Loader />}
-        {scrapedData.error && <ErrorMessage />}
-        {scrapedData.title === "" && <ErrorMessage />}
-        {scrapedData && <ResultData scrapedData={scrapedData} />}
+        {error && <ErrorMessage status="500" />}
+        {!error && (
+          <>
+            {scrapedData.title === undefined && <Loader />}
+            {scrapedData.error && <ErrorMessage status="404" />}
+            {scrapedData.title === "" && <ErrorMessage status="404" />}
+            {scrapedData && <ResultData scrapedData={scrapedData} />}
+          </>
+        )}
         <Footer />
       </div>
     </div>

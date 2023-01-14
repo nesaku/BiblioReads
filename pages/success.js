@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import Meta from "../components/global-components/Meta";
 import Header from "../components/global-components/Header";
 import Footer from "../components/global-components/Footer";
 
-const success = () => {
+const Success = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge">
       <Meta title={"Success"} />
@@ -39,4 +38,4 @@ const success = () => {
   );
 };
 
-export default success;
+export default Success;

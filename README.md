@@ -32,17 +32,19 @@ Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](ht
 
 ## Instances
 
-| Instance URL:                                                                                                                                 |        Country:        | Provider:  | Notes:                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | -------------------------------------- |
-| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku) |
-| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku) |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          | Netlify    | Run by [me](https://github.com/nesaku) |
-| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
-| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)  |
-| Onion:                                                                                                                                        |                        |            |                                        |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
-| I2P:                                                                                                                                          |                        |            |                                        |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)        |
+| Instance URL                                                                                                                                                    |        Country         | Provider   | Notes                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | ----------------------------------------------- |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                                        |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)          |
+| [biblioreads.ga](https://biblioreads.ga)                                                                                                                        | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)          |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                                      |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)          |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                                                |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
+| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                                          | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)           |
+| [biblioreads.esmailelbob.xyz](https://biblioreads.esmailelbob.xyz)                                                                                              |        :canada:        | OVH Cloud  | Run by [Esmail EL BoB](https://esmailelbob.xyz) |
+| Onion:                                                                                                                                                          |                        |            |                                                 |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion)                   |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
+| [biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) |        :canada:        | OVH Cloud  | Run by [Esmail EL BoB](https://esmailelbob.xyz) |
+| I2P:                                                                                                                                                            |                        |            |                                                 |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)                             |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
 
 ---
 
@@ -68,7 +70,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the GoodReads book url into the input box.
+1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book url into the input box.
 2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
@@ -77,7 +79,7 @@ Since Goodreads stopped issuing new developer keys for their [public developer A
 
 ### How Did You Come Up With The Name?
 
-The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of GoodReads which is what this website is an alternative front-end for.
+The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of Goodreads which is what this website is an alternative front-end for.
 
 ### What Do You Do With My Data?
 
@@ -100,14 +102,14 @@ Comparing BiblioReads to Goodreads
 ### Speed
 
 [The Hunger Games](https://www.goodreads.com/book/show/2767052-the-hunger-games) Book Page
-_(Tested on Chrome v106; without scroll; no throttling)_
+_(Tested on Chrome v108, without scroll, no throttling, cache disabled)_
 
 |    Performance    | BiblioReads | Goodreads |
 | :---------------: | :---------: | :-------: |
-|   Request Count   |     13      |   +180    |
-| Data Transferred  |   179 kB    |  +24 MB   |
-| DOMContentLoaded: |    224ms    |   1.94s   |
-|   Finish Time:    |   10.62s    |  16.68s   |
+|   Request Count   |     45      |   +190    |
+| Data Transferred  |   137 kB    | +24.8 MB  |
+| DOMContentLoaded: |    191ms    |   1.79s   |
+|   Finish Time:    |    3.27s    |   9.26s   |
 
 ### Privacy
 
@@ -193,3 +195,13 @@ yarn dev
 ```
 
 **ⓘ If you want use the API directly or run any kind of automation. Please host the project on your own server.**
+
+---
+
+## License
+
+Licensed under the [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html). Please see [LICENSE.txt](./LICENSE.txt) for more information.
+
+---
+
+_BiblioReads does not host any content. All content on BiblioReads is sourced from Goodreads. BiblioReads is not affiliated with Goodreads. Goodreads is a trademark of Goodreads LLC_

@@ -34,24 +34,15 @@ const ReviewCard = (props) => {
               {props.image && (
                 <picture>
                   <source
-                    srcSet={`/img?url=${props.image}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&output=webp&maxage=30d`}
+                    srcSet={`/img?url=${props.image}&output=webp&maxage=30d`}
                     type="image/webp"
                   />
                   <source
-                    srcSet={`/img?url=${props.image}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
+                    srcSet={`/img?url=${props.image}&maxage=30d`}
                     type="image/jpeg"
                   />
                   <img
-                    src={`/img?url=${props.image}&default=${
-                      process.env.NEXT_PUBLIC_HOST_URL ||
-                      "http://localhost:3000"
-                    }/cover-placeholder.svg&maxage=30d`}
+                    src={`/img?url=${props.image}&maxage=30d`}
                     alt=""
                     loading="lazy"
                   />
@@ -60,21 +51,25 @@ const ReviewCard = (props) => {
             </div>
           )}
 
-          <span className="text-gray-800 dark:text-gray-100 group">
-            <span className="text-md font-semibold">{props.author}</span>
+          <span className="text-slate-800 dark:text-gray-100 group">
+            <span className="text-md font-bold underline">{props.author}</span>
             <span className="hidden text-sm md:inline-block">
               &nbsp;- {props.date}
             </span>
           </span>
         </div>
 
-        <div className="flex items-center bg-rose-800 bg-opacity-90 dark:bg-rose-800 dark:bg-opacity-60 text-white rounded-lg px-3 py-2 group text-sm mr-2 mt-1 capitalize">
+        <div className="flex items-center bg-rose-800 bg-opacity-80 dark:bg-rose-800 dark:bg-opacity-50 text-white rounded-lg px-3 py-2 group text-sm mr-2 mt-1 capitalize">
           <Stars starVal={props.stars} />
         </div>
       </div>
       <div className="mt-8 space-y-8">
-        <div>
-          <div className="flex items-start ml-4 md:ml-6 text-gray-800 dark:text-gray-100 max-w-4xl text-left">
+        <div id="review-text">
+          <div
+            className={`flex items-start ml-4 md:ml-6 text-gray-800 dark:text-gray-300 ${
+              props.mobile ? "max-w-4xl" : "max-w-none"
+            } text-left`}
+          >
             <ReadMore>{props.text}</ReadMore>
           </div>
         </div>

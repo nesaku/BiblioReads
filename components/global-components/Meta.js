@@ -13,8 +13,8 @@ const Meta = (props) => {
       ? `${props.desc}`
       : "BiblioReads - An Alternative Private Goodreads Front-End"
   }`;
-
-  const version = "Version: 230106";
+  const coverIMG = props.coverIMG;
+  const version = "Version: 230113 (Hiro)";
 
   return (
     <Head>
@@ -40,6 +40,7 @@ const Meta = (props) => {
       />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#121212" />
       <link rel="manifest" href="/manifest.webmanifest" />
+      {coverIMG && <link rel="preload" href={coverIMG} as="image" />}
       <meta name="msapplication-TileColor" content="#121212" />
       <meta name="theme-color" content="#881337" />
       <meta property="og:title" content="BiblioReads" />

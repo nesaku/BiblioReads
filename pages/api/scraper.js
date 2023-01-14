@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 
-const scraper = async (req, res) => {
+const Scraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
@@ -39,7 +39,7 @@ const scraper = async (req, res) => {
       const isbn = $("*[itemprop = 'isbn']").text();
       const lang = $("*[itemprop = 'inLanguage']").text();
       const related = $(".cover")
-        .map((_, info) => {
+        .map((i, info) => {
           const $info = $(info);
           const src = $info.find("a > img").attr("src");
           const title = $info.find("a > img").attr("alt");
@@ -47,11 +47,12 @@ const scraper = async (req, res) => {
             .find("a")
             .attr("href")
             .replace("https://www.goodreads.com", "");
-          return { src: src, title: title, url: url };
+          const id = i + 1;
+          return { id: id, src: src, title: title, url: url };
         })
         .toArray();
       const reviews = $("*[itemprop = 'reviews']")
-        .map((_, info) => {
+        .map((i, info) => {
           const $info = $(info);
           const image = $info.find("a > img").attr("src");
           const author = $info.find("*[itemprop = 'author'] > a").attr("title");
@@ -60,7 +61,9 @@ const scraper = async (req, res) => {
           const text = $info
             .find(".reviewText.stacked > .readable > span")
             .text();
+          const id = i + 1;
           return {
+            id: id,
             image: image,
             author: author,
             date: date,
@@ -99,4 +102,4 @@ const scraper = async (req, res) => {
   }
 };
 
-export default scraper;
+export default Scraper;

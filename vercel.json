@@ -22,8 +22,15 @@
         {
           "key": "X-Frame-Options",
           "value": "DENY"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=60"
         }
       ]
     }
-  ]
+  ],
+  "github": {
+    "silent": true
+  }
 }
