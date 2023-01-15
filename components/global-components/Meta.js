@@ -14,7 +14,7 @@ const Meta = (props) => {
       : "BiblioReads - An Alternative Private Goodreads Front-End"
   }`;
   const coverIMG = props.coverIMG;
-  const version = "Version: 230114 (Hiro)";
+  const version = "Version: 230115 (Hiro)";
 
   return (
     <Head>

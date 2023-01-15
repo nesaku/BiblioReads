@@ -19,7 +19,7 @@ const ThemeToggle = () => {
   }
 
   return (
-    <div>
+    <>
       <button
         aria-label="Dark Mode Toggle"
         type="button"
@@ -67,7 +67,7 @@ const ThemeToggle = () => {
           </svg>
         )}
       </button>
-    </div>
+    </>
   );
 };
 
