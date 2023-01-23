@@ -1,8 +1,13 @@
-import React from "react";
-import ReadMore from "./ReadMore";
+import { useState } from "react";
+import * as DOMPurify from "dompurify";
 import StarIcon from "./StarIcon";
 
 const ReviewCard = (props) => {
+  const [isReadMore, setIsReadMore] = useState(true);
+
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
   {
     /* Display the appropriate number of stars based on the starVal props */
   }
@@ -98,11 +103,47 @@ const ReviewCard = (props) => {
       <div className="mt-8 space-y-8">
         <div id="review-text">
           <div
-            className={`flex items-start ml-4 md:ml-6 text-gray-800 dark:text-gray-300 ${
+            id="text"
+            className={`flex flex-col items-start ml-4 md:ml-6 text-gray-800 dark:text-gray-300 ${
               props.mobile ? "max-w-4xl" : "max-w-none"
             } text-left`}
           >
-            <ReadMore>{props.text}</ReadMore>
+            {props.fullText && (
+              <>
+                <span
+                  className={isReadMore ? "hidden" : "block"}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      props.fullText
+                        .replaceAll(
+                          "https://images.gr-assets.com",
+                          "/img?url=https://images.gr-assets.com"
+                        )
+                        .replaceAll(".gif", ".gif&n=-1")
+                    ),
+                  }}
+                />
+                <span
+                  className={isReadMore ? "block" : "hidden"}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      props.text
+                        .replaceAll(
+                          "https://images.gr-assets.com",
+                          "/img?url=https://images.gr-assets.com"
+                        )
+                        .replaceAll(".gif", ".gif&n=-1")
+                    ),
+                  }}
+                />
+                <span
+                  onClick={toggleReadMore}
+                  className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                >
+                  {isReadMore ? " ...read more." : "(Show less)"}
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -116,11 +157,11 @@ const ReviewCard = (props) => {
               version="1.1"
               viewBox="0 0 80 90"
             >
-              <g id="bgCarrier" stroke-width="0"></g>
+              <g id="bgCarrier" strokeWidth="0"></g>
               <g
                 id="tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></g>
               <g id="iconCarrier">
                 <g>

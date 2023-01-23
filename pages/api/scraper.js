@@ -61,7 +61,15 @@ const Scraper = async (req, res) => {
           const stars = $info.find(".staticStars").attr("title");
           const text = $info
             .find(".reviewText.stacked > .readable > span")
+            .html();
+          const fullText = $info
+            .find(".reviewText.stacked > .readable > span:nth-child(2)")
+            .html();
+          /*
+          const text = $info
+            .find(".reviewText.stacked > .readable > span")
             .text();
+          */
           const likes = $info
             .find(".updateActionLinks > .likeItContainer > a > span")
             .text();
@@ -73,6 +81,7 @@ const Scraper = async (req, res) => {
             date: date,
             stars: stars,
             text: text,
+            fullText: fullText,
             likes: likes,
           };
         })

@@ -178,6 +178,7 @@ const Reviews = (props) => {
                           date={data.date}
                           stars={data.stars}
                           text={data.text}
+                          fullText={data.fullText}
                           likes={data.likes}
                         />
                       </div>
@@ -203,6 +204,7 @@ const Reviews = (props) => {
                       date={data.date}
                       stars={data.stars}
                       text={data.text}
+                      fullText={data.fullText}
                       likes={data.likes}
                     />
                   </div>
@@ -233,6 +235,7 @@ const Reviews = (props) => {
                           date={data.date}
                           stars={data.stars}
                           text={data.text}
+                          fullText={data.fullText}
                           likes={data.likes}
                         />
                       </div>
@@ -264,6 +267,7 @@ const Reviews = (props) => {
                           date={data.date}
                           stars={data.stars}
                           text={data.text}
+                          fullText={data.fullText}
                           likes={data.likes}
                         />
                       </div>
@@ -293,6 +297,7 @@ const Reviews = (props) => {
                       date={data.date}
                       stars={data.stars}
                       text={data.text}
+                      fullText={data.fullText}
                       likes={data.likes}
                     />
                   </div>
@@ -321,6 +326,7 @@ const Reviews = (props) => {
                       date={data.date}
                       stars={data.stars}
                       text={data.text}
+                      fullText={data.fullText}
                       likes={data.likes}
                     />
                   </div>
@@ -345,6 +351,7 @@ const Reviews = (props) => {
                         date={data.date}
                         stars={data.stars}
                         text={data.text}
+                        fullText={data.fullText}
                         likes={data.likes}
                       />
                     </div>
@@ -379,6 +386,7 @@ const Reviews = (props) => {
                       date={data.date}
                       stars={data.stars}
                       text={data.text}
+                      fullText={data.fullText}
                       likes={data.likes}
                     />
                   </div>
@@ -402,6 +410,7 @@ const Reviews = (props) => {
                     date={data.date}
                     stars={data.stars}
                     text={data.text}
+                    fullText={data.fullText}
                     likes={data.likes}
                   />
                 </div>
