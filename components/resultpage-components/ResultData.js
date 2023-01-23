@@ -150,6 +150,14 @@ const ResultData = ({ scrapedData }) => {
                     .replaceAll('"', "")}
               </span>
             </div>
+            <div id="bookEdition">
+              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                Book Edition:
+              </h2>
+              <span className="flex justify-center lg:justify-start mx-auto lg:mx-0 max-w-md text-md">
+                {scrapedData.bookEdition}
+              </span>
+            </div>
             <div id="bookPublishDate">
               <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Publishing Date:

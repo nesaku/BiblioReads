@@ -162,6 +162,7 @@ const ReviewsMobile = (props) => {
                         date={data.date}
                         stars={data.stars}
                         text={data.text}
+                        likes={data.likes}
                       />
                     </div>
                   )
@@ -185,6 +186,7 @@ const ReviewsMobile = (props) => {
                     date={data.date}
                     stars={data.stars}
                     text={data.text}
+                    likes={data.likes}
                   />
                 </div>
               ))}
@@ -213,6 +215,7 @@ const ReviewsMobile = (props) => {
                         date={data.date}
                         stars={data.stars}
                         text={data.text}
+                        likes={data.likes}
                       />
                     </div>
                   )
@@ -242,6 +245,7 @@ const ReviewsMobile = (props) => {
                         date={data.date}
                         stars={data.stars}
                         text={data.text}
+                        likes={data.likes}
                       />
                     </div>
                   )
@@ -269,6 +273,7 @@ const ReviewsMobile = (props) => {
                     date={data.date}
                     stars={data.stars}
                     text={data.text}
+                    likes={data.likes}
                   />
                 </div>
               ))}
@@ -295,6 +300,7 @@ const ReviewsMobile = (props) => {
                     date={data.date}
                     stars={data.stars}
                     text={data.text}
+                    likes={data.likes}
                   />
                 </div>
               ))}
@@ -317,6 +323,7 @@ const ReviewsMobile = (props) => {
                       date={data.date}
                       stars={data.stars}
                       text={data.text}
+                      likes={data.likes}
                     />
                   </div>
                 )
@@ -349,6 +356,7 @@ const ReviewsMobile = (props) => {
                     date={data.date}
                     stars={data.stars}
                     text={data.text}
+                    likes={data.likes}
                   />
                 </div>
               ))}
@@ -370,6 +378,7 @@ const ReviewsMobile = (props) => {
                   date={data.date}
                   stars={data.stars}
                   text={data.text}
+                  likes={data.likes}
                 />
               </div>
             ))}

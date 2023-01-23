@@ -35,6 +35,7 @@ const Scraper = async (req, res) => {
       const genres = $(".actionLinkLite.bookPageGenreLink")
         .map((i, el) => $(el).text())
         .get();
+      const bookEdition = $("#details > div:nth-child(1)").text();
       const publishDate = $("#details > div:nth-child(2)").text();
       const isbn = $("*[itemprop = 'isbn']").text();
       const lang = $("*[itemprop = 'inLanguage']").text();
@@ -61,6 +62,9 @@ const Scraper = async (req, res) => {
           const text = $info
             .find(".reviewText.stacked > .readable > span")
             .text();
+          const likes = $info
+            .find(".updateActionLinks > .likeItContainer > a > span")
+            .text();
           const id = i + 1;
           return {
             id: id,
@@ -69,6 +73,7 @@ const Scraper = async (req, res) => {
             date: date,
             stars: stars,
             text: text,
+            likes: likes,
           };
         })
         .toArray();
@@ -85,6 +90,7 @@ const Scraper = async (req, res) => {
         ratingCount: ratingCount,
         desc: desc,
         genres: genres,
+        bookEdition: bookEdition,
         publishDate: publishDate,
         isbn: isbn,
         lang: lang,

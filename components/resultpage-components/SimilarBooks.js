@@ -5,12 +5,12 @@ const SimilarBooks = (props) => {
   const [imageError, setImageError] = useState(false);
 
   const slideLeft = () => {
-    var slider = document.getElementById("slider");
+    var slider = document.getElementById(props.mobile ? "desktop" : "slider");
     slider.scrollLeft = slider.scrollLeft - 500;
   };
 
   const slideRight = () => {
-    var slider = document.getElementById("slider");
+    var slider = document.getElementById(props.mobile ? "desktop" : "slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
 
@@ -20,15 +20,14 @@ const SimilarBooks = (props) => {
         Similar Books:{" "}
       </h2>
       <div
-        id="slider"
-        className={`no-scrollbar ${
-          props.mobile && "max-w-4xl"
-        } h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14`}
+        id={props.mobile ? "desktop" : "slider"}
+        className={`no-scrollbar h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-10 pb-10 px-14
+        ${props.mobile && "max-w-4xl"}`}
       >
         {props.data.map((data, i) => (
           <div
             key={i}
-            className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm"
+            className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm "
           >
             {imageError ? (
               <a href={`${data.url}`}>
