@@ -112,13 +112,19 @@ const ResultData = ({ scrapedData }) => {
               </div>
             </div>
             <div id="bookRatingsAndReviews">
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+              <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline decoration-rose-600">
                 Number Of Ratings & Reviews:
               </h2>
-              <span className="text-md capitalize -ml-3">
-                {scrapedData.ratingCount}
-              </span>
+              <div className="flex justify-center lg:justify-start">
+                <div>
+                  <span className="text-md">
+                    {scrapedData.ratingCount}Ratings &amp; {""}
+                    {scrapedData.reviewsCount}Reviews
+                  </span>
+                </div>
+              </div>
             </div>
+
             <div
               id="bookDescription"
               className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
@@ -146,6 +152,7 @@ const ResultData = ({ scrapedData }) => {
                   JSON.stringify(scrapedData.genres)
                     .replace("[", "")
                     .replace("]", "")
+                    .replace(",", "")
                     .replaceAll(",", ", ")
                     .replaceAll('"', "")}
               </span>
