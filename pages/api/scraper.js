@@ -1,5 +1,6 @@
 const cheerio = require("cheerio");
-const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer");
+import chromium from "chrome-aws-lambda";
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(() => resolve(), ms));
@@ -11,7 +12,14 @@ const Scraper = async (req, res) => {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
       // Start Puppeteer Configuration
-      const browser = await puppeteer.launch({ headless: true });
+      const browser = await chromium.puppeteer.launch({
+        args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: true,
+        ignoreHTTPSErrors: true,
+      });
+
       const page = await browser.newPage();
 
       await page.goto(scrapeURL, { waitUntil: "networkidle0" });
