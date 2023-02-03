@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactForm = () => {
   return (
-    <div>
+    <>
       <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
         <form
           action="https://submit-form.com/4GkO3Bo7"
@@ -78,7 +78,7 @@ const ContactForm = () => {
           </button>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutHero = () => {
   return (
-    <div>
+    <>
       <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:my-40">
         <div className="mx-auto max-w-3xl text-center ">
           <h1 className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-7xl capitalize">
@@ -25,7 +25,7 @@ const AboutHero = () => {
           </h1>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

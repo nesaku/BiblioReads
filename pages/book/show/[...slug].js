@@ -46,7 +46,7 @@ const Slug = () => {
           <>
             {scrapedData.title === undefined && <Loader />}
             {scrapedData.error && <ErrorMessage status="404" />}
-            {scrapedData.title === "" && <ErrorMessage status="404" />}
+            {scrapedData.title === "" && <ErrorMessage status="ScraperError" />}
             {scrapedData && <ResultData scrapedData={scrapedData} />}
           </>
         )}

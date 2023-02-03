@@ -6,7 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
-    <header className="p-4 dark:bg-rose-800 dark:text-rose-100 border-b-2 dark:border-b-0 border-rose-300">
+    <header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 dark:border-b-0 border-rose-300">
       <div className="flex justify-evenly items-center h-16">
         <div className="flex">
           <a href="/" aria-label="Back to homepage">
@@ -17,42 +17,42 @@ const Header = () => {
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
               <Link href="/">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   Home
                 </a>
               </Link>
             </li>
             <li className="flex">
               <Link href="/about">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   About
                 </a>
               </Link>
             </li>
             <li className="flex">
               <Link href="/contact">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   Contact
                 </a>
               </Link>
             </li>
             <li className="flex">
               <Link href="/privacy">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   Privacy
                 </a>
               </Link>
             </li>
             <li className="flex">
               <Link href="/disclaimer">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 transition duration-300 delay-150 hover:delay-100 dark:border-gray-300">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   Disclaimer
                 </a>
               </Link>
             </li>
             <li className="flex">
               <a
-                className="ml-2 mt-0.5 h-full w-8 text-gray-900 hover:text-gray-900/75 dark:text-gray-300 dark:hover:text-gray-300/75"
+                className="ml-2 mt-0.5 h-full w-8 text-gray-900 hover:text-gray-900/75 dark:text-gray-300/90 hover:text-rose-900 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
                 href="https://github.com/nesaku/BiblioReads"
                 target="_blank"
                 rel="noreferrer"

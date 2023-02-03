@@ -8,7 +8,9 @@ const ErrorMessage = (props) => {
     <div className="flex flex-col justify-center max-w-2xl text-center mx-auto h-[74vh]">
       <h2 id="error" className="text-red-600 font-bold text-5xl uppercase">
         Error - {""}
-        {props.status === "500" ? "Internal Server Error" : "Book Not Found"}
+        {props.status === "500" && "Internal Server Error"}
+        {props.status === "404" && "Book Not Found"}
+        {props.status === "ScraperError" && "Scraper Error"}
       </h2>
 
       {props.status === "500" && (
@@ -77,6 +79,39 @@ const ErrorMessage = (props) => {
           </h3>
         </div>
       )}
+
+      {props.status === "ScraperError" && (
+        <div className="px-2">
+          <h3 className="mt-12 text-lg text-black font-bold dark:text-gray-100">
+            The scraper has encountered an error. Please try again later.
+          </h3>
+          <h3 className="mt-8 mb-12 text-lg text-black font-semibold dark:text-gray-100">
+            If you&apos;re repeatedly get this error. Please report this by
+            creating an issue on{" "}
+            <a
+              href="https://github.com/nesaku/BiblioReads/issues"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="underline hover:text-blue-600"
+            >
+              GitHub
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://codeberg.org/nesaku/BiblioReads/issues"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Codeberg"
+              className="underline hover:text-blue-600"
+            >
+              Codeberg
+            </a>
+            .
+          </h3>
+        </div>
+      )}
+
       <div className="flex justify-center">
         <button
           type="button"
