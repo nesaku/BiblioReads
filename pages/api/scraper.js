@@ -8,21 +8,36 @@ function wait(ms) {
 
 const Scraper = async (req, res) => {
   if (req.method === "POST") {
-    // Get The URL that needs to be scraped
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
-      // Start Puppeteer Configuration
       const browser = await chromium.puppeteer.launch({
         args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath,
         headless: true,
-        ignoreHTTPSErrors: true,
+        // ignoreHTTPSErrors: true,
       });
 
       const page = await browser.newPage();
 
-      await page.goto(scrapeURL, { waitUntil: "networkidle0" });
+      const blockedDomains = [
+        "https://unagi.amazon.com",
+        "https://fls-na.amazon.com",
+        "https://securepubads.g.doubleclick.net",
+        "https://c.amazon-adsystem.com",
+        "https://adservice.google.com",
+      ];
+      await page.setRequestInterception(true);
+      page.on("request", (request) => {
+        const url = request.url();
+        if (blockedDomains.some((d) => url.startsWith(d))) {
+          request.abort();
+        } else {
+          request.continue();
+        }
+      });
+
+      await page.goto(scrapeURL, { waitUntil: "networkidle2", timeout: 30000 });
 
       const bodyHandle = await page.$("body");
       const { height } = await bodyHandle.boundingBox();
@@ -35,7 +50,7 @@ const Scraper = async (req, res) => {
         await page.evaluate((_viewportHeight) => {
           window.scrollBy(0, _viewportHeight);
         }, viewportHeight);
-        await wait(300);
+        await wait(200);
         viewportIncr = viewportIncr + viewportHeight;
       }
 
@@ -46,7 +61,7 @@ const Scraper = async (req, res) => {
       });
       // await wait(100);
       await browser.close();
-      // End Puppeteer Configuration
+
       const $ = cheerio.load(pageData.html);
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
