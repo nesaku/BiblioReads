@@ -6,7 +6,6 @@ import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
 import Meta from "../global-components/Meta";
 
-// Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -34,7 +33,12 @@ const ResultData = ({ scrapedData }) => {
 
             <p className="mt-2 mx-auto max-w-sm xl:max-w-md">
               <span className="font-semibold">By:</span>{" "}
-              <span className="text-md">{scrapedData.author}</span>
+              <a
+                className="text-md hover:underline"
+                href={scrapedData.authorURL}
+              >
+                {scrapedData.author}
+              </a>
             </p>
             <div id="bookCover" className="my-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
@@ -62,7 +66,6 @@ const ResultData = ({ scrapedData }) => {
                     />
                     <img
                       src={`/img?url=${scrapedData.cover}&maxage=30d`}
-                      alt={`${scrapedData.coverAltText} book cover`}
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                       width="620"
                       height="962"
@@ -73,16 +76,6 @@ const ResultData = ({ scrapedData }) => {
                   </picture>
                 </>
               )}
-              {/* 
-              <div id="lastScraped" className="hidden lg:block">
-                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600 mt-12">
-                  Last Scraped:{" "}
-                </h2>
-                <span className="text-md">
-                  <code>{scrapedData.lastScraped}</code>
-                </span>
-              </div>
-              */}
             </div>
           </div>
           <div

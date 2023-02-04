@@ -18,6 +18,9 @@ const Scraper = async (req, res) => {
       const series = $("h3.Text__italic").text();
       const title = $('h1[data-testid="bookTitle"]').text();
       const author = $(".ContributorLinksList > span > a > span").text();
+      const authorURL = $(".ContributorLinksList > span > a")
+        .attr("href")
+        .replace("https://www.goodreads.com", "");
       const rating = $("div.RatingStatistics__rating").text().slice(0, 4);
       const ratingCount = $('[data-testid="ratingsCount"]')
         .text()
@@ -48,32 +51,38 @@ const Scraper = async (req, res) => {
             .attr("href")
             .replace("https://www.goodreads.com", "");
           const id = i + 1;
-          return { id: id, src: src, title: title, author: author, url: url };
+          return {
+            id: id,
+            src: src,
+            title: title,
+            author: author,
+            url: url,
+          };
         })
         .toArray();
       const reviews = $(".ReviewsList > div:nth-child(2) > div")
-        .map((i, info) => {
-          const $info = $(info);
-          const image = $info
+        .map((i, el) => {
+          const $el = $(el);
+          const image = $el
             .find("article > div > div > section > a > img")
             .attr("src");
-          const author = $info
+          const author = $el
             .find(
               "article > div > div > section:nth-child(2) > span:nth-child(1) > div > a"
             )
             .text();
-          const date = $info
+          const date = $el
             .find("article > section > section:nth-child(1) > span > a")
             .text();
-          const stars = $info
+          const stars = $el
             .find("article > section > section:nth-child(1) > div > span")
             .attr("aria-label");
-          const text = $info
+          const text = $el
             .find(
               "article > section > section:nth-child(2) > section > div > div > span"
             )
             .html();
-          const likes = $info
+          const likes = $el
             .find(
               "article > section > footer > div > div:nth-child(1) > button > span"
             )
@@ -101,6 +110,7 @@ const Scraper = async (req, res) => {
         series: series,
         title: title,
         author: author,
+        authorURL: authorURL,
         rating: rating,
         ratingCount: ratingCount,
         reviewsCount: reviewsCount,

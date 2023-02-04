@@ -12,14 +12,6 @@ const Footer = () => {
           >
             <ul className="flex flex-wrap justify-center items-center gap-6 text-sm font-bold">
               <li>
-                <Link href="/">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Home
-                  </a>
-                </Link>
-              </li>
-
-              <li>
                 <Link href="/about">
                   <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     About
@@ -60,6 +52,12 @@ const Footer = () => {
                 >
                   Go To The Top
                 </a>
+              </li>
+
+              <li>
+                <span className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
+                  v2.0.4
+                </span>
               </li>
 
               <li className="items-center justify-center align-middle content-center">
