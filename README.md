@@ -9,7 +9,7 @@ Scrapes content from the Goodreads book page and presents the results without an
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
 
-Mirror repository is available on Codeberg: [codeberg.org/nesaku/BiblioReads](https://codeberg.org/nesaku/BiblioReads).
+[GitHub](https://github.com/nesaku/BiblioReads) | [Codeberg](https://codeberg.org/nesaku/BiblioReads)
 
 </div>
 
