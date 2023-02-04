@@ -84,6 +84,25 @@ const Footer = () => {
                   </svg>
                 </a>
               </li>
+
+              <li className="items-center justify-center align-middle content-center">
+                <a
+                  className="text-gray-900 hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
+                  href="https://codeberg.org/nesaku/BiblioReads"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Codeberg"
+                >
+                  <svg
+                    className="h-7 w-7"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467 4.416 16.553a12 12 0 0 0 5.137-4.213z" />
+                  </svg>
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

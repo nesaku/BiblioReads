@@ -7,7 +7,7 @@ const FAQ = () => {
       <div className="flex justify-center mt-10">
         <div
           id="faq"
-          className="max-w-4xl w-11/12 bg-gray-400/20 dark:bg-transparent/20 rounded-2xl border-2 border-gray-400 dark:border-4 dark:border-gray-400"
+          className="max-w-4xl w-11/12 bg-white/20 dark:bg-transparent/20 rounded-2xl border-2 border-gray-400 dark:border-4 dark:border-gray-400"
         >
           <details
             className="group p-6 border-t-0 border-gray-400 dark:border-gray-400"
@@ -339,7 +339,16 @@ const FAQ = () => {
               >
                 GitHub
               </a>{" "}
-              or use the{" "}
+              or{" "}
+              <a
+                className="text-blue-600 dark:text-blue-500 underline"
+                href="https://codeberg.org/nesaku/BiblioReads/issues"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Codeberg
+              </a>
+              . Alternatively, you can use the{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"
                 href="/contact"
@@ -400,7 +409,16 @@ const FAQ = () => {
               >
                 GitHub
               </a>{" "}
-              or use the{" "}
+              or{" "}
+              <a
+                className="text-blue-600 dark:text-blue-500 underline"
+                href="https://codeberg.org/nesaku/BiblioReads/issues"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Codeberg
+              </a>
+              . Alternatively, you can use the{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"
                 href="/contact"

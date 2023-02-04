@@ -6,9 +6,9 @@ import Footer from "../components/global-components/Footer";
 const Disclaimer = () => {
   return (
     <>
-      <Meta title={"Disclaimer"} />
-      <Header />
       <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage min-h-full m-0 p-0">
+        <Meta title={"Disclaimer"} />
+        <Header />
         <div className="flex justify-center items-center text-center">
           <div className="flex flex-col text-gray-800 dark:text-gray-100 bg-white bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-60 py-6 m-4 px-4 sm:px-12 my-[10vh] rounded-2xl max-w-lg items-center">
             <svg

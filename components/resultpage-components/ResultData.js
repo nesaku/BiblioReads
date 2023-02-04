@@ -226,10 +226,10 @@ const ResultData = ({ scrapedData }) => {
             </div>
 
             <div className="block lg:hidden">
-              {scrapedData.related && (
+              {scrapedData.related != "" && (
                 <SimilarBooks data={scrapedData.related} mobile={true} />
               )}
-              {scrapedData.reviews && (
+              {scrapedData.reviews != "" && (
                 <ReviewsMobile data={scrapedData.reviews} />
               )}
             </div>
@@ -238,10 +238,10 @@ const ResultData = ({ scrapedData }) => {
       )}
       {scrapedData.title && (
         <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {scrapedData.related && (
+          {scrapedData.related != "" && (
             <SimilarBooks data={scrapedData.related} mobile={false} />
           )}
-          {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
+          {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
         </div>
       )}
     </>

@@ -1,6 +1,6 @@
 {
   "name": "biblioreads",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "An Alternative Goodreads Front-End",
   "private": true,
   "author": "Nesaku",
@@ -14,12 +14,10 @@
   "dependencies": {
     "babel-loader": "^9.1.0",
     "cheerio": "^1.0.0-rc.12",
-    "chrome-aws-lambda": "^10.1.0",
     "dompurify": "^2.4.3",
     "next": "12.3.1",
     "next-pwa": "^5.6.0",
     "next-themes": "^0.2.1",
-    "puppeteer": "^19.6.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

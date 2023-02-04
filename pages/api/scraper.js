@@ -1,74 +1,23 @@
 const cheerio = require("cheerio");
-// const puppeteer = require("puppeteer");
-import chromium from "chrome-aws-lambda";
-
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(() => resolve(), ms));
-}
 
 const Scraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
-      const browser = await chromium.puppeteer.launch({
-        args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
-        headless: true,
-        // ignoreHTTPSErrors: true,
+      const response = await fetch(`${scrapeURL}`, {
+        method: "GET",
+        headers: new Headers({
+          "User-Agent":
+            process.env.NEXT_PUBLIC_USER_AGENT ||
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+        }),
       });
-
-      const page = await browser.newPage();
-
-      const blockedDomains = [
-        "https://unagi.amazon.com",
-        "https://fls-na.amazon.com",
-        "https://securepubads.g.doubleclick.net",
-        "https://c.amazon-adsystem.com",
-        "https://adservice.google.com",
-      ];
-      await page.setRequestInterception(true);
-      page.on("request", (request) => {
-        const url = request.url();
-        if (blockedDomains.some((d) => url.startsWith(d))) {
-          request.abort();
-        } else {
-          request.continue();
-        }
-      });
-
-      await page.goto(scrapeURL, { waitUntil: "networkidle2", timeout: 30000 });
-
-      const bodyHandle = await page.$("body");
-      const { height } = await bodyHandle.boundingBox();
-      await bodyHandle.dispose();
-
-      const viewportHeight = page.viewport().height;
-
-      let viewportIncr = 0;
-      while (viewportIncr + viewportHeight < height) {
-        await page.evaluate((_viewportHeight) => {
-          window.scrollBy(0, _viewportHeight);
-        }, viewportHeight);
-        await wait(200);
-        viewportIncr = viewportIncr + viewportHeight;
-      }
-
-      const pageData = await page.evaluate(() => {
-        return {
-          html: document.documentElement.innerHTML,
-        };
-      });
-      // await wait(100);
-      await browser.close();
-
-      const $ = cheerio.load(pageData.html);
+      const htmlString = await response.text();
+      const $ = cheerio.load(htmlString);
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
       const title = $('h1[data-testid="bookTitle"]').text();
-      const author = $('h3[aria-label="List of contributors"]')
-        .text()
-        .replace("...more", "");
+      const author = $(".ContributorLinksList > span > a > span").text();
       const rating = $("div.RatingStatistics__rating").text().slice(0, 4);
       const ratingCount = $('[data-testid="ratingsCount"]')
         .text()
@@ -145,8 +94,8 @@ const Scraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        source: "https://github.com/nesaku/biblioreads",
         status: "Success",
+        source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         cover: cover,
         series: series,
