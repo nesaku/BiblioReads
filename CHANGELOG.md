@@ -5,7 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.4.0] - Feb 4, 2023
+## [2.4.1] - Feb 5, 2023
+
+### Added
+
+- Add search link to the footer
+- Add author death date info
+- Update Redirector info and screenshots in the README to reflect new updates
+
+### Changed
+
+- Improve footer spacing on mobile devices
+
+### Fixed
+
+- Author series book covers not displaying correctly
+- Hover effect in light mode
+
+## [2.4.0] - Feb 5, 2023
 
 ### Added
 

@@ -25,7 +25,9 @@ const AuthorScraper = async (req, res) => {
       const birthDate = $(
         "div.rightContainer > div[itemprop = 'birthDate']"
       ).text();
-      // .replaceAll("\n", "");
+      const deathDate = $(
+        "div.rightContainer > div[itemprop = 'deathDate']"
+      ).text();
       const desc = $(".aboutAuthorInfo > span")
         .html()
         .replaceAll("https://www.goodreads.com", "");
@@ -66,6 +68,7 @@ const AuthorScraper = async (req, res) => {
           const cover = $el
             .find("div.seriesCovers > a > img")
             .attr("src")
+            .replace("._SX50_SY75_", "")
             .replace("._SY75_", "")
             .replace("._SX50_", "");
           const title = $el
@@ -110,6 +113,7 @@ const AuthorScraper = async (req, res) => {
         website: website,
         genre: genre,
         birthDate: birthDate,
+        deathDate: deathDate,
         desc: desc,
         books: books,
         series: series,

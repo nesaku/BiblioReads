@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.4.0";
+  const version = "v2.4.1";
 
   return (
     <footer aria-label="Site Footer" className="text-center w-full ">
@@ -12,7 +12,15 @@ const Footer = () => {
             aria-label="Footer Nav"
             className="rounded-3xl border-4 border-gray-900 p-6 dark:border-gray-700"
           >
-            <ul className="flex flex-wrap justify-center items-center gap-6 text-sm font-bold">
+            <ul className="flex flex-wrap justify-center items-center gap-8 sm:gap-6 text-sm font-bold">
+              <li>
+                <Link href="/search">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
+                    Search
+                  </a>
+                </Link>
+              </li>
+
               <li>
                 <Link href="/about">
                   <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">

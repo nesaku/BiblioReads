@@ -122,6 +122,18 @@ const AuthorResultData = ({ scrapedData }) => {
                 </div>
               </div>
             )}
+            {scrapedData.deathDate && (
+              <div id="authorDeathDate">
+                <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
+                  Death Date:
+                </h2>
+                <div className="flex justify-center lg:justify-start">
+                  <div>
+                    <span className="text-md">{scrapedData.deathDate}</span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div
               id="authorDescription"

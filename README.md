@@ -13,12 +13,17 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 </div>
 
+---
+
 ## Screenshots
 
 | Dark Mode                                  | Light Mode                                  |
 | ------------------------------------------ | ------------------------------------------- |
 | ![](/public/readme/home-dark.png?raw=true) | ![](/public/readme/home-light.png?raw=true) |
-| ![](/public/readme/book-dark.png?raw=true) | ![](/public/readme/book-light.png?raw=true) |
+
+#### View more [screenshots](#more-screenshot).
+
+---
 
 ## Features
 
@@ -29,6 +34,8 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 - Lightweight
 - Modern Design - responsive design with built-in light & dark mode support
 - PWA Support - installable as a PWA on desktop and mobile
+
+---
 
 ## Instances
 
@@ -54,15 +61,31 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance url):
 
-- Description: Goodreads to BiblioReads
+#### To Redirect Book Pages:
+
+- Description: Goodreads to BiblioReads Book Page
 - Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
 - Include pattern: `https://www.goodreads.com/book/show/*`
 - Redirect to: `https://biblioreads.ml/book/show/$1`
 - Pattern type: Wildcard Expression
-- Pattern Description Redirects all Goodreads book page urls to BiblioReads
+- Pattern Description: Redirects all Goodreads book page urls to BiblioReads
 - Advanced options:
   - Apply to:
     - [x] Main window (address bar)
+
+#### To Redirect Author Pages:
+
+- Description: Goodreads to BiblioReads Author Page
+- Example URL: https://www.goodreads.com/author/show/656983.J_R_R_Tolkien
+- Include pattern: `https://www.goodreads.com/author/show/*`
+- Redirect to: `https://biblioreads.ml/author/show/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description: Redirects all Goodreads author page urls to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
+---
 
 ## FAQ
 
@@ -195,6 +218,16 @@ yarn dev
 ```
 
 **ⓘ If you want use the API directly or run any kind of automation. Please host the project on your own server.**
+
+---
+
+## <a name="more-screenshot"></a> More Screenshots:
+
+| Dark Mode                                    | Light Mode                                    |
+| -------------------------------------------- | --------------------------------------------- |
+| ![](/public/readme/author-dark.png?raw=true) | ![](/public/readme/author-light.png?raw=true) |
+| ![](/public/readme/search-dark.png?raw=true) | ![](/public/readme/search-light.png?raw=true) |
+| ![](/public/readme/home-dark.png?raw=true)   | ![](/public/readme/home-light.png?raw=true)   |
 
 ---
 
