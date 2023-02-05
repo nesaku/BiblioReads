@@ -14,7 +14,7 @@ const Meta = (props) => {
       : "BiblioReads - An Alternative Private Goodreads Front-End"
   }`;
   const coverIMG = props.coverIMG;
-  const version = "Version: 2.3.1 (Oreki)";
+  const version = "Version: 2.4.0 (Oreki)";
 
   return (
     <Head>

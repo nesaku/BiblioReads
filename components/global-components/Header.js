@@ -23,6 +23,13 @@ const Header = () => {
               </Link>
             </li>
             <li className="flex">
+              <Link href="/search">
+                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+                  Search
+                </a>
+              </Link>
+            </li>
+            <li className="flex">
               <Link href="/about">
                 <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   About
@@ -40,13 +47,6 @@ const Header = () => {
               <Link href="/privacy">
                 <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   Privacy
-                </a>
-              </Link>
-            </li>
-            <li className="flex">
-              <Link href="/disclaimer">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
-                  Disclaimer
                 </a>
               </Link>
             </li>

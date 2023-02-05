@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - Feb 4, 2023
+
+### Added
+
+- Added search page and search route
+
+### Changed
+
+- Allow search terms and url input on the hero page
+
+### Fixed
+
+- Fix default triangle icon for the <details> element being shown in the FAQ section
+- Fix hero overflow bug
+
 ## [2.3.1] - Feb 4, 2023
 
 ### Fixed

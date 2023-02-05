@@ -74,23 +74,25 @@ const AuthorResultData = ({ scrapedData }) => {
             id="authorContent"
             className="max-w-full md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 lg:p-0 text-center lg:text-left"
           >
-            <div id="authorWebsite">
-              <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-6 underline decoration-rose-600">
-                Website:
-              </h2>
-              <div className="flex justify-center lg:justify-start">
-                <div>
-                  <a
-                    className="text-md text-blue-600 dark:text-blue-400 underline"
-                    target="_blank"
-                    rel="noreferrer"
-                    href={scrapedData.website}
-                  >
-                    {scrapedData.website}
-                  </a>
+            {scrapedData.website && (
+              <div id="authorWebsite">
+                <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-6 underline decoration-rose-600">
+                  Website:
+                </h2>
+                <div className="flex justify-center lg:justify-start">
+                  <div>
+                    <a
+                      className="text-md text-blue-600 dark:text-blue-400 underline"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={scrapedData.website}
+                    >
+                      {scrapedData.website}
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             <div id="authorGenre">
               <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
                 Genre:
@@ -108,16 +110,18 @@ const AuthorResultData = ({ scrapedData }) => {
                 </div>
               </div>
             </div>
-            <div id="authorBirthDate">
-              <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
-                Birth Date:
-              </h2>
-              <div className="flex justify-center lg:justify-start">
-                <div>
-                  <span className="text-md">{scrapedData.birthDate}</span>
+            {scrapedData.birthDate && (
+              <div id="authorBirthDate">
+                <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
+                  Birth Date:
+                </h2>
+                <div className="flex justify-center lg:justify-start">
+                  <div>
+                    <span className="text-md">{scrapedData.birthDate}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div
               id="authorDescription"
@@ -191,7 +195,6 @@ const AuthorResultData = ({ scrapedData }) => {
                 <AuthorSeries
                   name={scrapedData.name}
                   series={scrapedData.series}
-                  mobile={true}
                 />
               )}
             </div>
@@ -214,7 +217,6 @@ const AuthorResultData = ({ scrapedData }) => {
               <AuthorSeries
                 name={scrapedData.name}
                 series={scrapedData.series}
-                mobile={false}
               />
             )}
           </div>

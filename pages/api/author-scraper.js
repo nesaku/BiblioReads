@@ -35,6 +35,7 @@ const AuthorScraper = async (req, res) => {
           const cover = $el
             .find("td > a > img")
             .attr("src")
+            .replace("._SX50_SY75_", "")
             .replace("._SY75_", "")
             .replace("._SX50_", "");
           const title = $el.find("td:nth-child(2) > a > span").text();
@@ -96,29 +97,6 @@ const AuthorScraper = async (req, res) => {
           };
         })
         .toArray();
-
-      /*       
-      const quotes = $(".bigBoxBody > div > div.quote.mediumText ")
-        .map((i, el) => {
-          const $el = $(el);
-          const text = $el.find("div > div.quoteText").text();
-          const author = $el
-            .find("div > div.quoteText > span.authorOrTitle")
-            .text();
-          const book = $el
-            .find("div > div.quoteText > span > a.authorOrTitle")
-            .text();
-          const id = i + 1;
-
-          return {
-            id: id,
-            text: text,
-            author: author,
-            book: book,
-          };
-        })
-        .toArray();
-      */
 
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
