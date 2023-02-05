@@ -17,7 +17,7 @@ const AuthorBooks = (props) => {
   return (
     <div id="authorBooks">
       <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
-        {props.name}'s Books:{" "}
+        {props.name}&apos;s Books:{" "}
       </h2>
       <div
         id={props.mobile ? "desktop" : "slider"}

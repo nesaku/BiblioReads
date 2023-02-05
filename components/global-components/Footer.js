@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
+  const version = "v2.3.1";
+
   return (
     <footer aria-label="Site Footer" className="text-center w-full">
       <div className="flex justify-center items-center content-center  mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
@@ -56,7 +58,7 @@ const Footer = () => {
 
               <li>
                 <span className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                  v2.0.4
+                  {version}
                 </span>
               </li>
 

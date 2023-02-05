@@ -67,6 +67,7 @@ const ResultData = ({ scrapedData }) => {
                     <img
                       src={`/img?url=${scrapedData.cover}&maxage=30d`}
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                      alt=""
                       width="620"
                       height="962"
                       fetchpriority="high"
