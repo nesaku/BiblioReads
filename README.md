@@ -21,7 +21,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | ------------------------------------------ | ------------------------------------------- |
 | ![](/public/readme/home-dark.png?raw=true) | ![](/public/readme/home-light.png?raw=true) |
 
-#### View more [screenshots](#more-screenshot).
+#### View more [screenshots](#more-screenshots).
 
 ---
 
@@ -221,7 +221,7 @@ yarn dev
 
 ---
 
-## <a name="more-screenshot"></a> More Screenshots:
+## More Screenshots:
 
 | Dark Mode                                    | Light Mode                                    |
 | -------------------------------------------- | --------------------------------------------- |
