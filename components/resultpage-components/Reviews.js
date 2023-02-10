@@ -167,7 +167,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="review"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -192,7 +192,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-popular"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -222,7 +222,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="filter-sort-new-old"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -253,7 +253,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="filter-sort-old-new"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -282,7 +282,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-new-old"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -310,7 +310,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-old-new"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -334,7 +334,7 @@ const Reviews = (props) => {
                   data.stars === filterStars && (
                     <div
                       id="filter-stars"
-                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                       key={i}
                     >
                       <ReviewCard
@@ -368,7 +368,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="search-filter"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -391,7 +391,7 @@ const Reviews = (props) => {
               props.data.map((data, i) => (
                 <div
                   id="default"
-                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.4.1";
+  const version = "v2.5.0";
 
   return (
     <footer aria-label="Site Footer" className="text-center w-full ">

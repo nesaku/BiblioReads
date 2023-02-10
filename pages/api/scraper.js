@@ -60,6 +60,48 @@ const Scraper = async (req, res) => {
           };
         })
         .toArray();
+
+      const rating5 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(1) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+      const rating4 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(2) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+      const rating3 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(3) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const rating2 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(4) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const rating1 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(5) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const reviewBreakdown = {
+        rating5: rating5,
+        rating4: rating4,
+        rating3: rating3,
+        rating2: rating2,
+        rating1: rating1,
+      };
+
       const reviews = $(".ReviewsList > div:nth-child(2) > div")
         .map((i, el) => {
           const $el = $(el);
@@ -119,6 +161,7 @@ const Scraper = async (req, res) => {
         bookEdition: bookEdition,
         publishDate: publishDate,
         related: related,
+        reviewBreakdown: reviewBreakdown,
         reviews: reviews,
         lastScraped: lastScraped,
       });

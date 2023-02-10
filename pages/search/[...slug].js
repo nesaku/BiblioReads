@@ -56,6 +56,7 @@ const Slug = () => {
               <SearchResultData
                 query={scrapedData.scrapeURL}
                 result={scrapedData.result}
+                numberOfResults={scrapedData.numberOfResults}
               />
             )}
           </>

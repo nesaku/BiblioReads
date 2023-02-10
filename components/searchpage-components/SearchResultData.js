@@ -10,18 +10,21 @@ const SearchResults = (props) => {
       id="searchResults"
       className="flex flex-col p-12 justify-center items-center"
     >
-      <h2 className="font-bold text-4xl text-center pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
-        Search Results For:{" "}
-        {props.query &&
-          props.query.replace("https://www.goodreads.com/search?q=", "")}
-      </h2>
+      {!props.numberOfResults === "" && (
+        <>
+          <h2 className="font-bold text-4xl text-center pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
+            Search Results For:{" "}
+            {props.query &&
+              props.query.replace("https://www.goodreads.com/search?q=", "")}
+          </h2>
 
-      <div className="flex justify-center items-center align-middle">
-        <div className="flex flex-col xl:flex-row justify-center items-center text-center w-full mt-8">
-          <SearchBox />
-        </div>
-      </div>
-
+          <div className="flex justify-center items-center align-middle">
+            <div className="flex flex-col xl:flex-row justify-center items-center text-center w-full mt-8">
+              <SearchBox />
+            </div>
+          </div>
+        </>
+      )}
       {props.result &&
         props.result.map((data, i) => (
           <div key={i} className="max-w-[1000px]">
