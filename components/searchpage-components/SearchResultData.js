@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useState } from "react";
+import Meta from "../global-components/Meta";
 import SearchBox from "./SearchBox";
 
 const SearchResults = (props) => {
@@ -12,7 +13,16 @@ const SearchResults = (props) => {
       id="searchResults"
       className="flex flex-col p-12 justify-center items-center"
     >
-      {!props.numberOfResults === "" && (
+      <Meta
+        title={
+          props.query
+            ? props.query
+                .replace("https://www.goodreads.com/search?q=", "")
+                .toUpperCase()
+            : " "
+        }
+      />
+      {props.numberOfResults != "" && (
         <>
           <h2 className="font-bold text-4xl text-center pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
             Search Results For:{" "}

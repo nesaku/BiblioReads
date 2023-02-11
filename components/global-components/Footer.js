@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.5.0";
+  const version = "v2.5.2";
 
   return (
-    <footer aria-label="Site Footer" className="text-center w-full ">
+    <footer className="text-center w-full ">
       <div className="flex justify-center items-center content-center mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl space-y-6">
           <nav

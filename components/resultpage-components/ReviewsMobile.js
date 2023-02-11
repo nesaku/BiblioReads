@@ -101,6 +101,8 @@ const ReviewsMobile = (props) => {
             </p>
             <label className="inline-flex relative items-center cursor-pointer">
               <input
+                name="show-avatars-toggle"
+                aria-label="Show Profile Avatars"
                 type="checkbox"
                 onClick={() => {
                   showAvatars ? setShowAvatars(false) : setShowAvatars(true);
@@ -130,6 +132,8 @@ const ReviewsMobile = (props) => {
               Search:{" "}
             </p>
             <input
+              name="search-review-text"
+              aria-label="Search Review Text"
               type="text"
               placeholder="Search review text"
               className={

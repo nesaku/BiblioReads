@@ -19,13 +19,13 @@ const SearchBox = (props) => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <h3
+        <h1
           className={`text-2xl text-black dark:text-gray-200/80 font-semibold ${
             props.main && `mb - 10`
           }`}
         >
           {props.main ? "Search For A Book:" : "Search For Another Book:"}{" "}
-        </h3>
+        </h1>
         <div className="flex justify-center text-center">
           <div
             className={`flex flex-col sm:flex-row items-center ${
@@ -34,11 +34,13 @@ const SearchBox = (props) => {
           >
             <div className="mt-4">
               <input
+                type="text"
+                name="search"
+                aria-label="Search"
+                placeholder="The Hobbit"
                 className="rounded-md mx-10 py-3 px-5 text-left text-black dark:text-gray-200/90 text-sm bg-slate-200 dark:bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-slate-700"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="The Hobbit"
-                type="text"
                 required
               />
             </div>

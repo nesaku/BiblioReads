@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.2] - Feb 11, 2023
+
+### Changed
+
+- Improve website accessibility
+
+### Fixed
+
+- Fix `<title>` element not being shown for the search results page
+- Fix search box not apearing on the search results page
+
 ## [2.5.1] - Feb 11, 2023
 
 ### Added

@@ -24,6 +24,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -39,6 +40,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -91,6 +93,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -106,6 +109,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -121,14 +125,14 @@ const FAQ = () => {
               Since Goodreads stopped issuing new developer keys for their
               public developer API back in December of 2020 and plans to retire
               the current version of the their API which you can learn more
-              about{" "}
+              about from{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"
                 href="https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs"
                 target="_blank"
                 rel="noreferrer"
               >
-                here
+                this help article
               </a>
               . BiblioReads instead goes to the Goodreads book page and scrapes
               the required content.
@@ -148,6 +152,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -163,6 +168,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -194,6 +200,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -209,6 +216,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -257,6 +265,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -272,6 +281,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -303,6 +313,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -318,6 +329,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -372,6 +384,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -387,6 +400,7 @@ const FAQ = () => {
                   viewBox="0 0 24 24"
                   stroke="black"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
