@@ -44,10 +44,10 @@ const FormQuery = () => {
                 Search By Name Or Enter A Book URL: &nbsp;
               </h3>
               <input
-                className=" rounded-md mx-10 py-3 px-5 text-left text-black dark:text-gray-200/90 text-sm bg-slate-200 dark:bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-slate-700"
+                className="rounded-md w-7/12 transition-all duration-700 ease-in-out hover:w-full px-2 py-3 text-black dark:text-gray-200/90 text-sm bg-slate-200 dark:bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-slate-700"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="The Hobbit OR https://www.goodreads.com/book/show/5907.The_Hobbit"
+                placeholder="The Hobbit OR https://www.goodreads.com/book/show/5907"
                 type="text"
                 required
               />

@@ -19,7 +19,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 | Dark Mode                                  | Light Mode                                  |
 | ------------------------------------------ | ------------------------------------------- |
-| ![](/public/readme/home-dark.png?raw=true) | ![](/public/readme/home-light.png?raw=true) |
+| ![](/public/readme/book-dark.png?raw=true) | ![](/public/readme/book-light.png?raw=true) |
 
 #### View more [screenshots](#more-screenshots).
 

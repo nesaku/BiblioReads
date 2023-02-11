@@ -15,7 +15,7 @@ const Reviews = (props) => {
   return (
     <>
       <div id="bookReviews">
-        <h2 className="font-bold text-2xl mt-12 mb-4 underline decoration-rose-600 dark:text-gray-100/80">
+        <h2 className="font-bold text-2xl mt-0 mb-4 underline decoration-rose-600 dark:text-gray-100/80">
           Reviews:
         </h2>
         <button

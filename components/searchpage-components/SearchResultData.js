@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useState } from "react";
 import SearchBox from "./SearchBox";
 
 const SearchResults = (props) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   return (
@@ -28,7 +30,7 @@ const SearchResults = (props) => {
       {props.result &&
         props.result.map((data, i) => (
           <div key={i} className="max-w-[1000px]">
-            <a href={data.bookURL}>
+            <Link href={data.bookURL}>
               <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
                 <div className="ml-8 pr-2 sm:pr-8 sm:ml-16 w-40 sm:w-64 lg:w-[1000px]">
                   <a
@@ -64,26 +66,35 @@ const SearchResults = (props) => {
                   </div>
                 </div>
                 <div className="flex mr-8">
+                  {!imageLoaded && (
+                    <img
+                      src="/cover-placeholder.svg"
+                      alt=""
+                      width="98"
+                      height="148"
+                    />
+                  )}
                   {!imageError ? (
-                    <picture>
+                    <picture className={imageLoaded ? "" : "hidden"}>
                       <source
                         srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}
                         type="image/webp"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                       />
                       <source
                         srcSet={`/img?url=${data.cover}&maxage=30d`}
                         type="image/jpeg"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                       />
                       <img
                         src={`/img?url=${data.cover}&maxage=30d`}
                         alt={`${data.title} book cover`}
                         width="98"
                         height="148"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                         loading="lazy"
                         onError={() => setImageError(true)}
+                        onLoad={() => setImageLoaded(true)}
                       />
                     </picture>
                   ) : (
@@ -97,7 +108,7 @@ const SearchResults = (props) => {
                   )}
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         ))}
     </div>
