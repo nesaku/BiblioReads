@@ -26,13 +26,6 @@ const Header = () => {
               </Link>
             </li>
             <li className="flex">
-              <Link href="/search">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
-                  Search
-                </a>
-              </Link>
-            </li>
-            <li className="flex">
               <Link href="/about">
                 <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
                   About
@@ -92,7 +85,7 @@ const Header = () => {
         </div>
         <ul className="flex">
           <li className="flex items-center justify-center align-middle content-center mr-4">
-            <Link href="search">
+            <Link href="/search">
               <a
                 className="mt-0.5 text-gray-900 hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
                 aria-label="Search"

@@ -115,7 +115,11 @@ const ReviewCard = (props) => {
                 {props.text && (
                   <>
                     <span
-                      className={isReadMore ? "hidden" : "block"}
+                      className={
+                        isReadMore
+                          ? "hidden"
+                          : "block w-72 sm:w-full overflow-hidden"
+                      }
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(
                           props.text
@@ -129,7 +133,9 @@ const ReviewCard = (props) => {
                     />
                     <span
                       className={
-                        isReadMore ? "block h-36 overflow-hidden" : "hidden"
+                        isReadMore
+                          ? "block h-36 w-72 sm:w-full overflow-hidden"
+                          : "hidden"
                       }
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(

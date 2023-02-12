@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import ReviewCard from "./ReviewCard";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
@@ -11,6 +12,31 @@ const ReviewsMobile = (props) => {
   const [sortBy, setSortBy] = useState();
 
   const [searchText, setSearchText] = useState("");
+
+  const [pagination, setPagination] = useState({
+    data: props.data,
+    offset: 0,
+    numberPerPage: 6,
+    pageCount: 0,
+    currentData: [],
+  });
+
+  useEffect(() => {
+    setPagination((prevState) => ({
+      ...prevState,
+      pageCount: prevState.data.length / prevState.numberPerPage,
+      currentData: prevState.data.slice(
+        pagination.offset,
+        pagination.offset + pagination.numberPerPage
+      ),
+    }));
+  }, [pagination.numberPerPage, pagination.offset]);
+
+  const handlePageClick = (event) => {
+    const selected = event.selected;
+    const offset = selected * pagination.numberPerPage;
+    setPagination({ ...pagination, offset });
+  };
 
   return (
     <div id="bookReviews-mobile">
@@ -145,7 +171,6 @@ const ReviewsMobile = (props) => {
               disabled={filterStars || sortBy}
             />
           </div>
-
           {/* If popular sort order and star filter is set, order by default and then filter by stars */}
           {filterStars &&
             sortBy === "popular" &&
@@ -156,10 +181,11 @@ const ReviewsMobile = (props) => {
                   data.stars === filterStars && (
                     <div
                       id="review"
-                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                       key={i}
                     >
                       <ReviewCard
+                        mobile={false}
                         image={data.image}
                         showAvatars={showAvatars}
                         author={data.author}
@@ -180,10 +206,11 @@ const ReviewsMobile = (props) => {
               .map((data, i) => (
                 <div
                   id="sort-popular"
-                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard
+                    mobile={false}
                     image={data.image}
                     showAvatars={showAvatars}
                     author={data.author}
@@ -209,10 +236,11 @@ const ReviewsMobile = (props) => {
                   data.stars === filterStars && (
                     <div
                       id="filter-sort-new-old"
-                      className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                       key={i}
                     >
                       <ReviewCard
+                        mobile={false}
                         image={data.image}
                         showAvatars={showAvatars}
                         author={data.author}
@@ -239,10 +267,11 @@ const ReviewsMobile = (props) => {
                   data.stars === filterStars && (
                     <div
                       id="filter-sort-old-new"
-                      className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                       key={i}
                     >
                       <ReviewCard
+                        mobile={false}
                         image={data.image}
                         showAvatars={showAvatars}
                         author={data.author}
@@ -267,10 +296,11 @@ const ReviewsMobile = (props) => {
               .map((data, i) => (
                 <div
                   id="sort-new-old"
-                  className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard
+                    mobile={false}
                     image={data.image}
                     showAvatars={showAvatars}
                     author={data.author}
@@ -294,10 +324,11 @@ const ReviewsMobile = (props) => {
               .map((data, i) => (
                 <div
                   id="sort-old-new"
-                  className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard
+                    mobile={false}
                     image={data.image}
                     showAvatars={showAvatars}
                     author={data.author}
@@ -317,10 +348,11 @@ const ReviewsMobile = (props) => {
                 data.stars === filterStars && (
                   <div
                     id="filter-stars"
-                    className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
+                      mobile={false}
                       image={data.image}
                       showAvatars={showAvatars}
                       author={data.author}
@@ -350,10 +382,11 @@ const ReviewsMobile = (props) => {
               .map((data, i) => (
                 <div
                   id="search-filter"
-                  className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard
+                    mobile={false}
                     image={data.image}
                     showAvatars={showAvatars}
                     author={data.author}
@@ -368,24 +401,48 @@ const ReviewsMobile = (props) => {
           {/* If sort order, star filter and search box are not set, then display default */}
           {searchText === "" &&
             filterStars === undefined &&
-            sortBy === undefined &&
-            props.data.map((data, i) => (
-              <div
-                id="default"
-                className="max-w-2xl mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                key={i}
-              >
-                <ReviewCard
-                  image={data.image}
-                  showAvatars={showAvatars}
-                  author={data.author}
-                  date={data.date}
-                  stars={data.stars}
-                  text={data.text}
-                  likes={data.likes}
+            sortBy === undefined && (
+              <div id="pagination">
+                {pagination.currentData &&
+                  pagination.currentData.map((data, i) => (
+                    <div
+                      id="default"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      key={i}
+                    >
+                      <ReviewCard
+                        mobile={false}
+                        image={data.image}
+                        showAvatars={showAvatars}
+                        author={data.author}
+                        date={data.date}
+                        stars={data.stars}
+                        text={data.text}
+                        likes={data.likes}
+                      />
+                    </div>
+                  ))}
+                <ReactPaginate
+                  previousLabel={"previous"}
+                  nextLabel={"next"}
+                  breakLabel={"..."}
+                  pageCount={pagination.pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={handlePageClick}
+                  containerClassName={
+                    "flex capitalize justify-center items-center mb-10 mt-20 text-md"
+                  }
+                  pageLinkClassName={
+                    "m-2 p-2 sm:p-3 rounded-md font-semibold text-md bg-rose-50 dark:bg-gray-800 hover:bg-rose-300 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+                  }
+                  activeClassName={"text-rose-600 dark:text-rose-600"}
+                  nextLinkClassName={"p-1 sm:p-2 font-semibold"}
+                  previousLinkClassName={"p-1 sm:p-2 font-semibold"}
+                  disabledLinkClassName={"text-gray-500 cursor-not-allowed"}
                 />
               </div>
-            ))}
+            )}
         </div>
       )}
     </div>

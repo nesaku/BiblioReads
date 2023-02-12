@@ -58,7 +58,8 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 ## Automatically Redirect Links
 
 ### LibRedirect
-Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically redirect Goodreads links to BiblioReads!
+
+Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically redirect Goodreads links to BiblioReads.
 
 ### Redirector
 
@@ -84,6 +85,18 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 - Redirect to: `https://biblioreads.ml/author/show/$1`
 - Pattern type: Wildcard Expression
 - Pattern Description: Redirects all Goodreads author page urls to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
+#### To Redirect Search Pages:
+
+- Description: Goodreads to BiblioReads Search Page
+- Example URL: https://www.goodreads.com/search?q=the+hobbit&qid=
+- Include pattern: `^https:\/\/www\.goodreads\.com\/search\?q=(.*)$`
+- Redirect to: `https://biblioreads.ml/search/$1`
+- Pattern type: Regular Expression
+- Pattern Description: Redirects all Goodreads search page urls to BiblioReads
 - Advanced options:
   - Apply to:
     - [x] Main window (address bar)

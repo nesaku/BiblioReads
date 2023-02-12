@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useState } from "react";
 
 const AuthorSeries = (props) => {
@@ -15,15 +16,16 @@ const AuthorSeries = (props) => {
           <a href={data.seriesURL}>
             <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
               <div className="ml-8 sm:ml-16 w-48 sm:w-full">
-                <a
-                  className="text-xl sm:text-2xl font-semibold hover:underline"
-                  href={data.seriesURL}
-                >
-                  <h3>{data.title}</h3>
-                </a>
-                <a className="text-md hover:underline" href={data.authorURL}>
-                  {data.author}
-                </a>
+                <Link href={data.seriesURL}>
+                  <h3 className="text-xl sm:text-2xl font-semibold hover:underline">
+                    {data.title}
+                  </h3>
+                </Link>
+                <Link href={data.authorURL}>
+                  <p className="text-md hover:underline" href={data.authorURL}>
+                    {data.author}
+                  </p>
+                </Link>
                 <div className="flex items-center mt-4">
                   <svg
                     width="24"

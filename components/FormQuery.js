@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Footer from "./global-components/Footer";
 
 const FormQuery = () => {
   const router = useRouter();
