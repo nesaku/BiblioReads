@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = () => {
+const Loader = (props) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-5 bg-rose-100 dark:bg-gray-900 min-w-screen">
       <div className="flex space-x-2 animate-pulse">
@@ -10,7 +10,7 @@ const Loader = () => {
       </div>
       <div className="mt-10">
         <h1 className="animate-pulse text-lg font-md text-gray-900 dark:text-gray-100">
-          Scraping Your Book...
+          {props.other ? "Getting Information..." : "Scraping Your Book..."}
         </h1>
       </div>
     </div>

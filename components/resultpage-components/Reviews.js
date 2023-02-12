@@ -15,7 +15,7 @@ const Reviews = (props) => {
   return (
     <>
       <div id="bookReviews">
-        <h2 className="font-bold text-2xl mt-12 mb-4 underline decoration-rose-600 dark:text-gray-100/80">
+        <h2 className="font-bold text-2xl mt-0 mb-4 underline decoration-rose-600 dark:text-gray-100/80">
           Reviews:
         </h2>
         <button
@@ -127,6 +127,8 @@ const Reviews = (props) => {
                   Search:{" "}
                 </p>
                 <input
+                  name="search-review-text"
+                  aria-label="Search Review Text"
                   type="text"
                   placeholder="Search review text"
                   className={
@@ -144,6 +146,8 @@ const Reviews = (props) => {
                 </p>
                 <label className="inline-flex relative items-center cursor-pointer">
                   <input
+                    name="show-avatars-toggle"
+                    aria-label="Show Profile Avatars"
                     type="checkbox"
                     onClick={() => {
                       showAvatars
@@ -167,7 +171,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="review"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -192,7 +196,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-popular"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -222,7 +226,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="filter-sort-new-old"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -253,7 +257,7 @@ const Reviews = (props) => {
                     data.stars === filterStars && (
                       <div
                         id="filter-sort-old-new"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                         key={i}
                       >
                         <ReviewCard
@@ -282,7 +286,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-new-old"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -310,7 +314,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="sort-old-new"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -334,7 +338,7 @@ const Reviews = (props) => {
                   data.stars === filterStars && (
                     <div
                       id="filter-stars"
-                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                       key={i}
                     >
                       <ReviewCard
@@ -368,7 +372,7 @@ const Reviews = (props) => {
                 .map((data, i) => (
                   <div
                     id="search-filter"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                     key={i}
                   >
                     <ReviewCard
@@ -391,7 +395,7 @@ const Reviews = (props) => {
               props.data.map((data, i) => (
                 <div
                   id="default"
-                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-gray-400 dark:bg-opacity-10 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
                   key={i}
                 >
                   <ReviewCard

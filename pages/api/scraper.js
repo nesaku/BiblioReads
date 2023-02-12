@@ -1,59 +1,26 @@
 const cheerio = require("cheerio");
-// const puppeteer = require("puppeteer");
-import chromium from "chrome-aws-lambda";
-
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(() => resolve(), ms));
-}
 
 const Scraper = async (req, res) => {
   if (req.method === "POST") {
-    // Get The URL that needs to be scraped
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
-      // Start Puppeteer Configuration
-      const browser = await chromium.puppeteer.launch({
-        args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
-        headless: true,
-        ignoreHTTPSErrors: true,
+      const response = await fetch(`${scrapeURL}`, {
+        method: "GET",
+        headers: new Headers({
+          "User-Agent":
+            process.env.NEXT_PUBLIC_USER_AGENT ||
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+        }),
       });
-
-      const page = await browser.newPage();
-
-      await page.goto(scrapeURL, { waitUntil: "networkidle0" });
-
-      const bodyHandle = await page.$("body");
-      const { height } = await bodyHandle.boundingBox();
-      await bodyHandle.dispose();
-
-      const viewportHeight = page.viewport().height;
-
-      let viewportIncr = 0;
-      while (viewportIncr + viewportHeight < height) {
-        await page.evaluate((_viewportHeight) => {
-          window.scrollBy(0, _viewportHeight);
-        }, viewportHeight);
-        await wait(300);
-        viewportIncr = viewportIncr + viewportHeight;
-      }
-
-      const pageData = await page.evaluate(() => {
-        return {
-          html: document.documentElement.innerHTML,
-        };
-      });
-      // await wait(100);
-      await browser.close();
-      // End Puppeteer Configuration
-      const $ = cheerio.load(pageData.html);
+      const htmlString = await response.text();
+      const $ = cheerio.load(htmlString);
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
       const title = $('h1[data-testid="bookTitle"]').text();
-      const author = $('h3[aria-label="List of contributors"]')
-        .text()
-        .replace("...more", "");
+      const author = $(".ContributorLinksList > span > a > span").text();
+      const authorURL = $(".ContributorLinksList > span > a")
+        .attr("href")
+        .replace("https://www.goodreads.com", "");
       const rating = $("div.RatingStatistics__rating").text().slice(0, 4);
       const ratingCount = $('[data-testid="ratingsCount"]')
         .text()
@@ -84,32 +51,80 @@ const Scraper = async (req, res) => {
             .attr("href")
             .replace("https://www.goodreads.com", "");
           const id = i + 1;
-          return { id: id, src: src, title: title, author: author, url: url };
+          return {
+            id: id,
+            src: src,
+            title: title,
+            author: author,
+            url: url,
+          };
         })
         .toArray();
+
+      const rating5 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(1) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+      const rating4 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(2) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+      const rating3 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(3) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const rating2 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(4) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const rating1 = $(
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(5) > div:nth-child(3)"
+      )
+        .text()
+        .split("(")[0]
+        .replace(" ", "");
+
+      const reviewBreakdown = {
+        rating5: rating5,
+        rating4: rating4,
+        rating3: rating3,
+        rating2: rating2,
+        rating1: rating1,
+      };
+
       const reviews = $(".ReviewsList > div:nth-child(2) > div")
-        .map((i, info) => {
-          const $info = $(info);
-          const image = $info
+        .map((i, el) => {
+          const $el = $(el);
+          const image = $el
             .find("article > div > div > section > a > img")
             .attr("src");
-          const author = $info
+          const author = $el
             .find(
               "article > div > div > section:nth-child(2) > span:nth-child(1) > div > a"
             )
             .text();
-          const date = $info
+          const date = $el
             .find("article > section > section:nth-child(1) > span > a")
             .text();
-          const stars = $info
+          const stars = $el
             .find("article > section > section:nth-child(1) > div > span")
             .attr("aria-label");
-          const text = $info
+          const text = $el
             .find(
               "article > section > section:nth-child(2) > section > div > div > span"
             )
             .html();
-          const likes = $info
+          const likes = $el
             .find(
               "article > section > footer > div > div:nth-child(1) > button > span"
             )
@@ -130,13 +145,14 @@ const Scraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        source: "https://github.com/nesaku/biblioreads",
         status: "Success",
+        source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         cover: cover,
         series: series,
         title: title,
         author: author,
+        authorURL: authorURL,
         rating: rating,
         ratingCount: ratingCount,
         reviewsCount: reviewsCount,
@@ -145,6 +161,7 @@ const Scraper = async (req, res) => {
         bookEdition: bookEdition,
         publishDate: publishDate,
         related: related,
+        reviewBreakdown: reviewBreakdown,
         reviews: reviews,
         lastScraped: lastScraped,
       });

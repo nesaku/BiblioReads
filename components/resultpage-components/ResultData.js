@@ -5,8 +5,8 @@ import Reviews from "./Reviews";
 import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
 import Meta from "../global-components/Meta";
+import ReviewBreakdown from "./ReviewBreakdown";
 
-// Used "const ResultData = ({ scrapedData })" instead of "const ResultData = (props.scrapedData) for readability
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -34,7 +34,12 @@ const ResultData = ({ scrapedData }) => {
 
             <p className="mt-2 mx-auto max-w-sm xl:max-w-md">
               <span className="font-semibold">By:</span>{" "}
-              <span className="text-md">{scrapedData.author}</span>
+              <a
+                className="text-md hover:underline"
+                href={scrapedData.authorURL}
+              >
+                {scrapedData.author}
+              </a>
             </p>
             <div id="bookCover" className="my-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
@@ -62,8 +67,8 @@ const ResultData = ({ scrapedData }) => {
                     />
                     <img
                       src={`/img?url=${scrapedData.cover}&maxage=30d`}
-                      alt={`${scrapedData.coverAltText} book cover`}
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                      alt=""
                       width="620"
                       height="962"
                       fetchpriority="high"
@@ -73,16 +78,6 @@ const ResultData = ({ scrapedData }) => {
                   </picture>
                 </>
               )}
-              {/* 
-              <div id="lastScraped" className="hidden lg:block">
-                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600 mt-12">
-                  Last Scraped:{" "}
-                </h2>
-                <span className="text-md">
-                  <code>{scrapedData.lastScraped}</code>
-                </span>
-              </div>
-              */}
             </div>
           </div>
           <div
@@ -197,7 +192,7 @@ const ResultData = ({ scrapedData }) => {
               </h2>
               <span className="text-md">{scrapedData.lang}</span>
             </div>
-            <div id="bookURL" className="mb-6">
+            <div id="bookURL" className="hidden sm:flex flex-col mb-4">
               <h2
                 className={
                   scrapedData.scrapeURL
@@ -208,7 +203,7 @@ const ResultData = ({ scrapedData }) => {
                 Goodreads URL:{" "}
               </h2>
               <a
-                className="text-blue-600 dark:text-blue-500 underline"
+                className="text-blue-600 dark:text-blue-500 underline truncate"
                 target="_blank"
                 rel="noreferrer"
                 href={
@@ -217,19 +212,22 @@ const ResultData = ({ scrapedData }) => {
                     : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`
                 }
               >
-                <span className=" text-xs lg:text-md">
+                <p className="text-sm">
                   {scrapedData.scrapeURL.includes("https://www.goodreads.com")
                     ? scrapedData.scrapeURL
                     : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
-                </span>
+                </p>
               </a>
             </div>
 
+            {scrapedData.reviewBreakdown && (
+              <ReviewBreakdown data={scrapedData} />
+            )}
             <div className="block lg:hidden">
-              {scrapedData.related && (
+              {scrapedData.related != "" && (
                 <SimilarBooks data={scrapedData.related} mobile={true} />
               )}
-              {scrapedData.reviews && (
+              {scrapedData.reviews != "" && (
                 <ReviewsMobile data={scrapedData.reviews} />
               )}
             </div>
@@ -238,10 +236,10 @@ const ResultData = ({ scrapedData }) => {
       )}
       {scrapedData.title && (
         <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {scrapedData.related && (
+          {scrapedData.related != "" && (
             <SimilarBooks data={scrapedData.related} mobile={false} />
           )}
-          {scrapedData.reviews && <Reviews data={scrapedData.reviews} />}
+          {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
         </div>
       )}
     </>
