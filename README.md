@@ -57,6 +57,9 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Automatically Redirect Links
 
+### LibRedirect
+Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically redirect Goodreads links to BiblioReads!
+
 ### Redirector
 
 You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance url):
