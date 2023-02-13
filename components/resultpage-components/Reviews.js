@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import ReviewCard from "./ReviewCard";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
@@ -11,6 +12,31 @@ const Reviews = (props) => {
   const [sortBy, setSortBy] = useState();
 
   const [searchText, setSearchText] = useState("");
+
+  const [pagination, setPagination] = useState({
+    data: props.data,
+    offset: 0,
+    numberPerPage: 6,
+    pageCount: 0,
+    currentData: [],
+  });
+
+  useEffect(() => {
+    setPagination((prevState) => ({
+      ...prevState,
+      pageCount: prevState.data.length / prevState.numberPerPage,
+      currentData: prevState.data.slice(
+        pagination.offset,
+        pagination.offset + pagination.numberPerPage
+      ),
+    }));
+  }, [pagination.numberPerPage, pagination.offset]);
+
+  const handlePageClick = (event) => {
+    const selected = event.selected;
+    const offset = selected * pagination.numberPerPage;
+    setPagination({ ...pagination, offset });
+  };
 
   return (
     <>
@@ -391,25 +417,48 @@ const Reviews = (props) => {
             {/* If sort order, star filter and search box are not set, then display default */}
             {searchText === "" &&
               filterStars === undefined &&
-              sortBy === undefined &&
-              props.data.map((data, i) => (
-                <div
-                  id="default"
-                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                  key={i}
-                >
-                  <ReviewCard
-                    mobile={false}
-                    image={data.image}
-                    showAvatars={showAvatars}
-                    author={data.author}
-                    date={data.date}
-                    stars={data.stars}
-                    text={data.text}
-                    likes={data.likes}
+              sortBy === undefined && (
+                <div id="pagination">
+                  {pagination.currentData &&
+                    pagination.currentData.map((data, i) => (
+                      <div
+                        id="default"
+                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                        key={i}
+                      >
+                        <ReviewCard
+                          mobile={false}
+                          image={data.image}
+                          showAvatars={showAvatars}
+                          author={data.author}
+                          date={data.date}
+                          stars={data.stars}
+                          text={data.text}
+                          likes={data.likes}
+                        />
+                      </div>
+                    ))}
+                  <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakLabel={"..."}
+                    pageCount={pagination.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={
+                      "flex capitalize justify-center items-center mb-10 mt-20 text-md"
+                    }
+                    pageLinkClassName={
+                      "m-2 p-3 rounded-md font-semibold text-md bg-rose-50 dark:bg-gray-800 hover:bg-rose-300 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+                    }
+                    activeClassName={"text-rose-600 dark:text-rose-600"}
+                    nextLinkClassName={"p-2 font-semibold"}
+                    previousLinkClassName={"p-2 font-semibold"}
+                    disabledLinkClassName={"text-gray-500 cursor-not-allowed"}
                   />
                 </div>
-              ))}
+              )}
           </div>
         )}
       </div>

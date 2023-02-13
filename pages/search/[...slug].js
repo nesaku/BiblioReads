@@ -6,6 +6,7 @@ import Footer from "../../components/global-components/Footer";
 import Loader from "../../components/global-components/Loader";
 import ErrorMessage from "../../components/resultpage-components/ErrorMessage";
 import SearchResultData from "../../components/searchpage-components/SearchResultData";
+import SearchBox from "../../components/searchpage-components/SearchBox";
 
 const Slug = () => {
   const router = useRouter();
@@ -36,8 +37,6 @@ const Slug = () => {
     }
   }, [slug]);
 
-  console.log(scrapedData);
-
   return (
     <div>
       <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
@@ -53,11 +52,44 @@ const Slug = () => {
               <ErrorMessage status="ScraperError" />
             )}
             {scrapedData && (
-              <SearchResultData
-                query={scrapedData.scrapeURL}
-                result={scrapedData.result}
-                numberOfResults={scrapedData.numberOfResults}
-              />
+              <>
+                {scrapedData.numberOfResults != "" && (
+                  <>
+                    <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
+                      Search Results For:{" "}
+                      {scrapedData.scrapeURL &&
+                        scrapedData.scrapeURL.replace(
+                          "https://www.goodreads.com/search?q=",
+                          ""
+                        )}
+                    </h2>
+
+                    <div className="flex justify-center items-center align-middle">
+                      <div className="flex flex-col xl:flex-row justify-center items-center text-center w-full mt-8">
+                        <SearchBox />
+                      </div>
+                    </div>
+                  </>
+                )}
+                <SearchResultData
+                  query={scrapedData.scrapeURL}
+                  result={scrapedData.result}
+                  numberOfResults={scrapedData.numberOfResults}
+                />
+                {scrapedData.numberOfResults === "No results." && (
+                  <div
+                    id="noResults"
+                    className="flex justify-center text-center mt-10 mb-40 sm:mb-[28vh]"
+                  >
+                    <div className="max-w-lg break-words text-lg">
+                      <h2 className="text-red-600/80 text-3xl mb-4">
+                        No Results Found.
+                      </h2>
+                      <p>Please check your spelling and try again.</p>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </>
         )}

@@ -2,10 +2,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import Meta from "../global-components/Meta";
-import SearchBox from "./SearchBox";
 
 const SearchResults = (props) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   return (
@@ -22,36 +20,20 @@ const SearchResults = (props) => {
             : " "
         }
       />
-      {props.numberOfResults != "" && (
-        <>
-          <h2 className="font-bold text-4xl text-center pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
-            Search Results For:{" "}
-            {props.query &&
-              props.query.replace("https://www.goodreads.com/search?q=", "")}
-          </h2>
-
-          <div className="flex justify-center items-center align-middle">
-            <div className="flex flex-col xl:flex-row justify-center items-center text-center w-full mt-8">
-              <SearchBox />
-            </div>
-          </div>
-        </>
-      )}
       {props.result &&
         props.result.map((data, i) => (
           <div key={i} className="max-w-[1000px]">
-            <Link href={data.bookURL}>
+            <a href={data.bookURL}>
               <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
                 <div className="ml-8 pr-2 sm:pr-8 sm:ml-16 w-40 sm:w-64 lg:w-[1000px]">
-                  <a
-                    className="text-lg sm:text-2xl font-semibold hover:underline"
-                    href={data.bookURL}
-                  >
-                    <h3>{data.title}</h3>
-                  </a>
-                  <a className="text-md hover:underline" href={data.authorURL}>
-                    {data.author}
-                  </a>
+                  <Link href={data.bookURL}>
+                    <h3 className="text-lg sm:text-2xl font-semibold hover:underline">
+                      {data.title}
+                    </h3>
+                  </Link>
+                  <Link href={data.authorURL}>
+                    <p className="text-md hover:underline">{data.author}</p>
+                  </Link>
                   <div className="flex items-center mt-4">
                     <svg
                       width="24"
@@ -76,16 +58,8 @@ const SearchResults = (props) => {
                   </div>
                 </div>
                 <div className="flex mr-8">
-                  {!imageLoaded && (
-                    <img
-                      src="/cover-placeholder.svg"
-                      alt=""
-                      width="98"
-                      height="148"
-                    />
-                  )}
                   {!imageError ? (
-                    <picture className={imageLoaded ? "" : "hidden"}>
+                    <picture>
                       <source
                         srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}
                         type="image/webp"
@@ -102,9 +76,8 @@ const SearchResults = (props) => {
                         width="98"
                         height="148"
                         className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                        loading="lazy"
+                        loading="eager"
                         onError={() => setImageError(true)}
-                        onLoad={() => setImageLoaded(true)}
                       />
                     </picture>
                   ) : (
@@ -118,7 +91,7 @@ const SearchResults = (props) => {
                   )}
                 </div>
               </div>
-            </Link>
+            </a>
           </div>
         ))}
     </div>

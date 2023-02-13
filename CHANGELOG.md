@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.3] - Feb 12, 2023
+
+### Added
+
+- Add pagination to reviews
+- Added search page Redirector info to the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
+- Show message when there are no search results
+
+### Changed
+
+- Remove Search link from the header - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/40)
+
+### Fixed
+
+- Fix search box remaining visible underneath the loader when loading search results
+- Fix `<a> cannot appear as a descendant of <a>` error on the author page
+- Fix review text overflow on mobile screens
+- Fix review breakdown width on mobile screens
+- Fix placeholder image being show on search page
+- Fix review loading performance - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/26)
+
 ## [2.5.2] - Feb 11, 2023
 
 ### Changed
@@ -30,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-`<a> cannot appear as a descendant of <a>` error
+- Fix `<a> cannot appear as a descendant of <a>` error on the book page
 
 ## [2.5.0] - Feb 10, 2023
 
@@ -59,7 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improve footer spacing on mobile devices
+- Improve footer spacing on mobile screens
 
 ### Fixed
 
