@@ -16,7 +16,7 @@ The name of the Country the instance is hosted in. Ex. Germany
 The name of the hosting provider (ex. Hetzner) or your ISP (ex. Vodafone Deutschland) for your instance. Along with the CDN (ex. Cloudflare) if applicable.
 
 **Contact details**
-Input your contact information should we need to contact you privately. We recommend Matrix. If you don't have a contact method, or don't want your contact method public, tell us.
+Input your contact information should we need to contact you privately. If you don't have a contact method, or don't want your contact method public, tell us.
 
 **Any Other Information?**
 Add other information you would like to add?
