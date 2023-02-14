@@ -12,7 +12,7 @@ The url your instance will be available at.
 **What Country Is Your Instance Being Hosted In?**
 The name of the Country the instance is hosted in. Ex. Germany
 
-**What Hosting Provider Is Used? (Input your ISP's name if you are hosting at home)**
+**What Hosting Provider Is Used? (Input your ISP's name if you are self-hosting)**
 The name of the hosting provider (ex. Hetzner) or your ISP (ex. Vodafone Deutschland) for your instance. Along with the CDN (ex. Cloudflare) if applicable.
 
 **Contact details**
