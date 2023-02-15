@@ -25,9 +25,7 @@ const Scraper = async (req, res) => {
       const ratingCount = $('[data-testid="ratingsCount"]')
         .text()
         .split("rating")[0];
-      const reviewsCount = $('[data-testid="reviewsCount"]')
-        .text()
-        .split("reviews")[0];
+      const reviewsCount = $('[data-testid="reviewsCount"]').text();
       const desc = $('[data-testid="description"]').text();
       const genres = $('[data-testid="genresList"] > ul > span > span')
         .map((i, el) => $(el).find("span").text().replace("Genres", ""))

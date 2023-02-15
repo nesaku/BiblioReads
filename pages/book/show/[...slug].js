@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import ResultData from "../../../components/resultpage-components/ResultData";
 import Header from "../../../components/global-components/Header";
 import Footer from "../../../components/global-components/Footer";
-import ErrorMessage from "../../../components/resultpage-components/ErrorMessage";
 import Loader from "../../../components/global-components/Loader";
+import ErrorMessage from "../../../components/global-components/ErrorMessage";
+import ResultData from "../../../components/resultpage-components/ResultData";
 
 const Slug = () => {
   const router = useRouter();

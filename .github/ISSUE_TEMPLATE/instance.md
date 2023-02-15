@@ -19,4 +19,4 @@ The name of the hosting provider (ex. Hetzner) or your ISP (ex. Vodafone Deutsch
 Input your contact information should we need to contact you privately. If you don't have a contact method, or don't want your contact method public, tell us.
 
 **Any Other Information?**
-Add other information you would like to add?
+Add any other information you would like to add?

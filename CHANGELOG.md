@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.4] - Feb 14, 2023
+
+### Added
+
+- Add more unsupported routes
+
+### Changed
+
+- Move `ErrorMessage.js` component location
+- Centralize version info to the footer component
+
+### Fixed
+
+- Fix bug in the number of reviews shown when there is only 1 review on the book page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/48)
+- Fix description and genre section still being shown even when there is no content
+
 ## [2.5.3] - Feb 12, 2023
 
 ### Added

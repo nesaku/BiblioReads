@@ -113,45 +113,54 @@ const ResultData = ({ scrapedData }) => {
               <div className="flex justify-center lg:justify-start">
                 <div>
                   <span className="text-md">
-                    {scrapedData.ratingCount}Ratings &amp; {""}
-                    {scrapedData.reviewsCount}Reviews
+                    {scrapedData.ratingCount.includes("1")
+                      ? `${scrapedData.ratingCount}Rating`
+                      : `${scrapedData.ratingCount}Ratings`}{" "}
+                    &amp;{" "}
+                    {scrapedData.reviewsCount.includes("reviews")
+                      ? scrapedData.reviewsCount.split("reviews")[0]
+                      : scrapedData.reviewsCount.split("review")[0]}
+                    {scrapedData.reviewsCount.includes("reviews")
+                      ? "Reviews"
+                      : "Review"}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div
-              id="bookDescription"
-              className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
-            >
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                Description:{" "}
-              </h2>
-              <ReadMore>
-                {scrapedData.desc ? scrapedData.desc : "Loading"}
-              </ReadMore>
-            </div>
-            <div
-              id="bookGenres"
-              className={
-                scrapedData.genres
-                  ? "max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
-                  : "hidden"
-              }
-            >
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                Genres:{" "}
-              </h2>
-              <span>
-                {scrapedData.genres &&
-                  JSON.stringify(scrapedData.genres)
+            {scrapedData.desc && (
+              <div
+                id="bookDescription"
+                className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
+              >
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Description:{" "}
+                </h2>
+                <ReadMore>{scrapedData.desc}</ReadMore>
+              </div>
+            )}
+            {scrapedData.genres != "" && (
+              <div
+                id="bookGenres"
+                className={
+                  scrapedData.genres
+                    ? "max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
+                    : "hidden"
+                }
+              >
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Genres:{" "}
+                </h2>
+                <span>
+                  {JSON.stringify(scrapedData.genres)
                     .replace("[", "")
                     .replace("]", "")
                     .replace(",", "")
                     .replaceAll(",", ", ")
                     .replaceAll('"', "")}
-              </span>
-            </div>
+                </span>
+              </div>
+            )}
             <div id="bookEdition">
               <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Book Edition:

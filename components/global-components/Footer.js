@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.5.3";
+  const version = "v2.5.4";
+  console.log(`%c${version} (Oreki)`, `color:green`);
 
   return (
     <footer className="text-center w-full ">

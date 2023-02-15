@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import Header from "../../../components/global-components/Header";
 import Footer from "../../../components/global-components/Footer";
 import Loader from "../../../components/global-components/Loader";
+import ErrorMessage from "../../../components/global-components/ErrorMessage";
 import AuthorResultData from "../../../components/authorpage-components/AuthorResultData";
-import ErrorMessage from "../../../components/resultpage-components/ErrorMessage";
 
 const Slug = () => {
   const router = useRouter();
