@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] - Feb 16, 2023
+
+### Added
+
+- Add custom Error 404 and 500 pages
+- Make the version number in the footer link to the `Changelog.md` file on Github. - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/34)
+- Add "View on Goodreads" button to error pages - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/46)
+
+### Changed
+
+- Include error code in the route not supported message - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/46)
+
+### Fixed
+
+- Fix bug when there is no author description - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/50)
+- Fix the seperation of author names and individual author links - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/49)
+- Fix review searching - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/51)
+
 ## [2.5.4] - Feb 14, 2023
 
 ### Added

@@ -380,7 +380,6 @@ const Reviews = (props) => {
                     </div>
                   )
               )}
-
             {/* If sort order and star filter are not set and the search box is used, then display default */}
             {searchText &&
               filterStars === undefined &&

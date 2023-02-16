@@ -2,7 +2,9 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.5.4";
+  const version = "v2.6.0";
+  const versionSlug = "260---feb-16-2023";
+
   console.log(`%c${version} (Oreki)`, `color:green`);
 
   return (
@@ -66,9 +68,14 @@ const Footer = () => {
               </li>
 
               <li>
-                <span className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
+                <a
+                  href={`https://github.com/nesaku/BiblioReads/blob/main/CHANGELOG.md#${versionSlug}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
                   {version}
-                </span>
+                </a>
               </li>
 
               <li className="items-center justify-center align-middle content-center">

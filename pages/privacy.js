@@ -8,6 +8,7 @@ const Privacy = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
       <Meta title={"Privacy"} />
+
       <Header />
       <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
         <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">

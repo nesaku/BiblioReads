@@ -40,12 +40,27 @@ const Slug = () => {
     <div>
       <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
         <Header />
-        {error && <ErrorMessage status="500" />}
+        {error && (
+          <ErrorMessage
+            status="500"
+            url={`https://www.goodreads.com/author/show/${slug}`}
+          />
+        )}
         {!error && (
           <>
             {scrapedData.name === undefined && <Loader other={true} />}
-            {scrapedData.error && <ErrorMessage status="404" />}
-            {scrapedData.name === "" && <ErrorMessage status="ScraperError" />}
+            {scrapedData.error && (
+              <ErrorMessage
+                status="404"
+                url={`https://www.goodreads.com/author/show/${slug}`}
+              />
+            )}
+            {scrapedData.name === "" && (
+              <ErrorMessage
+                status="ScraperError"
+                url={`https://www.goodreads.com/author/show/${slug}`}
+              />
+            )}
             {scrapedData && <AuthorResultData scrapedData={scrapedData} />}
           </>
         )}

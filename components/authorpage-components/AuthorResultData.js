@@ -134,20 +134,25 @@ const AuthorResultData = ({ scrapedData }) => {
                 </div>
               </div>
             )}
+            {scrapedData.desc && (
+              <div
+                id="authorDescription"
+                className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
+              >
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Description:{" "}
+                </h2>
 
-            <div
-              id="authorDescription"
-              className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
-            >
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                Description:{" "}
-              </h2>
-              {scrapedData.desc && (
                 <>
                   <span
                     className={isReadMore ? "hidden" : "block"}
                     dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(scrapedData.desc),
+                      __html: DOMPurify.sanitize(
+                        scrapedData.desc.replaceAll(
+                          "https://www.goodreads.com",
+                          ""
+                        )
+                      ),
                     }}
                   />
                   <span
@@ -155,7 +160,12 @@ const AuthorResultData = ({ scrapedData }) => {
                       isReadMore ? "block h-36 overflow-hidden" : "hidden"
                     }
                     dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(scrapedData.desc),
+                      __html: DOMPurify.sanitize(
+                        scrapedData.desc.replaceAll(
+                          "https://www.goodreads.com",
+                          ""
+                        )
+                      ),
                     }}
                   />
                   <span
@@ -165,9 +175,8 @@ const AuthorResultData = ({ scrapedData }) => {
                     {isReadMore ? " ...read more." : "(Show less)"}
                   </span>
                 </>
-              )}
-            </div>
-
+              </div>
+            )}
             <div id="authorURL" className="mb-6">
               <h2
                 className={
