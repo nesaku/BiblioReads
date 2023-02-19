@@ -4,7 +4,7 @@ const ReviewBreakdown = ({ data }) => {
   return (
     <div
       id="reviewBreakdown"
-      className="flex flex-col items-center sm:items-start justify-center pr-0 sm:pr-3"
+      className="flex flex-col items-center lg:items-start justify-center pr-0 sm:pr-3"
     >
       <h2
         className={

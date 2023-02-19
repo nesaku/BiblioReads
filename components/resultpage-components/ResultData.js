@@ -31,16 +31,17 @@ const ResultData = ({ scrapedData }) => {
             <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
               {scrapedData.title}
             </h2>
-
-            <p className="mt-2 mx-auto max-w-sm xl:max-w-md">
+            <div className="mt-2 mx-auto max-w-sm xl:max-w-md">
               <span className="font-semibold">By:</span>{" "}
-              <a
-                className="text-md hover:underline"
-                href={scrapedData.authorURL}
-              >
-                {scrapedData.author}
-              </a>
-            </p>
+              {scrapedData.author.map((data, i) => (
+                <span key={i}>
+                  <a className="text-md hover:underline" href={data.url}>
+                    {(i ? ", " : "") + data.name}
+                  </a>
+                </span>
+              ))}
+            </div>
+
             <div id="bookCover" className="my-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
               {!imageLoaded && (

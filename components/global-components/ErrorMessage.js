@@ -112,7 +112,7 @@ const ErrorMessage = (props) => {
         </div>
       )}
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8 mb-4">
         <button
           type="button"
           onClick={() => router.reload()}
@@ -121,10 +121,12 @@ const ErrorMessage = (props) => {
           Try Again
         </button>
         <a
-          href="/"
-          className="font-semibold text-md text-white dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 py-5 px-2 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40"
+          href={props.url}
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-5 px-6 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
         >
-          Go Back Home
+          View On Goodreads
         </a>
       </div>
     </div>

@@ -28,9 +28,7 @@ const AuthorScraper = async (req, res) => {
       const deathDate = $(
         "div.rightContainer > div[itemprop = 'deathDate']"
       ).text();
-      const desc = $(".aboutAuthorInfo > span")
-        .html()
-        .replaceAll("https://www.goodreads.com", "");
+      const desc = $(".aboutAuthorInfo > span").html();
       const books = $("table.stacked> tbody > tr")
         .map((i, el) => {
           const $el = $(el);

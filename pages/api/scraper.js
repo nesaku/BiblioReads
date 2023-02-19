@@ -17,10 +17,19 @@ const Scraper = async (req, res) => {
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
       const title = $('h1[data-testid="bookTitle"]').text();
-      const author = $(".ContributorLinksList > span > a > span").text();
-      const authorURL = $(".ContributorLinksList > span > a")
-        .attr("href")
-        .replace("https://www.goodreads.com", "");
+      const author = $(".ContributorLinksList > span > a")
+        .map((i, el) => {
+          const $el = $(el);
+          const name = $el.find("span").text();
+          const url = $el.attr("href").replace("https://www.goodreads.com", "");
+          const id = i + 1;
+          return {
+            id: id,
+            name: name,
+            url: url,
+          };
+        })
+        .toArray();
       const rating = $("div.RatingStatistics__rating").text().slice(0, 4);
       const ratingCount = $('[data-testid="ratingsCount"]')
         .text()
@@ -101,30 +110,31 @@ const Scraper = async (req, res) => {
       };
 
       const reviews = $(".ReviewsList > div:nth-child(2) > div")
+        .filter(Boolean)
         .map((i, el) => {
           const $el = $(el);
           const image = $el
-            .find("article > div > div > section > a > img")
+            .find("div > article > div > div > section > a > img")
             .attr("src");
           const author = $el
             .find(
-              "article > div > div > section:nth-child(2) > span:nth-child(1) > div > a"
+              "div > article > div > div > section:nth-child(2) > span:nth-child(1) > div > a"
             )
             .text();
           const date = $el
-            .find("article > section > section:nth-child(1) > span > a")
+            .find("div > article > section > section:nth-child(1) > span > a")
             .text();
           const stars = $el
-            .find("article > section > section:nth-child(1) > div > span")
+            .find("div > article > section > section:nth-child(1) > div > span")
             .attr("aria-label");
           const text = $el
             .find(
-              "article > section > section:nth-child(2) > section > div > div > span"
+              "div > article > section > section:nth-child(2) > section > div > div > span"
             )
             .html();
           const likes = $el
             .find(
-              "article > section > footer > div > div:nth-child(1) > button > span"
+              "div > article > section > footer > div > div:nth-child(1) > button > span"
             )
             .text();
           const id = i + 1;
@@ -140,6 +150,7 @@ const Scraper = async (req, res) => {
           };
         })
         .toArray();
+
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
@@ -150,7 +161,6 @@ const Scraper = async (req, res) => {
         series: series,
         title: title,
         author: author,
-        authorURL: authorURL,
         rating: rating,
         ratingCount: ratingCount,
         reviewsCount: reviewsCount,

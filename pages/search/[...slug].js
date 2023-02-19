@@ -43,13 +43,26 @@ const Slug = () => {
         <Header />
 
         {/* Show loader or error based on the scraper data response */}
-        {error && <ErrorMessage status="500" />}
+        {error && (
+          <ErrorMessage
+            status="500"
+            url={`https://www.goodreads.com/search?utf8=%E2%9C%93&query=${slug}`}
+          />
+        )}
         {!error && (
           <>
             {scrapedData.status === undefined && <Loader other={true} />}
-            {scrapedData.error && <ErrorMessage status="404" />}
+            {scrapedData.error && (
+              <ErrorMessage
+                status="404"
+                url={`https://www.goodreads.com/search?utf8=%E2%9C%93&query=${slug}`}
+              />
+            )}
             {scrapedData.numberOfResults === "" && (
-              <ErrorMessage status="ScraperError" />
+              <ErrorMessage
+                status="ScraperError"
+                url={`https://www.goodreads.com/search?utf8=%E2%9C%93&query=${slug}`}
+              />
             )}
             {scrapedData && (
               <>
