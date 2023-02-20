@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add custom Error 404 and 500 pages
-- Make the version number in the footer link to the `Changelog.md` file on Github. - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/34)
+- Make the version number in the footer link to the `Changelog.md` file on GitHub. - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/34)
 - Add "View on Goodreads" button to error pages - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/46)
 
 ### Changed
