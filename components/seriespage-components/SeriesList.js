@@ -111,8 +111,13 @@ const SeriesList = (props) => {
                     {data.title}
                   </h3>
                 </Link>
-                <Link href={data.authorURL}>
-                  <p className="text-md hover:underline" href={data.authorURL}>
+                <Link
+                  href={data.authorURL.replace("https://www.goodreads.com", "")}
+                >
+                  <p
+                    className="text-md hover:underline w-fit"
+                    href={data.authorURL}
+                  >
                     {data.author}
                   </p>
                 </Link>

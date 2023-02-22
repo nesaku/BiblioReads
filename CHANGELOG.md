@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.1] - Feb 22, 2023
+
+### Added
+
+- Add book series redirector info to the README
+- Add search by buttons and path forwarding for search types (_Functionality not implemented yet_)
+- Add Codeberg information for issues on the privacy policy
+
+### Fixed
+
+- Fix author links on the series page
+- Fix images & media not being proxied in reviews
+- Fix `:` appearing while loading search results
+- Fix search page error location
+- Fix invalid DOM property `stroke-width` in the search icon
+
 ## [2.7.0] - Feb 21, 2023
 
 ### Added
@@ -19,7 +35,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Author link width on the search page
--
 
 ## [2.6.1] - Feb 16, 2023
 

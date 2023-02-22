@@ -89,6 +89,18 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
   - Apply to:
     - [x] Main window (address bar)
 
+#### To Redirect Book Series Pages:
+
+- Description: Goodreads to BiblioReads Book Series Page
+- Example URL: https://www.goodreads.com/series/66175-the-lord-of-the-rings
+- Include pattern: `https://www.goodreads.com/series/*`
+- Redirect to: `https://biblioreads.ml/series/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description: Redirects all Goodreads author page urls to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
 #### To Redirect Search Pages:
 
 - Description: Goodreads to BiblioReads Search Page

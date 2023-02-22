@@ -6,7 +6,6 @@ import Meta from "../global-components/Meta";
 import SeriesList from "./SeriesList";
 
 const SeriesResults = ({ scrapedData }) => {
-  const [imageError, setImageError] = useState(false);
   const [isReadMore, setIsReadMore] = useState(true);
 
   const toggleReadMore = () => {
@@ -20,7 +19,7 @@ const SeriesResults = ({ scrapedData }) => {
     >
       <Meta title={scrapedData.title} />
       <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80">
-        {scrapedData.title}:
+        {scrapedData.title && `${scrapedData.title}:`}
       </h2>
 
       <div>

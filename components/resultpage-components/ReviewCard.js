@@ -127,6 +127,10 @@ const ReviewCard = (props) => {
                               "https://images.gr-assets.com",
                               "/img?url=https://images.gr-assets.com"
                             )
+                            .replaceAll(
+                              "https://i.gr-assets.com",
+                              "/img?url=https://i.gr-assets.com"
+                            )
                             .replaceAll(".gif", ".gif&n=-1")
                         ),
                       }}
@@ -143,6 +147,10 @@ const ReviewCard = (props) => {
                             .replaceAll(
                               "https://images.gr-assets.com",
                               "/img?url=https://images.gr-assets.com"
+                            )
+                            .replaceAll(
+                              "https://i.gr-assets.com",
+                              "/img?url=https://i.gr-assets.com"
                             )
                             .replaceAll(".gif", ".gif&n=-1")
                         ),
