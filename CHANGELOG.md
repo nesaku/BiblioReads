@@ -5,11 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - Feb 21, 2023
+
+### Added
+
+- Book series route
+- Add html body colour
+
+### Changed
+
+- Rename book scraper and change the scraper path
+
+### Fixed
+
+- Author link width on the search page
+-
+
 ## [2.6.1] - Feb 16, 2023
 
 ### Fixed
 
-- slug not defined in `/genres/[...slug]`
+- Empty Genre heading when there is no data - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/52)
+- Fixed slug not being defined in `/genres/[...slug]`
 
 ## [2.6.0] - Feb 16, 2023
 

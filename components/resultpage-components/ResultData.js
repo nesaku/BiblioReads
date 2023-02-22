@@ -24,10 +24,19 @@ const ResultData = ({ scrapedData }) => {
             }
             coverIMG={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
           />
+
           <div id="sideContent" className="text-center mx-auto">
-            <span className="text-md italic text-left">
-              {scrapedData.series}
-            </span>
+            {scrapedData.seriesURL && (
+              <a
+                href={scrapedData.seriesURL.replace(
+                  "https://www.goodreads.com",
+                  ""
+                )}
+                className="text-md italic text-left underline"
+              >
+                {scrapedData.series}
+              </a>
+            )}
             <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
               {scrapedData.title}
             </h2>

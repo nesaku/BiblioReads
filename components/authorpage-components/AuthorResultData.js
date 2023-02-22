@@ -93,23 +93,24 @@ const AuthorResultData = ({ scrapedData }) => {
                 </div>
               </div>
             )}
-            <div id="authorGenre">
-              <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
-                Genre:
-              </h2>
-              <div className="flex justify-center lg:justify-start">
-                <div>
-                  <span>
-                    {scrapedData.genre &&
-                      JSON.stringify(scrapedData.genre)
+            {scrapedData.genre != "" && (
+              <div id="authorGenre">
+                <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
+                  Genre:
+                </h2>
+                <div className="flex justify-center lg:justify-start">
+                  <div>
+                    <span>
+                      {JSON.stringify(scrapedData.genre)
                         .replace("[", "")
                         .replace("]", "")
                         .replaceAll(",", ", ")
                         .replaceAll('"', "")}
-                  </span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             {scrapedData.birthDate && (
               <div id="authorBirthDate">
                 <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">

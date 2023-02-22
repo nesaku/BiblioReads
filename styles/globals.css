@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide the default triangle icon for the <details> element */
+html,
+body {
+  /* background-color: rgb(136 19 55); */
+  background-color: rgb(255 241 242);
+}
 
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: rgb(15 23 42);
+  }
+}
+
+/* Hide the default triangle icon for the <details> element */
 details > summary {
   list-style: none;
 }
