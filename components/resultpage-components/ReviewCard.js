@@ -59,7 +59,7 @@ const ReviewCard = (props) => {
       );
     }
     if (starVal === undefined) {
-      return <span>&#63;</span>;
+      return <span>&zwnj;</span>;
     }
     return <span>Unknown</span>;
   }
@@ -112,14 +112,9 @@ const ReviewCard = (props) => {
                   props.mobile ? "max-w-4xl" : "max-w-none"
                 } text-left`}
               >
-                {props.text && (
-                  <>
+                {props.text &&
+                  (props.text.length < 600 ? (
                     <span
-                      className={
-                        isReadMore
-                          ? "hidden"
-                          : "block w-72 sm:w-full overflow-hidden"
-                      }
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(
                           props.text
@@ -135,35 +130,58 @@ const ReviewCard = (props) => {
                         ),
                       }}
                     />
-                    <span
-                      className={
-                        isReadMore
-                          ? "block h-36 w-72 sm:w-full overflow-hidden"
-                          : "hidden"
-                      }
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                          props.text
-                            .replaceAll(
-                              "https://images.gr-assets.com",
-                              "/img?url=https://images.gr-assets.com"
-                            )
-                            .replaceAll(
-                              "https://i.gr-assets.com",
-                              "/img?url=https://i.gr-assets.com"
-                            )
-                            .replaceAll(".gif", ".gif&n=-1")
-                        ),
-                      }}
-                    />
-                    <span
-                      onClick={toggleReadMore}
-                      className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
-                    >
-                      {isReadMore ? " ...read more." : "(Show less)"}
-                    </span>
-                  </>
-                )}
+                  ) : (
+                    <>
+                      <span
+                        className={
+                          isReadMore
+                            ? "hidden"
+                            : "block w-72 sm:w-full overflow-hidden"
+                        }
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(
+                            props.text
+                              .replaceAll(
+                                "https://images.gr-assets.com",
+                                "/img?url=https://images.gr-assets.com"
+                              )
+                              .replaceAll(
+                                "https://i.gr-assets.com",
+                                "/img?url=https://i.gr-assets.com"
+                              )
+                              .replaceAll(".gif", ".gif&n=-1")
+                          ),
+                        }}
+                      />
+                      <span
+                        className={
+                          isReadMore
+                            ? "block h-36 w-72 sm:w-full overflow-hidden"
+                            : "hidden"
+                        }
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(
+                            props.text
+                              .replaceAll(
+                                "https://images.gr-assets.com",
+                                "/img?url=https://images.gr-assets.com"
+                              )
+                              .replaceAll(
+                                "https://i.gr-assets.com",
+                                "/img?url=https://i.gr-assets.com"
+                              )
+                              .replaceAll(".gif", ".gif&n=-1")
+                          ),
+                        }}
+                      />
+                      <span
+                        onClick={toggleReadMore}
+                        className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                      >
+                        {isReadMore ? " ...read more." : "(Show less)"}
+                      </span>
+                    </>
+                  ))}
               </div>
             </div>
           </div>

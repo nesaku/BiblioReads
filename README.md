@@ -101,6 +101,18 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
   - Apply to:
     - [x] Main window (address bar)
 
+#### To Redirect Quotes Pages:
+
+- Description: Goodreads to BiblioReads Quote Page
+- Example URL: https://www.goodreads.com/search?q=the+hobbit&qid=
+- Include pattern: `https://www.goodreads.com/quotes/*`
+- Redirect to: `https://biblioreads.ml/quotes/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description: Redirects all Goodreads quote page urls to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
 #### To Redirect Search Pages:
 
 - Description: Goodreads to BiblioReads Search Page
@@ -121,7 +133,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book url into the input box.
+1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book url into the input box or search for a book using the input box.
 2. Replace the `https://www.goodreads.com` of any book page url with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
@@ -255,6 +267,7 @@ yarn dev
 | -------------------------------------------- | --------------------------------------------- |
 | ![](/public/readme/author-dark.png?raw=true) | ![](/public/readme/author-light.png?raw=true) |
 | ![](/public/readme/search-dark.png?raw=true) | ![](/public/readme/search-light.png?raw=true) |
+| ![](/public/readme/quotes-dark.png?raw=true) | ![](/public/readme/quotes-light.png?raw=true) |
 | ![](/public/readme/home-dark.png?raw=true)   | ![](/public/readme/home-light.png?raw=true)   |
 
 ---

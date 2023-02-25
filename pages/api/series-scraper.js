@@ -3,7 +3,6 @@ const cheerio = require("cheerio");
 const SeriesScraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("&")[0];
-    console.log(scrapeURL);
     try {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
@@ -19,7 +18,9 @@ const SeriesScraper = async (req, res) => {
       const works = $(
         "div.responsiveSeriesHeader__subtitle.u-paddingBottomSmall"
       ).text();
-      const desc = $("div.expandableHtml > span").html();
+      const desc = $(
+        "div.u-paddingBottomSmall > div.expandableHtml > span"
+      ).html();
       const books = $(
         "div.gr-col-md-8 > div.gr-boxBottomDivider > div > div.listWithDividers > div.listWithDividers__item"
       )
@@ -135,7 +136,7 @@ const SeriesScraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Success",
+        status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         title: title,

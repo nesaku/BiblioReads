@@ -18,10 +18,10 @@ const SeriesList = (props) => {
                     {data.title}
                   </h3>
                 </Link>
-                <Link href={data.authorURL}>
-                  <p className="text-md hover:underline" href={data.authorURL}>
-                    {data.author}
-                  </p>
+                <Link
+                  href={data.authorURL.replace("https://www.goodreads.com", "")}
+                >
+                  <p className="text-md hover:underline w-fit">{data.author}</p>
                 </Link>
 
                 <div className="flex items-center mt-4 mb-4">
@@ -42,7 +42,7 @@ const SeriesList = (props) => {
                   </span>
                 </div>
                 <div>
-                  <span className="text-gray-200 font-normal">
+                  <span className="text-slate-700 dark:text-gray-200 font-normal">
                     {data.rating
                       .split("published")[0]
                       .replace(" · ", " - ")
@@ -53,7 +53,7 @@ const SeriesList = (props) => {
                   <br />
 
                   {data.rating.includes("Reviews") && (
-                    <span className="text-gray-200 font-normal capitalize">
+                    <span className="text-slate-700 dark:text-gray-200 font-normal capitalize">
                       {data.rating
                         .split("Reviews")[1]
                         .split("reviews")[0]
@@ -114,12 +114,7 @@ const SeriesList = (props) => {
                 <Link
                   href={data.authorURL.replace("https://www.goodreads.com", "")}
                 >
-                  <p
-                    className="text-md hover:underline w-fit"
-                    href={data.authorURL}
-                  >
-                    {data.author}
-                  </p>
+                  <p className="text-md hover:underline w-fit">{data.author}</p>
                 </Link>
 
                 <div className="flex items-center mt-4 mb-4">
@@ -140,7 +135,7 @@ const SeriesList = (props) => {
                   </span>
                 </div>
                 <div>
-                  <span className="text-gray-200 font-normal">
+                  <span className="text-slate-700 dark:text-gray-200 font-normal">
                     {
                       data.rating
                         .split("published")[0]
@@ -154,7 +149,7 @@ const SeriesList = (props) => {
                   </span>
                   <br />
                   {data.rating.includes("Reviews") && (
-                    <span className="text-gray-200 font-normal capitalize">
+                    <span className="text-slate-700 dark:text-gray-200 font-normal capitalize">
                       {data.rating
                         .split("Reviews")[1]
                         .split("reviews")[0]

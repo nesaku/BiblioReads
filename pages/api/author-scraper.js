@@ -22,6 +22,19 @@ const AuthorScraper = async (req, res) => {
       const genre = $("div.dataItem > a[href*= '/genres/']")
         .map((i, el) => $(el).text())
         .get();
+      const influences = $("div.dataItem > span a[href*= '/author/']")
+        .map((i, el) => {
+          const $el = $(el);
+          const author = $el.text();
+          const url = $el.attr("href");
+          const id = i + 1;
+          return {
+            id: id,
+            author: author,
+            url: url,
+          };
+        })
+        .toArray();
       const birthDate = $(
         "div.rightContainer > div[itemprop = 'birthDate']"
       ).text();
@@ -77,7 +90,7 @@ const AuthorScraper = async (req, res) => {
             .attr("href");
           const author = $el
             .find("div.seriesDesc > span[itemprop = 'author'] > div > a > span")
-            .text();
+            .html();
           const authorURL = $el
             .find("div.seriesDesc > span[itemprop = 'author'] > div > a")
             .attr("href")
@@ -103,13 +116,14 @@ const AuthorScraper = async (req, res) => {
       res.statusCode = 200;
 
       return res.json({
-        status: "Success",
+        status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         image: image,
         name: name,
         website: website,
         genre: genre,
+        influences: influences,
         birthDate: birthDate,
         deathDate: deathDate,
         desc: desc,

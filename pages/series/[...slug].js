@@ -49,7 +49,7 @@ const Slug = () => {
         )}
         {!error && (
           <>
-            {scrapedData.title === undefined && <Loader />}
+            {scrapedData.title === undefined && <Loader other={true} />}
             {scrapedData.error && (
               <ErrorMessage
                 status="404"

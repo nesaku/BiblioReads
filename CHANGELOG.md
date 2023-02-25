@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.0] - Feb 25, 2023
+
+### Added
+
+- Add quotes route
+- Added quotes page Redirector info to the README
+- Add influences to the author page
+- Add info about using the search box to the FAQ
+
+### Changed
+
+- Only show "...read more" button in the author, series, book descriptions and reviews after a certain character limit
+- Make links in series description clearer - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/55)
+- Changed scraper response json message from `status: "Success"` to `status: "Received"`
+- Improve home page color gradient
+- Update README screenshots
+- Replace the question mark with an invisible character when a review has no stars
+
+### Fixed
+
+- Incorrect loading message on the series route
+- Text color of rating information on the series page in light mode
+- Series description appearing when there was no series description
+- Fix author links on the series page
+- Fix incorrect external link in the FAQ
+- Fix text under the home page hero being hidden in light mode
+
 ## [2.7.1] - Feb 22, 2023
 
 ### Added
@@ -26,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Book series route
-- Add html body colour
+- Add html body color
 
 ### Changed
 

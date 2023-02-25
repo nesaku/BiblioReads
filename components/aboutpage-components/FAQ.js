@@ -55,7 +55,8 @@ const FAQ = () => {
               <span className="underline">
                 There are two ways you can use BiblioReads:
               </span>
-              <br />- Visit{" "}
+              <br />
+              1. Visit{" "}
               <a
                 className="underline text-green-600 dark:text-green-500/80"
                 href={
@@ -66,10 +67,11 @@ const FAQ = () => {
               >
                 {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
               </a>{" "}
-              and paste the Goodreads book URL into the input box.
+              and either paste the Goodreads book URL into the input box or
+              search for a book using the input box.
               <br />
-              <b>OR</b>
-              <br />- Replace the{" "}
+              <br />
+              2. Replace the{" "}
               <span className="text-green-600 dark:text-green-500/80">
                 https://www.goodreads.com
               </span>{" "}
@@ -242,11 +244,20 @@ const FAQ = () => {
               a look at our{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"
-                href="/privacy"
+                href="https://github.com/nesaku/BiblioReads"
                 target="_blank"
                 rel="noreferrer"
               >
-                source code
+                GitHub
+              </a>{" "}
+              or{" "}
+              <a
+                className="text-blue-600 dark:text-blue-500 underline"
+                href="https://codeberg.org/nesaku/BiblioReads"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Codeberg.
               </a>
               .
             </p>

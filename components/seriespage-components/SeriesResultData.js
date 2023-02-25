@@ -43,31 +43,57 @@ const SeriesResults = ({ scrapedData }) => {
             <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
               Description:{" "}
             </h2>
-
-            <>
+            {scrapedData.desc.length < 200 ? (
               <span
-                className={isReadMore ? "hidden" : "block"}
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(
-                    scrapedData.desc.replaceAll("https://www.goodreads.com", "")
+                    scrapedData.desc
+                      .replaceAll("https://www.goodreads.com", "")
+                      .replaceAll(
+                        "<a",
+                        '<a class="text-rose-900 dark:text-rose-600 hover:underline"'
+                      )
                   ),
                 }}
               />
-              <span
-                className={isReadMore ? "block h-36 overflow-hidden" : "hidden"}
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(
-                    scrapedData.desc.replaceAll("https://www.goodreads.com", "")
-                  ),
-                }}
-              />
-              <span
-                onClick={toggleReadMore}
-                className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
-              >
-                {isReadMore ? " ...read more." : "(Show less)"}
-              </span>
-            </>
+            ) : (
+              <>
+                <span
+                  className={isReadMore ? "hidden" : "block"}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      scrapedData.desc
+                        .replaceAll("https://www.goodreads.com", "")
+                        .replaceAll(
+                          "<a",
+                          '<a class="text-rose-900 dark:text-rose-600 hover:underline"'
+                        )
+                    ),
+                  }}
+                />
+                <span
+                  className={
+                    isReadMore ? "block h-36 overflow-hidden" : "hidden"
+                  }
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      scrapedData.desc
+                        .replaceAll("https://www.goodreads.com", "")
+                        .replaceAll(
+                          "<a",
+                          '<a class="text-rose-900 dark:text-rose-600 hover:underline"'
+                        )
+                    ),
+                  }}
+                />
+                <span
+                  onClick={toggleReadMore}
+                  className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                >
+                  {isReadMore ? " ...read more." : "(Show less)"}
+                </span>
+              </>
+            )}
           </div>
         )}
       </div>

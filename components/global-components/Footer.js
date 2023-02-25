@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.7.1";
-  const versionSlug = "271---feb-22-2023";
+  const version = "v2.8.0";
+  const versionSlug = "280---feb-25-2023";
 
   console.log(`%c${version} (Oreki)`, `color:green`);
 
