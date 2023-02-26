@@ -247,7 +247,7 @@ const ResultData = ({ scrapedData }) => {
               </a>
             </div>
 
-            {scrapedData.reviewBreakdown && (
+            {scrapedData.reviewBreakdown && scrapedData.reviews != 0 && (
               <ReviewBreakdown data={scrapedData} />
             )}
             <div className="block lg:hidden">

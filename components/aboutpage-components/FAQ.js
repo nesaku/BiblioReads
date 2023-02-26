@@ -75,7 +75,7 @@ const FAQ = () => {
               <span className="text-green-600 dark:text-green-500/80">
                 https://www.goodreads.com
               </span>{" "}
-              of any book page url with{" "}
+              of any book page URL with{" "}
               <span className="text-green-600 dark:text-green-500/80">
                 {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
               </span>

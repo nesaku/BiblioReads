@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.0] - Feb 26, 2023
+
+### Added
+
+- Add instance specific configurable privacy information - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/1)
+- Add new env variables to `.env.example`
+- Add information about adding a new instance to the README
+
+### Changed
+
+- Hide review breakdown if no reviews exist
+- Rename "Go To The Top" to "Back to Top" in the footer - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/58)
+- Update the instance issue template
+- Update the `.env.local.example` file with new environment variables
+
+### Fixed
+
+- Fix incorrect quotes pages redirection example URL in the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/57)
+
 ## [2.8.0] - Feb 25, 2023
 
 ### Added
@@ -25,9 +44,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Incorrect loading message on the series route
-- Text color of rating information on the series page in light mode
-- Series description appearing when there was no series description
+- Fix incorrect loading message on the series route
+- Fix text color of rating information on the series page in light mode
+- Fix series description appearing when there was no series description
 - Fix author links on the series page
 - Fix incorrect external link in the FAQ
 - Fix text under the home page hero being hidden in light mode
@@ -61,13 +80,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Author link width on the search page
+- Fix author link width on the search page
 
 ## [2.6.1] - Feb 16, 2023
 
 ### Fixed
 
-- Empty Genre heading when there is no data - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/52)
+- Fix empty Genre heading when there is no data - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/52)
 - Fixed slug not being defined in `/genres/[...slug]`
 
 ## [2.6.0] - Feb 16, 2023
@@ -183,8 +202,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Author series book covers not displaying correctly
-- Hover effect in light mode
+- Fix author series book covers not displaying correctly
+- Fix hover effect in light mode
 
 ## [2.4.0] - Feb 5, 2023
 
@@ -194,7 +213,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Allow search terms and url input on the hero page
+- Allow search terms and URL input on the hero page
 
 ### Fixed
 
