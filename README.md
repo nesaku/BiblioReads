@@ -57,7 +57,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 If you'd like to add your instance to the list, please open an issue or pull request.
 
-**Note:** if you collect any user data from your instance please set the applicable environment variables (an example can be found in `.env.local.example`).
+**Note:** If you collect any user data from your instance please set the applicable environment variables (an example can be found in `.env.local.example`).
 
 ---
 
