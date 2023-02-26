@@ -223,14 +223,14 @@ const Privacy = () => {
             <h1 className="text-2xl font-bold my-4">Instance Privacy:</h1>
             <div>
               <p>
-                The instance operator has indicated their instance's privacy
-                practices below.
+                The instance operator has indicated their instance&apos;s
+                privacy practices below.
                 {process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL &&
                   process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL !=
                     "false" && (
                     <span>
                       {" "}
-                      For more information, see the instance operator's{" "}
+                      For more information, see the instance operator&apos;s{" "}
                       <a
                         href={
                           process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL
@@ -342,7 +342,7 @@ const Privacy = () => {
                 <span className="underline">IP Addresses</span>
                 <br />
                 IP Addresses are a unique address that identifies a device on
-                the internet. This can be used to identify a user's general
+                the internet. This can be used to identify a user&apos;s general
                 location and internet service provider (ISP).
               </p>
               <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
@@ -353,8 +353,8 @@ const Privacy = () => {
               </p>
               <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
                 <span className="underline">Device Type</span>
-                <br />A user agent string can contain information about a user's
-                operating system, device, and browser.
+                <br />A user agent string can contain information about a
+                user&apos;s operating system, device, and browser.
               </p>
               <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
                 <span className="underline">Diagnostic Data </span>
