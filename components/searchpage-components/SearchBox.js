@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import SearchByButton from "./SearchByButton";
 
 const SearchBox = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [validQuery, setValidQuery] = useState(true);
+  const [queryType, setQueryType] = useState("books");
 
   const router = useRouter();
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (!inputValue.includes("https://")) {
-      router.push(`/search/${inputValue.replaceAll("/", "-")}`);
+      router.push({
+        pathname: `/search/${inputValue.replaceAll("/", "-")}`,
+        query: { type: queryType },
+      });
     } else {
       setValidQuery(false);
     }
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={onSubmit}>
         <h1
           className={`text-2xl text-black dark:text-gray-200/80 font-semibold ${
@@ -44,6 +49,7 @@ const SearchBox = (props) => {
                 required
               />
             </div>
+
             <button className="flex items-center mt-10 my-6 ont-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-4 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
               <svg
                 className="mr-2 -ml-1 w-5 h-5"
@@ -55,7 +61,7 @@ const SearchBox = (props) => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  stroke-width="2"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 ></path>
               </svg>
@@ -63,6 +69,38 @@ const SearchBox = (props) => {
             </button>
           </div>
         </div>
+
+        {/*  Enable search types once search routes are implemented - see line 20 on pages/search/[...slug].js
+        <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="books"
+          text="Books"
+        />
+        <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="people"
+          text="People"
+        />
+        <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="quotes"
+          text="Quotes"
+        />
+        <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="lists"
+          text="Lists"
+        />
+        <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="groups"
+          text="Groups"
+        /> */}
       </form>
       {validQuery === false && (
         <div id="formError">
@@ -72,7 +110,7 @@ const SearchBox = (props) => {
           </p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

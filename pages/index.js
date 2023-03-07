@@ -6,7 +6,7 @@ import Meta from "../components/global-components/Meta";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge">
+    <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradienthero">
       <Meta />
       <Header />
       <FormQuery />

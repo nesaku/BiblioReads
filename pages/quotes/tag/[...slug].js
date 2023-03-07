@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Header from "../../components/global-components/Header";
-import Footer from "../../components/global-components/Footer";
-import Loader from "../../components/global-components/Loader";
-import ErrorMessage from "../../components/global-components/ErrorMessage";
-import QuotesResultData from "../../components/quotespage-components/QuotesResultData";
+import Header from "../../../components/global-components/Header";
+import Footer from "../../../components/global-components/Footer";
+import Loader from "../../../components/global-components/Loader";
+import ErrorMessage from "../../../components/global-components/ErrorMessage";
+import QuotesResultData from "../../../components/quotespage-components/QuotesResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -14,13 +14,13 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/quotes/home/`, {
+      const res = await fetch(`/api/quotes/slug/`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          queryURL: `https://www.goodreads.com/quotes/${slug}`,
+          queryURL: `https://www.goodreads.com/quotes/tag/${slug}`,
         }),
       });
       if (res.ok) {
@@ -43,7 +43,7 @@ const Slug = () => {
         {error && (
           <ErrorMessage
             status="500"
-            url={`https://www.goodreads.com/quotes/${slug}`}
+            url={`https://www.goodreads.com/quotes/tag/${slug}`}
           />
         )}
         {!error && (
@@ -52,13 +52,13 @@ const Slug = () => {
             {scrapedData.error && (
               <ErrorMessage
                 status="404"
-                url={`https://www.goodreads.com/quotes/${slug}`}
+                url={`https://www.goodreads.com/quotes/tag/${slug}`}
               />
             )}
             {scrapedData.quotes && scrapedData.quotes.length === 0 && (
               <ErrorMessage
                 status="ScraperError"
-                url={`https://www.goodreads.com/quotes/${slug}`}
+                url={`https://www.goodreads.com/quotes/tag/${slug}`}
               />
             )}
             {scrapedData && <QuotesResultData scrapedData={scrapedData} />}

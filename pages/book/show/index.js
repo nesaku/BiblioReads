@@ -1,7 +1,7 @@
 import Error from "next/error";
 import React from "react";
 
-const SlugHome = () => {
+const Books = () => {
   return (
     <div>
       <Error statusCode={405} />
@@ -9,4 +9,4 @@ const SlugHome = () => {
   );
 };
 
-export default SlugHome;
+export default Books;

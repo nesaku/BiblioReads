@@ -24,10 +24,19 @@ const ResultData = ({ scrapedData }) => {
             }
             coverIMG={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
           />
+
           <div id="sideContent" className="text-center mx-auto">
-            <span className="text-md italic text-left">
-              {scrapedData.series}
-            </span>
+            {scrapedData.seriesURL && (
+              <a
+                href={scrapedData.seriesURL.replace(
+                  "https://www.goodreads.com",
+                  ""
+                )}
+                className="text-md italic text-left underline hover:text-rose-600"
+              >
+                {scrapedData.series}
+              </a>
+            )}
             <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
               {scrapedData.title}
             </h2>
@@ -35,7 +44,10 @@ const ResultData = ({ scrapedData }) => {
               <span className="font-semibold">By:</span>{" "}
               {scrapedData.author.map((data, i) => (
                 <span key={i}>
-                  <a className="text-md hover:underline" href={data.url}>
+                  <a
+                    className="text-md hover:underline hover:text-rose-600"
+                    href={data.url}
+                  >
                     {(i ? ", " : "") + data.name}
                   </a>
                 </span>
@@ -137,7 +149,12 @@ const ResultData = ({ scrapedData }) => {
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                   Description:{" "}
                 </h2>
-                <ReadMore>{scrapedData.desc}</ReadMore>
+
+                {scrapedData.desc.length < 600 ? (
+                  <p id="text">{scrapedData.desc}</p>
+                ) : (
+                  <ReadMore>{scrapedData.desc}</ReadMore>
+                )}
               </div>
             )}
             {scrapedData.genres != "" && (
@@ -230,7 +247,7 @@ const ResultData = ({ scrapedData }) => {
               </a>
             </div>
 
-            {scrapedData.reviewBreakdown && (
+            {scrapedData.reviewBreakdown && scrapedData.reviews != 0 && (
               <ReviewBreakdown data={scrapedData} />
             )}
             <div className="block lg:hidden">

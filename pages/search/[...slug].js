@@ -11,12 +11,44 @@ import SearchBox from "../../components/searchpage-components/SearchBox";
 const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const { query } = router;
   const [scrapedData, setScrapedData] = useState({});
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const scraperPath = searchType();
+
+    // TODO: Build new api search routes based on query type
+    function searchType() {
+      if (query.type === "books") {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/books";
+        return scraperPath;
+      } else if (query.type === "people") {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/people"
+        return scraperPath;
+      } else if (query.type === "quotes") {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/quotes"
+        return scraperPath;
+      } else if (query.type === "lists") {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/lists"
+        return scraperPath;
+      } else if (query.type === "groups") {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/groups"
+        return scraperPath;
+      } else {
+        const scraperPath = "/api/search-scraper";
+        // const scraperPath = "/api/search/books"
+        return scraperPath;
+      }
+    }
+
     const fetchData = async () => {
-      const res = await fetch(`/api/search-scraper`, {
+      const res = await fetch(scraperPath, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -59,10 +91,21 @@ const Slug = () => {
               />
             )}
             {scrapedData.numberOfResults === "" && (
-              <ErrorMessage
-                status="ScraperError"
-                url={`https://www.goodreads.com/search?utf8=%E2%9C%93&query=${slug}`}
-              />
+              <div className="flex flex-col justify-center items-center align-middle h-[70vh] w-full">
+                <div className="flex flex-col xl:flex-row justify-center items-center text-center ">
+                  <SearchBox />
+                </div>
+                <div>
+                  <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
+                    No Results Found For:{" "}
+                    {scrapedData.scrapeURL &&
+                      scrapedData.scrapeURL.replace(
+                        "https://www.goodreads.com/search?q=",
+                        ""
+                      )}
+                  </h2>
+                </div>
+              </div>
             )}
             {scrapedData && (
               <>

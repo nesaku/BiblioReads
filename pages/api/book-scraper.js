@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 
-const Scraper = async (req, res) => {
+const BookScraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
@@ -16,6 +16,7 @@ const Scraper = async (req, res) => {
       const $ = cheerio.load(htmlString);
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
+      const seriesURL = $("h3.Text__italic > a").attr("href");
       const title = $('h1[data-testid="bookTitle"]').text();
       const author = $(".ContributorLinksList > span > a")
         .map((i, el) => {
@@ -154,11 +155,12 @@ const Scraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Success",
+        status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         cover: cover,
         series: series,
+        seriesURL: seriesURL,
         title: title,
         author: author,
         rating: rating,
@@ -184,4 +186,4 @@ const Scraper = async (req, res) => {
   }
 };
 
-export default Scraper;
+export default BookScraper;

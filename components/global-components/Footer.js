@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.6.1";
-  const versionSlug = "261---feb-16-2023";
+  const version = "v2.9.1";
+  const versionSlug = "291---feb-26-2023";
 
   console.log(`%c${version} (Oreki)`, `color:green`);
 
@@ -63,7 +63,7 @@ const Footer = () => {
                   target="_self"
                   rel="noreferrer"
                 >
-                  Go To The Top
+                  Back to Top
                 </a>
               </li>
 

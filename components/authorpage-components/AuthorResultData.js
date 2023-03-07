@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import * as DOMPurify from "dompurify";
 import Meta from "../global-components/Meta";
 import AuthorBooks from "./AuthorBooks";
-import * as DOMPurify from "dompurify";
 import AuthorSeries from "./AuthorSeries";
 
 const AuthorResultData = ({ scrapedData }) => {
@@ -93,23 +93,40 @@ const AuthorResultData = ({ scrapedData }) => {
                 </div>
               </div>
             )}
-            <div id="authorGenre">
-              <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
-                Genre:
-              </h2>
-              <div className="flex justify-center lg:justify-start">
-                <div>
-                  <span>
-                    {scrapedData.genre &&
-                      JSON.stringify(scrapedData.genre)
+            {scrapedData.genre != "" && (
+              <div id="authorGenre">
+                <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
+                  Genre:
+                </h2>
+                <div className="flex justify-center lg:justify-start">
+                  <div>
+                    <span>
+                      {JSON.stringify(scrapedData.genre)
                         .replace("[", "")
                         .replace("]", "")
                         .replaceAll(",", ", ")
                         .replaceAll('"', "")}
-                  </span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+            {scrapedData.influences != "" && (
+              <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
+                Influences:
+              </h2>
+            )}
+            {scrapedData.influences.map((data, i) => (
+              <span key={i} id="authorInfluences" className="">
+                <a
+                  className="hover:text-rose-600 underline"
+                  href={data.url.replace("https://www.goodreads.com", "")}
+                >
+                  {(i ? ", " : "") + data.author}
+                </a>
+              </span>
+            ))}
+
             {scrapedData.birthDate && (
               <div id="authorBirthDate">
                 <h2 className="font-bold text-2xl mr-2 mt-8 lg:mt-2 underline decoration-rose-600">
@@ -142,39 +159,56 @@ const AuthorResultData = ({ scrapedData }) => {
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                   Description:{" "}
                 </h2>
-
-                <>
+                {scrapedData.desc < 500 ? (
                   <span
                     className={isReadMore ? "hidden" : "block"}
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(
-                        scrapedData.desc.replaceAll(
-                          "https://www.goodreads.com",
-                          ""
-                        )
+                        scrapedData.desc
+                          .replaceAll("https://www.goodreads.com", "")
+                          .replaceAll(
+                            "<a",
+                            '<a class=" text-rose-500 hover:underline"'
+                          )
                       ),
                     }}
                   />
-                  <span
-                    className={
-                      isReadMore ? "block h-36 overflow-hidden" : "hidden"
-                    }
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(
-                        scrapedData.desc.replaceAll(
-                          "https://www.goodreads.com",
-                          ""
-                        )
-                      ),
-                    }}
-                  />
-                  <span
-                    onClick={toggleReadMore}
-                    className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
-                  >
-                    {isReadMore ? " ...read more." : "(Show less)"}
-                  </span>
-                </>
+                ) : (
+                  <>
+                    <span
+                      className={isReadMore ? "hidden" : "block"}
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                          scrapedData.desc
+                            .replaceAll("https://www.goodreads.com", "")
+                            .replaceAll(
+                              "<a",
+                              '<a class=" text-rose-500 hover:underline"'
+                            )
+                        ),
+                      }}
+                    />
+                    <span
+                      className={
+                        isReadMore ? "block h-36 overflow-hidden" : "hidden"
+                      }
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                          scrapedData.desc.replaceAll(
+                            "https://www.goodreads.com",
+                            ""
+                          )
+                        ),
+                      }}
+                    />
+                    <span
+                      onClick={toggleReadMore}
+                      className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                    >
+                      {isReadMore ? " ...read more." : "(Show less)"}
+                    </span>
+                  </>
+                )}
               </div>
             )}
             <div id="authorURL" className="mb-6">
