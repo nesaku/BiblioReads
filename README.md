@@ -231,7 +231,7 @@ yarn start
 
 ##### Docker CLI:
 
-```
+```docker
 docker run -d \
   --name biblioreads \
   -p 3000:3000 \
