@@ -10,7 +10,7 @@ const Quotes = () => {
   const [error, setError] = useState(false);
 
   const fetchData = async () => {
-    const res = await fetch(`/api/quotes/home/`, {
+    const res = await fetch(`/api/quotes/home`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,14 +45,14 @@ const Quotes = () => {
         )}
         {!error && (
           <>
-            {scrapedData.title === undefined && <Loader other={true} />}
+            {scrapedData.name === undefined && <Loader other={true} />}
             {scrapedData.error && (
               <ErrorMessage
                 status="404"
                 url={`https://www.goodreads.com/quotes`}
               />
             )}
-            {scrapedData.title === "" && (
+            {scrapedData.name === "" && (
               <ErrorMessage
                 status="ScraperError"
                 url={`https://www.goodreads.com/quotes`}

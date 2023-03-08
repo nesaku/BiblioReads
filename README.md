@@ -83,12 +83,12 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
   - Apply to:
     - [x] Main window (address bar)
 
-#### To Redirect Author Pages:
+#### To Redirect Book Quotes Pages:
 
-- Description: Goodreads to BiblioReads Author Page
-- Example URL: https://www.goodreads.com/author/show/656983.J_R_R_Tolkien
-- Include pattern: `https://www.goodreads.com/author/show/*`
-- Redirect to: `https://biblioreads.ml/author/show/$1`
+- Description: Goodreads to BiblioReads Book Quotes Page
+- Example URL: https://www.goodreads.com/work/quotes/1540236-the-hobbit
+- Include pattern: `https://www.goodreads.com/work/quotes/*`
+- Redirect to: `https://biblioreads.ml/work/quotes/$1`
 - Pattern type: Wildcard Expression
 - Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
 - Advanced options:
@@ -101,6 +101,18 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 - Example URL: https://www.goodreads.com/series/66175-the-lord-of-the-rings
 - Include pattern: `https://www.goodreads.com/series/*`
 - Redirect to: `https://biblioreads.ml/series/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
+#### To Redirect Author Pages:
+
+- Description: Goodreads to BiblioReads Author Page
+- Example URL: https://www.goodreads.com/author/show/656983.J_R_R_Tolkien
+- Include pattern: `https://www.goodreads.com/author/show/*`
+- Redirect to: `https://biblioreads.ml/author/show/$1`
 - Pattern type: Wildcard Expression
 - Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
 - Advanced options:

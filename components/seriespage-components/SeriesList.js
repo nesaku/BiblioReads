@@ -69,19 +69,19 @@ const SeriesList = (props) => {
                     <source
                       srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}
                       type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     />
                     <source
                       srcSet={`/img?url=${data.cover}&maxage=30d`}
                       type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     />
                     <img
                       src={`/img?url=${data.cover}&maxage=30d`}
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                       loading="lazy"
                       onError={() => setImageError(true)}
                     />
@@ -165,19 +165,19 @@ const SeriesList = (props) => {
                     <source
                       srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}
                       type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                     />
                     <source
                       srcSet={`/img?url=${data.cover}&maxage=30d`}
                       type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                     />
                     <img
                       src={`/img?url=${data.cover}&maxage=30d`}
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                       loading="lazy"
                       onError={() => setImageError(true)}
                     />

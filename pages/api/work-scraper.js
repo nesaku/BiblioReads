@@ -1,8 +1,8 @@
 const cheerio = require("cheerio");
 
-const QuotesSlugScraper = async (req, res) => {
+const WorkQuotesScraper = async (req, res) => {
   if (req.method === "POST") {
-    const scrapeURL = req.body.queryURL.replaceAll(",", "/").split("&")[0];
+    const scrapeURL = req.body.queryURL.split("?")[0];
     try {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
@@ -14,49 +14,49 @@ const QuotesSlugScraper = async (req, res) => {
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const name = $("div.mainContent > div.mainContentFloat > h1").text();
+      const bookURL = $("div.leftContainer > a.leftAlignedImage").attr("href");
+      const image = $("div.leftContainer > a.leftAlignedImage > img")
+        .attr("src")
+        .replace("._SX50_SY75_", "")
+        .replace("._SY75_", "")
+        .replace("._SX50_", "");
+      const name = $("div.mainContentFloat > h1").text();
+
       const quotes = $(
-        "div.mainContent > div.mainContentFloat > div.leftContainer > div.quote.mediumText"
+        "div.mainContent > div.mainContentFloat > div.leftContainer > div.quotes > div.quote"
       )
         .map((i, el) => {
           const $el = $(el);
-          const imgURL = $el
-            .find("div.quoteDetails > a.leftAlignedImage")
-            .attr("href");
-          const img = $el
-            .find("div.quoteDetails > a.leftAlignedImage > img")
-            .attr("src");
-          const imgAlt = $el
-            .find("div.quoteDetails > a.leftAlignedImage > img")
-            .attr("alt");
           const text = $el
-            .find("div.quoteDetails > div.quoteText")
+            .find("div.quote > div.quoteDetails > div.quoteText")
             .text()
             .split(" ―")[0];
           const author = $el
-            .find("div.quoteDetails > div.quoteText > span.authorOrTitle")
+            .find(
+              "div.quote > div.quoteDetails > div.quoteText > span.authorOrTitle"
+            )
             .text();
           const book = $el
-            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
+            .find(
+              "div.quote > div.quoteDetails > div.quoteText > span > a.authorOrTitle"
+            )
             .text();
-          const bookURL = $el
-            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
-            .attr("href");
+          /*           const quoteBookURL = $el
+            .find(
+              "div.quote > div.quoteDetails > div.quoteText > span > a.authorOrTitle"
+            )
+            .attr("href"); */
           const likes = $el
             .find(
-              "div.quoteDetails > div.quoteFooter > div.right > a.smallText"
+              " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
             )
             .text();
           const id = i + 1;
           return {
             id: id,
-            imgURL: imgURL,
-            img: img,
-            imgAlt: imgAlt,
             text: text,
             author: author,
             book: book,
-            bookURL: bookURL,
             likes: likes,
           };
         })
@@ -64,10 +64,13 @@ const QuotesSlugScraper = async (req, res) => {
 
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
+
       return res.json({
         status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
+        bookURL: bookURL,
+        image: image,
         name: name,
         quotes: quotes,
         lastScraped: lastScraped,
@@ -83,4 +86,4 @@ const QuotesSlugScraper = async (req, res) => {
   }
 };
 
-export default QuotesSlugScraper;
+export default WorkQuotesScraper;

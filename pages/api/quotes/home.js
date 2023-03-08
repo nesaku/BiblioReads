@@ -14,13 +14,13 @@ const QuotesHomeScraper = async (req, res) => {
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const title = $("div.mainContent > div.mainContentFloat > h1").text();
+      const name = $("div.mainContent > div.mainContentFloat > h1").text();
       const quotes = $(
         "div.mainContent > div.mainContentFloat > div.leftContainer > div.quotes > div.quote"
       )
         .map((i, el) => {
           const $el = $(el);
-          const text = $el.find("div.quoteDetails > div.quoteText").text();
+
           const imgURL = $el
             .find(" div.quoteDetails > a.leftAlignedImage")
             .attr("href");
@@ -30,6 +30,19 @@ const QuotesHomeScraper = async (req, res) => {
           const imgAlt = $el
             .find(" div.quoteDetails > a.leftAlignedImage > img")
             .attr("alt");
+          const text = $el
+            .find("div.quoteDetails > div.quoteText")
+            .text()
+            .split(" ―")[0];
+          const author = $el
+            .find("div.quoteDetails > div.quoteText > span.authorOrTitle")
+            .text();
+          const book = $el
+            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
+            .text();
+          const bookURL = $el
+            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
+            .attr("href");
           const likes = $el
             .find(
               " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
@@ -42,6 +55,9 @@ const QuotesHomeScraper = async (req, res) => {
             img: img,
             imgAlt: imgAlt,
             text: text,
+            author: author,
+            book: book,
+            bookURL: bookURL,
             likes: likes,
           };
         })
@@ -53,7 +69,7 @@ const QuotesHomeScraper = async (req, res) => {
         status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
-        title: title,
+        name: name,
         quotes: quotes,
         lastScraped: lastScraped,
       });

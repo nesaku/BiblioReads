@@ -152,6 +152,19 @@ const BookScraper = async (req, res) => {
         })
         .toArray();
 
+      const quotes = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+      ).text();
+      const quotesURL = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1)"
+      ).attr("href");
+
+      const questions = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+      ).text();
+      const questionsURL = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)"
+      ).attr("href");
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
@@ -173,6 +186,10 @@ const BookScraper = async (req, res) => {
         related: related,
         reviewBreakdown: reviewBreakdown,
         reviews: reviews,
+        quotes: quotes,
+        quotesURL: quotesURL,
+        questions: questions,
+        questionsURL: questionsURL,
         lastScraped: lastScraped,
       });
     } catch (error) {

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useState } from "react";
 
 const SimilarBooks = (props) => {
@@ -30,7 +31,7 @@ const SimilarBooks = (props) => {
             className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm "
           >
             {imageError ? (
-              <a href={`${data.url}`}>
+              <a>
                 {data.src && (
                   <img
                     src="/cover-placeholder.svg"
@@ -50,39 +51,41 @@ const SimilarBooks = (props) => {
                 </div>
               </a>
             ) : (
-              <a href={`${data.url}`}>
-                {data.src && (
-                  <picture>
-                    <source
-                      srcSet={`/img?url=${data.src}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                    />
-                    <source
-                      srcSet={`/img?url=${data.src}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                    />
-                    <img
-                      src={`/img?url=${data.src}&maxage=30d`}
-                      alt={`${data.title} book cover`}
-                      width="98"
-                      height="148"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                      loading="lazy"
-                      onError={() => setImageError(true)}
-                    />
-                  </picture>
-                )}
-                <div className="group w-36 h-20 text-center mx-auto mt-4">
-                  <span className="break-words text-md">
-                    {data.title.slice(0, 40)}
-                  </span>
-                  <span className="hidden group-hover:inline text-md">
-                    {data.title.slice(40)}
-                  </span>
-                </div>
-              </a>
+              <Link href={`${data.url}`}>
+                <a>
+                  {data.src && (
+                    <picture>
+                      <source
+                        srcSet={`/img?url=${data.src}&output=webp&maxage=30d`}
+                        type="image/webp"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      />
+                      <source
+                        srcSet={`/img?url=${data.src}&maxage=30d`}
+                        type="image/jpeg"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      />
+                      <img
+                        src={`/img?url=${data.src}&maxage=30d`}
+                        alt={`${data.title} book cover`}
+                        width="98"
+                        height="148"
+                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                        loading="lazy"
+                        onError={() => setImageError(true)}
+                      />
+                    </picture>
+                  )}
+                  <div className="group w-36 h-20 text-center mx-auto mt-4">
+                    <span className="break-words text-md">
+                      {data.title.slice(0, 40)}
+                    </span>
+                    <span className="hidden group-hover:inline text-md">
+                      {data.title.slice(40)}
+                    </span>
+                  </div>
+                </a>
+              </Link>
             )}
           </div>
         ))}

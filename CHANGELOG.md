@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.0] - Mar 7, 2023
+
+### Added
+
+- Add "View More Books In This Series" buttons to the book page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/60)
+- Add "Quotes" buttons to the book page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/59)
+- Add the book link to books listed on the quotes page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/59)
+- Add configurable instance information on the privacy page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/1)
+- Add quotes works route
+- Add new env variables to `.env.example`
+- Added book quotes page Redirector info to the README
+
+### Changed
+
+- Use `next/link` with links in more components
+- Use dark mode colors for images while loading
+
+### Fixed
+
+- Fix extra trailing slash in the quote page POST request
+
 ## [2.9.1] - Feb 26, 2023
 
 ### Changed

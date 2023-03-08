@@ -6,6 +6,7 @@ import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
 import Meta from "../global-components/Meta";
 import ReviewBreakdown from "./ReviewBreakdown";
+import Link from "next/link";
 
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -27,15 +28,16 @@ const ResultData = ({ scrapedData }) => {
 
           <div id="sideContent" className="text-center mx-auto">
             {scrapedData.seriesURL && (
-              <a
+              <Link
                 href={scrapedData.seriesURL.replace(
                   "https://www.goodreads.com",
                   ""
                 )}
-                className="text-md italic text-left underline hover:text-rose-600"
               >
-                {scrapedData.series}
-              </a>
+                <a className="text-md italic text-left underline hover:text-rose-600">
+                  {scrapedData.series}
+                </a>
+              </Link>
             )}
             <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
               {scrapedData.title}
@@ -54,7 +56,7 @@ const ResultData = ({ scrapedData }) => {
               ))}
             </div>
 
-            <div id="bookCover" className="my-10 mx-auto max-w-xs xl:max-w-sm">
+            <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
               <h1 className="hidden">Cover:</h1>
               {!imageLoaded && (
                 <img
@@ -91,6 +93,95 @@ const ResultData = ({ scrapedData }) => {
                   </picture>
                 </>
               )}
+
+              <div className="flex flex-col mt-0 lg:mt-16 xl:mt-0">
+                {scrapedData.seriesURL && (
+                  <div className="mt-4 items-center justify-center flex">
+                    <Link
+                      href={scrapedData.seriesURL.replace(
+                        "https://www.goodreads.com",
+                        ""
+                      )}
+                    >
+                      <a className="flex items-center h-16 w-72 py-5 px-4 mt-6 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                        View More Books In This Series
+                        <svg
+                          aria-hidden="true"
+                          className="w-5 h-5 ml-2 -mr-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      </a>
+                    </Link>
+                  </div>
+                )}
+                {(scrapedData.questions != "Ask" ||
+                  scrapedData.quotes != "Add") && (
+                  <div className="flex justify-around my-4">
+                    {scrapedData.quotes && (
+                      <div className="mt-4 items-center justify-center flex">
+                        <Link
+                          href={scrapedData.quotesURL.replace(
+                            "https://www.goodreads.com",
+                            ""
+                          )}
+                        >
+                          <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                            {scrapedData.quotes} Quotes
+                            <svg
+                              aria-hidden="true"
+                              className="w-5 h-5 ml-2 -mr-1"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </a>
+                        </Link>
+                      </div>
+                    )}
+                    {/* {scrapedData.questions && (
+                      <div className="mt-4 items-center justify-center flex">
+                        <Link
+                          href={scrapedData.questionsURL.replace(
+                            "https://www.goodreads.com",
+                            ""
+                          )}
+                        >
+                          <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                            {scrapedData.questions} Questions
+                            <svg
+                              aria-hidden="true"
+                              className="w-5 h-5 ml-2 -mr-1"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </a>
+                        </Link>
+                      </div>
+                    )} */}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <div

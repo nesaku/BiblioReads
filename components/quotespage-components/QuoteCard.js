@@ -72,19 +72,47 @@ const QuoteCard = (props) => {
                     data.mobile ? "max-w-4xl" : "max-w-none"
                   } text-left`}
                 >
-                  {data.text.split("//")[0].split(" ―")[0].length < 300 ? (
+                  {data.text.length < 300 ? (
                     <>
-                      <span>{data.text.split("//")[0].split(" ―")[0]}</span>
+                      <span>{data.text}</span>
                       <span className="pt-4 font-bold ">
-                        - {data.text.split("//")[0].split(" ―")[1]}
+                        - {data.author}
+                        {data.bookURL ? (
+                          <a
+                            className="hover:underline"
+                            href={
+                              data.bookURL +
+                              "-" +
+                              data.book.toLowerCase().replaceAll(" ", "-")
+                            }
+                          >
+                            {data.book}
+                          </a>
+                        ) : (
+                          <span>{data.book}</span>
+                        )}
                       </span>
                     </>
                   ) : (
                     <>
                       <span className={isReadMore ? "hidden" : "block"}>
-                        {data.text.split("//")[0].split(" ―")[0]}
-                        <span className="pt-4 font-bold">
-                          - {data.text.split("//")[0].split(" ―")[1]}
+                        <span>{data.text}</span>
+                        <span className="pt-4 font-bold ">
+                          - {data.author}
+                          {data.bookURL ? (
+                            <a
+                              className="hover:underline"
+                              href={
+                                data.bookURL +
+                                "-" +
+                                data.book.toLowerCase().replaceAll(" ", "-")
+                              }
+                            >
+                              {data.book}
+                            </a>
+                          ) : (
+                            <span>{data.book}</span>
+                          )}
                         </span>
                       </span>
                       <span
@@ -92,10 +120,7 @@ const QuoteCard = (props) => {
                           isReadMore ? "block h-12 overflow-hidden" : "hidden"
                         }
                       >
-                        {data.text.split("//")[0].split(" ―")[0]}
-                        <span className="pt-4 font-bold">
-                          - {data.text.split("//")[0].split(" ―")[1]}
-                        </span>
+                        <span>{data.text}</span>
                       </span>
                       <span
                         onClick={toggleReadMore}

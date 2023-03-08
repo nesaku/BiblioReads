@@ -14,7 +14,7 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/quotes/slug/`, {
+      const res = await fetch(`/api/quotes/slug`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -48,7 +48,7 @@ const Slug = () => {
         )}
         {!error && (
           <>
-            {scrapedData.title === undefined && <Loader other={true} />}
+            {scrapedData.name === undefined && <Loader other={true} />}
             {scrapedData.error && (
               <ErrorMessage
                 status="404"

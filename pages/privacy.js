@@ -4,6 +4,7 @@ import Meta from "../components/global-components/Meta";
 import Header from "../components/global-components/Header";
 import Footer from "../components/global-components/Footer";
 
+// Show the default privacy policy unless instance privacy info is configured
 const Privacy = () => {
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
@@ -11,6 +12,7 @@ const Privacy = () => {
       <Header />
 
       {process.env.NEXT_PUBLIC_INSTANCE_CUSTOM_PRIVACY != "true" ? (
+        // Default privacy policy
         <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
           <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">
             <h1 className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-7xl p-2 capitalize">
@@ -203,6 +205,7 @@ const Privacy = () => {
           </div>
         </div>
       ) : (
+        // Instance privacy configuration
         <div className="flex justify-center items-center text-center min-h-[80vh]">
           <div className="flex flex-col text-gray-800 dark:text-gray-100 bg-white bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-60 py-6 m-4 px-4 sm:px-12 my-[10vh] rounded-2xl max-w-lg items-center">
             <svg
@@ -256,41 +259,122 @@ const Privacy = () => {
                 {process.env.NEXT_PUBLIC_INSTANCE_IP_DATA === "true" && (
                   <li className="py-2">
                     <span className="font-bold">IP Addresses</span> - Internet
-                    Protocol addresses{" "}
-                    <span className="underline">are collected</span>{" "}
+                    Protocol addresses are collected
                   </li>
                 )}
                 {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Pages Viewed</span> -
-                    page/Request URLs{" "}
-                    <span className="underline">are collected</span>
+                    page/Request URLs are collected
                   </li>
                 )}{" "}
                 {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Device Type</span> - user agent
-                    data <span className="underline">is collected</span>
+                    data is collected
                   </li>
                 )}
                 {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Diagnostic Data</span> -
-                    diagnostic data{" "}
-                    <span className="underline">is collected</span>
+                    diagnostic data is collected
                   </li>
                 )}
                 {process.env.NEXT_PUBLIC_INSTANCE_OTHER_DATA && (
                   <li className="py-2">
                     <span className="font-bold">Other Data</span> -{" "}
-                    <span className="normal-case">
-                      {process.env.NEXT_PUBLIC_INSTANCE_OTHER_DATA}
-                    </span>
+                    {process.env.NEXT_PUBLIC_INSTANCE_OTHER_DATA}
                   </li>
                 )}
               </ul>
             </div>
+            {/* Instance information section */}
+            <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
+              <summary className="flex cursor-pointer items-center justify-between">
+                <h2 className="font-semibold capitalize">
+                  Instance information:
+                </h2>
 
+                <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="absolute inset-0 opacity-100 group-open:opacity-0"
+                    fill="#E2E8F0"
+                    viewBox="0 0 24 24"
+                    stroke="black"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="absolute inset-0 opacity-0 group-open:opacity-100"
+                    fill="#E2E8F0"
+                    viewBox="0 0 24 24"
+                    stroke="black"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                <span className="underline capitalize">Instance Operator:</span>
+                <br />
+                {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME && (
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK}
+                  >
+                    {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK ? (
+                      <span className="hover:underline">
+                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                      </span>
+                    ) : (
+                      <span>
+                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                      </span>
+                    )}
+                  </a>
+                )}
+              </p>
+              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                <span className="underline capitalize">Country:</span>
+                <br />
+                {process.env.NEXT_PUBLIC_INSTANCE_COUNTRY && (
+                  <span>{process.env.NEXT_PUBLIC_INSTANCE_COUNTRY}</span>
+                )}
+              </p>
+              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                <span className="underline capitalize">Hosting Provider:</span>
+                <br />
+                {process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
+                  <span>{process.env.NEXT_PUBLIC_INSTANCE_PROVIDER}</span>
+                )}
+              </p>
+              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                <span className="underline capitalize">Uses Cloudflare?</span>
+                <br />
+                {process.env.NEXT_PUBLIC_INSTANCE_CLOUDFLARE === "true" ? (
+                  <span>Yes</span>
+                ) : (
+                  <span>No</span>
+                )}
+              </p>
+            </details>
+            {/* What does this mean section */}
             <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
               <summary className="flex cursor-pointer items-center justify-between">
                 <h2 className="font-semibold capitalize">
