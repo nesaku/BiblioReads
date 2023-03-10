@@ -289,91 +289,100 @@ const Privacy = () => {
               </ul>
             </div>
             {/* Instance information section */}
-            <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
-              <summary className="flex cursor-pointer items-center justify-between">
-                <h2 className="font-semibold capitalize">
-                  Instance information:
-                </h2>
+            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME &&
+              process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
+                <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
+                  <summary className="flex cursor-pointer items-center justify-between">
+                    <h2 className="font-semibold capitalize">
+                      Instance information:
+                    </h2>
 
-                <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute inset-0 opacity-100 group-open:opacity-0"
-                    fill="#E2E8F0"
-                    viewBox="0 0 24 24"
-                    stroke="black"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                    <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute inset-0 opacity-100 group-open:opacity-0"
+                        fill="#E2E8F0"
+                        viewBox="0 0 24 24"
+                        stroke="black"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute inset-0 opacity-0 group-open:opacity-100"
-                    fill="#E2E8F0"
-                    viewBox="0 0 24 24"
-                    stroke="black"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </span>
-              </summary>
-              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
-                <span className="underline capitalize">Instance Operator:</span>
-                <br />
-                {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME && (
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK}
-                  >
-                    {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK ? (
-                      <span className="hover:underline">
-                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
-                      </span>
-                    ) : (
-                      <span>
-                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
-                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="absolute inset-0 opacity-0 group-open:opacity-100"
+                        fill="#E2E8F0"
+                        viewBox="0 0 24 24"
+                        stroke="black"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                    <span className="underline capitalize">
+                      Instance Operator:
+                    </span>
+                    <br />
+                    {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME && (
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href={process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK}
+                      >
+                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK ? (
+                          <span className="hover:underline">
+                            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                          </span>
+                        ) : (
+                          <span>
+                            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                          </span>
+                        )}
+                      </a>
                     )}
-                  </a>
-                )}
-              </p>
-              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
-                <span className="underline capitalize">Country:</span>
-                <br />
-                {process.env.NEXT_PUBLIC_INSTANCE_COUNTRY && (
-                  <span>{process.env.NEXT_PUBLIC_INSTANCE_COUNTRY}</span>
-                )}
-              </p>
-              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
-                <span className="underline capitalize">Hosting Provider:</span>
-                <br />
-                {process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
-                  <span>{process.env.NEXT_PUBLIC_INSTANCE_PROVIDER}</span>
-                )}
-              </p>
-              <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
-                <span className="underline capitalize">Uses Cloudflare?</span>
-                <br />
-                {process.env.NEXT_PUBLIC_INSTANCE_CLOUDFLARE === "true" ? (
-                  <span>Yes</span>
-                ) : (
-                  <span>No</span>
-                )}
-              </p>
-            </details>
+                  </p>
+                  <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                    <span className="underline capitalize">Country:</span>
+                    <br />
+                    {process.env.NEXT_PUBLIC_INSTANCE_COUNTRY && (
+                      <span>{process.env.NEXT_PUBLIC_INSTANCE_COUNTRY}</span>
+                    )}
+                  </p>
+                  <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                    <span className="underline capitalize">
+                      Hosting Provider:
+                    </span>
+                    <br />
+                    {process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
+                      <span>{process.env.NEXT_PUBLIC_INSTANCE_PROVIDER}</span>
+                    )}
+                  </p>
+                  <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
+                    <span className="underline capitalize">
+                      Uses Cloudflare?
+                    </span>
+                    <br />
+                    {process.env.NEXT_PUBLIC_INSTANCE_CLOUDFLARE === "true" ? (
+                      <span>Yes</span>
+                    ) : (
+                      <span>No</span>
+                    )}
+                  </p>
+                </details>
+              )}
             {/* What does this mean section */}
             <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
               <summary className="flex cursor-pointer items-center justify-between">

@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.0] - Mar 9, 2023
+
+### Added
+
+- Add questions works route
+
+### Changed
+
+- Only show instance information on the privacy page if the env variables are set
+- Move works scrapers to their own folder
+- Only show view question/quotes button on the book page if there is data
+- Change book quotes page layout
+- Added book questions page Redirector info to the README
+
 ## [2.10.0] - Mar 7, 2023
 
 ### Added

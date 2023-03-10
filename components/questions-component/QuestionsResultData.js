@@ -1,28 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 import Meta from "../global-components/Meta";
-import QuoteCard from "./QuoteCard";
+import QuestionCard from "./QuestionCard";
 
-const SeriesResults = ({ scrapedData }) => {
+const QuestionResults = ({ scrapedData }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
     <div
-      id="seriesResults"
+      id="questionResults"
       className="flex flex-col p-12 justify-center items-center text-center"
     >
-      <Meta title={scrapedData.name} />
+      <Meta title={scrapedData.book && `${scrapedData.book} - Questions`} />
 
-      {scrapedData.quotes && (
-        <Link
-          href={`/search/${scrapedData.name
-            .toLowerCase()
-            .replaceAll(" ", "-")
-            .replace("-quotes", "")}?type=books`}
-        >
-          <a className="flex flex-col lg:flex-row justify-center items-center">
-            <div className="flex mr-8">
+      {scrapedData.questions && (
+        <div className="flex flex-col lg:flex-row justify-center items-center">
+          <Link
+            href={scrapedData.bookURL.replace("https://www.goodreads.com", "")}
+          >
+            <a className="flex mr-8">
               {!imageError ? (
                 <picture>
                   <source
@@ -37,8 +34,8 @@ const SeriesResults = ({ scrapedData }) => {
                   />
                   <img
                     src={`/img?url=${scrapedData.image}&maxage=30d`}
-                    width="150"
-                    height="150"
+                    width="98"
+                    height="98"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     loading="eager"
                     onError={() => setImageError(true)}
@@ -53,19 +50,27 @@ const SeriesResults = ({ scrapedData }) => {
                   className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
                 />
               )}
-            </div>
-
-            <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 hover:underline decoration-rose-600 dark:text-gray-100/80 capitalize">
-              {scrapedData.name && `${scrapedData.name}:`}
-            </h2>
-          </a>
-        </Link>
+            </a>
+          </Link>
+          <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2  decoration-rose-600 dark:text-gray-100/80 capitalize">
+            Questions About{" "}
+            <Link
+              href={scrapedData.bookURL.replace(
+                "https://www.goodreads.com",
+                ""
+              )}
+            >
+              <a className="hover:underline">{scrapedData.book}</a>
+            </Link>
+            :
+          </h2>
+        </div>
       )}
-      {scrapedData.quotes && scrapedData.quotes.length === 0 && (
+      {scrapedData.questions && scrapedData.questions.length === 0 && (
         <div className="h-[60vh]">
           <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 dark:text-gray-100/80 capitalize">
-            No Quotes Found For:{" "}
-            <span className="font-normal">{scrapedData.name}</span>
+            No Questions Found For:{" "}
+            <span className="font-normal">{scrapedData.book}</span>
             <div className="flex justify-center mt-32">
               <a
                 href={scrapedData.scrapeURL}
@@ -79,9 +84,11 @@ const SeriesResults = ({ scrapedData }) => {
           </h2>
         </div>
       )}
-      {scrapedData.quotes && <QuoteCard quotes={scrapedData.quotes} />}
+      {scrapedData.questions && (
+        <QuestionCard questions={scrapedData.questions} />
+      )}
     </div>
   );
 };
 
-export default SeriesResults;
+export default QuestionResults;

@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 
-const WorkQuotesScraper = async (req, res) => {
+const QuotesScraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("?")[0];
     try {
@@ -86,4 +86,4 @@ const WorkQuotesScraper = async (req, res) => {
   }
 };
 
-export default WorkQuotesScraper;
+export default QuotesScraper;

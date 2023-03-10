@@ -122,65 +122,64 @@ const ResultData = ({ scrapedData }) => {
                     </Link>
                   </div>
                 )}
-                {(scrapedData.questions != "Ask" ||
-                  scrapedData.quotes != "Add") && (
-                  <div className="flex justify-around my-4">
-                    {scrapedData.quotes && (
-                      <div className="mt-4 items-center justify-center flex">
-                        <Link
-                          href={scrapedData.quotesURL.replace(
-                            "https://www.goodreads.com",
-                            ""
+                <div className="flex justify-around my-4">
+                  {scrapedData.quotes != "Add" && (
+                    <div className="mt-4 items-center justify-center flex">
+                      <Link
+                        href={scrapedData.quotesURL.replace(
+                          "https://www.goodreads.com",
+                          ""
+                        )}
+                      >
+                        <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                          {scrapedData.quotes} Quotes
+                          <svg
+                            aria-hidden="true"
+                            className="w-5 h-5 ml-2 -mr-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        </a>
+                      </Link>
+                    </div>
+                  )}
+                  {scrapedData.questions != "Ask" && (
+                    <div className="mt-4 items-center justify-center flex">
+                      <Link
+                        href={scrapedData.questionsURL
+                          .replace("questions", "")
+                          .replace(
+                            "https://www.goodreads.com/book",
+                            "/work/questions"
                           )}
-                        >
-                          <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                            {scrapedData.quotes} Quotes
-                            <svg
-                              aria-hidden="true"
-                              className="w-5 h-5 ml-2 -mr-1"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
-                          </a>
-                        </Link>
-                      </div>
-                    )}
-                    {/* {scrapedData.questions && (
-                      <div className="mt-4 items-center justify-center flex">
-                        <Link
-                          href={scrapedData.questionsURL.replace(
-                            "https://www.goodreads.com",
-                            ""
-                          )}
-                        >
-                          <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                            {scrapedData.questions} Questions
-                            <svg
-                              aria-hidden="true"
-                              className="w-5 h-5 ml-2 -mr-1"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
-                          </a>
-                        </Link>
-                      </div>
-                    )} */}
-                  </div>
-                )}
+                      >
+                        <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                          {scrapedData.questions} Questions
+                          <svg
+                            aria-hidden="true"
+                            className="w-5 h-5 ml-2 -mr-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        </a>
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

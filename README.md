@@ -83,14 +83,27 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
   - Apply to:
     - [x] Main window (address bar)
 
-#### To Redirect Book Quotes Pages:
+#### To Redirect Book Quote Pages:
 
 - Description: Goodreads to BiblioReads Book Quotes Page
 - Example URL: https://www.goodreads.com/work/quotes/1540236-the-hobbit
 - Include pattern: `https://www.goodreads.com/work/quotes/*`
 - Redirect to: `https://biblioreads.ml/work/quotes/$1`
 - Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
+- Pattern Description: Redirects all Goodreads book quote page URLs to BiblioReads
+- Advanced options:
+
+  - Apply to:
+    - [x] Main window (address bar)
+
+#### To Redirect Book Question Pages:
+
+- Description: Goodreads to BiblioReads Book Questions Page
+- Example URL: https://www.goodreads.com/book/5907/questions
+- Include pattern: `https://www.goodreads.com/book//**//questions`
+- Redirect to: `https://biblioreads.ml/work/questions/$1`
+- Pattern type: Wildcard Expression
+- Pattern Description: Redirects all Goodreads book question page URLs to BiblioReads
 - Advanced options:
   - Apply to:
     - [x] Main window (address bar)

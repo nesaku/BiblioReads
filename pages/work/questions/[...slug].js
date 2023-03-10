@@ -4,7 +4,7 @@ import Header from "../../../components/global-components/Header";
 import Footer from "../../../components/global-components/Footer";
 import Loader from "../../../components/global-components/Loader";
 import ErrorMessage from "../../../components/global-components/ErrorMessage";
-import QuotesResultData from "../../../components/quotespage-components/QuotesResultData";
+import QuestionsResultData from "../../../components/questions-component/QuestionsResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -14,14 +14,13 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/works/quotes`, {
+      const res = await fetch(`/api/works/questions`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          // This URL is redirected by Goodreads
-          queryURL: `http://www.goodreads.com/work/quotes/${slug}`,
+          queryURL: `https://www.goodreads.com/book/${slug}/questions`,
         }),
       });
       if (res.ok) {
@@ -44,26 +43,26 @@ const Slug = () => {
         {error && (
           <ErrorMessage
             status="500"
-            url={`https://www.goodreads.com/work/quotes/${slug}`}
+            url={`https://www.goodreads.com/book/${slug}/questions`}
           />
         )}
         {!error && (
           <>
-            {scrapedData.name === undefined && <Loader other={true} />}
+            {scrapedData.book === undefined && <Loader other={true} />}
             {scrapedData.error && (
               <ErrorMessage
                 status="404"
-                url={`https://www.goodreads.com/work/quotes/${slug}`}
+                url={`https://www.goodreads.com/book/${slug}/questions`}
               />
             )}
 
-            {scrapedData.quotes && scrapedData.name.length === 0 && (
+            {scrapedData.questions && scrapedData.book.length === 0 && (
               <ErrorMessage
                 status="ScraperError"
-                url={`https://www.goodreads.com/work/quotes/${slug}`}
+                url={`https://www.goodreads.com/book/${slug}/questions`}
               />
             )}
-            {scrapedData && <QuotesResultData scrapedData={scrapedData} />}
+            {scrapedData && <QuestionsResultData scrapedData={scrapedData} />}
           </>
         )}
         <Footer />
