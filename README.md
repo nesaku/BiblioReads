@@ -69,8 +69,7 @@ Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically r
 
 ### GreaseMonkey Userscript
 
-There is a userscript to redirect Goodreads links to Biblioreads.
-https://codeberg.org/zortazert/GreaseMonkey-Redirect/src/branch/main/GoodReads_to_BiblioReads.user.js
+There is a userscript to redirect Goodreads links to BiblioReads. The userscript can be found [here](https://codeberg.org/zortazert/GreaseMonkey-Redirect/src/branch/main/Goodreads_to_BiblioReads.user.js).
 
 ### Redirector
 
