@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import SearchByButton from "./SearchByButton";
 
@@ -14,23 +14,26 @@ const SearchBox = (props) => {
     if (!inputValue.includes("https://")) {
       router.push({
         pathname: `/search/${inputValue.replaceAll("/", "-")}`,
-        query: { type: queryType },
+        query: { type: queryType ? queryType : "books" },
       });
     } else {
       setValidQuery(false);
     }
   };
 
+  useEffect(() => {
+    setQueryType(props.searchType);
+  }, [props.searchType]);
+
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <h1
-          className={`text-2xl text-black dark:text-gray-200/80 font-semibold ${
-            props.main && `mb - 10`
-          }`}
-        >
-          {props.main ? "Search For A Book:" : "Search For Another Book:"}{" "}
-        </h1>
+        {props.main && (
+          <h1 className="text-6xl text-black dark:text-gray-200/80 font-semibold capitalize mb - 10">
+            Search For A Book Or Quote:
+          </h1>
+        )}
+
         <div className="flex justify-center text-center">
           <div
             className={`flex flex-col sm:flex-row items-center ${
@@ -69,33 +72,32 @@ const SearchBox = (props) => {
             </button>
           </div>
         </div>
-
-        {/*  Enable search types once search routes are implemented - see line 20 on pages/search/[...slug].js
+        {/* TODO: See line 22 on pages/search/[...slug].js */}
         <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="books"
           text="Books"
         />
-        <SearchByButton
+        {/*         <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="people"
           text="People"
-        />
+        /> */}
         <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="quotes"
           text="Quotes"
         />
-        <SearchByButton
+        {/*         <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="lists"
           text="Lists"
-        />
-        <SearchByButton
+        /> */}
+        {/*      <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="groups"

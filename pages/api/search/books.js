@@ -63,6 +63,7 @@ const SearchScraper = async (req, res) => {
         status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
+        searchType: "books",
         numberOfResults: numberOfResults,
         result: result,
         lastScraped: lastScraped,

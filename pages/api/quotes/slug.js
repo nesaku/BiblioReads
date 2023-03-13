@@ -61,7 +61,21 @@ const QuotesSlugScraper = async (req, res) => {
           };
         })
         .toArray();
-
+      const popularTags = $(
+        "div.bigBoxContent.containerWithHeaderContent > ul.listTagsTwoColumn > li.greyText"
+      )
+        .map((i, el) => {
+          const $el = $(el);
+          const url = $el.find("a.gr-hyperlink").attr("href");
+          const name = $el.find("a.gr-hyperlink").text();
+          const id = i + 1;
+          return {
+            id: id,
+            url: url,
+            name: name,
+          };
+        })
+        .toArray();
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
@@ -70,6 +84,7 @@ const QuotesSlugScraper = async (req, res) => {
         scrapeURL: scrapeURL,
         name: name,
         quotes: quotes,
+        popularTags: popularTags,
         lastScraped: lastScraped,
       });
     } catch (error) {

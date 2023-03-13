@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.0] - Mar 13, 2023
+
+### Added
+
+- Add quote tags search and show popular tags - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/59)
+- Add quotes search - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/59)
+- Add GreaseMonkey Userscript to the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/62)
+- Add the documentation issue template - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/63)
+
+### Changed
+
+- Only show quotes book image if there is image data
+- Update the placeholder image
+- Change wildcard import for DOMPurify
+- Update search page hero
+- Move search scrapers to their own folder
+
 ## [2.11.0] - Mar 9, 2023
 
 ### Added

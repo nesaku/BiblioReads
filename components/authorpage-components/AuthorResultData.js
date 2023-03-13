@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import Meta from "../global-components/Meta";
 import AuthorBooks from "./AuthorBooks";
 import AuthorSeries from "./AuthorSeries";

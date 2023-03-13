@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import StarIcon from "./StarIcon";
 
 const ReviewCard = (props) => {

@@ -67,6 +67,11 @@ If you'd like to add your instance to the list, please open an issue or pull req
 
 Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically redirect Goodreads links to BiblioReads.
 
+### GreaseMonkey Userscript
+
+There is a userscript to redirect Goodreads links to Biblioreads.
+https://codeberg.org/zortazert/GreaseMonkey-Redirect/src/branch/main/GoodReads_to_BiblioReads.user.js
+
 ### Redirector
 
 You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance URL):
