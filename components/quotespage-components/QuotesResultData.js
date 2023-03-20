@@ -224,14 +224,13 @@ const SeriesResults = ({ scrapedData }) => {
             )}
           </div>
           <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 dark:text-gray-100/80 capitalize">
-            No Quotes Found For:{" "}
-            <span className="font-normal">{scrapedData.name}</span>
+            No Quotes Found
             <div className="flex justify-center mt-10">
               <a
                 href={scrapedData.scrapeURL}
                 target="_blank"
                 rel="noreferrer"
-                className="mr-12 font-semibold text-sm text-white dark:text-white bg-slate-500 dark:bg-slate-700 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 hover:dark:bg-slate-600 transition duration-300 delay-40 hover:delay-40"
+                className="font-semibold text-sm text-white dark:text-white bg-slate-500 dark:bg-slate-700 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 hover:dark:bg-slate-600 transition duration-300 delay-40 hover:delay-40"
               >
                 View On Goodreads
               </a>

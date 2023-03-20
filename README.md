@@ -61,7 +61,7 @@ If you'd like to add your instance to the list, please open an issue or pull req
 
 ---
 
-## Automatically Redirect Links
+## Automatic Redirection
 
 ### LibRedirect
 
@@ -75,84 +75,37 @@ There is a userscript to redirect Goodreads links to BiblioReads. The userscript
 
 You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance URL):
 
-#### To Redirect Book Pages:
+#### To Redirect All Supported Routes:
 
-- Description: Goodreads to BiblioReads Book Page
+- Description: Goodreads to BiblioReads Pages
 - Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
-- Include pattern: `https://www.goodreads.com/book/show/*`
-- Redirect to: `https://biblioreads.ml/book/show/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads book page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Book Quote Pages:
-
-- Description: Goodreads to BiblioReads Book Quotes Page
-- Example URL: https://www.goodreads.com/work/quotes/1540236-the-hobbit
-- Include pattern: `https://www.goodreads.com/work/quotes/*`
-- Redirect to: `https://biblioreads.ml/work/quotes/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads book quote page URLs to BiblioReads
-- Advanced options:
-
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Book Question Pages:
-
-- Description: Goodreads to BiblioReads Book Questions Page
-- Example URL: https://www.goodreads.com/book/5907/questions
-- Include pattern: `https://www.goodreads.com/book//**//questions`
-- Redirect to: `https://biblioreads.ml/work/questions/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads book question page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Book Series Pages:
-
-- Description: Goodreads to BiblioReads Book Series Page
-- Example URL: https://www.goodreads.com/series/66175-the-lord-of-the-rings
-- Include pattern: `https://www.goodreads.com/series/*`
-- Redirect to: `https://biblioreads.ml/series/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Author Pages:
-
-- Description: Goodreads to BiblioReads Author Page
-- Example URL: https://www.goodreads.com/author/show/656983.J_R_R_Tolkien
-- Include pattern: `https://www.goodreads.com/author/show/*`
-- Redirect to: `https://biblioreads.ml/author/show/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Quotes Pages:
-
-- Description: Goodreads to BiblioReads Quote Page
-- Example URL: https://www.goodreads.com/quotes/tag/inspirational
-- Include pattern: `https://www.goodreads.com/quotes/*`
-- Redirect to: `https://biblioreads.ml/quotes/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads quote page URLs to BiblioReads
+- Include pattern: `^(?:https?://)www\.goodreads\.com/(book|work|author|series|quotes)(.*)`
+- Redirect to: `https://biblioreads.ml/$1$2`
+- Pattern type: Regular Expression
+- Pattern Description: Redirects all supported Goodreads URLs to BiblioReads
 - Advanced options:
   - Apply to:
     - [x] Main window (address bar)
 
 #### To Redirect Search Pages:
 
-- Description: Goodreads to BiblioReads Search Page
+##### Rule 1:
+
+- Description: Goodreads to BiblioReads Search Page - Rule 1
 - Example URL: https://www.goodreads.com/search?q=the+hobbit&qid=
 - Include pattern: `^https:\/\/www\.goodreads\.com\/search\?q=(.*)$`
+- Redirect to: `https://biblioreads.ml/search/$1`
+- Pattern type: Regular Expression
+- Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
+##### Rule 2:
+
+- Description: Goodreads to BiblioReads Search Page - Rule 2
+- Example URL: https://www.goodreads.com/search?utf8=%E2%9C%93&q=the+hobbit&search_type=books
+- Include pattern: `^https:\/\/www\.goodreads\.com\/search\?utf8=%E2%9C%93&q=(.*)$`
 - Redirect to: `https://biblioreads.ml/search/$1`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
