@@ -166,9 +166,13 @@ const BookScraper = async (req, res) => {
         "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)"
       ).attr("href");
       const lastScraped = new Date().toISOString();
-      res.statusCode = 200;
+      {
+        title === "" ? (res.statusCode = 504) : (res.statusCode = 200);
+      }
+
       return res.json({
         status: "Recieved",
+        statusCode: res.statusCode,
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         cover: cover,

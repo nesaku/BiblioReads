@@ -27,10 +27,16 @@ const Slug = () => {
       if (res.ok) {
         const data = await res.json();
         setScrapedData(data);
+      } else if (!res.ok) {
+        // TODO: come up with a better solution than retrying until a successfull response is recieved
+        setTimeout(function () {
+          fetchData();
+        }, 2000);
       } else {
         setError(true);
       }
     };
+
     if (slug) {
       fetchData();
     }

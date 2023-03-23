@@ -2,15 +2,15 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.12.0";
-  const versionSlug = "2120---mar-13-2023";
+  const version = "v2.12.1";
+  const versionSlug = "2121---mar-23-2023";
 
   console.log(`%c${version} (Oreki)`, `color:green`);
 
   return (
     <footer className="text-center w-full ">
       <div className="flex justify-center items-center content-center mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl space-y-6">
+        <div className="mx-auto max-w-4xl space-y-6">
           <nav
             aria-label="Footer Nav"
             className="rounded-3xl border-4 border-gray-900 p-6 dark:border-gray-700"
@@ -20,6 +20,14 @@ const Footer = () => {
                 <Link href="/search">
                   <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Search
+                  </a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/quotes">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
+                    Quotes
                   </a>
                 </Link>
               </li>

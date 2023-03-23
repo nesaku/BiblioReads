@@ -16,12 +16,12 @@ const Header = () => {
         <div>
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
-              <Link href="/">
+              <Link href="/quotes">
                 <a
                   className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90"
                   aria-hidden="true"
                 >
-                  Home
+                  Quotes
                 </a>
               </Link>
             </li>
