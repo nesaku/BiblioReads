@@ -38,6 +38,7 @@ const QuestionResults = ({ scrapedData }) => {
                     height="98"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     loading="eager"
+                    alt=""
                     onError={() => setImageError(true)}
                   />
                 </picture>

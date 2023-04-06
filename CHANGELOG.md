@@ -7,14 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.12.2] - Apr 5, 2023
 
+### Added
+
+- Add a search button to the about page
+
 ### Fixed
 
 - Fix unhandled scraper errors
+- Fix search for a tag prompt when loading quote tags
+- Fix missing alt tags for img elements
 
 ### Changed
 
 - Retry until a successfull response is recieved when the book page scraper encounters a 504 error
 - Remove "-components" from component subfolder names
+- Change button name from "submit" to "search"
 
 ## [2.12.1] - Mar 23, 2023
 
