@@ -154,6 +154,11 @@ const SeriesScraper = async (req, res) => {
         scrapeURL: scrapeURL,
       });
     }
+  } else {
+    res.statusCode = 405;
+    return res.json({
+      status: "Error 405 - Method Not Allowed",
+    });
   }
 };
 

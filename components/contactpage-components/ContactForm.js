@@ -14,7 +14,11 @@ const ContactForm = () => {
             <input
               type="hidden"
               name="_redirect"
-              value="https://biblioreads.ml/success"
+              value={
+                process.env.NEXT_PUBLIC_HOST_URL
+                  ? `${process.env.NEXT_PUBLIC_HOST_URL}/success`
+                  : "https://biblioreads.ml/success"
+              }
             />
             <input type="hidden" name="_error" value="/500" />
             <input type="hidden" name="_append" value="false" />
