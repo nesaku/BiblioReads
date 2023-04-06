@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useState } from "react";
-import Meta from "../global-components/Meta";
+import Meta from "../global/Meta";
 
 const SearchResults = (props) => {
   const [imageError, setImageError] = useState(false);

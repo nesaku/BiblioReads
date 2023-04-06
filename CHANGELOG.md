@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix unhandled scraper errors
 
+### Changed
+
+- Retry until a successfull response is recieved when the book page scraper encounters a 504 error
+- Remove "-components" from component subfolder names
+
 ## [2.12.1] - Mar 23, 2023
 
 ### Added

@@ -1,12 +1,12 @@
 import React from "react";
-import Meta from "../components/global-components/Meta";
-import Header from "../components/global-components/Header";
-import Footer from "../components/global-components/Footer";
-import AboutHero from "../components/aboutpage-components/AboutHero";
-import Divider from "../components/aboutpage-components/Divider";
-import FAQ from "../components/aboutpage-components/FAQ";
-import Features from "../components/aboutpage-components/Features";
-import Stats from "../components/aboutpage-components/Stats";
+import Meta from "../components/global/Meta";
+import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
+import AboutHero from "../components/aboutpage/AboutHero";
+import Divider from "../components/aboutpage/Divider";
+import FAQ from "../components/aboutpage/FAQ";
+import Features from "../components/aboutpage/Features";
+import Stats from "../components/aboutpage/Stats";
 
 const About = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import Meta from "../components/global-components/Meta";
-import Header from "../components/global-components/Header";
-import Footer from "../components/global-components/Footer";
+import Meta from "../components/global/Meta";
+import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
 
 const Success = () => {
   return (

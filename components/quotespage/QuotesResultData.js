@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Meta from "../global-components/Meta";
+import Meta from "../global/Meta";
 import QuoteCard from "./QuoteCard";
 
 const SeriesResults = ({ scrapedData }) => {

@@ -1,7 +1,7 @@
-import Meta from "../../components/global-components/Meta";
-import Header from "../../components/global-components/Header";
-import Footer from "../../components/global-components/Footer";
-import SearchBox from "../../components/searchpage-components/SearchBox";
+import Meta from "../../components/global/Meta";
+import Header from "../../components/global/Header";
+import Footer from "../../components/global/Footer";
+import SearchBox from "../../components/searchpage/SearchBox";
 
 const Search = () => {
   return (

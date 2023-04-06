@@ -4,7 +4,7 @@ import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
 import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
-import Meta from "../global-components/Meta";
+import Meta from "../global/Meta";
 import ReviewBreakdown from "./ReviewBreakdown";
 import Link from "next/link";
 

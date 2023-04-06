@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
-import Meta from "../components/global-components/Meta";
+import Meta from "../components/global/Meta";
 
 const _offline = () => {
   return (

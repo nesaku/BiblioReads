@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import Meta from "../components/global-components/Meta";
-import Header from "../components/global-components/Header";
-import Footer from "../components/global-components/Footer";
+import Meta from "../components/global/Meta";
+import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
 
 // Show the default privacy policy unless instance privacy info is configured
 const Privacy = () => {

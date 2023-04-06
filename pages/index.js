@@ -1,8 +1,8 @@
 import React from "react";
 import FormQuery from "../components/FormQuery";
-import Footer from "../components/global-components/Footer";
-import Header from "../components/global-components/Header";
-import Meta from "../components/global-components/Meta";
+import Footer from "../components/global/Footer";
+import Header from "../components/global/Header";
+import Meta from "../components/global/Meta";
 
 const Home = () => {
   return (
