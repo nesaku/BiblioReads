@@ -4,7 +4,7 @@ import Header from "../../../components/global/Header";
 import Footer from "../../../components/global/Footer";
 import Loader from "../../../components/global/Loader";
 import ErrorMessage from "../../../components/global/ErrorMessage";
-import QuestionsResultData from "../../../components/questions/QuestionsResultData";
+import QuestionsResultData from "../../../components/questionspage/QuestionsResultData";
 
 const Slug = () => {
   const router = useRouter();

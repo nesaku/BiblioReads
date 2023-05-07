@@ -21,7 +21,7 @@ const ReviewBreakdown = ({ data }) => {
         className="flex items-center py-1 sm:py-2 xl:py-4"
       >
         <div className="font-semibold mr-3 px-1">5 Stars: </div>
-        <div className="w-60 sm:w-[480px] h-7 rounded bg-white dark:bg-gray-300">
+        <div className="w-60 sm:w-[480px] lg:w-[24rem] 2xl:w-[34rem] h-7 rounded bg-white dark:bg-gray-300">
           <div
             style={{
               width: `${Math.round(
@@ -51,7 +51,7 @@ const ReviewBreakdown = ({ data }) => {
         className="flex items-center py-1 sm:py-2 xl:py-4"
       >
         <div className="font-semibold mr-3 px-1">4 Stars: </div>
-        <div className="w-60 sm:w-[480px] h-7 rounded bg-white dark:bg-gray-300">
+        <div className="w-60 sm:w-[480px] lg:w-[24rem] 2xl:w-[34rem] h-7 rounded bg-white dark:bg-gray-300">
           <div
             style={{
               width: `${Math.round(
@@ -81,7 +81,7 @@ const ReviewBreakdown = ({ data }) => {
         className="flex items-center py-1 sm:py-2 xl:py-4"
       >
         <div className="font-semibold mr-3 px-1">3 Stars: </div>
-        <div className="w-60 sm:w-[480px] h-7 rounded bg-white dark:bg-gray-300">
+        <div className="w-60 sm:w-[480px] lg:w-[24rem] 2xl:w-[34rem] h-7 rounded bg-white dark:bg-gray-300">
           <div
             style={{
               width: `${Math.round(
@@ -111,7 +111,7 @@ const ReviewBreakdown = ({ data }) => {
         className="flex items-center py-1 sm:py-2 xl:py-4"
       >
         <div className="font-semibold mr-3 px-1">2 Stars: </div>
-        <div className="w-60 sm:w-[480px] h-7 rounded bg-white dark:bg-gray-300">
+        <div className="w-60 sm:w-[480px] lg:w-[24rem] 2xl:w-[34rem] h-7 rounded bg-white dark:bg-gray-300">
           <div
             style={{
               width: `${Math.round(
@@ -151,7 +151,7 @@ const ReviewBreakdown = ({ data }) => {
         className="flex items-center py-1 sm:py-2 xl:py-4"
       >
         <div className="font-semibold mr-3 px-1 pr-3">1 Star: </div>
-        <div className="w-60 sm:w-[480px] h-7 rounded bg-white dark:bg-gray-300">
+        <div className="w-60 sm:w-[480px] lg:w-[24rem] 2xl:w-[34rem] h-7 rounded bg-white dark:bg-gray-300">
           <div
             style={{
               width: `${Math.round(

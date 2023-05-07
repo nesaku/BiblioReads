@@ -1,9 +1,11 @@
 const cheerio = require("cheerio");
 
-const SearchScraper = async (req, res) => {
+const ListScraper = async (req, res) => {
   if (req.method === "POST") {
-    const scrapeURL = req.body.queryURL.split("&")[0];
-
+    // URL might be a redirect
+    const scrapeURL = req.body.queryURL
+      .split("&")[0]
+      .replace("https://", "http://");
     try {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
@@ -13,37 +15,29 @@ const SearchScraper = async (req, res) => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         }),
       });
+
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const numberOfResults = $(".leftContainer > h3").text();
-      const result = $("table > tbody > tr")
+      const title = $("div.leftContainer > h1").text();
+      const desc = $("div.u-paddingBottomMedium.mediumText").html();
+      const books = $("tbody > tr")
         .map((i, el) => {
           const $el = $(el);
           const cover = $el
-            .find("tr > td > a > img")
+            .find("td > div.js-tooltipTrigger.tooltipTrigger > a > img")
             .attr("src")
-            .replace("._SX50_SY75_", "")
-            .replace("._SY75_", "")
-            .replace("._SX50_", "");
-
-          const title = $el.find("tr > td:nth-child(2) > a > span").text();
-          const bookURL = $el.find("tr > td:nth-child(2) > a").attr("href");
+            .replace("._SY75_", "");
+          const title = $el.find("td > a > span").text();
+          const bookURL = $el.find("td > a").attr("href");
           const author = $el
-            .find(
-              "tr > td:nth-child(2) > span[itemprop = 'author'] > div > a > span[itemprop = 'name']"
-            )
-            .html();
-          const authorURL = $el
-            .find("tr > td:nth-child(2) > span[itemprop = 'author'] > div > a")
-            .attr("href")
-            .replace("https://www.goodreads.com", "")
-            .split("?")[0];
-          const rating = $el
-            .find(
-              "tr > td:nth-child(2) > div > span.greyText.smallText.uitext > span.minirating"
-            )
+            .find("td > span[itemprop = 'author'] > div > a > span")
             .text();
-
+          const authorURL = $el
+            .find("td > span[itemprop = 'author'] > div > a")
+            .attr("href");
+          const rating = $el
+            .find("td > div > span.greyText.smallText.uitext > span")
+            .text();
           const id = i + 1;
           return {
             id: id,
@@ -63,9 +57,9 @@ const SearchScraper = async (req, res) => {
         status: "Recieved",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
-        searchType: "books",
-        numberOfResults: numberOfResults,
-        result: result,
+        title: title,
+        desc: desc,
+        books: books,
         lastScraped: lastScraped,
       });
     } catch (error) {
@@ -84,4 +78,4 @@ const SearchScraper = async (req, res) => {
   }
 };
 
-export default SearchScraper;
+export default ListScraper;
