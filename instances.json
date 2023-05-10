@@ -44,4 +44,11 @@
     ],
     "cloudflare": false
   }
+   {
+    "url": "https://read.whateveritworks.org/",
+    "countries": [
+      "de"
+    ],
+    "cloudflare": true
+  }
 ]
