@@ -3,8 +3,10 @@ import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
+  // Detect and use the OS/browser's preferred theme
   const [isDefaultTheme, setIsDefaultTheme] = useState(true);
   const { theme, setTheme } = useTheme();
+  // If the themeSelector (theme selector) is used, save the preferred theme to LocalStorage
   const themeSelector = () => {
     setTheme(theme === "dark" ? "light" : "dark");
     setIsDefaultTheme(false);
@@ -19,6 +21,7 @@ const ThemeToggle = () => {
   }
 
   return (
+    // Change the button icon based on the preferred theme
     <>
       <button
         type="button"

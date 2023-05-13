@@ -8,6 +8,7 @@ import ErrorMessage from "../../components/global/ErrorMessage";
 import BookResultData from "../../components/searchpage/BookResultData";
 import SearchBox from "../../components/searchpage/SearchBox";
 import QuotesResultData from "../../components/searchpage/QuotesResultData";
+import ListsResultData from "../../components/searchpage/ListsResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -17,9 +18,9 @@ const Slug = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Based on the query.type the appropriate scraper is used
     const scraperPath = searchType();
-
-    // TODO: Add people, lists and groups search once those routes have been added
+    // TODO: Add people and groups search once those routes have been added
     function searchType() {
       if (query.type === "books") {
         const scraperPath = "/api/search/books";
@@ -134,12 +135,17 @@ const Slug = () => {
                     numberOfResults={scrapedData.numberOfResults}
                   />
                 )}
-                {/*  {scrapedData.searchType === "people" && "people"} */}
+                {/*  {scrapedData.searchType === "people" && <PeopleResultData />} */}
                 {scrapedData.searchType === "quotes" && (
                   <QuotesResultData scrapedData={scrapedData} />
                 )}
-                {/*    {scrapedData.searchType === "lists" && "lists"} */}
-                {/*   {scrapedData.searchType === "groups" && "groups"} */}
+                {scrapedData.searchType === "lists" && (
+                  <ListsResultData
+                    query={scrapedData.scrapeURL}
+                    result={scrapedData.result}
+                  />
+                )}
+                {/*   {scrapedData.searchType === "groups" && <GroupResultData />} */}
                 {scrapedData.numberOfResults === "No results." && (
                   <div
                     id="noResults"

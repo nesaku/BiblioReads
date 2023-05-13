@@ -8,9 +8,8 @@ const ReviewCard = (props) => {
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
-  {
-    /* Display the appropriate number of stars based on the starVal props */
-  }
+
+  // Display the appropriate number of stars based on the starVal props
   function Stars(props) {
     const starVal = props.starVal;
     if (starVal === "Rating 5 out of 5") {

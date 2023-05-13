@@ -7,10 +7,7 @@ const FormQuery = () => {
   const [inputValue, setInputValue] = useState("");
   const [validQuery, setValidQuery] = useState(true);
 
-  {
-    /* When the button is clicked/submitted push the input value to the url */
-  }
-
+  // When the button is clicked/submitted push the input value to the search url
   const onSubmit = (e) => {
     e.preventDefault();
     if (inputValue.includes("http" || "www")) {

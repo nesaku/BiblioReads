@@ -27,7 +27,9 @@ const ContactHero = () => {
             >
               Codeberg
             </a>
-            . Alternatively, you can use the contact form below.
+            .{" "}
+            {process.env.NEXT_PUBLIC_DISABLE_CONTACT_FORM != "true" &&
+              "Alternatively, you can use the contact form below."}
           </h2>
         </div>
       </div>

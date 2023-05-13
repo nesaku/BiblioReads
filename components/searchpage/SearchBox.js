@@ -91,12 +91,12 @@ const SearchBox = (props) => {
           value="quotes"
           text="Quotes"
         />
-        {/*         <SearchByButton
+        <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="lists"
           text="Lists"
-        /> */}
+        />
         {/*      <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
