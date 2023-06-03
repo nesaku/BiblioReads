@@ -1,47 +1,34 @@
 [
   {
     "url": "https://biblioreads.ml",
-    "countries": [
-      "us"
-    ],
+    "countries": ["us"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.ga",
-    "countries": [
-      "xx"
-    ],
+    "countries": ["xx"],
     "cloudflare": true
   },
   {
     "url": "biblioreads.netlify.app",
-    "countries": [
-      "us"
-    ],
+    "countries": ["us"],
     "cloudflare": false
   },
   {
     "url": "https://bl.vern.cc",
     "onion": "http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
     "i2p": "http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p",
-    "countries": [
-      "us"
-    ],
+    "countries": ["us"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.lunar.icu/",
-    "countries": [
-      "xx"
-    ],
+    "countries": ["xx"],
     "cloudflare": true
   },
   {
-    "url": "https://biblioreads.esmailelbob.xyz/",
-    "onion": "http://biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion",
-    "countries": [
-      "ca"
-    ],
-    "cloudflare": false
+    "url": "https://read.whateveritworks.org/",
+    "countries": ["xx"],
+    "cloudflare": true
   }
 ]

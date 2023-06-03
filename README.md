@@ -39,18 +39,18 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Instances
 
-| Instance URL                                                                                                                                                    |        Country         | Provider   | Notes                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | ----------------------------------------------- |
-| [biblioreads.ml](https://biblioreads.ml)                                                                                                                        |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)          |
-| [biblioreads.ga](https://biblioreads.ga)                                                                                                                        | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)          |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                                      |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)          |
-| [bl.vern.cc](https://bl.vern.cc)                                                                                                                                |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
-| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                                          | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)           |
-| [read.whateveritworks.org](https://read.whateveritworks.org)                                                                                                    | :globe_with_meridians: | Cloudflare | Run by [WhateverItworks](https://www.whateveritworks.org) |
-| Onion:                                                                                                                                                          |                        |            |                                                 |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion)                   |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
-| I2P:                                                                                                                                                            |                        |            |                                                 |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)                             |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
+| Instance URL                                                                                                                                  |        Country         | Provider   | Notes                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | --------------------------------------------------------- |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)                    |
+| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)                    |
+| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)                    |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
+| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)                     |
+| [read.whateveritworks.org](https://read.whateveritworks.org)                                                                                  | :globe_with_meridians: | Cloudflare | Run by [WhateverItworks](https://www.whateveritworks.org) |
+| Onion:                                                                                                                                        |                        |            |                                                           |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
+| I2P:                                                                                                                                          |                        |            |                                                           |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
 
 ### Adding Your Instance
 
@@ -78,7 +78,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 - Description: Goodreads to BiblioReads Pages
 - Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
-- Include pattern: `^(?:https?://)www\.goodreads\.com/(book|work|author|series|quotes)(.*)`
+- Include pattern: `^(?:https?://)www\.goodreads\.com/(book|work|author|series|quotes|list)(.*)`
 - Redirect to: `https://biblioreads.ml/$1$2`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all supported Goodreads URLs to BiblioReads
