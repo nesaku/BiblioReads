@@ -3,7 +3,7 @@
 </div>
 <h1 align="center">BiblioReads</h1>
 <div align="center">
-BiblioReads is a free and open-source alternative Goodreads front-end focused on privacy.
+BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
 Scrapes content from the Goodreads book page and presents the results without any of the bloat.
 
@@ -42,7 +42,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | Instance URL                                                                                                                                  |        Country         | Provider   | Notes                                                     |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | --------------------------------------------------------- |
 | [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)                    |
-| [biblioreads.ga](https://biblioreads.ga)                                                                                                      | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)                    |
+| [https://biblioreads.eu.org](https://https://biblioreads.eu.org)                                                                              | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)                    |
 | [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                    |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)                    |
 | [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
 | [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)                     |
@@ -72,14 +72,14 @@ There is a userscript to redirect Goodreads links to BiblioReads. The userscript
 
 ### Redirector
 
-You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance URL):
+You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.eu.org` with any instance URL):
 
 #### To Redirect All Supported Routes:
 
 - Description: Goodreads to BiblioReads Pages
 - Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
 - Include pattern: `^(?:https?://)www\.goodreads\.com/(book|work|author|series|quotes|list)(.*)`
-- Redirect to: `https://biblioreads.ml/$1$2`
+- Redirect to: `https://biblioreads.eu.org/$1$2`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all supported Goodreads URLs to BiblioReads
 - Advanced options:
@@ -93,7 +93,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 - Description: Goodreads to BiblioReads Search Page - Rule 1
 - Example URL: https://www.goodreads.com/search?q=the+hobbit&qid=
 - Include pattern: `^https:\/\/www\.goodreads\.com\/search\?q=(.*)$`
-- Redirect to: `https://biblioreads.ml/search/$1`
+- Redirect to: `https://biblioreads.eu.org/search/$1`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
 - Advanced options:
@@ -105,7 +105,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 - Description: Goodreads to BiblioReads Search Page - Rule 2
 - Example URL: https://www.goodreads.com/search?utf8=%E2%9C%93&q=the+hobbit&search_type=books
 - Include pattern: `^https:\/\/www\.goodreads\.com\/search\?utf8=%E2%9C%93&q=(.*)$`
-- Redirect to: `https://biblioreads.ml/search/$1`
+- Redirect to: `https://biblioreads.eu.org/search/$1`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
 - Advanced options:
@@ -120,8 +120,8 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
-2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
+1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
+2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
@@ -166,7 +166,7 @@ _(Tested on Chrome v108, without scroll, no throttling, cache disabled)_
 Goodreads collects information about your device and uses tracking cookies for advertising among other reasons, this can be found in their [privacy policy](https://www.goodreads.com/about/privacy). [Blacklight](https://themarkup.org/blacklight) found 16 ad trackers and 40 third-party cookies.
 
 - See what cookies and trackers Goodreads uses: https://themarkup.org/blacklight?url=www.goodreads.com
-- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.ml
+- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.eu.org
 
 ---
 

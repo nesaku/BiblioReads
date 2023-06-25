@@ -269,14 +269,26 @@ const ResultData = ({ scrapedData }) => {
                 </span>
               </div>
             )}
-            <div id="bookEdition">
-              <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                Book Edition:
-              </h2>
-              <span className="flex justify-center lg:justify-start mx-auto lg:mx-0 max-w-md text-md">
-                {scrapedData.bookEdition}
-              </span>
-            </div>
+            {scrapedData.bookEdition && (
+              <div id="bookEdition">
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Book Edition:
+                </h2>
+                <span className="flex justify-center lg:justify-start mx-auto lg:mx-0 max-w-md text-md">
+                  {scrapedData.bookEdition}
+                </span>
+                <Link
+                  href={scrapedData.workURL.replace(
+                    "https://www.goodreads.com/work/",
+                    "/work/editions/"
+                  )}
+                >
+                  <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
+                    View More Editions &#8250;
+                  </p>
+                </Link>
+              </div>
+            )}
             <div id="bookPublishDate">
               <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                 Publishing Date:

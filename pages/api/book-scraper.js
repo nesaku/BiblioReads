@@ -17,6 +17,7 @@ const BookScraper = async (req, res) => {
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
       const seriesURL = $("h3.Text__italic > a").attr("href");
+      const workURL = $('meta[property="og:url"]').attr("content");
       const title = $('h1[data-testid="bookTitle"]').text();
       const author = $(".ContributorLinksList > span > a")
         .map((i, el) => {
@@ -178,6 +179,7 @@ const BookScraper = async (req, res) => {
         cover: cover,
         series: series,
         seriesURL: seriesURL,
+        workURL: workURL,
         title: title,
         author: author,
         rating: rating,
