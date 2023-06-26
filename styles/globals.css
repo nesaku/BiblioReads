@@ -5,7 +5,7 @@
 html,
 body {
   /* background-color: rgb(136 19 55); */
-  background-color: rgb(255 241 242);
+  /* background-color: rgb(255 241 242); */
 }
 
 @media (prefers-color-scheme: dark) {

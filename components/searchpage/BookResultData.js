@@ -32,9 +32,7 @@ const SearchResults = (props) => {
                     </h3>
                   </Link>
                   <Link href={data.authorURL}>
-                    <p className="text-md hover:underline w-fit">
-                      {data.author}
-                    </p>
+                    <p className="text-md w-fit">{data.author}</p>
                   </Link>
                   <div className="flex items-center mt-4">
                     <svg

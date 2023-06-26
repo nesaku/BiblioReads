@@ -76,12 +76,7 @@ const AuthorScraper = async (req, res) => {
       )
         .map((i, el) => {
           const $el = $(el);
-          const cover = $el
-            .find("div.seriesCovers > a > img")
-            .attr("src")
-            .replace("._SX50_SY75_", "")
-            .replace("._SY75_", "")
-            .replace("._SX50_", "");
+          const cover = $el.find("div.seriesCovers > a > img").attr("src");
           const title = $el
             .find("div.seriesDesc > span[itemprop = 'name'] > a")
             .text();

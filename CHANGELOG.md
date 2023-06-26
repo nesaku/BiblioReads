@@ -5,12 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.14.0] - June 25, 2023
+## [2.14.1] - Jun 25, 2023
+
+### Changed
+
+- Update the instances list in the README and instances.json
+
+### Fixed
+
+- Fix an author page bug
+- Fix the author appearing clickable on the search page
+
+### Fixed
+
+- Fix open source inconsistency in the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/65)
+
+## [2.14.0] - Jun 25, 2023
 
 ### Added
 
 - Add the book editions route - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/10)
-- Added "View More Editions" link to the book page
+- Add "View More Editions" link to the book page
 
 ### Fixed
 
@@ -92,7 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move works scrapers to their own folder
 - Only show view question/quotes button on the book page if there is data
 - Change book quotes page layout
-- Added book questions page Redirector info to the README
+- Add book questions page Redirector info to the README
 
 ## [2.10.0] - Mar 7, 2023
 
@@ -104,7 +119,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add configurable instance information on the privacy page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/1)
 - Add quotes works route
 - Add new env variables to `.env.example`
-- Added book quotes page Redirector info to the README
+- Add book quotes page Redirector info to the README
 
 ### Changed
 
@@ -150,7 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add quotes route
-- Added quotes page Redirector info to the README
+- Add quotes page Redirector info to the README
 - Add influences to the author page
 - Add info about using the search box to the FAQ
 
@@ -158,7 +173,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Only show "...read more" button in the author, series, book descriptions and reviews after a certain character limit
 - Make links in series description clearer - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/55)
-- Changed scraper response json message from `status: "Success"` to `status: "Received"`
+- Change scraper response json message from `status: "Success"` to `status: "Received"`
 - Improve home page color gradient
 - Update README screenshots
 - Replace the question mark with an invisible character when a review has no stars
@@ -208,7 +223,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix empty Genre heading when there is no data - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/52)
-- Fixed slug not being defined in `/genres/[...slug]`
+- Fix slug not being defined in `/genres/[...slug]`
 
 ## [2.6.0] - Feb 16, 2023
 
@@ -249,7 +264,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add pagination to reviews
-- Added search page Redirector info to the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
+- Add search page Redirector info to the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
 - Show message when there are no search results
 
 ### Changed
@@ -330,7 +345,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added search page and search route - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
+- Add search page and search route - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
 
 ### Changed
 

@@ -1,18 +1,18 @@
 [
   {
+    "url": "https://biblioreads.eu.org",
+    "countries": ["us"],
+    "cloudflare": false
+  },
+  {
     "url": "https://biblioreads.ml",
     "countries": ["us"],
     "cloudflare": false
   },
   {
-    "url": "https://biblioreads.ga",
+    "url": "https://biblioreads.mooo.com",
     "countries": ["xx"],
     "cloudflare": true
-  },
-  {
-    "url": "biblioreads.netlify.app",
-    "countries": ["us"],
-    "cloudflare": false
   },
   {
     "url": "https://bl.vern.cc",
