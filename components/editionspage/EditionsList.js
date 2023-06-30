@@ -7,7 +7,10 @@ const EditionsList = (props) => {
       {props.editions.map((data, i) => (
         <div key={i} className="max-w-[1820px]">
           <a href={data.url}>
-            <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+            <div
+              id="editionInfo"
+              className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
+            >
               <div className="ml-8 sm:ml-16 w-48 sm:w-full">
                 <Link href={data.url}>
                   <h3 className="text-xl sm:text-2xl font-semibold hover:underline">
@@ -30,17 +33,37 @@ const EditionsList = (props) => {
                   <span className="ml-2 capitalize font-semibold">
                     {data.rating.split("(")[0]}
                   </span>
-                  <span className="ml-1 capitalize">
+                  <span className="hidden sm:block ml-1 capitalize">
                     &#40;{data.rating.split("(")[1]}
                   </span>
                 </div>
                 <div className="text-slate-700 dark:text-gray-200 font-normal">
-                  <p>{data.publishDate}</p>
-                  <p>{data.editionInfo.split("Author")[0]}</p>
+                  <div className="text-sm sm:text-[1rem]">
+                    <p className="mb-2">{data.publishDate}</p>
+                    <p>{data.editionInfo.split("Author")[0]}</p>
+                  </div>
+                  <div className="mt-4 text-sm">
+                    {data.ISBN && (
+                      <p>
+                        <span className="font-bold">ISBN:</span> {data.ISBN}
+                      </p>
+                    )}
+                    {data.ASIN && (
+                      <p>
+                        <span className="font-bold">ASIN:</span> {data.ASIN}
+                      </p>
+                    )}
+                    {data.editionLanguage && (
+                      <p>
+                        <span className="font-bold">Edition Language:</span>{" "}
+                        {data.editionLanguage}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
               {data.cover && (
-                <div className="flex mr-8">
+                <div className="flex mr-8 pl-6">
                   <picture>
                     <source
                       srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}

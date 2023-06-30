@@ -56,6 +56,24 @@ const EditionScraper = async (req, res) => {
             )
             .text();
 
+          const ISBN = $el
+            .find(
+              'div.editionData > div.moreDetails > div:contains("ISBN:") > div.dataValue'
+            )
+            .text();
+
+          const ASIN = $el
+            .find(
+              'div.editionData > div.moreDetails > div:contains("ASIN:") > div.dataValue'
+            )
+            .text();
+
+          const editionLanguage = $el
+            .find(
+              'div.editionData > div.moreDetails > div:contains("Edition language:") > div.dataValue'
+            )
+            .text();
+
           const id = i + 1;
           return {
             id: id,
@@ -65,6 +83,9 @@ const EditionScraper = async (req, res) => {
             publishDate: publishDate,
             editionInfo: editionInfo,
             rating: rating,
+            ISBN: ISBN,
+            ASIN: ASIN,
+            editionLanguage: editionLanguage,
           };
         })
         .toArray();
@@ -72,7 +93,7 @@ const EditionScraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Recieved",
+        status: "Received",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         book: book,
@@ -85,7 +106,7 @@ const EditionScraper = async (req, res) => {
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,

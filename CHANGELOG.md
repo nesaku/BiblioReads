@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.14.2] - Jun 30, 2023
+
+### Added
+
+- Add more details to book editions
+
+### Fixed
+
+- Fix spelling errors
+
 ## [2.14.1] - Jun 25, 2023
 
 ### Changed
@@ -16,10 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix an author page bug
 - Fix the author appearing clickable on the search page
 
-### Fixed
-
-- Fix open source inconsistency in the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/65)
-
 ## [2.14.0] - Jun 25, 2023
 
 ### Added
@@ -29,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix open source inconsistency in the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/65)
+- Fix "open source" term inconsistency in the README - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/65)
 
 ## [2.13.1] - May 13, 2023
 
@@ -63,7 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Retry until a successfull response is recieved when the book page scraper encounters a 504 error
+- Retry until a successful response is received when the book page scraper encounters a 504 error
 - Remove "-components" from component subfolder names
 - Change button name from "submit" to "search"
 
@@ -75,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Retry until a successfull response is recieved when the book page scraper encounters a 504 error
+- Retry until a successful response is received when the book page scraper encounters a 504 error
 - Remove unneeded route index pages
 
 ## [2.12.0] - Mar 13, 2023
@@ -240,7 +246,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix bug when there is no author description - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/50)
-- Fix the seperation of author names and individual author links - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/49)
+- Fix the separation of author names and individual author links - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/49)
 - Fix review searching - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/51)
 
 ## [2.5.4] - Feb 14, 2023
@@ -289,7 +295,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix `<title>` element not being shown for the search results page
-- Fix search box not apearing on the search results page
+- Fix search box not appearing on the search results page
 
 ## [2.5.1] - Feb 11, 2023
 
@@ -392,7 +398,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Remove uneeded eslint rule
+- Remove unneeded eslint rule
 
 ### Fixed
 

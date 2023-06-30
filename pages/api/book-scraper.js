@@ -172,7 +172,7 @@ const BookScraper = async (req, res) => {
       }
 
       return res.json({
-        status: "Recieved",
+        status: "Received",
         statusCode: res.statusCode,
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
@@ -200,7 +200,7 @@ const BookScraper = async (req, res) => {
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,

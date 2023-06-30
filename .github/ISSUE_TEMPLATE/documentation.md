@@ -1,5 +1,5 @@
 ---
-name: Documenation
+name: Documentation
 about: Improvements or additions to documentation
 title: "[Documentation]"
 labels: documentation
@@ -13,4 +13,4 @@ Does this issue relate to documentation that needs to be fixed or documentation 
 A clear and concise description of what the improvements/additions to documentation is. Ex. Add information about [...] to the README
 
 **Additional context**
-Add any other context or inforamtion about the issue here.
+Add any other context or information about the issue here.

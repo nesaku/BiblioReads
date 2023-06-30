@@ -55,7 +55,7 @@ const Features = () => {
 
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Use BiblioReads without signing up for an account and you never
-              have to deal with those anoying sign up popups.
+              have to deal with those annoying sign up popups.
             </p>
           </a>
 

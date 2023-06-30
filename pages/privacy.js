@@ -20,7 +20,7 @@ const Privacy = () => {
             </h1>
             <div className="text-left mt-10">
               <p className="mx-auto text-lg mt-12">
-                Last updated: February 22, 2023
+                Last updated: June 30, 2023
               </p>
               <p className="mx-auto text-lg mt-12">
                 At BiblioReads, we believe that privacy is a fundamental right
@@ -131,7 +131,7 @@ const Privacy = () => {
                 until the purpose for which it was collected is met.
               </p>
               <h2 className="text-2xl font-bold my-12 underline">
-                Third Party Privacy Policies
+                Third-Party Privacy Policies
               </h2>
 
               <p className="mx-auto text-lg mt-12">
@@ -141,8 +141,8 @@ const Privacy = () => {
                 ad servers for more detailed information.
               </p>
               <p className="mx-auto text-lg mt-12">
-                We have no control over, and assume no responsibility, for the
-                content, privacy policies or practices of any third party sites
+                We have no control over and assume no responsibility, for the
+                content, privacy policies or practices of any third-party sites
                 or services.
               </p>
               <h2 className="text-2xl font-bold my-12 underline">
@@ -453,7 +453,7 @@ const Privacy = () => {
                 <span className="underline">Diagnostic Data </span>
                 <br />
                 Data that is only collected when an error occurs or temporarily
-                collected to assist in identifing and fixing issues.
+                collected to assist in identifying and fixing issues.
               </p>
               <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
                 <span className="underline">Other Data </span>

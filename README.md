@@ -125,7 +125,7 @@ There are two ways you can use BiblioReads:
 
 ### How Does This Work? - Scraping
 
-Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of the their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads, goes to the Goodreads book page and scrapes the required content.
+Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads goes to the Goodreads book page and scrapes the required content.
 
 ### How Did You Come Up With The Name?
 
@@ -244,7 +244,7 @@ yarn install
 yarn dev
 ```
 
-**ⓘ If you want use the API directly or run any kind of automation. Please host the project on your own server.**
+**ⓘ If you want to use the API directly or run any kind of automation. Please host the project on your own server.**
 
 ---
 

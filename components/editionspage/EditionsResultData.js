@@ -118,7 +118,7 @@ const EditionResults = ({ scrapedData }) => {
           />
           {error && (
             <p className="pt-10 text-red-600 font-bold text-3xl capitalize">
-              An Error Has Occured. Please Try Again Later.
+              An Error Has Occurred. Please Try Again Later.
             </p>
           )}
           {filteredData.editions && filteredData.editions.length === 0 && (

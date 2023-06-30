@@ -79,7 +79,7 @@ const QuotesSlugScraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Recieved",
+        status: "Received",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         name: name,
@@ -89,7 +89,7 @@ const QuotesSlugScraper = async (req, res) => {
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,

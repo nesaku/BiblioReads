@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import DOMPurify from "dompurify";
 
 const QuoteCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
