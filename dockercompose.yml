@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  biblioreads:
+    container_name: biblioreads
+    hostname: biblioreads
+    # build from source, if goes down and maintain it yourself
+    #build:
+    #context: .
+    #ockerfile: Dockerfile
+    image: docker.io/nesaku/biblioreads:latest
+    user: 65534:65534
+    read_only: true
+    restart: always
+    ports:
+      - '127.0.0.1:3008:3000'
+    environment:
+      - "NEXT_TELEMETRY_DISABLED=1"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
