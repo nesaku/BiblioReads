@@ -6,6 +6,9 @@ const ListScraper = async (req, res) => {
     const scrapeURL = req.body.queryURL
       .split("&")[0]
       .replace("https://", "http://");
+    const coverFindString = (req.body.authorList ? 
+       "td > div.js-tooltipTrigger.tooltipTrigger > a > img" :
+       "td > a > img.bookCover");
     try {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
@@ -24,7 +27,7 @@ const ListScraper = async (req, res) => {
         .map((i, el) => {
           const $el = $(el);
           const cover = $el
-            .find("td > div.js-tooltipTrigger.tooltipTrigger > a > img")
+            .find(coverFindString)
             .attr("src")
             .replace("._SY75_", "");
           const title = $el.find("td > a > span").text();
