@@ -93,7 +93,7 @@ const AuthorBooks = (props) => {
                       {data.rating.split("avg")[0]}
                     </span>
                   </div>
-                  <div className="group w-36 h-20 text-center mx-auto text-md  font-semibold">
+                  <div className="group w-36 h-20 text-center mx-auto text-md font-semibold">
                     <span className="break-words">
                       {data.title.slice(0, 40)}
                     </span>
@@ -106,6 +106,45 @@ const AuthorBooks = (props) => {
             )}
           </div>
         ))}
+        {props.scrapeURL && (
+          <Link
+            href={`${props.scrapeURL.replace(
+              "https://www.goodreads.com/author/show/",
+              "/author/list/"
+            )}`}
+          >
+            <a className="flex snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+              <div className="flex flex-col justify-center items-center ">
+                <svg
+                  className="fill-gray-700 dark:fill-white max-w-24 max-h-24"
+                  viewBox="0 0 1024 1024"
+                >
+                  <path
+                    d="M835.8 375c-17.7-41.9-43.1-79.6-75.4-111.9-32.3-32.3-70-57.7-111.9-75.4-43.4-18.4-89.5-27.7-137-27.7s-93.6 9.3-137 27.7c-41.9 17.7-79.6 43.1-111.9 75.4-32.3 32.3-57.7 70-75.4 111.9-18.4 43.4-27.7 89.5-27.7 137s9.3 93.6 27.7 137c17.7 41.9 43.1 79.6 75.4 111.9 32.3 32.3 70 57.7 111.9 75.4 43.4 18.4 89.5 27.7 137 27.7s93.6-9.3 137-27.7c41.9-17.7 79.6-43.1 111.9-75.4 32.3-32.3 57.7-70 75.4-111.9 18.4-43.4 27.7-89.5 27.7-137s-9.4-93.6-27.7-137zM511.4 832c-176.7 0-320-143.3-320-320s143.3-320 320-320 320 143.3 320 320-143.2 320-320 320z"
+                    fill=""
+                  />
+                  <path
+                    d="M336 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                    fill=""
+                  />
+                  <path
+                    d="M512 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                    fill=""
+                  />
+                  <path
+                    d="M688 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                    fill=""
+                  />
+                </svg>
+                <p className="mt-2 w-36 text-center mx-auto text-lg font-semibold">
+                  View More Books
+                </p>
+              </div>
+            </a>
+          </Link>
+        )}
+
+        {/* END */}
       </div>
       <div className="flex max-w-4xl justify-center lg:justify-start">
         <button className="mx-3" aria-label="slide left" onClick={slideLeft}>

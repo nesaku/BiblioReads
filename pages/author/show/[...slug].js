@@ -15,7 +15,7 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/author-scraper`, {
+      const res = await fetch(`/api/author/info`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

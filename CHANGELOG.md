@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.0] - Jul 15, 2023
+
+### Added
+
+- Add "View More Books" option for author books - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/11)
+- Add the author book list route
+- Add a loader to the `BookList` component
+
+### Changed
+
+- Change the author scraper file location
+- Remove unneeded fragments
+
+### Fixed
+
+- Fix incorrect fallback URL for errors on the list route
+
 ## [2.14.2] - Jun 30, 2023
 
 ### Added
@@ -198,7 +215,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add book series redirector info to the README
-- Add search by buttons and path forwarding for search types (_Functionality not implemented yet_)
+- Add search by buttons and path forwarding for search types (~~_Functionality not implemented yet_~~)
 - Add Codeberg information for issues on the privacy policy
 
 ### Fixed

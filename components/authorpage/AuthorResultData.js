@@ -263,6 +263,7 @@ const AuthorResultData = ({ scrapedData }) => {
               <AuthorBooks
                 name={scrapedData.name}
                 books={scrapedData.books}
+                scrapeURL={scrapedData.scrapeURL}
                 mobile={false}
               />
             )}
