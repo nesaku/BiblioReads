@@ -15,11 +15,9 @@ const QuotesScraper = async (req, res) => {
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
       const bookURL = $("div.leftContainer > a.leftAlignedImage").attr("href");
-      const image = $("div.leftContainer > a.leftAlignedImage > img")
-        .attr("src")
-        .replace("._SX50_SY75_", "")
-        .replace("._SY75_", "")
-        .replace("._SX50_", "");
+      const image = $("div.leftContainer > a.leftAlignedImage > img").attr(
+        "src"
+      );
       const name = $("div.mainContentFloat > h1").text();
 
       const quotes = $(

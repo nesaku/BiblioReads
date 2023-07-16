@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 const QuoteCard = (props) => {
-  const [imageError, setImageError] = useState(false);
   const [isReadMore, setIsReadMore] = useState(true);
 
   const toggleReadMore = () => {
@@ -14,6 +13,7 @@ const QuoteCard = (props) => {
     <>
       {props.quotes.map((data, i) => (
         <div
+          id="quoteCard"
           key={i}
           className="max-w-[1820px] mx-2 sm:mx-4 my-4 py-4 px-2 sm:px-8 bg-white/40 dark:bg-slate-800/60 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
         >
@@ -32,37 +32,26 @@ const QuoteCard = (props) => {
                     )}
                 >
                   <div className="hidden w-[240px] lg:block overflow-hidden hover:rounded-xl ml-10 px-4">
-                    {!imageError ? (
-                      <picture>
-                        <source
-                          srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
-                          type="image/webp"
-                          className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        />
-                        <source
-                          srcSet={`/img?url=${data.img}&maxage=30d`}
-                          type="image/jpeg"
-                          className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        />
-                        <img
-                          src={`/img?url=${data.img}&maxage=30d`}
-                          alt={`${data.imgAlt}`}
-                          className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                          loading="lazy"
-                          width="60"
-                          height="120"
-                          onError={() => setImageError(true)}
-                        />
-                      </picture>
-                    ) : (
+                    <picture>
+                      <source
+                        srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
+                        type="image/webp"
+                        className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                      />
+                      <source
+                        srcSet={`/img?url=${data.img}&maxage=30d`}
+                        type="image/jpeg"
+                        className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                      />
                       <img
-                        src="/cover-placeholder.svg"
-                        alt=""
+                        src={`/img?url=${data.img}&maxage=30d`}
+                        alt={`${data.imgAlt}`}
+                        className="rounded-md border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                        loading="lazy"
                         width="60"
                         height="120"
-                        className="rounded-md shadow-sm drop-shadow-sm mx-auto"
                       />
-                    )}
+                    </picture>
                   </div>
                 </Link>
               )}

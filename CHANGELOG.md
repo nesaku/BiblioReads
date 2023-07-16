@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.1] - Jul 16, 2023
+
+### Added
+
+- Added a small border around most images
+
+### Changed
+
+- Make the author name appear clickable on the search page
+- Make the "View More Editions" link appear more clickable
+- Process image URL modifications client side instead of server side
+- Remove the default image being shown for most image loading errors
+- Remove eager loading for images that don't need it
+
+### Fixed
+
+- Fix author books list text overflow
+
 ## [2.15.0] - Jul 15, 2023
 
 ### Added
@@ -41,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix an author page bug
-- Fix the author appearing clickable on the search page
+- ~~Fix the author appearing clickable on the search page~~ (Added back in 2.15.1)
 
 ## [2.14.0] - Jun 25, 2023
 

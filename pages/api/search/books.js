@@ -19,13 +19,7 @@ const SearchScraper = async (req, res) => {
       const result = $("table > tbody > tr")
         .map((i, el) => {
           const $el = $(el);
-          const cover = $el
-            .find("tr > td > a > img")
-            .attr("src")
-            .replace("._SX50_SY75_", "")
-            .replace("._SY75_", "")
-            .replace("._SX50_", "");
-
+          const cover = $el.find("tr > td > a > img").attr("src");
           const title = $el.find("tr > td:nth-child(2) > a > span").text();
           const bookURL = $el.find("tr > td:nth-child(2) > a").attr("href");
           const author = $el

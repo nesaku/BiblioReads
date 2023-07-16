@@ -29,13 +29,7 @@ const EditionScraper = async (req, res) => {
       )
         .map((i, el) => {
           const $el = $(el);
-          const cover = $el
-            .find("div.leftAlignedImage > a > img")
-            .attr("src")
-            .replace("._SX50_SY75_", "")
-            .replace("._SY75_", "")
-            .replace("._SX50_", "");
-
+          const cover = $el.find("div.leftAlignedImage > a > img").attr("src");
           const title = $el.find("div.editionData > div > a.bookTitle").text();
 
           const url = $el

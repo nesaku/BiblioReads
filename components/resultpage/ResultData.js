@@ -68,7 +68,7 @@ const ResultData = ({ scrapedData }) => {
               )}
               {scrapedData.cover && (
                 <>
-                  {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
+                  {/* Load WebP Image With JPG Fallback*/}
                   <picture className={imageLoaded ? "" : "hidden"}>
                     <source
                       srcSet={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
@@ -82,7 +82,7 @@ const ResultData = ({ scrapedData }) => {
                     />
                     <img
                       src={`/img?url=${scrapedData.cover}&maxage=30d`}
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                      className="rounded-2xl border-2 mx-auto shadow-2xl drop-shadow-xl"
                       alt=""
                       width="620"
                       height="962"
@@ -283,9 +283,11 @@ const ResultData = ({ scrapedData }) => {
                     "/work/editions/"
                   )}
                 >
-                  <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
-                    View More Editions &#8250;
-                  </p>
+                  <a>
+                    <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
+                      View More Editions &#8250;
+                    </p>
+                  </a>
                 </Link>
               </div>
             )}
@@ -365,9 +367,9 @@ const ResultData = ({ scrapedData }) => {
       )}
       {scrapedData.title && (
         <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {scrapedData.related != "" && (
+          {/*  {scrapedData.related != "" && (
             <SimilarBooks data={scrapedData.related} mobile={false} />
-          )}
+          )} */}
           {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
         </div>
       )}

@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useState } from "react";
 
+// Similar Books (Related Books) has been deprecated after to Goodreads redesign due to it being lazy loaded now
 const SimilarBooks = (props) => {
-  const [imageError, setImageError] = useState(false);
-
   const slideLeft = () => {
     var slider = document.getElementById(props.mobile ? "desktop" : "slider");
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -30,16 +28,29 @@ const SimilarBooks = (props) => {
             key={i}
             className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm "
           >
-            {imageError ? (
+            <Link href={`${data.url}`}>
               <a>
                 {data.src && (
-                  <img
-                    src="/cover-placeholder.svg"
-                    alt=""
-                    width="100"
-                    height="250"
-                    className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
-                  />
+                  <picture>
+                    <source
+                      srcSet={`/img?url=${data.src}&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <source
+                      srcSet={`/img?url=${data.src}&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                    />
+                    <img
+                      src={`/img?url=${data.src}&maxage=30d`}
+                      alt={`${data.title} book cover`}
+                      width="98"
+                      height="148"
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white mx-auto"
+                      loading="lazy"
+                    />
+                  </picture>
                 )}
                 <div className="group w-36 h-20 text-center mx-auto mt-4">
                   <span className="break-words text-md">
@@ -50,43 +61,7 @@ const SimilarBooks = (props) => {
                   </span>
                 </div>
               </a>
-            ) : (
-              <Link href={`${data.url}`}>
-                <a>
-                  {data.src && (
-                    <picture>
-                      <source
-                        srcSet={`/img?url=${data.src}&output=webp&maxage=30d`}
-                        type="image/webp"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                      />
-                      <source
-                        srcSet={`/img?url=${data.src}&maxage=30d`}
-                        type="image/jpeg"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                      />
-                      <img
-                        src={`/img?url=${data.src}&maxage=30d`}
-                        alt={`${data.title} book cover`}
-                        width="98"
-                        height="148"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
-                        loading="lazy"
-                        onError={() => setImageError(true)}
-                      />
-                    </picture>
-                  )}
-                  <div className="group w-36 h-20 text-center mx-auto mt-4">
-                    <span className="break-words text-md">
-                      {data.title.slice(0, 40)}
-                    </span>
-                    <span className="hidden group-hover:inline text-md">
-                      {data.title.slice(40)}
-                    </span>
-                  </div>
-                </a>
-              </Link>
-            )}
+            </Link>
           </div>
         ))}
       </div>

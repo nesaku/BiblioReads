@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
 import DOMPurify from "dompurify";
 
 const QuotesResultData = ({ scrapedData }) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <div className="flex flex-col justify-center items-center">
       {scrapedData.quotes.map((data, i) => (
@@ -16,37 +13,26 @@ const QuotesResultData = ({ scrapedData }) => {
             <div className="flex items-center justify-between">
               {data.img && (
                 <div className="hidden w-[240px] lg:block overflow-hidden hover:rounded-xl ml-10 px-4">
-                  {!imageError ? (
-                    <picture>
-                      <source
-                        srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
-                        type="image/webp"
-                        className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      />
-                      <source
-                        srcSet={`/img?url=${data.img}&maxage=30d`}
-                        type="image/jpeg"
-                        className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      />
-                      <img
-                        src={`/img?url=${data.img}&maxage=30d`}
-                        alt={`${data.imgAlt}`}
-                        className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        loading="lazy"
-                        width="60"
-                        height="120"
-                        onError={() => setImageError(true)}
-                      />
-                    </picture>
-                  ) : (
+                  <picture>
+                    <source
+                      srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                    />
+                    <source
+                      srcSet={`/img?url=${data.img}&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                    />
                     <img
-                      src="/cover-placeholder.svg"
-                      alt=""
+                      src={`/img?url=${data.img}&maxage=30d`}
+                      alt={`${data.imgAlt}`}
+                      className="rounded-md border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                      loading="lazy"
                       width="60"
                       height="120"
-                      className="rounded-md shadow-sm drop-shadow-sm mx-auto"
                     />
-                  )}
+                  </picture>
                 </div>
               )}
               <div className="mt-8 space-y-8">

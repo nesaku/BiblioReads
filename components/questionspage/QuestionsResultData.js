@@ -23,21 +23,30 @@ const QuestionResults = ({ scrapedData }) => {
               {!imageError ? (
                 <picture>
                   <source
-                    srcSet={`/img?url=${scrapedData.image}&output=webp&maxage=30d`}
+                    srcSet={`/img?url=${scrapedData.image.replace(
+                      "._SX98_",
+                      ""
+                    )}&output=webp&maxage=30d`}
                     type="image/webp"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                   />
                   <source
-                    srcSet={`/img?url=${scrapedData.image}&maxage=30d`}
+                    srcSet={`/img?url=${scrapedData.image.replace(
+                      "._SX98_",
+                      ""
+                    )}&maxage=30d`}
                     type="image/jpeg"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                   />
                   <img
-                    src={`/img?url=${scrapedData.image}&maxage=30d`}
+                    src={`/img?url=${scrapedData.image.replace(
+                      "._SX98_",
+                      ""
+                    )}&maxage=30d`}
                     width="98"
                     height="98"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    loading="eager"
+                    className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                    loading="lazy"
                     alt=""
                     onError={() => setImageError(true)}
                   />
@@ -48,7 +57,7 @@ const QuestionResults = ({ scrapedData }) => {
                   alt=""
                   width="100"
                   height="250"
-                  className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
+                  className="rounded-lg border-2  shadow-sm drop-shadow-sm mx-auto"
                 />
               )}
             </a>

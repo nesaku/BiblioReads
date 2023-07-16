@@ -31,8 +31,8 @@ const SeriesScraper = async (req, res) => {
             .find(
               "div.responsiveBook > div.objectLockupContent > div.objectLockupContent__media > div.responsiveBook__media > a > img"
             )
-            .attr("src")
-            .replace("._SY180_", "");
+            .attr("src");
+
           const title = $el
             .find(
               "div.responsiveBook > div.objectLockupContent > div.u-paddingBottomXSmall > a > span[itemprop = 'name']"
@@ -87,9 +87,7 @@ const SeriesScraper = async (req, res) => {
             .find(
               "div.responsiveBook > div.objectLockupContent > div.objectLockupContent__media > div.responsiveBook__media > a > img"
             )
-            .attr("src")
-            .replace("._SX120_", "")
-            .replace("._SY180_", "");
+            .attr("src");
           const title = $el
             .find(
               "div.responsiveBook > div.objectLockupContent > div.u-paddingBottomXSmall > a > span[itemprop = 'name']"

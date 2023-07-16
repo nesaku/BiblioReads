@@ -14,9 +14,7 @@ const QuestionsScraper = async (req, res) => {
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const image = $("div.bookImage > a > img")
-        .attr("src")
-        .replace("._SX98_", "");
+      const image = $("div.bookImage > a > img").attr("src");
       const book = $(
         "div.bookDetails.stacked > h1.communityQABookIndexTitle > a"
       ).text();

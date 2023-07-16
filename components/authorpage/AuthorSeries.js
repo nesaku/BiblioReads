@@ -73,9 +73,8 @@ const AuthorSeries = (props) => {
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                       loading="lazy"
-                      onError={() => setImageError(true)}
                     />
                   </picture>
                 )}

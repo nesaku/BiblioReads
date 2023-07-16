@@ -25,8 +25,7 @@ const ListScraper = async (req, res) => {
           const $el = $(el);
           const cover = $el
             .find("td > div.js-tooltipTrigger.tooltipTrigger > a > img")
-            .attr("src")
-            .replace("._SY75_", "");
+            .attr("src");
           const title = $el.find("td > a > span").text();
           const bookURL = $el.find("td > a").attr("href");
           const author = $el

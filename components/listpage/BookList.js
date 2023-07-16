@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useState } from "react";
 
 const BookList = (props) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <div id="bookList">
       {props.loading && (
@@ -64,46 +61,35 @@ const BookList = (props) => {
                   </div>
                 </div>
                 <div className="flex mr-8">
-                  {!imageError ? (
-                    <picture>
-                      <source
-                        srcSet={`/img?url=${data.cover
-                          .replace("._SX50_SY75_", "")
-                          .replace("._SY75_", "")
-                          .replace("._SX50_", "")}&output=webp&maxage=30d`}
-                        type="image/webp"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      />
-                      <source
-                        srcSet={`/img?url=${data.cover
-                          .replace("._SX50_SY75_", "")
-                          .replace("._SY75_", "")
-                          .replace("._SX50_", "")}&maxage=30d`}
-                        type="image/jpeg"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      />
-                      <img
-                        src={`/img?url=${data.cover
-                          .replace("._SX50_SY75_", "")
-                          .replace("._SY75_", "")
-                          .replace("._SX50_", "")}&maxage=30d`}
-                        alt={`${data.title} book cover`}
-                        width="98"
-                        height="148"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        loading="lazy"
-                        onError={() => setImageError(true)}
-                      />
-                    </picture>
-                  ) : (
-                    <img
-                      src="/cover-placeholder.svg"
-                      alt=""
-                      width="100"
-                      height="250"
-                      className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
+                  <picture>
+                    <source
+                      srcSet={`/img?url=${data.cover
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     />
-                  )}
+                    <source
+                      srcSet={`/img?url=${data.cover
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                    />
+                    <img
+                      src={`/img?url=${data.cover
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&maxage=30d`}
+                      alt={`${data.title} book cover`}
+                      width="98"
+                      height="148"
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                      loading="lazy"
+                    />
+                  </picture>
                 </div>
               </div>
             </a>

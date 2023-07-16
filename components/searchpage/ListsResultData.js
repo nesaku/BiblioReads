@@ -1,11 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useState } from "react";
 import Meta from "../global/Meta";
 
 const SearchResults = (props) => {
-  const [imageError, setImageError] = useState(false);
-
   return (
     <div
       id="searchResults"
@@ -42,37 +39,32 @@ const SearchResults = (props) => {
                   </div>
                 </div>
                 <div className="flex mr-8">
-                  {!imageError ? (
-                    <picture>
-                      <source
-                        srcSet={`/img?url=${data.cover}&output=webp&maxage=30d`}
-                        type="image/webp"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                      />
-                      <source
-                        srcSet={`/img?url=${data.cover}&maxage=30d`}
-                        type="image/jpeg"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                      />
-                      <img
-                        src={`/img?url=${data.cover}&maxage=30d`}
-                        alt={`${data.title} list cover`}
-                        width="98"
-                        height="148"
-                        className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                        loading="lazy"
-                        onError={() => setImageError(true)}
-                      />
-                    </picture>
-                  ) : (
-                    <img
-                      src="/cover-placeholder.svg"
-                      alt=""
-                      width="100"
-                      height="250"
-                      className="rounded-lg shadow-sm drop-shadow-sm mx-auto"
+                  <picture id="1">
+                    <source
+                      srcSet={`/img?url=${data.cover
+                        .replace("._SX98_SY160_", "")
+                        .replace("._SX98_", "")}&output=webp&maxage=30d`}
+                      type="image/webp"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                     />
-                  )}
+                    <source
+                      srcSet={`/img?url=${data.cover
+                        .replace("._SX98_SY160_", "")
+                        .replace("._SX98_", "")}&maxage=30d`}
+                      type="image/jpeg"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
+                    />
+                    <img
+                      src={`/img?url=${data.cover
+                        .replace("._SX98_SY160_", "")
+                        .replace("._SX98_", "")}&maxage=30d`}
+                      alt={`${data.title} list cover`}
+                      width="98"
+                      height="148"
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
+                      loading="lazy"
+                    />
+                  </picture>
                 </div>
               </div>
             </a>

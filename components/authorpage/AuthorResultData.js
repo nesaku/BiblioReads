@@ -46,18 +46,27 @@ const AuthorResultData = ({ scrapedData }) => {
                   {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
                   <picture className={imageLoaded ? "" : "hidden"}>
                     <source
-                      srcSet={`/img?url=${scrapedData.image}&output=webp&maxage=30d`}
+                      srcSet={`/img?url=${scrapedData.image
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&output=webp&maxage=30d`}
                       type="image/webp"
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                     />
                     <source
-                      srcSet={`/img?url=${scrapedData.image}&maxage=30d`}
+                      srcSet={`/img?url=${scrapedData.image
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&maxage=30d`}
                       type="image/jpeg"
                       className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
                     />
                     <img
-                      src={`/img?url=${scrapedData.image}&maxage=30d`}
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
+                      src={`/img?url=${scrapedData.image
+                        .replace("._SX50_SY75_", "")
+                        .replace("._SY75_", "")
+                        .replace("._SX50_", "")}&maxage=30d`}
+                      className="rounded-2xl border-2 mx-auto shadow-2xl drop-shadow-xl"
                       alt=""
                       width="620"
                       height="962"
