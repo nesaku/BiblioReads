@@ -355,8 +355,8 @@ const ResultData = ({ scrapedData }) => {
               <ReviewBreakdown data={scrapedData} />
             )}
             <div className="block lg:hidden">
-              {scrapedData.related != "" && (
-                <SimilarBooks data={scrapedData.related} mobile={true} />
+              {scrapedData.workURL != "" && (
+                <SimilarBooks workURL={scrapedData.workURL} mobile={true} />
               )}
               {scrapedData.reviews != "" && (
                 <ReviewsMobile data={scrapedData.reviews} />
@@ -367,9 +367,9 @@ const ResultData = ({ scrapedData }) => {
       )}
       {scrapedData.title && (
         <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {/*  {scrapedData.related != "" && (
-            <SimilarBooks data={scrapedData.related} mobile={false} />
-          )} */}
+          {scrapedData.workURL != "" && (
+            <SimilarBooks workURL={scrapedData.workURL} mobile={false} />
+          )}
           {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
         </div>
       )}

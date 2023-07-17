@@ -1,18 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import SmallLoader from "../global/SmallLoader";
 
 const BookList = (props) => {
   return (
     <div id="bookList">
-      {props.loading && (
-        <div className="flex flex-col items-center justify-center h-[50vh]">
-          <div className="flex space-x-2 animate-pulse">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          </div>
-        </div>
-      )}
+      {props.loading && <SmallLoader height="50" />}
       {!props.loading &&
         props.books.map((data, i) => (
           <div key={i} className="max-w-[1820px]">

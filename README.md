@@ -5,7 +5,7 @@
 <div align="center">
 BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
-Scrapes content from the Goodreads book page and presents the results without any of the bloat.
+Scrapes content from Goodreads and presents the results without any of the bloat.
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
 

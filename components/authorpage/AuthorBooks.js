@@ -124,10 +124,8 @@ const AuthorBooks = (props) => {
             </a>
           </Link>
         )}
-
-        {/* END */}
       </div>
-      <div className="flex max-w-4xl justify-center lg:justify-start">
+      <div className="flex max-w-4xl justify-center lg:justify-start mb-8">
         <button className="mx-3" aria-label="slide left" onClick={slideLeft}>
           <svg
             width="32"
