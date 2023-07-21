@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Header from "../components/global-components/Header";
-import Footer from "../components/global-components/Footer";
+import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
 
 export default function Custom404() {
   return (

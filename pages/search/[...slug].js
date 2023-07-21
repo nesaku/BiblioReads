@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import Header from "../../components/global-components/Header";
-import Footer from "../../components/global-components/Footer";
-import Loader from "../../components/global-components/Loader";
-import ErrorMessage from "../../components/global-components/ErrorMessage";
-import SearchResultData from "../../components/searchpage-components/SearchResultData";
-import SearchBox from "../../components/searchpage-components/SearchBox";
+import Header from "../../components/global/Header";
+import Footer from "../../components/global/Footer";
+import Loader from "../../components/global/Loader";
+import ErrorMessage from "../../components/global/ErrorMessage";
+import BookResultData from "../../components/searchpage/BookResultData";
+import SearchBox from "../../components/searchpage/SearchBox";
+import QuotesResultData from "../../components/searchpage/QuotesResultData";
+import ListsResultData from "../../components/searchpage/ListsResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -16,33 +18,27 @@ const Slug = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Based on the query.type the appropriate scraper is used
     const scraperPath = searchType();
-
-    // TODO: Build new api search routes based on query type
+    // TODO: Add people and groups search once those routes have been added
     function searchType() {
       if (query.type === "books") {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/books";
+        const scraperPath = "/api/search/books";
         return scraperPath;
       } else if (query.type === "people") {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/people"
+        const scraperPath = "/api/search/people";
         return scraperPath;
       } else if (query.type === "quotes") {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/quotes"
+        const scraperPath = "/api/search/quotes";
         return scraperPath;
       } else if (query.type === "lists") {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/lists"
+        const scraperPath = "/api/search/lists";
         return scraperPath;
       } else if (query.type === "groups") {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/groups"
+        const scraperPath = "/api/search/groups";
         return scraperPath;
       } else {
-        const scraperPath = "/api/search-scraper";
-        // const scraperPath = "/api/search/books"
+        const scraperPath = "/api/search/books";
         return scraperPath;
       }
     }
@@ -107,6 +103,7 @@ const Slug = () => {
                 </div>
               </div>
             )}
+
             {scrapedData && (
               <>
                 {scrapedData.numberOfResults != "" && (
@@ -119,24 +116,36 @@ const Slug = () => {
                     <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
                       Search Results For:{" "}
                       {scrapedData.scrapeURL &&
-                        scrapedData.scrapeURL.replace(
-                          "https://www.goodreads.com/search?q=",
-                          ""
-                        )}
+                        scrapedData.scrapeURL
+                          .replace("https://www.goodreads.com/search?q=", "")
+                          .replaceAll("-", " ")}
                     </h2>
 
                     <div className="flex justify-center items-center align-middle">
                       <div className="flex flex-col xl:flex-row justify-center items-center text-center w-full mt-8">
-                        <SearchBox />
+                        <SearchBox searchType={scrapedData.searchType} />
                       </div>
                     </div>
                   </div>
                 )}
-                <SearchResultData
-                  query={scrapedData.scrapeURL}
-                  result={scrapedData.result}
-                  numberOfResults={scrapedData.numberOfResults}
-                />
+                {scrapedData.searchType === "books" && (
+                  <BookResultData
+                    query={scrapedData.scrapeURL}
+                    result={scrapedData.result}
+                    numberOfResults={scrapedData.numberOfResults}
+                  />
+                )}
+                {/*  {scrapedData.searchType === "people" && <PeopleResultData />} */}
+                {scrapedData.searchType === "quotes" && (
+                  <QuotesResultData scrapedData={scrapedData} />
+                )}
+                {scrapedData.searchType === "lists" && (
+                  <ListsResultData
+                    query={scrapedData.scrapeURL}
+                    result={scrapedData.result}
+                  />
+                )}
+                {/*   {scrapedData.searchType === "groups" && <GroupResultData />} */}
                 {scrapedData.numberOfResults === "No results." && (
                   <div
                     id="noResults"

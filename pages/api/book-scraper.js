@@ -9,7 +9,7 @@ const BookScraper = async (req, res) => {
         headers: new Headers({
           "User-Agent":
             process.env.NEXT_PUBLIC_USER_AGENT ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         }),
       });
       const htmlString = await response.text();
@@ -17,6 +17,7 @@ const BookScraper = async (req, res) => {
       const cover = $(".ResponsiveImage").attr("src");
       const series = $("h3.Text__italic").text();
       const seriesURL = $("h3.Text__italic > a").attr("href");
+      const workURL = $('meta[property="og:url"]').attr("content");
       const title = $('h1[data-testid="bookTitle"]').text();
       const author = $(".ContributorLinksList > span > a")
         .map((i, el) => {
@@ -152,15 +153,33 @@ const BookScraper = async (req, res) => {
         })
         .toArray();
 
+      const quotes = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+      ).text();
+      const quotesURL = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1)"
+      ).attr("href");
+
+      const questions = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+      ).text();
+      const questionsURL = $(
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)"
+      ).attr("href");
       const lastScraped = new Date().toISOString();
-      res.statusCode = 200;
+      {
+        title === "" ? (res.statusCode = 504) : (res.statusCode = 200);
+      }
+
       return res.json({
-        status: "Recieved",
+        status: "Received",
+        statusCode: res.statusCode,
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         cover: cover,
         series: series,
         seriesURL: seriesURL,
+        workURL: workURL,
         title: title,
         author: author,
         rating: rating,
@@ -173,16 +192,25 @@ const BookScraper = async (req, res) => {
         related: related,
         reviewBreakdown: reviewBreakdown,
         reviews: reviews,
+        quotes: quotes,
+        quotesURL: quotesURL,
+        questions: questions,
+        questionsURL: questionsURL,
         lastScraped: lastScraped,
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,
       });
     }
+  } else {
+    res.statusCode = 405;
+    return res.json({
+      status: "Error 405 - Method Not Allowed",
+    });
   }
 };
 

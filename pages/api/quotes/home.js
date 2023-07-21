@@ -9,18 +9,17 @@ const QuotesHomeScraper = async (req, res) => {
         headers: new Headers({
           "User-Agent":
             process.env.NEXT_PUBLIC_USER_AGENT ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         }),
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const title = $("div.mainContent > div.mainContentFloat > h1").text();
+      const name = $("div.mainContent > div.mainContentFloat > h1").text();
       const quotes = $(
         "div.mainContent > div.mainContentFloat > div.leftContainer > div.quotes > div.quote"
       )
         .map((i, el) => {
           const $el = $(el);
-          const text = $el.find("div.quoteDetails > div.quoteText").text();
           const imgURL = $el
             .find(" div.quoteDetails > a.leftAlignedImage")
             .attr("href");
@@ -30,6 +29,19 @@ const QuotesHomeScraper = async (req, res) => {
           const imgAlt = $el
             .find(" div.quoteDetails > a.leftAlignedImage > img")
             .attr("alt");
+          const text = $el
+            .find("div.quoteDetails > div.quoteText")
+            .text()
+            .split(" ―")[0];
+          const author = $el
+            .find("div.quoteDetails > div.quoteText > span.authorOrTitle")
+            .text();
+          const book = $el
+            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
+            .text();
+          const bookURL = $el
+            .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
+            .attr("href");
           const likes = $el
             .find(
               " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
@@ -42,29 +54,53 @@ const QuotesHomeScraper = async (req, res) => {
             img: img,
             imgAlt: imgAlt,
             text: text,
+            author: author,
+            book: book,
+            bookURL: bookURL,
             likes: likes,
           };
         })
         .toArray();
 
+      const popularTags = $(
+        "div.bigBoxContent.containerWithHeaderContent > ul.listTagsTwoColumn > li.greyText"
+      )
+        .map((i, el) => {
+          const $el = $(el);
+          const url = $el.find("a.gr-hyperlink").attr("href");
+          const name = $el.find("a.gr-hyperlink").text();
+          const id = i + 1;
+          return {
+            id: id,
+            url: url,
+            name: name,
+          };
+        })
+        .toArray();
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Recieved",
+        status: "Received",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
-        title: title,
+        name: name,
         quotes: quotes,
+        popularTags: popularTags,
         lastScraped: lastScraped,
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,
       });
     }
+  } else {
+    res.statusCode = 405;
+    return res.json({
+      status: "Error 405 - Method Not Allowed",
+    });
   }
 };
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import Header from "../../../components/global-components/Header";
-import Footer from "../../../components/global-components/Footer";
-import Loader from "../../../components/global-components/Loader";
-import ErrorMessage from "../../../components/global-components/ErrorMessage";
-import ResultData from "../../../components/resultpage-components/ResultData";
+import Header from "../../../components/global/Header";
+import Footer from "../../../components/global/Footer";
+import Loader from "../../../components/global/Loader";
+import ErrorMessage from "../../../components/global/ErrorMessage";
+import ResultData from "../../../components/resultpage/ResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -27,10 +27,16 @@ const Slug = () => {
       if (res.ok) {
         const data = await res.json();
         setScrapedData(data);
+      } else if (!res.ok) {
+        // TODO: come up with a better solution than retrying until a successful response is received
+        setTimeout(function () {
+          fetchData();
+        }, 2000);
       } else {
         setError(true);
       }
     };
+
     if (slug) {
       fetchData();
     }

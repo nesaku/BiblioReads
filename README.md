@@ -3,9 +3,9 @@
 </div>
 <h1 align="center">BiblioReads</h1>
 <div align="center">
-BiblioReads is a free and open-source alternative Goodreads front-end focused on privacy.
+BiblioReads is a free and open source alternative Goodreads front-end focused on privacy.
 
-Scrapes content from the Goodreads book page and presents the results without any of the bloat.
+Scrapes content from Goodreads and presents the results without any of the bloat.
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
 
@@ -39,19 +39,18 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ## Instances
 
-| Instance URL                                                                                                                                                    |        Country         | Provider   | Notes                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | ----------------------------------------------- |
-| [biblioreads.ml](https://biblioreads.ml)                                                                                                                        |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)          |
-| [biblioreads.ga](https://biblioreads.ga)                                                                                                                        | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)          |
-| [biblioreads.netlify.app](https://biblioreads.netlify.app)                                                                                                      |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)          |
-| [bl.vern.cc](https://bl.vern.cc)                                                                                                                                |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
-| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                                          | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)           |
-| [biblioreads.esmailelbob.xyz](https://biblioreads.esmailelbob.xyz)                                                                                              |        :canada:        | OVH Cloud  | Run by [Esmail EL BoB](https://esmailelbob.xyz) |
-| Onion:                                                                                                                                                          |                        |            |                                                 |
-| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion)                   |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
-| [biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://biblioreads.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) |        :canada:        | OVH Cloud  | Run by [Esmail EL BoB](https://esmailelbob.xyz) |
-| I2P:                                                                                                                                                            |                        |            |                                                 |
-| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)                             |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                 |
+| Instance URL                                                                                                                                  |        Country         | Provider   | Notes                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------: | ---------- | --------------------------------------------------------- |
+| [biblioreads.eu.org](https://biblioreads.eu.org)                                                                                              |          :us:          | Netlify    | Run by [me](https://github.com/nesaku)                    |
+| [biblioreads.ml](https://biblioreads.ml)                                                                                                      |          :us:          | Vercel     | Run by [me](https://github.com/nesaku)                    |
+| [biblioreads.mooo.com](https://biblioreads.mooo.com)                                                                                          | :globe_with_meridians: | Cloudflare | Run by [me](https://github.com/nesaku)                    |
+| [bl.vern.cc](https://bl.vern.cc)                                                                                                              |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
+| [biblioreads.lunar.icu](https://biblioreads.lunar.icu)                                                                                        | :globe_with_meridians: | Cloudflare | Run by [Lunar.ICU](https://lunar.icu)                     |
+| [read.whateveritworks.org](https://read.whateveritworks.org)                                                                                  | :globe_with_meridians: | Cloudflare | Run by [WhateverItworks](https://www.whateveritworks.org) |
+| Onion:                                                                                                                                        |                        |            |                                                           |
+| [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
+| I2P:                                                                                                                                          |                        |            |                                                           |
+| [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                           |
 
 ### Adding Your Instance
 
@@ -61,70 +60,52 @@ If you'd like to add your instance to the list, please open an issue or pull req
 
 ---
 
-## Automatically Redirect Links
+## Automatic Redirection
 
 ### LibRedirect
 
 Use [LibRedirect](https://github.com/libredirect/libredirect) to automatically redirect Goodreads links to BiblioReads.
 
+### GreaseMonkey Userscript
+
+There is a userscript to redirect Goodreads links to BiblioReads. The userscript can be found [here](https://codeberg.org/zortazert/GreaseMonkey-Redirect/src/branch/main/Goodreads_to_BiblioReads.user.js).
+
 ### Redirector
 
-You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.ml` with any instance URL):
+You can use the [Redirector](https://github.com/einaregilsson/Redirector) extension to redirect Goodreads links to BiblioReads with the configuration below (_Note:_ You can replace `biblioreads.eu.org` with any instance URL):
 
-#### To Redirect Book Pages:
+#### To Redirect All Supported Routes:
 
-- Description: Goodreads to BiblioReads Book Page
+- Description: Goodreads to BiblioReads Pages
 - Example URL: https://www.goodreads.com/book/show/5907.The_Hobbit
-- Include pattern: `https://www.goodreads.com/book/show/*`
-- Redirect to: `https://biblioreads.ml/book/show/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads book page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Author Pages:
-
-- Description: Goodreads to BiblioReads Author Page
-- Example URL: https://www.goodreads.com/author/show/656983.J_R_R_Tolkien
-- Include pattern: `https://www.goodreads.com/author/show/*`
-- Redirect to: `https://biblioreads.ml/author/show/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Book Series Pages:
-
-- Description: Goodreads to BiblioReads Book Series Page
-- Example URL: https://www.goodreads.com/series/66175-the-lord-of-the-rings
-- Include pattern: `https://www.goodreads.com/series/*`
-- Redirect to: `https://biblioreads.ml/series/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads author page URLs to BiblioReads
-- Advanced options:
-  - Apply to:
-    - [x] Main window (address bar)
-
-#### To Redirect Quotes Pages:
-
-- Description: Goodreads to BiblioReads Quote Page
-- Example URL: https://www.goodreads.com/quotes/tag/inspirational
-- Include pattern: `https://www.goodreads.com/quotes/*`
-- Redirect to: `https://biblioreads.ml/quotes/$1`
-- Pattern type: Wildcard Expression
-- Pattern Description: Redirects all Goodreads quote page URLs to BiblioReads
+- Include pattern: `^(?:https?://)www\.goodreads\.com/(book|work|author|series|quotes|list)(.*)`
+- Redirect to: `https://biblioreads.eu.org/$1$2`
+- Pattern type: Regular Expression
+- Pattern Description: Redirects all supported Goodreads URLs to BiblioReads
 - Advanced options:
   - Apply to:
     - [x] Main window (address bar)
 
 #### To Redirect Search Pages:
 
-- Description: Goodreads to BiblioReads Search Page
+##### Rule 1:
+
+- Description: Goodreads to BiblioReads Search Page - Rule 1
 - Example URL: https://www.goodreads.com/search?q=the+hobbit&qid=
 - Include pattern: `^https:\/\/www\.goodreads\.com\/search\?q=(.*)$`
-- Redirect to: `https://biblioreads.ml/search/$1`
+- Redirect to: `https://biblioreads.eu.org/search/$1`
+- Pattern type: Regular Expression
+- Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
+- Advanced options:
+  - Apply to:
+    - [x] Main window (address bar)
+
+##### Rule 2:
+
+- Description: Goodreads to BiblioReads Search Page - Rule 2
+- Example URL: https://www.goodreads.com/search?utf8=%E2%9C%93&q=the+hobbit&search_type=books
+- Include pattern: `^https:\/\/www\.goodreads\.com\/search\?utf8=%E2%9C%93&q=(.*)$`
+- Redirect to: `https://biblioreads.eu.org/search/$1`
 - Pattern type: Regular Expression
 - Pattern Description: Redirects all Goodreads search page URLs to BiblioReads
 - Advanced options:
@@ -139,12 +120,12 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.ml](https://biblioreads.ml) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
-2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.ml` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.ml/book/show/5907.The_Hobbit](https://biblioreads.ml/book/show/5907.The_Hobbit).
+1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
+2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
-Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of the their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads, goes to the Goodreads book page and scrapes the required content.
+Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads goes to the Goodreads book page and scrapes the required content.
 
 ### How Did You Come Up With The Name?
 
@@ -185,7 +166,7 @@ _(Tested on Chrome v108, without scroll, no throttling, cache disabled)_
 Goodreads collects information about your device and uses tracking cookies for advertising among other reasons, this can be found in their [privacy policy](https://www.goodreads.com/about/privacy). [Blacklight](https://themarkup.org/blacklight) found 16 ad trackers and 40 third-party cookies.
 
 - See what cookies and trackers Goodreads uses: https://themarkup.org/blacklight?url=www.goodreads.com
-- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.ml
+- See what cookies and trackers BiblioReads uses: https://themarkup.org/blacklight?url=biblioreads.eu.org
 
 ---
 
@@ -263,7 +244,7 @@ yarn install
 yarn dev
 ```
 
-**ⓘ If you want use the API directly or run any kind of automation. Please host the project on your own server.**
+**ⓘ If you want to use the API directly or run any kind of automation. Please host the project on your own server.**
 
 ---
 

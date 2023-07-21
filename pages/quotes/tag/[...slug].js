@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Header from "../../../components/global-components/Header";
-import Footer from "../../../components/global-components/Footer";
-import Loader from "../../../components/global-components/Loader";
-import ErrorMessage from "../../../components/global-components/ErrorMessage";
-import QuotesResultData from "../../../components/quotespage-components/QuotesResultData";
+import Header from "../../../components/global/Header";
+import Footer from "../../../components/global/Footer";
+import Loader from "../../../components/global/Loader";
+import ErrorMessage from "../../../components/global/ErrorMessage";
+import QuotesResultData from "../../../components/quotespage/QuotesResultData";
 
 const Slug = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/quotes/slug/`, {
+      const res = await fetch(`/api/quotes/slug`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -48,7 +48,7 @@ const Slug = () => {
         )}
         {!error && (
           <>
-            {scrapedData.title === undefined && <Loader other={true} />}
+            {scrapedData.name === undefined && <Loader other={true} />}
             {scrapedData.error && (
               <ErrorMessage
                 status="404"

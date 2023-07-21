@@ -7,10 +7,7 @@ const FormQuery = () => {
   const [inputValue, setInputValue] = useState("");
   const [validQuery, setValidQuery] = useState(true);
 
-  {
-    /* When the button is clicked/submitted push the input value to the url */
-  }
-
+  // When the button is clicked/submitted push the input value to the search url
   const onSubmit = (e) => {
     e.preventDefault();
     if (inputValue.includes("http" || "www")) {
@@ -54,7 +51,7 @@ const FormQuery = () => {
               />
             </div>
             <button className="mt-10 my-6 ont-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
-              Submit
+              Search
             </button>
             {validQuery === false && (
               <div id="formError">

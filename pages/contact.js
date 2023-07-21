@@ -1,9 +1,9 @@
 import React from "react";
-import Meta from "../components/global-components/Meta";
-import Header from "../components/global-components/Header";
-import Footer from "../components/global-components/Footer";
-import ContactForm from "../components/contactpage-components/ContactForm";
-import ContactHero from "../components/contactpage-components/ContactHero";
+import Meta from "../components/global/Meta";
+import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
+import ContactForm from "../components/contactpage/ContactForm";
+import ContactHero from "../components/contactpage/ContactHero";
 
 const Contact = () => {
   return (
@@ -11,7 +11,12 @@ const Contact = () => {
       <Meta title={"Contact"} />
       <Header />
       <ContactHero />
-      <ContactForm />
+      {process.env.NEXT_PUBLIC_DISABLE_CONTACT_FORM != "true" ? (
+        <ContactForm />
+      ) : (
+        <div className="h-screen"></div>
+      )}
+
       <Footer />
     </div>
   );

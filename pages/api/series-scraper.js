@@ -9,7 +9,7 @@ const SeriesScraper = async (req, res) => {
         headers: new Headers({
           "User-Agent":
             process.env.NEXT_PUBLIC_USER_AGENT ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         }),
       });
       const htmlString = await response.text();
@@ -31,8 +31,8 @@ const SeriesScraper = async (req, res) => {
             .find(
               "div.responsiveBook > div.objectLockupContent > div.objectLockupContent__media > div.responsiveBook__media > a > img"
             )
-            .attr("src")
-            .replace("._SY180_", "");
+            .attr("src");
+
           const title = $el
             .find(
               "div.responsiveBook > div.objectLockupContent > div.u-paddingBottomXSmall > a > span[itemprop = 'name']"
@@ -87,9 +87,7 @@ const SeriesScraper = async (req, res) => {
             .find(
               "div.responsiveBook > div.objectLockupContent > div.objectLockupContent__media > div.responsiveBook__media > a > img"
             )
-            .attr("src")
-            .replace("._SX120_", "")
-            .replace("._SY180_", "");
+            .attr("src");
           const title = $el
             .find(
               "div.responsiveBook > div.objectLockupContent > div.u-paddingBottomXSmall > a > span[itemprop = 'name']"
@@ -136,7 +134,7 @@ const SeriesScraper = async (req, res) => {
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       return res.json({
-        status: "Recieved",
+        status: "Received",
         source: "https://github.com/nesaku/biblioreads",
         scrapeURL: scrapeURL,
         title: title,
@@ -148,12 +146,17 @@ const SeriesScraper = async (req, res) => {
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occured");
+      console.error("An Error Has Occurred");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,
       });
     }
+  } else {
+    res.statusCode = 405;
+    return res.json({
+      status: "Error 405 - Method Not Allowed",
+    });
   }
 };
 
