@@ -3,9 +3,13 @@ import { useState } from "react";
 
 const QuoteCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
+  const [isSpoiler, setShowSpoiler] = useState({});
 
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
+  };
+  const toggleSpoiler = () => {
+    setShowSpoiler(!isSpoiler);
   };
 
   return (
@@ -52,11 +56,44 @@ const QuoteCard = (props) => {
                     data.mobile ? "max-w-4xl" : "max-w-none"
                   } text-left`}
                 >
-                  <h2 className="font-bold text-lg mb-6">
-                    {data.question && data.question}
-                  </h2>
-                  {data.answer &&
-                    (data.answer.length < 600 ? (
+                  {data.spoilerQuestion ? (
+                    <div>
+                      <h2
+                        className={
+                          !isSpoiler ? "hidden" : "font-bold text-lg mb-6"
+                        }
+                      >
+                        This question contains spoilers...{" "}
+                        <span
+                          onClick={toggleSpoiler}
+                          className="font-semibold text-md p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                        >
+                          (Show Spoiler)
+                        </span>
+                      </h2>
+                      <h2
+                        className={
+                          isSpoiler ? "hidden" : "font-bold text-lg mb-6"
+                        }
+                      >
+                        {data.spoilerQuestion
+                          .replace("[", "")
+                          .replace("]", "")
+                          .replace("(hide spoiler)", "")}{" "}
+                        <span
+                          onClick={toggleSpoiler}
+                          className="font-semibold text-md p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                        >
+                          (Hide Spoiler)
+                        </span>
+                      </h2>
+                    </div>
+                  ) : (
+                    <h2 className="font-bold text-lg mb-6">{data.question}</h2>
+                  )}
+
+                  {data.answer ? (
+                    data.answer.length < 600 ? (
                       <span>{data.answer.replace("(less)", "")}</span>
                     ) : (
                       <>
@@ -85,7 +122,10 @@ const QuoteCard = (props) => {
                           {isReadMore ? " ...read more." : "(Show less)"}
                         </span>
                       </>
-                    ))}
+                    )
+                  ) : (
+                    <span>{data.shortAnswer}</span>
+                  )}
                 </div>
               </div>
             </div>

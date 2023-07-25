@@ -13,26 +13,41 @@ const Slug = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchData = async () => {
-      const res = await fetch(`/api/quotes/slug`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          queryURL: `https://www.goodreads.com/quotes/tag/${slug}`,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setScrapedData(data);
-      } else {
+      try {
+        const res = await fetch(`/api/quotes/slug`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            queryURL: `https://www.goodreads.com/quotes/tag/${slug}`,
+          }),
+          signal: abortController.signal,
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setScrapedData(data);
+        } else {
+          setError(true);
+        }
+      } catch (err) {
+        if (err.name === "AbortError") {
+          return;
+        }
         setError(true);
       }
     };
+
     if (slug) {
       fetchData();
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, [slug]);
 
   return (

@@ -32,7 +32,7 @@ const Features = () => {
               No ADS & Tracking
             </h2>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              Simple. We don&apos;t show ads and po personal information is ever
+              Simple. We don&apos;t show ads and no personal information is ever
               collected.
             </p>
           </a>
