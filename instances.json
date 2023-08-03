@@ -5,7 +5,7 @@
     "cloudflare": false
   },
   {
-    "url": "https://biblioreads.ml",
+    "url": "https://biblioreads.vercel.app",
     "countries": ["us"],
     "cloudflare": false
   },

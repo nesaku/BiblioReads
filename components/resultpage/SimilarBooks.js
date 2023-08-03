@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
 
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
-const SimilarBooks = ({ workURL, mobile }) => {
+const SimilarBooks = ({ quotesURL, mobile }) => {
   const [scrapedData, setScrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ const SimilarBooks = ({ workURL, mobile }) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        queryURL: `${workURL.replace("/work/", "/book/similar/")}`,
+        queryURL: `${quotesURL.replace("/work/quotes/", "/book/similar/")}`,
       }),
     });
     if (res.ok) {

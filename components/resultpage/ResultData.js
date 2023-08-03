@@ -278,8 +278,8 @@ const ResultData = ({ scrapedData }) => {
                   {scrapedData.bookEdition}
                 </span>
                 <Link
-                  href={scrapedData.workURL.replace(
-                    "https://www.goodreads.com/work/",
+                  href={scrapedData.quotesURL.replace(
+                    "https://www.goodreads.com/work/quotes/",
                     "/work/editions/"
                   )}
                 >
@@ -355,8 +355,8 @@ const ResultData = ({ scrapedData }) => {
               <ReviewBreakdown data={scrapedData} />
             )}
             <div className="block lg:hidden">
-              {scrapedData.workURL != "" && (
-                <SimilarBooks workURL={scrapedData.workURL} mobile={true} />
+              {scrapedData.quotesURL != "" && (
+                <SimilarBooks quotesURL={scrapedData.quotesURL} mobile={true} />
               )}
               {scrapedData.reviews != "" && (
                 <ReviewsMobile data={scrapedData.reviews} />
@@ -367,8 +367,8 @@ const ResultData = ({ scrapedData }) => {
       )}
       {scrapedData.title && (
         <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {scrapedData.workURL != "" && (
-            <SimilarBooks workURL={scrapedData.workURL} mobile={false} />
+          {scrapedData.quotesURL != "" && (
+            <SimilarBooks quotesURL={scrapedData.quotesURL} mobile={false} />
           )}
           {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
         </div>
