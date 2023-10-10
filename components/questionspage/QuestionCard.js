@@ -89,12 +89,16 @@ const QuoteCard = (props) => {
                       </h2>
                     </div>
                   ) : (
-                    <h2 className="font-bold text-lg mb-6">{data.question}</h2>
+                    <h2 className="font-bold text-lg mb-6">
+                      Q: {data.question}
+                    </h2>
                   )}
-
                   {data.answer ? (
                     data.answer.length < 600 ? (
-                      <span>{data.answer.replace("(less)", "")}</span>
+                      <span>
+                        <span className="font-bold text-lg mb-6">A: </span>
+                        {data.answer.replace("(less)", "")}
+                      </span>
                     ) : (
                       <>
                         <span
@@ -104,6 +108,7 @@ const QuoteCard = (props) => {
                               : "block w-72 sm:w-full overflow-hidden"
                           }
                         >
+                          <span className="font-bold text-lg mb-6">A: </span>
                           {data.answer.replace("(less)", "")}
                         </span>
                         <span
@@ -113,6 +118,7 @@ const QuoteCard = (props) => {
                               : "hidden"
                           }
                         >
+                          <span className="font-bold text-lg mb-6">A: </span>
                           {data.answer.replace("(less)", "")}
                         </span>
                         <span
@@ -124,7 +130,10 @@ const QuoteCard = (props) => {
                       </>
                     )
                   ) : (
-                    <span>{data.shortAnswer}</span>
+                    <span>
+                      <span className="font-bold text-lg mb-6">A: </span>
+                      {data.shortAnswer}
+                    </span>
                   )}
                 </div>
               </div>

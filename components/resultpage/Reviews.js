@@ -104,7 +104,7 @@ const Reviews = (props) => {
                   setFilterStars={setFilterStars}
                   filterStars={filterStars}
                   value="Rating 1 out of 5"
-                  text="1 Stars"
+                  text="1 Star"
                 />
               </div>
               <div id="sortOptions" className="flex flex-row items-center">
