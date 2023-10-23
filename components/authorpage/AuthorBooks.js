@@ -74,13 +74,13 @@ const AuthorBooks = (props) => {
                     />
                   </svg>
                   <span className="text-sm ml-2">
-                    {data.rating.split("avg")[0]}
+                    {data.rating.split("avg")[0].replace("really liked it", "")}
                   </span>
                 </div>
                 <div className="group w-36 h-20 text-center mx-auto text-md font-semibold">
                   <span className="break-words">{data.title.slice(0, 40)}</span>
                   <span className="hidden group-hover:inline">
-                    {data.title.slice(40, 65)}
+                    {data.title.slice(40, 50)}
                   </span>
                 </div>
               </a>

@@ -13,7 +13,7 @@ const Stats = () => {
             The{" "}
             <a
               href="https://www.goodreads.com/book/show/2767052-the-hunger-games"
-              className="underline"
+              className="underline hover:dark:text-gray-300 dark:text-gray-400"
             >
               Hunger Games Book Page
             </a>{" "}

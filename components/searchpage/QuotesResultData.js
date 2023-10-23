@@ -1,11 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 import DOMPurify from "dompurify";
+import Meta from "../global/Meta";
 
-const QuotesResultData = ({ scrapedData }) => {
+const QuotesResultData = ({ scrapedData, query }) => {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div
+      id="quotesSearchResults"
+      className="flex flex-col justify-center items-center"
+    >
+      <Meta
+        title={
+          query
+            ? query
+                .replace("https://www.goodreads.com/search?q=", "")
+                .toUpperCase()
+            : " "
+        }
+      />
       {scrapedData.quotes.map((data, i) => (
         <div
+          id="resultCard"
           key={i}
           className="max-w-7xl mx-2 sm:mx-4 my-4 py-4 px-2 sm:px-8 bg-white/40 dark:bg-slate-800/60 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
         >

@@ -20,7 +20,8 @@ const Slug = () => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          queryURL: `https://www.goodreads.com/work/editions/${slug}`,
+          // URL is redirected by Goodreads
+          queryURL: `http://www.goodreads.com/work/editions/${slug}`,
         }),
       });
       if (res.ok) {

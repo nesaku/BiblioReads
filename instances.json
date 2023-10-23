@@ -5,7 +5,7 @@
     "cloudflare": false
   },
   {
-    "url": "https://biblioreads.ml",
+    "url": "https://biblioreads.vercel.app",
     "countries": ["us"],
     "cloudflare": false
   },
@@ -27,8 +27,18 @@
     "cloudflare": true
   },
   {
-    "url": "https://read.whateveritworks.org/",
+    "url": "https://read.whateveritworks.org",
     "countries": ["xx"],
     "cloudflare": true
+  },
+  {
+    "url": "https://biblioreads.privacyfucking.rocks",
+    "countries": ["de"],
+    "cloudflare": false
+  },
+  {
+    "url": "https://read.seitan-ayoub.lol",
+    "countries": ["de"],
+    "cloudflare": false
   }
 ]

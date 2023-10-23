@@ -6,7 +6,7 @@ labels: documentation
 assignees: ""
 ---
 
-**Is the issue related to an error or an addition**
+**Is the issue related to an error or an addition?**
 Does this issue relate to documentation that needs to be fixed or documentation that needs to be added?
 
 **What is the improvements or additions to documentation? Please describe.**

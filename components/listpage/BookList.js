@@ -45,7 +45,9 @@ const BookList = (props) => {
                       />
                     </svg>
                     <span className="ml-2 capitalize font-semibold">
-                      {data.rating.split("avg")[0]}
+                      {data.rating
+                        .split("avg")[0]
+                        .replace("really liked it", "")}
                       <span className="text-slate-700 dark:text-gray-200 font-normal">
                         {data.rating.split("rating")[1]}{" "}
                         {data.rating > 1 ? "rating" : "ratings"}

@@ -27,10 +27,10 @@ const Disclaimer = () => {
                 “as is” and “as available” basis and you agree that you use such
                 information entirely at your own risk. BiblioReads gives no
                 warranty and accepts no responsibility or liability for the
-                accuracy or the completeness of the information and materials
+                accuracy or completeness of the information and materials
                 contained in this website. Under no circumstances will
                 BiblioReads be held responsible or liable in any way for any
-                claims, damages, losses, expenses, costs or liabilities
+                claims, damages, losses, expenses, costs, or liabilities
                 whatsoever resulting or arising directly or indirectly from your
                 use of or inability to use this website, or from your reliance
                 on the information and material on this website, even if

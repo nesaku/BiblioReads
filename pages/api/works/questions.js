@@ -51,6 +51,16 @@ const QuestionsScraper = async (req, res) => {
           const question = $el
             .find("div.communityQuestion > div.questionText > a")
             .text();
+          const spoilerQuestion = $el
+            .find(
+              "div.communityQuestion > div.questionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer"
+            )
+            .text();
+          const shortAnswer = $el
+            .find(
+              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText"
+            )
+            .text();
           const answer = $el
             .find(
               "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText > span.expandableContainer > span.fullContent"
@@ -70,6 +80,8 @@ const QuestionsScraper = async (req, res) => {
             authorName: authorName,
             authorURL: authorURL,
             question: question,
+            spoilerQuestion: spoilerQuestion,
+            shortAnswer: shortAnswer,
             answer: answer,
             likes: likes,
           };

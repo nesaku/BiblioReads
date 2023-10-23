@@ -5,6 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.6] - Oct 22, 2023
+
+### Changed
+
+- Improve the disclaimer grammar - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/70)
+- Update the instances list in the README and instances.json
+- Remove unneeded query parameters for book search results
+
+## [2.15.5] - Oct 9, 2023
+
+### Added
+
+- Add Q and A before book questions and answers
+- Add a hover effect to the link on the About page
+
+### Changed
+
+- Change the maximum text limit for titles in the author book cards
+
+### Fixed
+
+- Fix a spelling error
+- Fix text showing up in the avg rating section
+
+## [2.15.4] - Aug 3, 2023
+
+### Changed
+
+- Update the instances list in the README and instances.json
+- Update the default contact form success redirect URL
+
+### Fixed
+
+- Fix the similar books section being blank
+- Fix no edition results being shown
+
+## [2.15.3] - Jul 24, 2023
+
+### Added
+
+- Add support for questions that include spoilers
+- Add a cleanup function to the search and quotes tag page
+- Add meta information to quotes search results
+
+### Fixed
+
+- Fix the book result appearing again in the similar books section
+- Fix blank questions
+- Fix a typo on the about page - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/66)
+
 ## [2.15.2] - Jul 17, 2023
 
 ### Changed
@@ -21,7 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a small border around most images
+- Add a small border around most images
 
 ### Changed
 
@@ -353,7 +403,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Made search box width larger when hovered/focused - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
+- Make search box width larger when hovered/focused - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/23)
 - Update book page screenshot in the README
 
 ### Fixed

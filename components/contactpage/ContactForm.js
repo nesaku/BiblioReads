@@ -16,7 +16,7 @@ const ContactForm = () => {
             value={
               process.env.NEXT_PUBLIC_HOST_URL
                 ? `${process.env.NEXT_PUBLIC_HOST_URL}/success`
-                : "https://biblioreads.ml/success"
+                : "https://biblioreads.eu.org/success"
             }
           />
           <input type="hidden" name="_error" value="/500" />
