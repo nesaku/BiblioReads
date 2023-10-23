@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.6] - Oct 22, 2023
+
+### Changed
+
+- Improve the disclaimer grammar - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/70)
+- Update the instances list in the README and instances.json
+- Remove unneeded query parameters for book search results
+
 ## [2.15.5] - Oct 9, 2023
 
 ### Added
