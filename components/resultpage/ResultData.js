@@ -132,7 +132,8 @@ const ResultData = ({ scrapedData }) => {
                         )}
                       >
                         <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                          {scrapedData.quotes} Quotes
+                          {scrapedData.quotes}{" "}
+                          {scrapedData.quotes == "1" ? "Quote" : "Quotes"}
                           <svg
                             aria-hidden="true"
                             className="w-5 h-5 ml-2 -mr-1"
@@ -161,7 +162,10 @@ const ResultData = ({ scrapedData }) => {
                           )}
                       >
                         <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                          {scrapedData.questions} Questions
+                          {scrapedData.questions}{" "}
+                          {scrapedData.questions == "1"
+                            ? "Question"
+                            : "Questions"}
                           <svg
                             aria-hidden="true"
                             className="w-5 h-5 ml-2 -mr-1"

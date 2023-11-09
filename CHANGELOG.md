@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.15.7] - Nov 9, 2023
+
+### Changed
+
+- Add CONTRIBUTING.md - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/72)
+- Add Code of Conduct - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/74)
+- Add a pull request template for new instances - [ISSUE](https://codeberg.org/nesaku/BiblioReads/issues/71)
+
+### Changed
+
+- Remove outdated instructions from the FAQ and README
+
+### Fixed
+
+- Fix typographical issues
+- Fix similar-scraper being called multiple times
+- Fix the version being logged multiple times in the console
+
 ## [2.15.6] - Oct 22, 2023
 
 ### Changed

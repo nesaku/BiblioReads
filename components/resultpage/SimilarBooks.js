@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
 
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
@@ -8,6 +8,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
   const [scrapedData, setScrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const initialized = useRef(false);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -32,7 +33,10 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
 
   useEffect(() => {
     try {
-      fetchData();
+      if (!initialized.current) {
+        initialized.current = true;
+        fetchData();
+      }
     } catch (error) {
       setError(true);
     }

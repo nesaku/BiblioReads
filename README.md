@@ -56,7 +56,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ### Adding Your Instance
 
-If you'd like to add your instance to the list, please open an issue or pull request using `New Instance` template.
+If you'd like to add your instance to the list, please open an issue or pull request using the `New Instance` template.
 
 **Note:** If you collect any user data from your instance please set the applicable environment variables (an example can be found in `.env.local.example`).
 
@@ -123,7 +123,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 There are two ways you can use BiblioReads:
 
 1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
-2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
+2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
