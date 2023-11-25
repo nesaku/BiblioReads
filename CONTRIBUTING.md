@@ -13,7 +13,7 @@ All types of contributions are encouraged and valued.
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[BiblioReads Code of Conduct](https://github.com/BiblioReads/blob/main/CODE_OF_CONDUCT.md).
+[BiblioReads Code of Conduct](https://github.com/nesaku/BiblioReads/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to admin@nesaku.eu.org.
 
@@ -86,7 +86,7 @@ This section guides you through submitting an enhancement suggestion for BiblioR
 
 #### How Do I Submit a Good Enhancement Suggestion?
 
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/nesaku/biblioreads/issues).
+Enhancement suggestions are tracked as issues.
 
 - Please use the Feature Request issue template.
 - Use a **clear and descriptive title** for the issue to identify the suggestion.

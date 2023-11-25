@@ -20,7 +20,7 @@ const Privacy = () => {
             </h1>
             <div className="text-left mt-10">
               <p className="mx-auto text-lg mt-12">
-                Last updated: June 30, 2023
+                Last updated: November 25, 2023
               </p>
               <p className="mx-auto text-lg mt-12">
                 At BiblioReads, we believe that privacy is a fundamental right
@@ -117,11 +117,13 @@ const Privacy = () => {
                 BiblioReads does not use analytics, third-party cookies or ad
                 trackers on our website. Cache Storage and a service worker are
                 used to enable progressive web app (PWA) support. We use local
-                storage to remember your theme preferences, you may erase local
-                storage by deleting your browser history. We do not use cookies
-                or local storage objects for any other purpose. Our hosting
-                provider may keep logs and collect information such as IP
-                addresses.
+                storage to remember your theme preferences and session storage
+                to record the current app version. Local storage and session
+                storage are only stored on your device, you may erase local and
+                session storage by deleting your browser history. We do not use
+                local storage or session storage objects for any other purpose.
+                Our hosting provider may keep logs and collect information such
+                as IP addresses.
               </p>
               <p className="mx-auto text-lg mt-12">
                 Information voluntarily provided to BiblioReads will be

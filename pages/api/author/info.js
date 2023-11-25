@@ -104,7 +104,10 @@ const AuthorScraper = async (req, res) => {
 
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
-
+      res.setHeader(
+        "Cache-Control",
+        "public, s-maxage=600, stale-while-revalidate=1800"
+      );
       return res.json({
         status: "Received",
         source: "https://github.com/nesaku/biblioreads",

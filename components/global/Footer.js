@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.15.7";
-  const versionSlug = "2157---nov-9-2023";
+  const version = "v2.15.8";
+  const versionSlug = "2158---nov-25-2023";
 
   if (typeof sessionStorage !== "undefined") {
-    if (!sessionStorage.getItem("isLogged")) {
+    if (!sessionStorage.getItem("version")) {
       console.log(`%c${version} (Oreki)`, `color:green`);
-      sessionStorage.setItem("isLogged", "true");
+      sessionStorage.setItem("version", version ? version : "true");
     }
   } else {
     console.log("Error");

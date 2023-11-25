@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.15.7] - Nov 9, 2023
+## [2.15.8] - Nov 25, 2023
+
+### Added
+
+- Add cache headers to API responses
 
 ### Changed
+
+- Improve CODE_OF_CONDUCT.md
+- Rename the session storage version item and include the version in the value
+- Update the privacy policy to reflect session storage being used
+
+## [2.15.7] - Nov 9, 2023
+
+### Added
 
 - Add CONTRIBUTING.md - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/72)
 - Add Code of Conduct - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/74)
