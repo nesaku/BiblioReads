@@ -81,7 +81,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                             .replace("._SY75_", "")
                             .replace("._SX50_", "")}&output=webp&maxage=30d`}
                           type="image/webp"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <source
                           srcSet={`/img?url=${data.cover
@@ -89,7 +89,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                             .replace("._SY75_", "")
                             .replace("._SX50_", "")}&maxage=30d`}
                           type="image/jpeg"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <img
                           src={`/img?url=${data.cover
@@ -99,7 +99,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                           alt={`${data.title} book cover`}
                           width="98"
                           height="148"
-                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white mx-auto mt-3"
+                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto mt-3"
                           loading="lazy"
                         />
                       </picture>

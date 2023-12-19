@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.0] - Dec 18, 2023
+
+## Added
+
+- Add get a copy/buy links - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/15)
+
+### Changed
+
+- Change the dark mode image background color
+
 ## [2.15.8] - Nov 25, 2023
 
 ### Added
