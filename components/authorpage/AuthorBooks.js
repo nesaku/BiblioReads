@@ -13,8 +13,8 @@ const AuthorBooks = (props) => {
   };
 
   return (
-    <div id="authorBooks">
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
+    <div id="authorBooks" className="dark:text-gray-100/80">
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 ">
         {props.name}&apos;s Books:{" "}
       </h2>
       <div

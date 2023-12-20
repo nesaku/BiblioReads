@@ -67,8 +67,8 @@ const ListResults = ({ scrapedData }) => {
       {error ? (
         <ErrorMessage status="500" url={scrapedData.scrapeURL} />
       ) : (
-        <div className="flex flex-col p-12 justify-center items-center text-center">
-          <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80">
+        <div className="flex flex-col p-12 justify-center items-center text-center dark:text-gray-100/80">
+          <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 ">
             {scrapedData.title && `${scrapedData.title}:`}
           </h2>
           <div>

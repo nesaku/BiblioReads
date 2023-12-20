@@ -227,9 +227,12 @@ Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for 
 
 ### Built Using
 
-- Next.js
 - Cheerio
-- TailwindCSS
+- DOMPurify
+- Next.js
+- Tailwind CSS
+- idb
+- next-pwa
 - next-themes
 
 ### Getting Started

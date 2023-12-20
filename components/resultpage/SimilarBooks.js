@@ -53,8 +53,11 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
   };
 
   return (
-    <div id="bookRelated" className={`${error && "hidden"}`}>
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
+    <div
+      id="bookRelated"
+      className={`${error && "hidden"} dark:text-gray-100/80"`}
+    >
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600">
         Similar Books:{" "}
       </h2>
       {isLoading ? (

@@ -53,7 +53,9 @@ const Slug = () => {
             "content-type": "application/json",
           },
           body: JSON.stringify({
-            queryURL: `https://www.goodreads.com/search?q=${slug}`,
+            queryURL: `https://www.goodreads.com/search?q=${encodeURIComponent(
+              slug
+            )}`,
           }),
           signal: abortController.signal,
         });
@@ -131,9 +133,11 @@ const Slug = () => {
                     <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
                       Search Results For:{" "}
                       {scrapedData.scrapeURL &&
-                        scrapedData.scrapeURL
-                          .replace("https://www.goodreads.com/search?q=", "")
-                          .replaceAll("-", " ")}
+                        decodeURIComponent(
+                          scrapedData.scrapeURL
+                            .replace("https://www.goodreads.com/search?q=", "")
+                            .replaceAll("-", " ")
+                        )}
                     </h2>
 
                     <div className="flex justify-center items-center align-middle">

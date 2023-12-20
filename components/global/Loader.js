@@ -10,7 +10,7 @@ const Loader = (props) => {
       </div>
       <div className="mt-10">
         <h1 className="animate-pulse text-lg font-md text-gray-900 dark:text-gray-100">
-          {props.other ? "Getting Information..." : "Scraping Your Book..."}
+          {props.other ? "Getting Information..." : "Getting Your Book..."}
         </h1>
       </div>
     </div>

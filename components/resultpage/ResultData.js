@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
 import ReviewsMobile from "./ReviewsMobile";
@@ -7,10 +8,94 @@ import SimilarBooks from "./SimilarBooks";
 import Meta from "../global/Meta";
 import ReviewBreakdown from "./ReviewBreakdown";
 import Link from "next/link";
+import { openDB } from "idb";
+import Toast from "../global/Toast";
 
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [showToast, setShowToast] = useState("");
+  const router = useRouter();
+
+  async function initializeDB() {
+    return await openDB("library", 1, {
+      upgrade(db) {
+        if (!db.objectStoreNames.contains("books")) {
+          db.createObjectStore("books");
+        }
+      },
+    });
+  }
+
+  useEffect(() => {
+    const savedBookCheck = async () => {
+      const db = await initializeDB();
+      if (router.query.slug) {
+        const bookInDB = await db.get("books", router.query.slug[0]);
+        setIsSaved(bookInDB !== undefined);
+      }
+    };
+
+    savedBookCheck();
+  }, [router.query.slug]);
+
+  useEffect(() => {
+    async function manageBooks() {
+      const db = await initializeDB();
+      const slug = router.query.slug;
+
+      if (slug) {
+        if (isSaved && scrapedData) {
+          const book = {
+            slug: slug[0],
+            timestamp: Date.now(),
+            cover: scrapedData.cover,
+            title: scrapedData.title,
+            author: scrapedData.author,
+            rating: scrapedData.rating,
+          };
+
+          await db.put("books", book, slug[0]);
+          if (isClicked) {
+            setShowToast("Book added to library");
+            setTimeout(() => setShowToast(""), 3000);
+          }
+        } else if (slug.length > 0) {
+          await db.delete("books", slug[0]);
+          if (isClicked) {
+            setShowToast("Book removed from library");
+            setTimeout(() => setShowToast(""), 3000);
+          }
+        }
+
+        const allBooks = await db.getAll("books");
+        // console.log(allBooks);
+      }
+    }
+
+    manageBooks();
+  }, [isSaved, scrapedData]);
+
+  /* Save books using local storage
+  useEffect(() => {
+    let slugs = JSON.parse(localStorage.getItem("slugs")) || {};
+
+    if (isSaved) {
+      slugs[router.query.slug[0]] = {
+        timestamp: Date.now(),
+        imageUrl: scrapedData.cover,
+        title: scrapedData.title,
+        author: scrapedData.author,
+      };
+
+      localStorage.setItem("slugs", JSON.stringify(slugs));
+    } else {
+      delete slugs[router.query.slug[0]];
+      localStorage.setItem("slugs", JSON.stringify(slugs));
+    }
+  }, [isSaved]); */
 
   const externalSVG = (
     <svg
@@ -53,9 +138,9 @@ const ResultData = ({ scrapedData }) => {
                 </a>
               </Link>
             )}
-            <h2 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
+            <h1 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
               {scrapedData.title}
-            </h2>
+            </h1>
             <div className="mt-2 mx-auto max-w-sm xl:max-w-md">
               <span className="font-semibold">By:</span>{" "}
               {scrapedData.author.map((data, i) => (
@@ -71,7 +156,6 @@ const ResultData = ({ scrapedData }) => {
             </div>
 
             <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
-              <h1 className="hidden">Cover:</h1>
               {!imageLoaded && (
                 <img
                   src="/cover-placeholder.svg"
@@ -80,6 +164,27 @@ const ResultData = ({ scrapedData }) => {
                   height="962"
                 />
               )}
+              <div>{showToast && <Toast message={showToast} />}</div>
+              <div className="flex items-end justify-end font-mono text-sm font-bold -mb-24">
+                <button
+                  onClick={() => {
+                    !isSaved ? setIsSaved(true) : setIsSaved(false);
+                    setIsClicked(true);
+                  }}
+                  className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
+                >
+                  <svg
+                    viewBox="0 0 257 445"
+                    className={`w-[50%]  ${
+                      !isSaved ? "text-gray-50" : "text-[#ed8a19]"
+                    } hover:text-[#ed8a19] border-black`}
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
+                  </svg>
+                </button>
+              </div>
               {scrapedData.cover && (
                 <>
                   {/* Load WebP Image With JPG Fallback*/}
@@ -109,6 +214,26 @@ const ResultData = ({ scrapedData }) => {
               )}
 
               <div className="flex flex-col mt-0 lg:mt-16 xl:mt-0">
+                {/*  <div id="addToLibrary" className="mt-4 items-center justify-center flex">
+                  <button>
+                    <a className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-4 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                      Add to Library
+                      <svg
+                        aria-hidden="true"
+                        className="w-5 h-5 ml-2 -mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                  </button>
+                </div> */}
                 <div
                   id="purchaseOptions"
                   className="flex flex-col justify-center items-center relative"
@@ -197,7 +322,7 @@ const ResultData = ({ scrapedData }) => {
                         ""
                       )}
                     >
-                      <a className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-6 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
+                      <a className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-2 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
                         Browse This Series
                         <svg
                           aria-hidden="true"
@@ -216,7 +341,10 @@ const ResultData = ({ scrapedData }) => {
                     </Link>
                   </div>
                 )}
-                <div id="quotes-questions" className="flex justify-around my-4">
+                <div
+                  id="quotes-questions"
+                  className="flex justify-around mt-2 mb-4"
+                >
                   {scrapedData.quotes != "Add" && (
                     <div className="mt-4 items-center justify-center flex">
                       <Link

@@ -14,10 +14,10 @@ const ListResults = ({ scrapedData }) => {
   return (
     <div
       id="ListResults"
-      className="flex flex-col p-12 justify-center items-center text-center"
+      className="flex flex-col p-12 justify-center items-center text-center dark:text-gray-100/80"
     >
       <Meta title={scrapedData.title} />
-      <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80">
+      <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 ">
         {scrapedData.title && `${scrapedData.title}:`}
       </h2>
 
@@ -27,9 +27,9 @@ const ListResults = ({ scrapedData }) => {
             id="ListWorks"
             className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0 capitalize p-4 sm:p-8"
           >
-            <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+            <h3 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
               Works:
-            </h2>
+            </h3>
             {scrapedData.works}
           </div>
         )}
@@ -39,9 +39,9 @@ const ListResults = ({ scrapedData }) => {
             id="ListDescription"
             className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
           >
-            <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+            <h3 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
               Description:{" "}
-            </h2>
+            </h3>
             {scrapedData.desc.length < 200 ? (
               <span
                 dangerouslySetInnerHTML={{
