@@ -2,10 +2,17 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.15.6";
-  const versionSlug = "2156---oct-22-2023";
+  const version = "v2.17.0";
+  const versionSlug = "2170---dec-20-2023";
 
-  console.log(`%c${version} (Oreki)`, `color:green`);
+  if (typeof sessionStorage !== "undefined") {
+    if (!sessionStorage.getItem("version")) {
+      console.log(`%c${version} (Oreki)`, `color:green`);
+      sessionStorage.setItem("version", version ? version : "true");
+    }
+  } else {
+    console.log("Error");
+  }
 
   return (
     <footer className="text-center w-full ">

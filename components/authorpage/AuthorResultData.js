@@ -28,7 +28,7 @@ const AuthorResultData = ({ scrapedData }) => {
             coverIMG={`/img?url=${scrapedData.image}&output=webp&maxage=30d`}
           />
           <div id="sideContent" className="text-center mx-auto">
-            <h2 className="font-bold text-3xl xl:text-4xl uppercase max-w-2xl mx-auto">
+            <h2 className="font-bold text-4xl uppercase max-w-2xl mx-auto">
               {scrapedData.name}
             </h2>
             <div id="authorImage" className="my-6 mx-auto max-w-xs xl:max-w-sm">

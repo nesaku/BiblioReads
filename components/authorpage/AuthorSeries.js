@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const AuthorSeries = (props) => {
   return (
-    <div id="authorSeries">
-      <h2 className="font-bold text-2xl pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80">
-        Series By {props.name}&apos;s:
+    <div id="authorSeries" className=" dark:text-gray-100/80">
+      <h2 className="font-bold text-2xl pt-4 my-2 underline decoration-rose-600 ">
+        Series By {props.name}:
       </h2>
 
       {props.series.map((data, i) => (

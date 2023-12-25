@@ -79,8 +79,7 @@ const FAQ = () => {
               <span className="text-green-600 dark:text-green-500/80">
                 {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
               </span>
-              . Then click the
-              <code> &quot;Fetch Data&quot;</code> button.
+              .
             </p>
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
@@ -424,7 +423,7 @@ const FAQ = () => {
 
             <p className="mt-4 mx-8 leading-relaxed text-gray-800 dark:text-gray-200">
               We would love to here what you have to say about BiblioReads.
-              Wether it be a bug report, a feature request, or criticism, we
+              Whether it be a bug report, a feature request, or criticism, we
               want to hear it. Please feel free to open an issue on{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"

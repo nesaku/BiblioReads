@@ -13,8 +13,8 @@ const AuthorBooks = (props) => {
   };
 
   return (
-    <div id="authorBooks">
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
+    <div id="authorBooks" className="dark:text-gray-100/80">
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 ">
         {props.name}&apos;s Books:{" "}
       </h2>
       <div
@@ -37,7 +37,7 @@ const AuthorBooks = (props) => {
                         .replace("._SY75_", "")
                         .replace("._SX50_", "")}&output=webp&maxage=30d`}
                       type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
                     />
                     <source
                       srcSet={`/img?url=${data.cover
@@ -45,7 +45,7 @@ const AuthorBooks = (props) => {
                         .replace("._SY75_", "")
                         .replace("._SX50_", "")}&maxage=30d`}
                       type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
                     />
                     <img
                       src={`/img?url=${data.cover
@@ -55,7 +55,7 @@ const AuthorBooks = (props) => {
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"
-                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white mx-auto mt-3"
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto mt-3"
                       loading="lazy"
                     />
                   </picture>

@@ -22,7 +22,7 @@
     "cloudflare": false
   },
   {
-    "url": "https://biblioreads.lunar.icu/",
+    "url": "https://biblioreads.lunar.icu",
     "countries": ["xx"],
     "cloudflare": true
   },
@@ -40,5 +40,10 @@
     "url": "https://read.seitan-ayoub.lol",
     "countries": ["de"],
     "cloudflare": false
+  },
+  {
+    "url": "https://read.freedit.eu",
+    "countries": ["us"],
+    "cloudflare": true
   }
 ]

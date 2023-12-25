@@ -5,6 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.17.0] - Dec 20, 2023
+
+## Added
+
+- Add library page
+- Add the option to save and list locally stored books.
+- Add a toast component
+
+### Changed
+
+- Encode search text
+- Update the privacy policy to reflect IndexedDB being used
+
+### Fixed
+
+- Fix HTML and UI inconsistencies
+
+## [2.16.0] - Dec 18, 2023
+
+## Added
+
+- Add get a copy/buy links - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/15)
+
+### Changed
+
+- Change the dark mode image background color
+
+## [2.15.8] - Nov 25, 2023
+
+### Added
+
+- Add cache headers to API responses
+
+### Changed
+
+- Improve CODE_OF_CONDUCT.md
+- Rename the session storage version item and include the version in the value
+- Update the privacy policy to reflect session storage being used
+
+## [2.15.7] - Nov 9, 2023
+
+### Added
+
+- Add CONTRIBUTING.md - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/72)
+- Add Code of Conduct - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/74)
+- Add a pull request template for new instances - [ISSUE](https://codeberg.org/nesaku/BiblioReads/issues/71)
+
+### Changed
+
+- Remove outdated instructions from the FAQ and README
+
+### Fixed
+
+- Fix typographical issues
+- Fix similar-scraper being called multiple times
+- Fix the version being logged multiple times in the console
+
 ## [2.15.6] - Oct 22, 2023
 
 ### Changed

@@ -49,6 +49,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | [read.whateveritworks.org](https://read.whateveritworks.org)                                                                                  | :globe_with_meridians: | Cloudflare | Run by [WhateverItWorks](https://www.whateveritworks.org)   |
 | [biblioreads.privacyfucking.rocks](https://biblioreads.privacyfucking.rocks)                                                                  |          :de:          | 1Blu.de    | Run by [PrivacyFucking.Rocks](https://privacyfucking.rocks) |
 | [read.seitan-ayoub.lol](https://read.seitan-ayoub.lol)                                                                                        |          :de:          | Hetzner    | Run by [unstablemaple](https://seitan-ayoub.lol)            |
+| [read.freedit.eu](https://read.freedit.eu)                                                                                                    |          :us:          | Cloudflare | Run by [Freedit](https://freedit.eu)                        |
 | Onion:                                                                                                                                        |                        |            |                                                             |
 | [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner    | Run by [~vern](https://vern.cc)                             |
 | I2P:                                                                                                                                          |                        |            |                                                             |
@@ -56,7 +57,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 
 ### Adding Your Instance
 
-If you'd like to add your instance to the list, please open an issue or pull request.
+If you'd like to add your instance to the list, please open an issue or pull request using the `New Instance` template.
 
 **Note:** If you collect any user data from your instance please set the applicable environment variables (an example can be found in `.env.local.example`).
 
@@ -123,7 +124,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 There are two ways you can use BiblioReads:
 
 1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
-2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). Then click the "Fetch Data" button. For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
+2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping
 
@@ -226,9 +227,12 @@ Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for 
 
 ### Built Using
 
-- Next.js
 - Cheerio
-- TailwindCSS
+- DOMPurify
+- Next.js
+- Tailwind CSS
+- idb
+- next-pwa
 - next-themes
 
 ### Getting Started

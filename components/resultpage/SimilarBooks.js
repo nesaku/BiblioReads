@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
 
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
@@ -8,6 +8,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
   const [scrapedData, setScrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const initialized = useRef(false);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -32,7 +33,10 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
 
   useEffect(() => {
     try {
-      fetchData();
+      if (!initialized.current) {
+        initialized.current = true;
+        fetchData();
+      }
     } catch (error) {
       setError(true);
     }
@@ -49,8 +53,11 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
   };
 
   return (
-    <div id="bookRelated" className={`${error && "hidden"}`}>
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 dark:text-gray-100/80">
+    <div
+      id="bookRelated"
+      className={`${error && "hidden"} dark:text-gray-100/80"`}
+    >
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600">
         Similar Books:{" "}
       </h2>
       {isLoading ? (
@@ -77,7 +84,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                             .replace("._SY75_", "")
                             .replace("._SX50_", "")}&output=webp&maxage=30d`}
                           type="image/webp"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <source
                           srcSet={`/img?url=${data.cover
@@ -85,7 +92,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                             .replace("._SY75_", "")
                             .replace("._SX50_", "")}&maxage=30d`}
                           type="image/jpeg"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white mx-auto"
+                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <img
                           src={`/img?url=${data.cover
@@ -95,7 +102,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                           alt={`${data.title} book cover`}
                           width="98"
                           height="148"
-                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white mx-auto mt-3"
+                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto mt-3"
                           loading="lazy"
                         />
                       </picture>

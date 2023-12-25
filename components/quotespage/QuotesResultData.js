@@ -73,7 +73,7 @@ const QuotesResults = ({ scrapedData }) => {
               )}
             </a>
           </Link>
-          <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 hover:underline decoration-rose-600 dark:text-gray-100/80 capitalize">
+          <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
             {scrapedData.name && `${scrapedData.name}:`}
           </h2>
           {scrapedData.name && (

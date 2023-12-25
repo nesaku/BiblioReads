@@ -41,10 +41,10 @@ const EditionResults = ({ scrapedData }) => {
   return (
     <div
       id="editionResults"
-      className="flex flex-col p-12 justify-center items-center text-center"
+      className="flex flex-col p-12 justify-center items-center text-center dark:text-gray-100/80"
     >
       <Meta title={scrapedData.book} />
-      <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 dark:text-gray-100/80">
+      <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600">
         {scrapedData.book && `${scrapedData.book}:`}
       </h2>
 
@@ -75,9 +75,9 @@ const EditionResults = ({ scrapedData }) => {
           id="editionFormat"
           className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0 capitalize p-4 sm:p-8"
         >
-          <h2 className="font-bold text-4xl mt-2 capitalize underline decoration-rose-600">
+          <h3 className="font-bold text-4xl mt-2 capitalize underline decoration-rose-600">
             Editions:
-          </h2>
+          </h3>
           <div className="flex items-center mt-6">
             <p className="mr-4">Format:</p>
             <select
