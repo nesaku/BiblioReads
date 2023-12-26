@@ -29,7 +29,7 @@ const SearchBox = (props) => {
     <div>
       <form onSubmit={onSubmit}>
         {props.main && (
-          <h1 className="text-6xl text-black dark:text-gray-200/80 font-semibold capitalize mb - 10">
+          <h1 className="text-5xl md:text-6xl text-black dark:text-gray-200/80 font-semibold capitalize mb-10">
             Search For A Book Or Quote:
           </h1>
         )}

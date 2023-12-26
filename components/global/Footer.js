@@ -9,9 +9,12 @@ const Footer = () => {
     if (!sessionStorage.getItem("version")) {
       console.log(`%c${version} (Oreki)`, `color:green`);
       sessionStorage.setItem("version", version ? version : "true");
+      console.log("Version has been successfully saved to sessionStorage.");
     }
   } else {
-    console.log("Error");
+    console.error(
+      "Error: sessionStorage is not available or not defined in this browser."
+    );
   }
 
   return (
@@ -35,6 +38,14 @@ const Footer = () => {
                 <Link href="/quotes">
                   <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
                     Quotes
+                  </a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/library">
+                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
+                    Library
                   </a>
                 </Link>
               </li>

@@ -5,11 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.18.0] - Dec 26, 2023
+
+## Added
+
+- Add support for multiple tabs on the library page
+- Add the library page link to the footer
+- Add error handling to the database code
+
+### Changed
+
+- Improve the scraper error response
+- Improve the sessionStorage error text
+- Update robots.txt to only allow the about and homepage
+- Change the book page loader text
+- Split library code into multiple components
+
+### Fixed
+
+- Fix the addToLibrary button appearing in the wrong location when the cover fails to load
+- Fix the close icon not appearing in toasts
+- Fix a version mismatch causing indexedDB errors
+
 ## [2.17.0] - Dec 20, 2023
 
 ## Added
 
-- Add library page
+- Add the library page and saving books function - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/76)
 - Add the option to save and list locally stored books.
 - Add a toast component
 

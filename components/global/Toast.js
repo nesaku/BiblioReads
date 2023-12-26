@@ -11,6 +11,19 @@ const Toast = ({ message = "" }) => {
     }, 3000);
   };
 
+  const CloseIcon = () => (
+    <svg
+      className="w-6 h-6 mt-0.5"
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M557.2 512l136.4-136.4c12.4-12.4 12.4-32.8 0-45.2-12.4-12.4-32.8-12.4-45.2 0L512 466.8l-136.4-136.4c-12.4-12.4-32.8-12.4-45.2 0-6.2 6.2-9.4 14.4-9.4 22.6 0 8.2 3.2 16.4 9.4 22.6l136.4 136.4-136.4 136.4c-6.2 6.2-9.4 14.4-9.4 22.6 0 8.2 3.2 16.4 9.4 22.6 12.4 12.4 32.8 12.4 45.2 0l136.4-136.4 136.4 136.4c12.4 12.4 32.8 12.4 45.2 0 12.4-12.4 12.4-32.8 0-45.2L557.2 512z" />
+    </svg>
+  );
+
   return (
     show && (
       <div className="fade-in fixed bottom-0 right-0 m-4 p-2 z-10">
@@ -31,22 +44,16 @@ const Toast = ({ message = "" }) => {
               </svg>
               <span className="sr-only">Check icon</span>
             </div>
-            <div className="ms-3 text-sm font-normal capitalize">{message}</div>
+            <div className="ms-3 mr-2 text-sm font-normal capitalize">
+              {message}
+            </div>
             <button
               onClick={handleClose}
               className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
               aria-label="Close"
             >
               <span className="sr-only">Close</span>
-              <svg
-                className="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-              </svg>
+              <CloseIcon />
             </button>
           </div>
         ) : message.includes("error") ? (
@@ -73,15 +80,7 @@ const Toast = ({ message = "" }) => {
               aria-label="Close"
             >
               <span className="sr-only">Close</span>
-              <svg
-                className="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-              </svg>
+              <CloseIcon />
             </button>
           </div>
         ) : (
@@ -108,15 +107,7 @@ const Toast = ({ message = "" }) => {
               aria-label="Close"
             >
               <span className="sr-only">Close</span>
-              <svg
-                className="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-              </svg>
+              <CloseIcon />
             </button>
           </div>
         )}

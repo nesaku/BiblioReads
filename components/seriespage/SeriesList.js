@@ -38,8 +38,8 @@ const SeriesList = (props) => {
                     {data.rating.split(" · ")[0]}
                   </span>
                 </div>
-                <div>
-                  <span className="text-slate-700 dark:text-gray-200 font-normal">
+                <div className="text-slate-700 dark:text-gray-100/80 font-norma capitalize">
+                  <span>
                     {data.rating
                       .split("published")[0]
                       .replace(" · ", " - ")
@@ -50,7 +50,7 @@ const SeriesList = (props) => {
                   <br />
 
                   {data.rating.includes("Reviews") && (
-                    <span className="text-slate-700 dark:text-gray-200 font-normal capitalize">
+                    <span>
                       {data.rating
                         .split("Reviews")[1]
                         .split("reviews")[0]

@@ -126,7 +126,7 @@ const AuthorScraper = async (req, res) => {
       });
     } catch (error) {
       res.statusCode = 404;
-      console.error("An Error Has Occurred");
+      console.error("An error has occurred with the scraper.");
       return res.json({
         status: "Error - Invalid Query",
         scrapeURL: scrapeURL,

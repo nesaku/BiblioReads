@@ -20,21 +20,29 @@ const ResultData = ({ scrapedData }) => {
   const router = useRouter();
 
   async function initializeDB() {
-    return await openDB("library", 1, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains("books")) {
-          db.createObjectStore("books");
-        }
-      },
-    });
+    try {
+      return await openDB("library", 1, {
+        upgrade(db) {
+          if (!db.objectStoreNames.contains("books")) {
+            db.createObjectStore("books");
+          }
+        },
+      });
+    } catch (error) {
+      console.error("Error initializing database:", error);
+    }
   }
 
   useEffect(() => {
     const savedBookCheck = async () => {
-      const db = await initializeDB();
-      if (router.query.slug) {
-        const bookInDB = await db.get("books", router.query.slug[0]);
-        setIsSaved(bookInDB !== undefined);
+      try {
+        const db = await initializeDB();
+        if (router.query.slug) {
+          const bookInDB = await db.get("books", router.query.slug[0]);
+          setIsSaved(bookInDB !== undefined);
+        }
+      } catch (error) {
+        console.error("Error checking saved book:", error);
       }
     };
 
@@ -43,35 +51,39 @@ const ResultData = ({ scrapedData }) => {
 
   useEffect(() => {
     async function manageBooks() {
-      const db = await initializeDB();
-      const slug = router.query.slug;
+      try {
+        const db = await initializeDB();
+        const slug = router.query.slug;
 
-      if (slug) {
-        if (isSaved && scrapedData) {
-          const book = {
-            slug: slug[0],
-            timestamp: Date.now(),
-            cover: scrapedData.cover,
-            title: scrapedData.title,
-            author: scrapedData.author,
-            rating: scrapedData.rating,
-          };
+        if (slug) {
+          if (isSaved && scrapedData) {
+            const book = {
+              slug: slug[0],
+              timestamp: Date.now(),
+              cover: scrapedData.cover,
+              title: scrapedData.title,
+              author: scrapedData.author,
+              rating: scrapedData.rating,
+            };
 
-          await db.put("books", book, slug[0]);
-          if (isClicked) {
-            setShowToast("Book added to library");
-            setTimeout(() => setShowToast(""), 3000);
+            await db.put("books", book, slug[0]);
+            if (isClicked) {
+              setShowToast("Book added to library");
+              setTimeout(() => setShowToast(""), 3000);
+            }
+          } else if (slug.length > 0) {
+            await db.delete("books", slug[0]);
+            if (isClicked) {
+              setShowToast("Book removed from library");
+              setTimeout(() => setShowToast(""), 3000);
+            }
           }
-        } else if (slug.length > 0) {
-          await db.delete("books", slug[0]);
-          if (isClicked) {
-            setShowToast("Book removed from library");
-            setTimeout(() => setShowToast(""), 3000);
-          }
+
+          const allBooks = await db.getAll("books");
+          // console.log(allBooks);
         }
-
-        const allBooks = await db.getAll("books");
-        // console.log(allBooks);
+      } catch (error) {
+        console.error("Error managing books:", error);
       }
     }
 
@@ -157,34 +169,66 @@ const ResultData = ({ scrapedData }) => {
 
             <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
               {!imageLoaded && (
-                <img
-                  src="/cover-placeholder.svg"
-                  alt=""
-                  width="620"
-                  height="962"
-                />
-              )}
-              <div>{showToast && <Toast message={showToast} />}</div>
-              <div className="flex items-end justify-end font-mono text-sm font-bold -mb-24">
-                <button
-                  onClick={() => {
-                    !isSaved ? setIsSaved(true) : setIsSaved(false);
-                    setIsClicked(true);
-                  }}
-                  className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
-                >
-                  <svg
-                    viewBox="0 0 257 445"
-                    className={`w-[50%]  ${
-                      !isSaved ? "text-gray-50" : "text-[#ed8a19]"
-                    } hover:text-[#ed8a19] border-black`}
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                <>
+                  <div
+                    id="addToLibraryFallback"
+                    className="flex items-end justify-end font-mono text-sm font-bold -mb-24"
                   >
-                    <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
-                  </svg>
-                </button>
+                    <button
+                      onClick={() => {
+                        !isSaved ? setIsSaved(true) : setIsSaved(false);
+                        setIsClicked(true);
+                      }}
+                      className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
+                    >
+                      <svg
+                        viewBox="0 0 257 445"
+                        className={`w-[50%]  ${
+                          !isSaved ? "text-gray-50" : "text-[#ed8a19]"
+                        } hover:text-[#ed8a19] border-black`}
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <img
+                    src="/cover-placeholder.svg"
+                    alt=""
+                    width="620"
+                    height="962"
+                  />
+                </>
+              )}
+              <div id="libraryToast">
+                {showToast && <Toast message={showToast} />}
               </div>
+              {imageLoaded && (
+                <div
+                  id="addToLibrary"
+                  className="flex items-end justify-end font-mono text-sm font-bold -mb-24"
+                >
+                  <button
+                    onClick={() => {
+                      !isSaved ? setIsSaved(true) : setIsSaved(false);
+                      setIsClicked(true);
+                    }}
+                    className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
+                  >
+                    <svg
+                      viewBox="0 0 257 445"
+                      className={`w-[50%]  ${
+                        !isSaved ? "text-gray-50" : "text-[#ed8a19]"
+                      } hover:text-[#ed8a19] border-black`}
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
+                    </svg>
+                  </button>
+                </div>
+              )}
               {scrapedData.cover && (
                 <>
                   {/* Load WebP Image With JPG Fallback*/}
