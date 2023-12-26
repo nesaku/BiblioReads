@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.17.0";
-  const versionSlug = "2170---dec-20-2023";
+  const version = "v2.18.0";
+  const versionSlug = "2180---dec-26-2023";
 
   if (typeof sessionStorage !== "undefined") {
     if (!sessionStorage.getItem("version")) {
