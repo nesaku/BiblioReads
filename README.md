@@ -9,7 +9,7 @@ Scrapes content from Goodreads and presents the results without any of the bloat
 
 Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://github.com/zyachel/libremdb) and other open source alternative front-end projects.
 
-[GitHub](https://github.com/nesaku/BiblioReads) | [Codeberg](https://codeberg.org/nesaku/BiblioReads)
+**[GitHub](https://github.com/nesaku/BiblioReads) | [Codeberg](https://codeberg.org/nesaku/BiblioReads)**
 
 </div>
 
