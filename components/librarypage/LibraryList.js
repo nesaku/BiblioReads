@@ -15,7 +15,7 @@ const LibraryList = ({ libraryData }) => {
           }
           return (
             <div key={i} className="max-w-[1000px] w-full">
-              <a href={`/book/show/${data.slug}`}>
+              <Link href={`/book/show/${data.slug}`}>
                 <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
                   <div className="ml-8 sm:ml-16 w-48 sm:w-full">
                     <h3 className="text-xl sm:text-2xl font-semibold hover:underline">
@@ -24,12 +24,12 @@ const LibraryList = ({ libraryData }) => {
                     {data.author &&
                       data.author.map((data, i) => (
                         <span key={i}>
-                          <Link
+                          <a
                             className="text-md hover:underline hover:text-rose-600"
                             href={data.url}
                           >
                             {(i ? ", " : "") + data.name}
-                          </Link>
+                          </a>
                         </span>
                       ))}
                     <div className="flex items-center mt-4">
@@ -63,7 +63,6 @@ const LibraryList = ({ libraryData }) => {
                           day: "numeric",
                           hour: "numeric",
                           minute: "numeric",
-                          // second: "numeric",
                           hour12: true,
                         })}
                       </span>
@@ -104,7 +103,7 @@ const LibraryList = ({ libraryData }) => {
                     )}
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           );
         })}

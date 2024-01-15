@@ -42,6 +42,11 @@ const QuotesHomeScraper = async (req, res) => {
           const bookURL = $el
             .find("div.quoteDetails > div.quoteText > span > a.authorOrTitle")
             .attr("href");
+          const slug = $el
+            .find(
+              " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
+            )
+            .attr("href");
           const likes = $el
             .find(
               " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
@@ -57,6 +62,7 @@ const QuotesHomeScraper = async (req, res) => {
             author: author,
             book: book,
             bookURL: bookURL,
+            slug: slug,
             likes: likes,
           };
         })

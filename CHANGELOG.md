@@ -5,9 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.19.0] - Jan 14, 2024
+
+### Added
+
+- Add a loading indicator to the book editions page when filtering
+
+### Changed
+
+- Update the instances list in the README and instances.json
+
+### Fixed
+
+- Fix "Get A Copy" dropdown obstructing the similar books section - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/79)
+- Fix the default format returning no results when filtering by edition - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/80)
+
 ## [2.18.0] - Dec 26, 2023
 
-## Added
+### Added
 
 - Add support for multiple tabs on the library page
 - Add the library page link to the footer
@@ -29,9 +44,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.17.0] - Dec 20, 2023
 
-## Added
+### Added
 
-- Add the library page and saving books function - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/76)
+- Add the library page and saving books functionality - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/76)
 - Add the option to save and list locally stored books.
 - Add a toast component
 

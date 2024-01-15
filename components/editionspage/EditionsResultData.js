@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import Meta from "../global/Meta";
 import EditionsList from "./EditionsList";
 import Link from "next/link";
+import SmallLoader from "../global/SmallLoader";
 
 const EditionResults = ({ scrapedData }) => {
   const [selectedEdition, setSelectedEdition] = useState(null);
   const [filteredData, setFilteredData] = useState({});
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const editionChangeHandler = (e) => {
     const edition = e.target.value;
@@ -14,6 +16,7 @@ const EditionResults = ({ scrapedData }) => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       const res = await fetch(`/api/works/editions`, {
         method: "POST",
@@ -21,21 +24,20 @@ const EditionResults = ({ scrapedData }) => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          queryURL: `${scrapedData.scrapeURL}${
-            selectedEdition != "default" &&
-            `?filter_by_format=${selectedEdition}&sort=avg_rating&utf8=✓`
-          }`,
+          queryURL: `${scrapedData.scrapeURL}?filter_by_format=${selectedEdition}&sort=avg_rating&utf8=✓`,
         }),
       });
       if (res.ok) {
         const data = await res.json();
         setFilteredData(data);
+        setIsLoading(false);
       } else {
         setError(true);
+        setIsLoading(false);
       }
     };
 
-    selectedEdition && fetchData();
+    selectedEdition && selectedEdition != "default" && fetchData();
   }, [selectedEdition]);
 
   return (
@@ -109,23 +111,33 @@ const EditionResults = ({ scrapedData }) => {
       )}
       {scrapedData.editions && (
         <>
-          <EditionsList
-            editions={
-              filteredData.editions
-                ? filteredData.editions
-                : scrapedData.editions
-            }
-          />
+          {isLoading &&
+          filteredData.editions &&
+          selectedEdition != "default" ? (
+            <div className="mt-40 min-h-[80vh]">
+              <SmallLoader height="10" />
+            </div>
+          ) : (
+            <EditionsList
+              editions={
+                filteredData.editions && selectedEdition != "default"
+                  ? filteredData.editions
+                  : scrapedData.editions
+              }
+            />
+          )}
           {error && (
             <p className="pt-10 text-red-600 font-bold text-3xl capitalize">
               An Error Has Occurred. Please Try Again Later.
             </p>
           )}
-          {filteredData.editions && filteredData.editions.length === 0 && (
-            <p className="pt-10 text-lg capitalize min-h-[42vh]">
-              There are no editions with the selected format.
-            </p>
-          )}
+          {filteredData.editions &&
+            filteredData.editions.length === 0 &&
+            selectedEdition != "default" && (
+              <p className="pt-10 text-lg capitalize min-h-[42vh]">
+                There are no editions with the selected format.
+              </p>
+            )}
         </>
       )}
     </div>

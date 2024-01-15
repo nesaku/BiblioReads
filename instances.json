@@ -45,5 +45,10 @@
     "url": "https://read.freedit.eu",
     "countries": ["us"],
     "cloudflare": true
+  },
+  {
+    "url": "https://biblioreads.ducks.party",
+    "countries": ["nl"],
+    "cloudflare": false
   }
 ]

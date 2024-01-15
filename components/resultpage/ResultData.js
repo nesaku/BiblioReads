@@ -79,8 +79,11 @@ const ResultData = ({ scrapedData }) => {
             }
           }
 
+          /* 
+          // List all books in DB
           const allBooks = await db.getAll("books");
-          // console.log(allBooks);
+           console.log(allBooks);
+           */
         }
       } catch (error) {
         console.error("Error managing books:", error);
@@ -89,25 +92,6 @@ const ResultData = ({ scrapedData }) => {
 
     manageBooks();
   }, [isSaved, scrapedData]);
-
-  /* Save books using local storage
-  useEffect(() => {
-    let slugs = JSON.parse(localStorage.getItem("slugs")) || {};
-
-    if (isSaved) {
-      slugs[router.query.slug[0]] = {
-        timestamp: Date.now(),
-        imageUrl: scrapedData.cover,
-        title: scrapedData.title,
-        author: scrapedData.author,
-      };
-
-      localStorage.setItem("slugs", JSON.stringify(slugs));
-    } else {
-      delete slugs[router.query.slug[0]];
-      localStorage.setItem("slugs", JSON.stringify(slugs));
-    }
-  }, [isSaved]); */
 
   const externalSVG = (
     <svg
@@ -258,29 +242,9 @@ const ResultData = ({ scrapedData }) => {
               )}
 
               <div className="flex flex-col mt-0 lg:mt-16 xl:mt-0">
-                {/*  <div id="addToLibrary" className="mt-4 items-center justify-center flex">
-                  <button>
-                    <a className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-4 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                      Add to Library
-                      <svg
-                        aria-hidden="true"
-                        className="w-5 h-5 ml-2 -mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </a>
-                  </button>
-                </div> */}
                 <div
                   id="purchaseOptions"
-                  className="flex flex-col justify-center items-center relative"
+                  className="flex flex-col justify-center items-center relative z-10"
                 >
                   <button
                     onClick={() => setIsOpened(!isOpened)}
