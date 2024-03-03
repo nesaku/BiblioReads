@@ -11,11 +11,7 @@ const Contact = () => {
       <Meta title={"Contact"} />
       <Header />
       <ContactHero />
-      {process.env.NEXT_PUBLIC_DISABLE_CONTACT_FORM != "true" ? (
-        <ContactForm />
-      ) : (
-        <div className="h-screen"></div>
-      )}
+      {process.env.NEXT_PUBLIC_ENABLE_CONTACT_FORM == "true" && <ContactForm />}
 
       <Footer />
     </div>

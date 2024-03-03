@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 
-const QuoteCard = (props) => {
+const QuestionCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
   const [isSpoiler, setShowSpoiler] = useState({});
 
@@ -178,4 +178,4 @@ const QuoteCard = (props) => {
   );
 };
 
-export default QuoteCard;
+export default QuestionCard;

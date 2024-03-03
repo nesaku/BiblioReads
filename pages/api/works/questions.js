@@ -88,6 +88,31 @@ const QuestionsScraper = async (req, res) => {
         })
         .toArray();
 
+      const unansweredQuestions = $(
+        'div.bigBoxBody > div.bigBoxContent.containerWithHeaderContent > div[id="communityQuestionsWithoutAnswers"] > div.unansweredQuestion'
+      )
+        .map((i, el) => {
+          const $el = $(el);
+          const question = $el
+            .find(
+              "div.questionHeaderAndActions > div.unansweredQuestionText > a"
+            )
+            .text();
+          const spoilerQuestion = $el
+            .find(
+              "div.questionHeaderAndActions > div.unansweredQuestionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer"
+            )
+            .text();
+
+          const id = i + 1;
+          return {
+            id: id,
+            question: question,
+            spoilerQuestion: spoilerQuestion,
+          };
+        })
+        .toArray();
+
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       res.setHeader(
@@ -103,6 +128,7 @@ const QuestionsScraper = async (req, res) => {
         bookURL: bookURL,
         author: author,
         questions: questions,
+        unansweredQuestions: unansweredQuestions,
         lastScraped: lastScraped,
       });
     } catch (error) {

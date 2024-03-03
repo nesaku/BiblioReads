@@ -50,5 +50,10 @@
     "url": "https://biblioreads.ducks.party",
     "countries": ["nl"],
     "cloudflare": false
+  },
+  {
+    "url": "https://biblioreads.snine.nl",
+    "countries": ["xx"],
+    "cloudflare": true
   }
 ]

@@ -5,7 +5,11 @@ const ContactForm = () => {
   return (
     <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
       <form
-        action="https://submit-form.com/4GkO3Bo7"
+        action={
+          process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION
+            ? process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION
+            : "https://submit-form.com/4GkO3Bo7"
+        }
         method="POST"
         className="space-y-8"
       >

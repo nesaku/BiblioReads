@@ -1,21 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.19.0";
-  const versionSlug = "2190---jan-14-2024";
+  const version = "v2.20.0";
+  const versionSlug = "2200---mar-2-2024";
 
-  if (typeof sessionStorage !== "undefined") {
-    if (!sessionStorage.getItem("version")) {
-      console.log(`%c${version} (Oreki)`, `color:green`);
-      sessionStorage.setItem("version", version ? version : "true");
-      console.log("Version has been successfully saved to sessionStorage.");
+  useEffect(() => {
+    if (typeof sessionStorage !== "undefined") {
+      if (!sessionStorage.getItem("version")) {
+        console.log(`%c${version} (Oreki)`, `color:green`);
+        sessionStorage.setItem("version", version ? version : "true");
+        console.log("Version has been successfully saved to sessionStorage.");
+      }
+    } else {
+      console.error(
+        "Error: sessionStorage is not available or not defined in this browser."
+      );
     }
-  } else {
-    console.error(
-      "Error: sessionStorage is not available or not defined in this browser."
-    );
-  }
+  }, []);
 
   return (
     <footer className="text-center w-full ">

@@ -5,11 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.19.0] - Jan 14, 2024
+## [2.20.0] - Mar 2, 2024
 
 ### Added
 
-- Add a loading indicator to the book editions page when filtering
+- Add support for unanswered book questions
+
+### Changed
+
+- Update the contact form to be off by default
+- Update the instances list in the README and instances.json
+- Improve the questions page on smaller screens and when there are no questions
+
+### Fixed
+
+- Fix the version saving code causing excessive logs
+
+## [2.19.0] - Jan 14, 2024
 
 ### Changed
 
