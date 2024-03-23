@@ -55,5 +55,10 @@
     "url": "https://biblioreads.snine.nl",
     "countries": ["xx"],
     "cloudflare": true
+  },
+  {
+    "url": "https://biblioreads.privacyredirect.com",
+    "countries": ["fl"],
+    "cloudflare": false
   }
 ]

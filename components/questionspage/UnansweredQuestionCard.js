@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import Badge from "../Badge";
+import Badge from "../global/Badge";
 
 const UnansweredQuestionCard = (props) => {
   const [isSpoiler, setShowSpoiler] = useState({});
