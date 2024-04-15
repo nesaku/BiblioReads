@@ -3,6 +3,21 @@ import Header from "../../components/global/Header";
 import Footer from "../../components/global/Footer";
 import SearchBox from "../../components/searchpage/SearchBox";
 
+// SSR redirect /search?q={title} to /search/{title}
+export async function getServerSideProps(context) {
+  const { query } = context;
+  if (query.q) {
+    return {
+      redirect: {
+        destination: `/search/${query.q}`,
+        permanent: false,
+      },
+    };
+  }
+
+  return { props: {} };
+}
+
 const Search = () => {
   return (
     <>

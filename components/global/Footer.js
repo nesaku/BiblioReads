@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.20.0";
-  const versionSlug = "2200---mar-2-2024";
+  const version = "v2.21.0";
+  const versionSlug = "2210---apr-15-2024";
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {
       if (!sessionStorage.getItem("version")) {
         console.log(`%c${version} (Oreki)`, `color:green`);
         sessionStorage.setItem("version", version ? version : "true");
-        console.log("Version has been successfully saved to sessionStorage.");
       }
     } else {
       console.error(

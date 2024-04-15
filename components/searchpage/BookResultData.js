@@ -3,6 +3,14 @@ import Link from "next/link";
 import Meta from "../global/Meta";
 
 const SearchResults = (props) => {
+  const capitalizeTitle = (title) => {
+    return title
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   return (
     <div
       id="booksSearchResults"
@@ -11,12 +19,15 @@ const SearchResults = (props) => {
       <Meta
         title={
           props.query
-            ? props.query
-                .replace("https://www.goodreads.com/search?q=", "")
-                .toUpperCase()
+            ? capitalizeTitle(
+                decodeURIComponent(
+                  props.query.replace("https://www.goodreads.com/search?q=", "")
+                )
+              )
             : " "
         }
       />
+
       {props.result &&
         props.result.map((data, i) => (
           <div id="resultCard" key={i} className="max-w-[1000px]">

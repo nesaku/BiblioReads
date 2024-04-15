@@ -28,51 +28,41 @@ const QuotesResults = ({ scrapedData }) => {
       <Meta title={scrapedData.name} />
       {scrapedData.quotes != "" && (
         <>
-          <Link
-            href={`/search/${
-              scrapedData.name &&
-              scrapedData.name
-                .toLowerCase()
-                .replaceAll(" ", "-")
-                .replace("-quotes", "")
-            }?type=books`}
-          >
-            <a className="flex flex-col lg:flex-row justify-center items-center">
-              {scrapedData.image && (
-                <div className="flex mr-8">
-                  <picture>
-                    <source
-                      srcSet={`/img?url=${scrapedData.image
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    />
-                    <source
-                      srcSet={`/img?url=${scrapedData.image
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    />
-                    <img
-                      src={`/img?url=${scrapedData.image
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
-                      alt=""
-                      width="150"
-                      height="150"
-                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      loading="lazy"
-                    />
-                  </picture>
-                </div>
-              )}
-            </a>
-          </Link>
+          <div className="flex flex-col lg:flex-row justify-center items-center">
+            {scrapedData.image && (
+              <div className="flex mr-8">
+                <picture>
+                  <source
+                    srcSet={`/img?url=${scrapedData.image
+                      .replace("._SX50_SY75_", "")
+                      .replace("._SY75_", "")
+                      .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                    type="image/webp"
+                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                  />
+                  <source
+                    srcSet={`/img?url=${scrapedData.image
+                      .replace("._SX50_SY75_", "")
+                      .replace("._SY75_", "")
+                      .replace("._SX50_", "")}&maxage=30d`}
+                    type="image/jpeg"
+                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                  />
+                  <img
+                    src={`/img?url=${scrapedData.image
+                      .replace("._SX50_SY75_", "")
+                      .replace("._SY75_", "")
+                      .replace("._SX50_", "")}&maxage=30d`}
+                    alt=""
+                    width="150"
+                    height="150"
+                    className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            )}
+          </div>
           <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
             {scrapedData.name && `${scrapedData.name}:`}
           </h2>

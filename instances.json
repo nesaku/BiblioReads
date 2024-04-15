@@ -1,64 +1,64 @@
 [
   {
     "url": "https://biblioreads.eu.org",
-    "countries": ["us"],
+    "countries": ["US"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.vercel.app",
-    "countries": ["us"],
+    "countries": ["US"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.mooo.com",
-    "countries": ["xx"],
+    "countries": ["XX"],
     "cloudflare": true
   },
   {
     "url": "https://bl.vern.cc",
     "onion": "http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
     "i2p": "http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p",
-    "countries": ["us"],
+    "countries": ["US"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.lunar.icu",
-    "countries": ["xx"],
+    "countries": ["XX"],
     "cloudflare": true
   },
   {
     "url": "https://read.whateveritworks.org",
-    "countries": ["xx"],
+    "countries": ["XX"],
     "cloudflare": true
   },
   {
     "url": "https://biblioreads.privacyfucking.rocks",
-    "countries": ["de"],
+    "countries": ["DE"],
     "cloudflare": false
   },
   {
     "url": "https://read.seitan-ayoub.lol",
-    "countries": ["de"],
+    "countries": ["DE"],
     "cloudflare": false
   },
   {
     "url": "https://read.freedit.eu",
-    "countries": ["us"],
+    "countries": ["US"],
     "cloudflare": true
   },
   {
     "url": "https://biblioreads.ducks.party",
-    "countries": ["nl"],
+    "countries": ["NL"],
     "cloudflare": false
   },
   {
     "url": "https://biblioreads.snine.nl",
-    "countries": ["xx"],
+    "countries": ["XX"],
     "cloudflare": true
   },
   {
     "url": "https://biblioreads.privacyredirect.com",
-    "countries": ["fl"],
+    "countries": ["FL"],
     "cloudflare": false
   }
 ]
