@@ -5,15 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.21.0] - Apr 15, 2024
+## [2.21.0] - Apr 16, 2024
 
 ### Added
 
 - Redirect search requests in the query parameter format - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/22)
+- Add a meta title tag to the loading page
+
+### Changed
+
+- Make the author image smaller
+- Improper use of `<a>` tags in the about page
 
 ### Fixed
 
-- Fix page title not being capitalized
+- Fix certain series book covers not loading properly
+- Fix book meta titles not being capitalized
 
 ## [2.20.0] - Mar 2, 2024
 

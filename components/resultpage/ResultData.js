@@ -164,6 +164,7 @@ const ResultData = ({ scrapedData }) => {
                         setIsClicked(true);
                       }}
                       className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
+                      aria-label="add to library"
                     >
                       <svg
                         viewBox="0 0 257 445"
@@ -199,6 +200,7 @@ const ResultData = ({ scrapedData }) => {
                       setIsClicked(true);
                     }}
                     className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
+                    aria-label="add to library"
                   >
                     <svg
                       viewBox="0 0 257 445"

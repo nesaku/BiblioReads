@@ -11,7 +11,7 @@ const Features = () => {
           </p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +35,9 @@ const Features = () => {
               Simple. We don&apos;t show ads and no personal information is ever
               collected.
             </p>
-          </a>
+          </div>
 
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +57,9 @@ const Features = () => {
               Use BiblioReads without signing up for an account and you never
               have to deal with those annoying sign up popups.
             </p>
-          </a>
+          </div>
 
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -78,9 +78,9 @@ const Features = () => {
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               View your results without any of the useless bloat.
             </p>
-          </a>
+          </div>
 
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,9 +101,9 @@ const Features = () => {
               Installable as a progressive web application (PWA) on mobile for a
               native app experience.
             </p>
-          </a>
+          </div>
 
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,9 +123,9 @@ const Features = () => {
               Every request you make on BiblioReads is proxied, your requests
               are never directly made to Goodreads.
             </p>
-          </a>
+          </div>
 
-          <a className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
+          <div className="block rounded-xl border-2 border-gray-600 dark:border-gray-800 p-8 shadow-xl transition hover:border-rose-500 hover:shadow-rose-500/20">
             <div className="w-24 mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,7 @@ const Features = () => {
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Responsive design with built-in light & dark mode support.
             </p>
-          </a>
+          </div>
         </div>
       </div>
     </div>

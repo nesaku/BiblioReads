@@ -32,13 +32,12 @@ const AuthorResultData = ({ scrapedData }) => {
               {scrapedData.name}
             </h2>
             <div id="authorImage" className="my-6 mx-auto max-w-xs xl:max-w-sm">
-              <h1 className="hidden">Cover:</h1>
               {!imageLoaded && (
                 <img
                   src="/cover-placeholder.svg"
                   alt=""
-                  width="620"
-                  height="962"
+                  width="286"
+                  height="446"
                 />
               )}
               {scrapedData.image && (
@@ -68,8 +67,8 @@ const AuthorResultData = ({ scrapedData }) => {
                         .replace("._SX50_", "")}&maxage=30d`}
                       className="rounded-2xl border-2 mx-auto shadow-2xl drop-shadow-xl"
                       alt=""
-                      width="620"
-                      height="962"
+                      width="286"
+                      height="446"
                       fetchpriority="high"
                       loading="eager"
                       onLoad={() => setImageLoaded(true)}

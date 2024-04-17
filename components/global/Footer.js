@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   const version = "v2.21.0";
-  const versionSlug = "2210---apr-15-2024";
+  const versionSlug = "2210---apr-16-2024";
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {

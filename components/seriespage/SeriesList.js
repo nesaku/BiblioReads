@@ -64,7 +64,7 @@ const SeriesList = (props) => {
                 <picture>
                   <source
                     srcSet={`/img?url=${data.cover
-                      .replace("._SY180_", "")
+                      .replace("._SX120_SY180_", "")
                       .replace("._SX120_", "")
                       .replace("._SY180_", "")}&output=webp&maxage=30d`}
                     type="image/webp"
@@ -72,7 +72,7 @@ const SeriesList = (props) => {
                   />
                   <source
                     srcSet={`/img?url=${data.cover
-                      .replace("._SY180_", "")
+                      .replace("._SX120_SY180_", "")
                       .replace("._SX120_", "")
                       .replace("._SY180_", "")}&maxage=30d`}
                     type="image/jpeg"
@@ -80,7 +80,7 @@ const SeriesList = (props) => {
                   />
                   <img
                     src={`/img?url=${data.cover
-                      .replace("._SY180_", "")
+                      .replace("._SX120_SY180_", "")
                       .replace("._SX120_", "")
                       .replace("._SY180_", "")}&maxage=30d`}
                     alt={`${data.title} book cover`}
