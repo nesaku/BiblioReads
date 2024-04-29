@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { openDB } from "idb";
 import SmallLoader from "../global/SmallLoader";
-import LibraryList from "./LibraryList";
+import BookList from "./BookList";
+import AuthorList from "./AuthorList";
+import EmptyLibrary from "./EmptyLibrary";
 
 const LibraryResultData = ({ currentTab }) => {
   const [savedBooks, setSavedBooks] = useState({});
+  const [savedAuthors, setSavedAuthors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getBooks = async () => {
-      const db = await openDB("library", 1, {
+      const db = await openDB("library", 2, {
         upgrade(db) {
           if (!db.objectStoreNames.contains("books")) {
             db.createObjectStore("books");
@@ -24,6 +27,28 @@ const LibraryResultData = ({ currentTab }) => {
     getBooks();
   }, []);
 
+  useEffect(() => {
+    const getAuthors = async () => {
+      const db = await openDB("library", 2, {
+        upgrade(db) {
+          if (!db.objectStoreNames.contains("authors")) {
+            db.createObjectStore("authors");
+          }
+        },
+      });
+      const authors = await db.getAll("authors");
+      setSavedAuthors(authors);
+      setIsLoading(false);
+    };
+
+    getAuthors();
+  }, []);
+
+  const currentTabs = {
+    books: { component: BookList, data: savedBooks },
+    authors: { component: AuthorList, data: savedAuthors },
+    // quotes: { component: QuotesList, data: savedQuotes },
+  };
   return (
     <>
       {isLoading ? (
@@ -31,28 +56,38 @@ const LibraryResultData = ({ currentTab }) => {
           <SmallLoader other={true} />
         </div>
       ) : (
-        Object.keys(savedBooks).length === 0 && (
-          <div className="flex flex-col justify-center items-center text-center">
-            <h3 className="text-2xl font-semibold pt-10 capitalize">
-              No {currentTab ? currentTab : "items"} Saved
-            </h3>
-            <div className="flex items-center text-lg text-center pt-2">
-              Add {currentTab ? currentTab : "items"} to your library by
-              clicking
-              <svg
-                viewBox="0 0 257 445"
-                className="p-2 w-10 text-slate-500 dark:text-slate-300 "
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z"></path>
-              </svg>
-              icon.
-            </div>
-          </div>
-        )
+        <>
+          {Object.entries(currentTabs).map(
+            ([tabKey, { component: Component, data }], i) =>
+              currentTab === tabKey && (
+                <div key={i}>
+                  {Object.keys(data).length === 0 && (
+                    <EmptyLibrary currentTab={currentTab} />
+                  )}
+                  <Component libraryData={data} />
+                </div>
+              )
+          )}
+        </>
+        /*  <>
+          {currentTab === "books" && (
+            <>
+              {Object.keys(savedBooks).length === 0 && (
+                <EmptyLibrary currentTab={currentTab} />
+              )}
+              <BookList libraryData={savedBooks} />
+            </>
+          )}
+          {currentTab === "authors" && (
+            <>
+              {Object.keys(savedAuthors).length === 0 && (
+                <EmptyLibrary currentTab={currentTab} />
+              )}
+              <BookList libraryData={savedAuthors} />
+            </>
+          )}
+        </> */
       )}
-      {savedBooks && <LibraryList libraryData={savedBooks} />}
     </>
   );
 };

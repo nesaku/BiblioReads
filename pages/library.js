@@ -22,16 +22,17 @@ const Library = () => {
         <ul className="flex justify-center w-full pt-8 px-2 sm:p-10 text-sm font-medium text-center text-gray-500 rounded-lg dark:divide-gray-700 dark:text-gray-400">
           <LibraryTab
             name="books"
-            setTab={setSelectedTab}
+            setTab={() => setSelectedTab("books")}
             currentTab={selectedTab}
             startTab
-            endTab
           />
-          {/*  <LibraryTab
-            name="authors"
-            setTab={setSelectedTab}
-            currentTab={selectedTab}
-          />
+          {
+            <LibraryTab
+              name="authors"
+              setTab={() => setSelectedTab("authors")}
+              currentTab={selectedTab}
+              endTab
+            /> /*
           <LibraryTab
             name="quotes"
             setTab={setSelectedTab}
@@ -43,7 +44,8 @@ const Library = () => {
             setTab={setSelectedTab}
             currentTab={selectedTab}
             endTab
-          /> */}
+          /> */
+          }
         </ul>
 
         <LibraryResultData currentTab={selectedTab} />

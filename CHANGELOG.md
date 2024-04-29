@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.22.0] - Apr 29, 2024
+
+### Added
+
+- Add the authors tab to the library page and saving authors functionality
+
+### Changed
+
+- Separated the database initialization function into its own file
+- Move the "empty library" message to its own component
+- Move the "add to library" button to its own component
+- Update the version Number of the IndexedDB database
+
+### Fixed
+
+- Fix certain series book covers not loading properly
+- Fix book meta titles not being capitalized
+
 ## [2.21.0] - Apr 16, 2024
 
 ### Added

@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { initializeDB } from "../../db/db";
+import Toast from "../global/Toast";
+import Meta from "../global/Meta";
+import LibraryButton from "../global/LibraryButton";
 import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
 import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
-import Meta from "../global/Meta";
 import ReviewBreakdown from "./ReviewBreakdown";
-import Link from "next/link";
-import { openDB } from "idb";
-import Toast from "../global/Toast";
 
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -18,20 +19,6 @@ const ResultData = ({ scrapedData }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [showToast, setShowToast] = useState("");
   const router = useRouter();
-
-  async function initializeDB() {
-    try {
-      return await openDB("library", 1, {
-        upgrade(db) {
-          if (!db.objectStoreNames.contains("books")) {
-            db.createObjectStore("books");
-          }
-        },
-      });
-    } catch (error) {
-      console.error("Error initializing database:", error);
-    }
-  }
 
   useEffect(() => {
     const savedBookCheck = async () => {
@@ -78,12 +65,6 @@ const ResultData = ({ scrapedData }) => {
               setTimeout(() => setShowToast(""), 3000);
             }
           }
-
-          /* 
-          // List all books in DB
-          const allBooks = await db.getAll("books");
-           console.log(allBooks);
-           */
         }
       } catch (error) {
         console.error("Error managing books:", error);
@@ -154,30 +135,12 @@ const ResultData = ({ scrapedData }) => {
             <div id="bookCover" className="mt-10 mx-auto max-w-xs xl:max-w-sm">
               {!imageLoaded && (
                 <>
-                  <div
-                    id="addToLibraryFallback"
-                    className="flex items-end justify-end font-mono text-sm font-bold -mb-24"
-                  >
-                    <button
-                      onClick={() => {
-                        !isSaved ? setIsSaved(true) : setIsSaved(false);
-                        setIsClicked(true);
-                      }}
-                      className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
-                      aria-label="add to library"
-                    >
-                      <svg
-                        viewBox="0 0 257 445"
-                        className={`w-[50%]  ${
-                          !isSaved ? "text-gray-50" : "text-[#ed8a19]"
-                        } hover:text-[#ed8a19] border-black`}
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
-                      </svg>
-                    </button>
-                  </div>
+                  <LibraryButton
+                    isSaved={isSaved}
+                    setIsSaved={setIsSaved}
+                    setIsClicked={setIsClicked}
+                    fallback
+                  />
                   <img
                     src="/cover-placeholder.svg"
                     alt=""
@@ -190,30 +153,11 @@ const ResultData = ({ scrapedData }) => {
                 {showToast && <Toast message={showToast} />}
               </div>
               {imageLoaded && (
-                <div
-                  id="addToLibrary"
-                  className="flex items-end justify-end font-mono text-sm font-bold -mb-24"
-                >
-                  <button
-                    onClick={() => {
-                      !isSaved ? setIsSaved(true) : setIsSaved(false);
-                      setIsClicked(true);
-                    }}
-                    className="w-14 z-10 h-24 flex items-center justify-center bg-[#881133] text-2xl rounded-b-md shadow-lg border-2 border-slate-800/60"
-                    aria-label="add to library"
-                  >
-                    <svg
-                      viewBox="0 0 257 445"
-                      className={`w-[50%]  ${
-                        !isSaved ? "text-gray-50" : "text-[#ed8a19]"
-                      } hover:text-[#ed8a19] border-black`}
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M30.0326 -1.20215e-05C13.446 -1.20215e-05 0 14.4411 0 32.254V444.073L128.5 323.718L257 444.073V32.254C257 14.4411 243.554 -1.20215e-05 226.969 -1.20215e-05H30.0326Z" />
-                    </svg>
-                  </button>
-                </div>
+                <LibraryButton
+                  isSaved={isSaved}
+                  setIsSaved={setIsSaved}
+                  setIsClicked={setIsClicked}
+                />
               )}
               {scrapedData.cover && (
                 <>

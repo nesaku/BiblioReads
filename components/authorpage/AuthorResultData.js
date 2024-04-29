@@ -1,17 +1,80 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { initializeDB } from "../../db/db";
 import DOMPurify from "dompurify";
 import Meta from "../global/Meta";
 import AuthorBooks from "./AuthorBooks";
 import AuthorSeries from "./AuthorSeries";
+import Toast from "../global/Toast";
+import LibraryButton from "../global/LibraryButton";
 
 const AuthorResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isReadMore, setIsReadMore] = useState(true);
 
+  const [isSaved, setIsSaved] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [showToast, setShowToast] = useState("");
+
+  const router = useRouter();
+
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
+
+  useEffect(() => {
+    const savedAuthorCheck = async () => {
+      try {
+        const db = await initializeDB();
+        if (router.query.slug) {
+          const authorInDB = await db.get("authors", router.query.slug[0]);
+          setIsSaved(authorInDB !== undefined);
+        }
+      } catch (error) {
+        console.error("Error checking saved author:", error);
+      }
+    };
+
+    savedAuthorCheck();
+  }, [router.query.slug]);
+
+  useEffect(() => {
+    async function manageAuthors() {
+      try {
+        const db = await initializeDB();
+        const slug = router.query.slug;
+
+        if (slug) {
+          if (isSaved && scrapedData) {
+            const author = {
+              slug: slug[0],
+              timestamp: Date.now(),
+              cover: scrapedData.cover,
+              image: scrapedData.image,
+              name: scrapedData.name,
+            };
+
+            await db.put("authors", author, slug[0]);
+            if (isClicked) {
+              setShowToast("Author added to library");
+              setTimeout(() => setShowToast(""), 3000);
+            }
+          } else if (slug.length > 0) {
+            await db.delete("authors", slug[0]);
+            if (isClicked) {
+              setShowToast("Author removed from library");
+              setTimeout(() => setShowToast(""), 3000);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error managing authors:", error);
+      }
+    }
+
+    manageAuthors();
+  }, [isSaved, scrapedData]);
 
   return (
     <>
@@ -33,11 +96,29 @@ const AuthorResultData = ({ scrapedData }) => {
             </h2>
             <div id="authorImage" className="my-6 mx-auto max-w-xs xl:max-w-sm">
               {!imageLoaded && (
-                <img
-                  src="/cover-placeholder.svg"
-                  alt=""
-                  width="286"
-                  height="446"
+                <>
+                  <LibraryButton
+                    isSaved={isSaved}
+                    setIsSaved={setIsSaved}
+                    setIsClicked={setIsClicked}
+                    fallback
+                  />
+                  <img
+                    src="/cover-placeholder.svg"
+                    alt=""
+                    width="286"
+                    height="446"
+                  />
+                </>
+              )}
+              <div id="libraryToast">
+                {showToast && <Toast message={showToast} />}
+              </div>
+              {imageLoaded && (
+                <LibraryButton
+                  isSaved={isSaved}
+                  setIsSaved={setIsSaved}
+                  setIsClicked={setIsClicked}
                 />
               )}
               {scrapedData.image && (
