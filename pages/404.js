@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../components/global/Header";
 import Footer from "../components/global/Footer";
+import { useRouter } from "next/router";
 
 export default function Custom404() {
+  const [originalURL, setOriginalURL] = useState();
+  const router = useRouter();
+
+  useEffect(() => {
+    setOriginalURL(`https://goodreads.com${router.asPath}`);
+  }, [router.asPath]);
+
   return (
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
       <Header />
@@ -49,12 +58,22 @@ export default function Custom404() {
               .
             </h3>
           </div>
-          <div className="flex justify-center my-8">
+          <div className="flex justify-evenly align-middle mt-8 mb-4 w-full">
             <Link href="/">
-              <a className="font-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-5 px-6 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+              <a className="font-semibold text-md text-white dark:text-white bg-slate-500 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 transition duration-300 delay-40 hover:delay-40">
                 Go Home
               </a>
             </Link>
+            {router.asPath && (
+              <a
+                href={originalURL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-5 px-6 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
+              >
+                View On Goodreads
+              </a>
+            )}
           </div>
         </div>
       </div>
