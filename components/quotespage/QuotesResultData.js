@@ -5,7 +5,7 @@ import Link from "next/link";
 import Meta from "../global/Meta";
 import QuoteCard from "./QuoteCard";
 
-const QuotesResults = ({ scrapedData }) => {
+const QuotesResults = ({ scrapedData, singleQuote }) => {
   const [inputValue, setInputValue] = useState("");
   const [validQuery, setValidQuery] = useState(true);
 
@@ -23,9 +23,11 @@ const QuotesResults = ({ scrapedData }) => {
   return (
     <div
       id="quotesResults"
-      className="flex flex-col p-12 justify-center items-center text-center"
+      className={`flex flex-col p-12 justify-center items-center text-center ${
+        singleQuote && "min-h-[80vh] m-auto max-w-7xl"
+      }`}
     >
-      <Meta title={scrapedData.name} />
+      <Meta title={scrapedData.name ? scrapedData.name : "Quotes"} />
       {scrapedData.quotes != "" && (
         <>
           <div className="flex flex-col lg:flex-row justify-center items-center">
@@ -63,15 +65,18 @@ const QuotesResults = ({ scrapedData }) => {
               </div>
             )}
           </div>
-          <h2 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
+
+          <h1 className="max-w-xl font-bold text-5xl pt-4 pb-5 my-2 underline decoration-rose-600 dark:text-gray-100/80 capitalize">
             {scrapedData.name && `${scrapedData.name}:`}
-          </h2>
+            {singleQuote && <span className="normal-case">Quote:</span>}
+          </h1>
+
           {scrapedData.name && (
-            <div>
+            <div id="quoteSearchBox">
               <form onSubmit={onSubmit}>
-                <h1 className="text-2xl text-black dark:text-gray-200/80 font-semibold">
+                <h2 className="text-2xl text-black dark:text-gray-200/80 font-semibold">
                   Search For A Tag:
-                </h1>
+                </h2>
                 <div className="flex justify-center text-center">
                   <div className="flex flex-col sm:flex-row items-center">
                     <div className="mt-4">
@@ -118,7 +123,7 @@ const QuotesResults = ({ scrapedData }) => {
               )}
             </div>
           )}
-          {scrapedData.popularTags && (
+          {scrapedData.popularTags && !singleQuote && (
             <>
               <div className="hidden lg:flex flex-wrap justify-center align-middle items-center max-w-7xl">
                 <h3 className="text-lg font-bold pr-12">Popular Tags:</h3>
@@ -228,7 +233,9 @@ const QuotesResults = ({ scrapedData }) => {
           </h2>
         </div>
       )}
-      {scrapedData.quotes && <QuoteCard quotes={scrapedData.quotes} />}
+      {scrapedData.quotes && (
+        <QuoteCard quotes={scrapedData.quotes} singleQuote={singleQuote} />
+      )}
     </div>
   );
 };

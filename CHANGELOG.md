@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.23.0] - May 5, 2024
+## [2.23.0] - May 10, 2024
 
 ### Added
 
 - Add a "View on Goodreads" button to 404 pages - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/83)
+- Add support for viewing individual quotes
+
+### Changed
+
+- Use the 301 status code (permanent) instead of 302 for server side redirects
 
 ### Fixed
 

@@ -6,32 +6,29 @@ import Loader from "../../components/global/Loader";
 import ErrorMessage from "../../components/global/ErrorMessage";
 import QuotesResultData from "../../components/quotespage/QuotesResultData";
 
+// SSR redirect for tag URLs with an undefined query id parameter
+export async function getServerSideProps(context) {
+  if (context.params.slug[0] === "tag" && !context.query.id) {
+    return {
+      redirect: {
+        destination: "/quotes",
+        permanent: true,
+      },
+    };
+  }
+
+  return { props: {} };
+}
+
 const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [scrapedData, setScrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isSingleQuote, setIsSingleQuote] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`/api/quotes/home`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          queryURL: `https://www.goodreads.com/quotes/${slug}`,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setScrapedData(data);
-      } else {
-        setError(true);
-      }
-    };
-
     const fetchTagData = async () => {
       setIsLoading(true);
       const res = await fetch(`/api/quotes/slug`, {
@@ -51,10 +48,32 @@ const Slug = () => {
         setError(true);
       }
     };
-    if (slug) {
-      {
-        !router.query.id ? fetchData() : fetchTagData();
+
+    const fetchQuoteData = async () => {
+      setIsSingleQuote(true);
+      setIsLoading(true);
+      const res = await fetch(`/api/quotes/slug`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          queryURL: `https://www.goodreads.com${router.asPath}`,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setScrapedData(data);
+        setIsLoading(false);
+      } else {
+        setError(true);
       }
+    };
+
+    if (slug[0] === "tag") {
+      fetchTagData();
+    } else {
+      fetchQuoteData();
     }
   }, [slug]);
 
@@ -85,7 +104,12 @@ const Slug = () => {
                 url={`https://www.goodreads.com/quotes/${slug}`}
               />
             )}
-            {scrapedData && <QuotesResultData scrapedData={scrapedData} />}
+            {scrapedData && (
+              <QuotesResultData
+                scrapedData={scrapedData}
+                singleQuote={isSingleQuote}
+              />
+            )}
           </>
         )}
         <Footer />

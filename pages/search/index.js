@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
     return {
       redirect: {
         destination: `/search/${query.q}`,
-        permanent: false,
+        permanent: true,
       },
     };
   }
