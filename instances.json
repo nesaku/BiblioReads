@@ -60,5 +60,10 @@
     "url": "https://biblioreads.privacyredirect.com",
     "countries": ["FL"],
     "cloudflare": false
+  },
+  {
+    "url": "https://reads.nezumi.party",
+    "countries": ["IT"],
+    "cloudflare": false
   }
 ]
