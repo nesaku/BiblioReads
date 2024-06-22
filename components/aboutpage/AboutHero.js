@@ -3,7 +3,10 @@ import React from "react";
 
 const AboutHero = () => {
   return (
-    <div className="mx-auto max-w-screen-xl px-4 pt-32 pb-24 lg:flex lg:mt-20">
+    <div
+      id="hero"
+      className="mx-auto max-w-screen-xl px-4 pt-32 pb-24 lg:flex lg:mt-20"
+    >
       <div className="mx-auto max-w-3xl text-center">
         <h1 className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-7xl capitalize">
           A{" "}

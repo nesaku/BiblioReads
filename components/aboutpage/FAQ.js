@@ -2,13 +2,10 @@ import React from "react";
 
 const FAQ = () => {
   return (
-    <div className="text-gray-900 dark:text-gray-100">
+    <div id="faq" className="text-gray-900 dark:text-gray-100">
       <h2 className="mt-20 text-3xl text-center font-bold sm:text-4xl">FAQ</h2>
       <div className="flex justify-center mt-10">
-        <div
-          id="faq"
-          className="max-w-4xl w-11/12 bg-white/20 dark:bg-transparent/20 rounded-2xl border-2 border-gray-400 dark:border-4 dark:border-gray-400"
-        >
+        <div className="max-w-4xl w-11/12 bg-white/20 dark:bg-transparent/20 rounded-2xl border-2 border-gray-400 dark:border-4 dark:border-gray-400">
           <details
             className="group p-6 border-t-0 border-gray-400 dark:border-gray-400"
             open

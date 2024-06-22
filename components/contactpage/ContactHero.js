@@ -2,7 +2,12 @@ import React from "react";
 
 const ContactHero = () => {
   return (
-    <div className="mx-auto max-w-screen-xl px-4 pt-20 pb-4 lg:flex lg:mt-20">
+    /*     <div className="mx-auto max-w-screen-xl min-h-[70vh] px-4 pt-20 pb-4 lg:flex lg:mt-20"> */
+    <div
+      className={`mx-auto max-w-screen-xl px-4 pt-20 pb-4 lg:flex lg:mt-20 ${
+        process.env.NEXT_PUBLIC_ENABLE_CONTACT_FORM != "true" && "min-h-[70vh]"
+      }`}
+    >
       <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">
         <h1 className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-7xl capitalize">
           Contact Us

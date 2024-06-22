@@ -65,5 +65,10 @@
     "url": "https://reads.nezumi.party",
     "countries": ["IT"],
     "cloudflare": false
+  },
+  {
+    "url": "https://br.bloat.cat",
+    "countries": ["RO"],
+    "cloudflare": false
   }
 ]

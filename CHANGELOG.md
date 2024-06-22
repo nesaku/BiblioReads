@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.23.1] - Jun 22, 2024
+
+### Changed
+
+- Update the user agent in .env.local.example
+- Update the instances list in the README and instances.json
+- Use id attributes for sections in the about page
+
+### Fixed
+
+- Fix page height when there is no contact form is used
+
 ## [2.23.0] - May 10, 2024
 
 ### Added
