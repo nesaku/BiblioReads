@@ -70,5 +70,10 @@
     "url": "https://br.bloat.cat",
     "countries": ["RO"],
     "cloudflare": false
+  },
+  {
+    "url": "https://read.canine.tools",
+    "countries": ["US"],
+    "cloudflare": false
   }
 ]
