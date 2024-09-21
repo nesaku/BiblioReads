@@ -47,6 +47,10 @@ const Slug = () => {
 
     const fetchData = async () => {
       try {
+        const formattedSlug = decodeURIComponent(
+          (Array.isArray(slug) ? slug.join(" ") : slug).replaceAll("+", "%20")
+        );
+
         const res = await fetch(scraperPath, {
           method: "POST",
           headers: {
@@ -54,7 +58,7 @@ const Slug = () => {
           },
           body: JSON.stringify({
             queryURL: `https://www.goodreads.com/search?q=${encodeURIComponent(
-              slug
+              formattedSlug
             )}`,
           }),
           signal: abortController.signal,
