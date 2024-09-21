@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix "+" in the search query returning no results - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/25)
+- Fix page shift when switching from light to dark mode - [(ISSUE)](https://codeberg.org/nesaku/BiblioReads/issues/86)
 
 ## [2.23.1] - Jun 22, 2024
 

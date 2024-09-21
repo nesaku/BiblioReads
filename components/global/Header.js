@@ -6,7 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
-    <header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 dark:border-b-0 border-rose-300">
+    <header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 border-rose-300 dark:border-[#881133]">
       <div className="flex justify-evenly items-center h-16">
         <div className="flex">
           <a href="/" aria-label="Back to homepage">
