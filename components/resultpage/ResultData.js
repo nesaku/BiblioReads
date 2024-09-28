@@ -8,7 +8,6 @@ import Meta from "../global/Meta";
 import LibraryButton from "../global/LibraryButton";
 import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
-import ReviewsMobile from "./ReviewsMobile";
 import SimilarBooks from "./SimilarBooks";
 import ReviewBreakdown from "./ReviewBreakdown";
 
@@ -110,7 +109,7 @@ const ResultData = ({ scrapedData }) => {
                   ""
                 )}
               >
-                <a className="text-md italic text-left underline hover:text-rose-600">
+                <a className="text-md italic text-center underline hover:text-rose-600">
                   {scrapedData.series}
                 </a>
               </Link>
@@ -534,25 +533,18 @@ const ResultData = ({ scrapedData }) => {
             {scrapedData.reviewBreakdown && scrapedData.reviews != 0 && (
               <ReviewBreakdown data={scrapedData} />
             )}
-            <div className="block lg:hidden">
-              {scrapedData.quotesURL != "" && (
-                <SimilarBooks quotesURL={scrapedData.quotesURL} mobile={true} />
-              )}
-              {scrapedData.reviews != "" && (
-                <ReviewsMobile data={scrapedData.reviews} />
-              )}
-            </div>
           </div>
         </div>
       )}
-      {scrapedData.title && (
-        <div className="hidden lg:block ml-[14vw] mr-[2vw] 2xl:ml-[16vw] 2xl:mr-[vw] mt-2">
-          {scrapedData.quotesURL != "" && (
-            <SimilarBooks quotesURL={scrapedData.quotesURL} mobile={false} />
-          )}
-          {scrapedData.reviews != "" && <Reviews data={scrapedData.reviews} />}
-        </div>
-      )}
+
+      <div className="flex flex-col text-center align-center items-center justify-center lg:text-left lg:block px-4 2xl:ml-[12vw] 2xl:mr-[vw] mt-2">
+        {scrapedData.quotesURL && scrapedData.quotesURL != "" && (
+          <SimilarBooks quotesURL={scrapedData.quotesURL} />
+        )}
+        {scrapedData.reviews && scrapedData.reviews != "" && (
+          <Reviews data={scrapedData.reviews} />
+        )}
+      </div>
     </>
   );
 };

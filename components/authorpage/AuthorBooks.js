@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { cleanImageUrl } from "../../utils/cleanImageUrl";
 
 const AuthorBooks = (props) => {
   const slideLeft = () => {
@@ -32,26 +33,21 @@ const AuthorBooks = (props) => {
                 {data.cover && (
                   <picture>
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&output=webp&maxage=30d`}
                       type="image/webp"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
                     />
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&maxage=30d`}
                       type="image/jpeg"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
                     />
                     <img
-                      src={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
+                      src={`/img?url=${cleanImageUrl(data.cover)}&maxage=30d`}
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"

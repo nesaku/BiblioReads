@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { useEffect, useRef, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
+import { cleanImageUrl } from "../../utils/cleanImageUrl";
 
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
 const SimilarBooks = ({ quotesURL, mobile }) => {
@@ -55,9 +56,9 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
   return (
     <div
       id="bookRelated"
-      className={`${error && "hidden"} dark:text-gray-100/80"`}
+      className={`${error && "hidden"} dark:text-gray-100/80 max-w-full`}
     >
-      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600">
+      <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 ">
         Similar Books:{" "}
       </h2>
       {isLoading ? (
@@ -65,9 +66,8 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
       ) : (
         <>
           <div
-            id={mobile ? "desktop" : "slider"}
-            className={`no-scrollbar h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-4 pb-10 px-14 
-        ${mobile && "max-w-4xl"}`}
+            id="slider"
+            className="no-scrollbar h-fit flex gap-6 snap-x overflow-x-auto overflow-y-hidden pt-4 pb-10 px-14 max-w-full"
           >
             {scrapedData.books != undefined &&
               scrapedData.books.slice(1).map((data, i) => (
@@ -79,26 +79,23 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                     {data.cover && (
                       <picture>
                         <source
-                          srcSet={`/img?url=${data.cover
-                            .replace("._SX50_SY75_", "")
-                            .replace("._SY75_", "")
-                            .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                          srcSet={`/img?url=${cleanImageUrl(
+                            data.cover
+                          )}&output=webp&maxage=30d`}
                           type="image/webp"
                           className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <source
-                          srcSet={`/img?url=${data.cover
-                            .replace("._SX50_SY75_", "")
-                            .replace("._SY75_", "")
-                            .replace("._SX50_", "")}&maxage=30d`}
+                          srcSet={`/img?url=${cleanImageUrl(
+                            data.cover
+                          )}&maxage=30d`}
                           type="image/jpeg"
                           className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
                         />
                         <img
-                          src={`/img?url=${data.cover
-                            .replace("._SX50_SY75_", "")
-                            .replace("._SY75_", "")
-                            .replace("._SX50_", "")}&maxage=30d`}
+                          src={`/img?url=${cleanImageUrl(
+                            data.cover
+                          )}&maxage=30d`}
                           alt={`${data.title} book cover`}
                           width="98"
                           height="148"
@@ -124,7 +121,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                         {data.rating.split("avg")[0]}
                       </span>
                     </div>
-                    <div className="group w-36 h-20 text-center mx-auto text-md font-semibold">
+                    <div className="group w-36 h-20 hover:h-full text-center mx-auto text-md font-semibold">
                       <span className="break-words">
                         {data.title.slice(0, 40)}
                       </span>
@@ -136,7 +133,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                 </div>
               ))}
           </div>
-          <div className="flex max-w-4xl justify-center lg:justify-start mb-8">
+          <div id="slideButtons" className="xl:-ml-2.5">
             <button
               className="mx-3"
               aria-label="slide left"
@@ -146,7 +143,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
-                className="fill-gray-900 dark:fill-gray-200"
+                className="fill-gray-900 dark:fill-gray-100/80"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M16 0C7.16408 0 0 7.16408 0 16C0 24.8359 7.16408 32 16 32C24.8359 32 32 24.8359 32 16C32 7.16408 24.8359 0 16 0ZM20.1273 21.9102L17.3388 24.6988L11.4286 18.7886L8.64 16L11.4286 13.2114L17.3388 7.30122L20.1273 10.0898L14.2237 16L20.1273 21.9102Z" />
@@ -161,7 +158,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
-                className="fill-gray-900 dark:fill-gray-200"
+                className="fill-gray-900 dark:fill-gray-100/80"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M16 0C7.16408 0 0 7.16408 0 16C0 24.8359 7.16408 32 16 32C24.8359 32 32 24.8359 32 16C32 7.16408 24.8359 0 16 0ZM20.5714 18.7886L14.6612 24.6988L11.8727 21.9102L17.7829 16L11.8727 10.0898L14.6612 7.30122L20.5714 13.2114L23.36 16L20.5714 18.7886Z" />

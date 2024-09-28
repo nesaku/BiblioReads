@@ -2,7 +2,7 @@
   {
     "url": "https://biblioreads.eu.org",
     "countries": ["US"],
-    "cloudflare": false
+    "cloudflare": true
   },
   {
     "url": "https://biblioreads.vercel.app",

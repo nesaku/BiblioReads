@@ -40,8 +40,8 @@ const Reviews = (props) => {
 
   return (
     <>
-      <div id="bookReviews" className="dark:text-gray-100/80">
-        <h2 className="font-bold text-2xl mt-0 mb-4 underline decoration-rose-600">
+      <div id="bookReviews" className="dark:text-gray-100/80 my-8 lg:my-8">
+        <h2 className="font-bold text-2xl mt-0 mb-4 underline decoration-rose-600 text-center lg:text-left">
           Reviews:
         </h2>
         <button
@@ -49,13 +49,13 @@ const Reviews = (props) => {
           onClick={() => {
             showReviews ? setShowReviews(false) : setShowReviews(true);
           }}
-          className="flex items-center py-5 px-16 mt-6 mb-8 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+          className="flex m-auto lg:mx-0 py-4 lg:py-5 px-3 lg:px-16 mt-6 mb-8 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
         >
           {showReviews ? "Hide" : "Show"} Reviews
           {!showReviews && (
             <svg
               aria-hidden="true"
-              className="w-5 h-5 ml-2 -mr-1"
+              className="w-5 h-5 ml-2 -mr-1 hidden lg:block"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +71,11 @@ const Reviews = (props) => {
 
         {showReviews && (
           <div id="reviews">
-            <div className="flex flex-col xl:flex-row justify-between">
-              <div id="filterOptions" className="flex flex-row items-center">
+            <div className="flex flex-col xl:flex-row justify-center lg:justify-start xl:justify-between items-center lg:items-start">
+              <div
+                id="filterOptions"
+                className="flex flex-row justify-center items-center"
+              >
                 <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300">
                   Filter:
                 </p>
@@ -108,7 +111,7 @@ const Reviews = (props) => {
                 />
               </div>
               <div id="sortOptions" className="flex flex-row items-center">
-                <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300">
+                <p className="mr-2 lg:mr-0 text-md font-medium text-gray-900 dark:text-gray-300">
                   Sort By:
                 </p>
                 <SortButton
@@ -133,7 +136,10 @@ const Reviews = (props) => {
                   text="Oldest to Newest"
                 />
               </div>
-              <div id="resetButton" className="flex flex-row items-center">
+              <div
+                id="resetButton"
+                className="hidden lg:flex flex-row items-center"
+              >
                 <button
                   id="resetAll"
                   onClick={() => {
@@ -147,8 +153,11 @@ const Reviews = (props) => {
                 </button>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4 mb-2">
-              <div id="searchFilter" className="flex flex-row items-center">
+            <div className="flex flex-col-reverse lg:flex-row justify-between items-center">
+              <div
+                id="searchFilter"
+                className="flex flex-row items-center mb-2"
+              >
                 <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300">
                   Search:{" "}
                 </p>
@@ -159,15 +168,15 @@ const Reviews = (props) => {
                   placeholder="Search review text"
                   className={
                     filterStars || sortBy
-                      ? "form-control block w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-400 dark:text-gray-600 bg-gray-300 dark:bg-gray-600 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-rose-600 focus:outline-none cursor-not-allowed"
-                      : "form-control block w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-900 dark:text-gray-200 bg-rose-50 dark:bg-gray-800 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-900 focus:bg-gray-200 focus:border-rose-600 focus:outline-none"
+                      ? "form-control block w-48 lg:w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-400 dark:text-gray-600 bg-gray-300 dark:bg-gray-600 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-rose-600 focus:outline-none cursor-not-allowed"
+                      : "form-control block w-48 lg:w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-900 dark:text-gray-200 bg-rose-50 dark:bg-gray-800 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-900 focus:bg-gray-200 focus:border-rose-600 focus:outline-none"
                   }
                   onChange={(e) => setSearchText(e.target.value)}
                   disabled={filterStars || sortBy}
                 />
               </div>
-              <div className="flex mt-4 mb-6">
-                <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-100/80">
+              <div className="flex justify-center items-center my-5 lg:my-6">
+                <p className="mr-3 text-md font-medium text-gray-900 dark:text-gray-100/80">
                   Show Profile Avatars:
                 </p>
                 <label className="inline-flex relative items-center cursor-pointer">
@@ -184,6 +193,18 @@ const Reviews = (props) => {
                   />
                   <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-rose-300 dark:peer-focus:ring-rose-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-rose-600"></div>
                 </label>
+
+                <button
+                  id="resetAll-mobile"
+                  onClick={() => {
+                    setFilterStars(undefined);
+                    setSortBy(undefined);
+                    setSearchText("");
+                  }}
+                  className="block lg:hidden ml-5 py-0.5 px-1 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark::hover:bg-gray-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+                >
+                  Reset All
+                </button>
               </div>
             </div>
 

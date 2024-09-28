@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Meta from "../global/Meta";
+import { cleanImageUrl } from "../../utils/cleanImageUrl";
 
 const SearchResults = (props) => {
   return (
@@ -41,23 +42,21 @@ const SearchResults = (props) => {
                 <div className="flex mr-8">
                   <picture id="1">
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX98_SY160_", "")
-                        .replace("._SX98_", "")}&output=webp&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&output=webp&maxage=30d`}
                       type="image/webp"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                     />
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX98_SY160_", "")
-                        .replace("._SX98_", "")}&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&maxage=30d`}
                       type="image/jpeg"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
                     />
                     <img
-                      src={`/img?url=${data.cover
-                        .replace("._SX98_SY160_", "")
-                        .replace("._SX98_", "")}&maxage=30d`}
+                      src={`/img?url=${cleanImageUrl(data.cover)}&maxage=30d`}
                       alt={`${data.title} list cover`}
                       width="98"
                       height="148"

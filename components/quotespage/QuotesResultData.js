@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Meta from "../global/Meta";
 import QuoteCard from "./QuoteCard";
+import { cleanImageUrl } from "../../utils/cleanImageUrl";
 
 const QuotesResults = ({ scrapedData, singleQuote }) => {
   const [inputValue, setInputValue] = useState("");
@@ -35,26 +36,23 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
               <div className="flex mr-8">
                 <picture>
                   <source
-                    srcSet={`/img?url=${scrapedData.image
-                      .replace("._SX50_SY75_", "")
-                      .replace("._SY75_", "")
-                      .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                    srcSet={`/img?url=${cleanImageUrl(
+                      scrapedData.image
+                    )}&output=webp&maxage=30d`}
                     type="image/webp"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                   />
                   <source
-                    srcSet={`/img?url=${scrapedData.image
-                      .replace("._SX50_SY75_", "")
-                      .replace("._SY75_", "")
-                      .replace("._SX50_", "")}&maxage=30d`}
+                    srcSet={`/img?url=${cleanImageUrl(
+                      scrapedData.image
+                    )}&maxage=30d`}
                     type="image/jpeg"
                     className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                   />
                   <img
-                    src={`/img?url=${scrapedData.image
-                      .replace("._SX50_SY75_", "")
-                      .replace("._SY75_", "")
-                      .replace("._SX50_", "")}&maxage=30d`}
+                    src={`/img?url=${cleanImageUrl(
+                      scrapedData.image
+                    )}&maxage=30d`}
                     alt=""
                     width="150"
                     height="150"

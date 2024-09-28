@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.24.0] - Sep 28, 2024
+
+### Changed
+
+- Use a utility function to return higher resolution images
+- Stop using separate mobile and desktop review section components
+- Made the similar books component fully responsive instead of relying on props
+
+### Fixed
+
+- Fix the series title not being centered in some browsers
+- Fix some section titles not being the same color in dark mode
+- Fix similar books titles being cut off on hover
+
 ## [2.23.2] - Sep 21, 2024
 
 ### Fixed

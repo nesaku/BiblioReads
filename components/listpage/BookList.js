@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import SmallLoader from "../global/SmallLoader";
+import { cleanImageUrl } from "../../utils/cleanImageUrl";
 
 const BookList = (props) => {
   return (
@@ -58,26 +59,21 @@ const BookList = (props) => {
                 <div className="flex mr-8">
                   <picture>
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&output=webp&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&output=webp&maxage=30d`}
                       type="image/webp"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     />
                     <source
-                      srcSet={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
+                      srcSet={`/img?url=${cleanImageUrl(
+                        data.cover
+                      )}&maxage=30d`}
                       type="image/jpeg"
                       className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
                     />
                     <img
-                      src={`/img?url=${data.cover
-                        .replace("._SX50_SY75_", "")
-                        .replace("._SY75_", "")
-                        .replace("._SX50_", "")}&maxage=30d`}
+                      src={`/img?url=${cleanImageUrl(data.cover)}&maxage=30d`}
                       alt={`${data.title} book cover`}
                       width="98"
                       height="148"
