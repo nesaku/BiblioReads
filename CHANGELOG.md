@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.24.1] - Oct 30, 2024
+
+### Changed
+
+- Set a maximum width for the displayed Goodreads URL
+- Use a reusable `<CoverImage />` component instead of repeating code
+- Update the instances list in the README and instances.json
+
+### Fixed
+
+- Fix similar books section still being shown when there are no books
+
 ## [2.24.0] - Sep 28, 2024
 
 ### Changed

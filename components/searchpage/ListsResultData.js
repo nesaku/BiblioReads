@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Meta from "../global/Meta";
 import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 const SearchResults = (props) => {
   return (
@@ -40,30 +41,10 @@ const SearchResults = (props) => {
                   </div>
                 </div>
                 <div className="flex mr-8">
-                  <picture id="1">
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        data.cover
-                      )}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                    />
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        data.cover
-                      )}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                    />
-                    <img
-                      src={`/img?url=${cleanImageUrl(data.cover)}&maxage=30d`}
-                      alt={`${data.title} list cover`}
-                      width="98"
-                      height="148"
-                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-800"
-                      loading="lazy"
-                    />
-                  </picture>
+                  <CoverImage
+                    src={data.cover}
+                    alt={`${data.title && data.title} list cover`}
+                  />
                 </div>
               </div>
             </a>

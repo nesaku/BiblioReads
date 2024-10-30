@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 const AuthorBooks = (props) => {
   const slideLeft = () => {
@@ -31,30 +31,11 @@ const AuthorBooks = (props) => {
             <Link href={`${data.url}`}>
               <a>
                 {data.cover && (
-                  <picture>
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        data.cover
-                      )}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
-                    />
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        data.cover
-                      )}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto"
-                    />
-                    <img
-                      src={`/img?url=${cleanImageUrl(data.cover)}&maxage=30d`}
-                      alt={`${data.title} book cover`}
-                      width="98"
-                      height="148"
-                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 text-center mx-auto mt-3"
-                      loading="lazy"
-                    />
-                  </picture>
+                  <CoverImage
+                    src={data.cover}
+                    alt={`${data.title && data.title} book cover`}
+                    extraClasses="text-center mx-auto"
+                  />
                 )}
                 <div className="flex justify-center items-center text-center mt-4 mb-2">
                   <svg

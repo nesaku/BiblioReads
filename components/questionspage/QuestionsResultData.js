@@ -4,6 +4,7 @@ import { useState } from "react";
 import Meta from "../global/Meta";
 import QuestionCard from "./QuestionCard";
 import UnansweredQuestionCard from "./UnansweredQuestionCard";
+import CoverImage from "../global/CoverImage";
 
 const QuestionResults = ({ scrapedData }) => {
   const [imageError, setImageError] = useState(false);
@@ -22,36 +23,13 @@ const QuestionResults = ({ scrapedData }) => {
           >
             <a className="flex lg:mr-8">
               {!imageError ? (
-                <picture>
-                  <source
-                    srcSet={`/img?url=${scrapedData.image.replace(
-                      "._SX98_",
-                      ""
-                    )}&output=webp&maxage=30d`}
-                    type="image/webp"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <source
-                    srcSet={`/img?url=${scrapedData.image.replace(
-                      "._SX98_",
-                      ""
-                    )}&maxage=30d`}
-                    type="image/jpeg"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <img
-                    src={`/img?url=${scrapedData.image.replace(
-                      "._SX98_",
-                      ""
-                    )}&maxage=30d`}
-                    width="98"
-                    height="98"
-                    className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    loading="lazy"
-                    alt=""
-                    onError={() => setImageError(true)}
-                  />
-                </picture>
+                <CoverImage
+                  src={scrapedData.image.replace("._SX98_", "")}
+                  alt={`${scrapedData.book && scrapedData.book} book cover`}
+                  width={98}
+                  height={98}
+                  onError={() => setImageError(true)}
+                />
               ) : (
                 <img
                   src="/cover-placeholder.svg"

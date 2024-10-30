@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
-import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 const BookList = ({ libraryData }) => {
   return (
@@ -72,32 +71,10 @@ const BookList = ({ libraryData }) => {
 
                   <div className="flex mr-8">
                     {data.cover && (
-                      <picture>
-                        <source
-                          srcSet={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&output=webp&maxage=30d`}
-                          type="image/webp"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        />
-                        <source
-                          srcSet={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&maxage=30d`}
-                          type="image/jpeg"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                        />
-                        <img
-                          src={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&maxage=30d`}
-                          alt={`${data.title} book cover`}
-                          width="98"
-                          height="148"
-                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                          loading="lazy"
-                        />
-                      </picture>
+                      <CoverImage
+                        src={data.cover}
+                        alt={`${data.title && data.title} book cover`}
+                      />
                     )}
                   </div>
                 </div>

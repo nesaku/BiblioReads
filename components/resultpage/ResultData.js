@@ -502,7 +502,7 @@ const ResultData = ({ scrapedData }) => {
               </h2>
               <span className="text-md">{scrapedData.lang}</span>
             </div>
-            <div id="bookURL" className="hidden sm:flex flex-col mb-4">
+            <div id="bookURL" className="hidden sm:flex flex-col mb-4 mx-auto">
               <h2
                 className={
                   scrapedData.scrapeURL
@@ -513,7 +513,7 @@ const ResultData = ({ scrapedData }) => {
                 Goodreads URL:{" "}
               </h2>
               <a
-                className="text-blue-600 dark:text-blue-500 underline truncate"
+                className="text-blue-600 dark:text-blue-500 underline truncate max-w-lg mx-auto lg:mx-0"
                 target="_blank"
                 rel="noreferrer"
                 href={

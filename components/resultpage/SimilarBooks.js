@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { useEffect, useRef, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
-import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
 const SimilarBooks = ({ quotesURL, mobile }) => {
@@ -26,6 +26,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
       const data = await res.json();
       setScrapedData(data);
       setIsLoading(false);
+      data.books.length === 0 && setError(true);
     } else {
       setError(true);
       setIsLoading(false);
@@ -77,32 +78,11 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
                 >
                   <a href={`${data.bookURL}`}>
                     {data.cover && (
-                      <picture>
-                        <source
-                          srcSet={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&output=webp&maxage=30d`}
-                          type="image/webp"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
-                        />
-                        <source
-                          srcSet={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&maxage=30d`}
-                          type="image/jpeg"
-                          className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto"
-                        />
-                        <img
-                          src={`/img?url=${cleanImageUrl(
-                            data.cover
-                          )}&maxage=30d`}
-                          alt={`${data.title} book cover`}
-                          width="98"
-                          height="148"
-                          className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-800 text-center mx-auto mt-3"
-                          loading="lazy"
-                        />
-                      </picture>
+                      <CoverImage
+                        src={data.cover}
+                        alt={`${data.title && data.title} book cover`}
+                        extraClasses="mx-auto"
+                      />
                     )}
                     <div className="flex justify-center items-center text-center mt-4 mb-2">
                       <svg

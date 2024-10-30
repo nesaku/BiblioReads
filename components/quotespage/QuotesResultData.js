@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Meta from "../global/Meta";
 import QuoteCard from "./QuoteCard";
-import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 const QuotesResults = ({ scrapedData, singleQuote }) => {
   const [inputValue, setInputValue] = useState("");
@@ -34,32 +34,12 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
           <div className="flex flex-col lg:flex-row justify-center items-center">
             {scrapedData.image && (
               <div className="flex mr-8">
-                <picture>
-                  <source
-                    srcSet={`/img?url=${cleanImageUrl(
-                      scrapedData.image
-                    )}&output=webp&maxage=30d`}
-                    type="image/webp"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <source
-                    srcSet={`/img?url=${cleanImageUrl(
-                      scrapedData.image
-                    )}&maxage=30d`}
-                    type="image/jpeg"
-                    className="rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <img
-                    src={`/img?url=${cleanImageUrl(
-                      scrapedData.image
-                    )}&maxage=30d`}
-                    alt=""
-                    width="150"
-                    height="150"
-                    className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    loading="lazy"
-                  />
-                </picture>
+                <CoverImage
+                  src={scrapedData.image}
+                  alt={`${scrapedData.name && scrapedData.name} book cover`}
+                  width={120}
+                  height={180}
+                />
               </div>
             )}
           </div>
