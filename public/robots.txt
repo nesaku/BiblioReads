@@ -1,4 +1,5 @@
 User-Agent: *
 Allow: /$
 Allow: /about
+Allow: /search
 Disallow: /

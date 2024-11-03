@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Meta from "../global/Meta";
-import { cleanImageUrl } from "../../utils/cleanImageUrl";
 import CoverImage from "../global/CoverImage";
 
 const SearchResults = (props) => {

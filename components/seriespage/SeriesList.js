@@ -133,7 +133,7 @@ const SeriesList = (props) => {
               </div>
               <div className="flex mr-8">
                 <CoverImage
-                  src={data.cover && data.title}
+                  src={data.cover && data.cover}
                   alt={`${data.title} book cover`}
                 />
               </div>
