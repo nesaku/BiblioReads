@@ -43,3 +43,7 @@ next-env.d.ts
 **/public/worker-*.js.map
 **/public/workbox-*.js
 **/public/workbox-*.js.map
+
+# Auto Generated Runtime ENV files
+**/public/__ENV.js
+**/public/fallback-*.js
