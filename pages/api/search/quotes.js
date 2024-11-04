@@ -1,3 +1,5 @@
+import { env } from "next-runtime-env";
+
 const cheerio = require("cheerio");
 
 const SearchScraper = async (req, res) => {
@@ -11,7 +13,7 @@ const SearchScraper = async (req, res) => {
           method: "GET",
           headers: new Headers({
             "User-Agent":
-              process.env.NEXT_PUBLIC_USER_AGENT ||
+              env("NEXT_PUBLIC_USER_AGENT") ||
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
           }),
         }

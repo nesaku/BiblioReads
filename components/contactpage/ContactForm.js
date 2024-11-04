@@ -1,3 +1,4 @@
+import { env } from "next-runtime-env";
 import Link from "next/link";
 import React from "react";
 
@@ -6,8 +7,8 @@ const ContactForm = () => {
     <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
       <form
         action={
-          process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION
-            ? process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION
+          env("NEXT_PUBLIC_CONTACT_FORM_SUBMISSION")
+            ? env("NEXT_PUBLIC_CONTACT_FORM_SUBMISSION")
             : "https://submit-form.com/4GkO3Bo7"
         }
         method="POST"
@@ -18,8 +19,8 @@ const ContactForm = () => {
             type="hidden"
             name="_redirect"
             value={
-              process.env.NEXT_PUBLIC_HOST_URL
-                ? `${process.env.NEXT_PUBLIC_HOST_URL}/success`
+              env("NEXT_PUBLIC_HOST_URL")
+                ? `${env("NEXT_PUBLIC_HOST_URL")}/success`
                 : "https://biblioreads.eu.org/success"
             }
           />

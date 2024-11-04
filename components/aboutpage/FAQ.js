@@ -1,3 +1,4 @@
+import { env } from "next-runtime-env";
 import React from "react";
 
 const FAQ = () => {
@@ -56,13 +57,11 @@ const FAQ = () => {
               1. Visit{" "}
               <a
                 className="underline text-green-600 dark:text-green-500/80"
-                href={
-                  process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"
-                }
+                href={env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"}
                 target="_blank"
                 rel="noreferrer"
               >
-                {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
+                {env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"}
               </a>{" "}
               and either paste the Goodreads book URL into the input box or
               search for a book using the input box.
@@ -74,7 +73,7 @@ const FAQ = () => {
               </span>{" "}
               of any book page URL with{" "}
               <span className="text-green-600 dark:text-green-500/80">
-                {process.env.NEXT_PUBLIC_HOST_URL || "http://localhost:3000"}
+                {env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"}
               </span>
               .
             </p>
