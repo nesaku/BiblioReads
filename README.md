@@ -61,6 +61,10 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | I2P:                                                                                                                                          |                        |                 |                                                             |
 | [vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p](http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p)           |          :us:          | Hetzner         | Run by [~vern](https://vern.cc)                             |
 
+This list is available in JSON format [here](/instances.json).
+
+---
+
 ### Adding Your Instance
 
 If you'd like to add your instance to the list, please open an issue or pull request using the `New Instance` template.
@@ -125,30 +129,30 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 ## FAQ
 
-### How Do I Use This?
+**How Do I Use This?**
 
 There are two ways you can use BiblioReads:
 
 1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
 2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
-### How Does This Work? - Scraping
+**How Does This Work? - Scraping**
 
 Since Goodreads stopped issuing new developer keys for their [public developer API](https://www.goodreads.com/api) back in December of 2020 and plans to retire the current version of their API which you can learn more about [here](https://help.goodreads.com/s/article/Does-Goodreads-support-the-use-of-APIs). BiblioReads goes to the Goodreads book page and scrapes the required content.
 
-### How Did You Come Up With The Name?
+**How Did You Come Up With The Name?**
 
 The "Biblio" in _BiblioReads_ comes from the prefix _biblio-_ meaning book and "Reads" comes from the ending of Goodreads which is what this website is an alternative front-end for.
 
-### What Do You Do With My Data?
+**What Do You Do With My Data?**
 
 Nothing. Since we don't collect any user data, we can't use any user data.
 
-### Why Is This Slower Than Goodreads?
+**Why Is This Slower Than Goodreads?**
 
 When you make a request for a book on BiblioReads, your request needs to be first scraped by the scraper from Goodreads before the result can be shown to you. This causes a delay from when you make the request to when the result is shown.
 
-### Why Is This Missing Functionality?
+**Why Is This Missing Functionality?**
 
 If you have a certain feature that you would like to see, feel free to open an issue on [GitHub](https://github.com/nesaku/BiblioReads/issues) or [Codeberg](https://codeberg.org/nesaku/BiblioReads/issues).
 
