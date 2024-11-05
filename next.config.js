@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+const { configureRuntimeEnv } = require("next-runtime-env/build/configure");
+
+configureRuntimeEnv();
+
 const withPWA = require("next-pwa")({
   dest: "public",
   register: true,

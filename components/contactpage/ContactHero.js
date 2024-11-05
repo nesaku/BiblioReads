@@ -1,3 +1,4 @@
+import { env } from "next-runtime-env";
 import React from "react";
 
 const ContactHero = () => {
@@ -5,7 +6,7 @@ const ContactHero = () => {
     /*     <div className="mx-auto max-w-screen-xl min-h-[70vh] px-4 pt-20 pb-4 lg:flex lg:mt-20"> */
     <div
       className={`mx-auto max-w-screen-xl px-4 pt-20 pb-4 lg:flex lg:mt-20 ${
-        process.env.NEXT_PUBLIC_ENABLE_CONTACT_FORM != "true" && "min-h-[70vh]"
+        env("NEXT_PUBLIC_ENABLE_CONTACT_FORM") != "true" && "min-h-[70vh]"
       }`}
     >
       <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">
@@ -36,14 +37,14 @@ const ContactHero = () => {
             </span>
           </a>
           .
-          {process.env.NEXT_PUBLIC_ENABLE_CONTACT_FORM === "true"
+          {env("NEXT_PUBLIC_ENABLE_CONTACT_FORM") === "true"
             ? " Alternatively, you can use the contact form below."
-            : process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK && (
+            : env("NEXT_PUBLIC_INSTANCE_OPERATOR_LINK") && (
                 <div className="mt-16 text-xl h-[45vh]">
                   You can reach the owner of this instance{" "}
                   <a
                     className="group text-blue-600 dark:text-blue-500 transition-all duration-300 ease-in-out"
-                    href={process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK}
+                    href={env("NEXT_PUBLIC_INSTANCE_OPERATOR_LINK")}
                     target="_blank"
                     rel="noreferrer"
                   >

@@ -4,6 +4,7 @@ import Header from "../components/global/Header";
 import Footer from "../components/global/Footer";
 import ContactForm from "../components/contactpage/ContactForm";
 import ContactHero from "../components/contactpage/ContactHero";
+import { env } from "next-runtime-env";
 
 const Contact = () => {
   return (
@@ -11,7 +12,7 @@ const Contact = () => {
       <Meta title={"Contact"} />
       <Header />
       <ContactHero />
-      {process.env.NEXT_PUBLIC_ENABLE_CONTACT_FORM == "true" && <ContactForm />}
+      {env("NEXT_PUBLIC_ENABLE_CONTACT_FORM") == "true" && <ContactForm />}
 
       <Footer />
     </div>

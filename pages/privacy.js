@@ -3,6 +3,7 @@ import Link from "next/link";
 import Meta from "../components/global/Meta";
 import Header from "../components/global/Header";
 import Footer from "../components/global/Footer";
+import { env } from "next-runtime-env";
 
 // Show the default privacy policy unless instance privacy info is configured
 const Privacy = () => {
@@ -11,7 +12,7 @@ const Privacy = () => {
       <Meta title={"Privacy"} />
       <Header />
 
-      {process.env.NEXT_PUBLIC_INSTANCE_CUSTOM_PRIVACY != "true" ? (
+      {env("NEXT_PUBLIC_INSTANCE_CUSTOM_PRIVACY") != "true" ? (
         // Default privacy policy
         <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
           <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">
@@ -33,7 +34,7 @@ const Privacy = () => {
               <p className="mx-auto text-lg mt-12">
                 BiblioReads (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;)
                 operates
-                {process.env.NEXT_PUBLIC_HOST_URL ? (
+                {env("NEXT_PUBLIC_HOST_URL") ? (
                   <span>
                     {" "}
                     the{" "}
@@ -41,13 +42,11 @@ const Privacy = () => {
                       target="_blank"
                       rel="noreferrer"
                       href={
-                        process.env.NEXT_PUBLIC_HOST_URL ||
-                        "http://localhost:3000"
+                        env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"
                       }
                     >
                       <span className="underline">
-                        {process.env.NEXT_PUBLIC_HOST_URL ||
-                          "http://localhost:3000"}
+                        {env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"}
                       </span>
                     </a>{" "}
                   </span>
@@ -231,16 +230,13 @@ const Privacy = () => {
               <p>
                 The instance operator has indicated their instance&apos;s
                 privacy practices below.
-                {process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL &&
-                  process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL !=
-                    "false" && (
+                {env("NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL") &&
+                  env("NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL") != "false" && (
                     <span>
                       {" "}
                       For more information, see the instance operator&apos;s{" "}
                       <a
-                        href={
-                          process.env.NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL
-                        }
+                        href={env("NEXT_PUBLIC_INSTANCE_PRIVACY_POLICY_URL")}
                         target="_blank"
                         rel="noreferrer"
                         className="font-bold hover:underline"
@@ -253,47 +249,47 @@ const Privacy = () => {
             </div>
             <div className="mt-4 capitalize">
               <ul>
-                {process.env.NEXT_PUBLIC_INSTANCE_LOG_RETENTION && (
+                {env("NEXT_PUBLIC_INSTANCE_LOG_RETENTION") && (
                   <li className="py-2">
                     <span className="font-bold">Log Retention</span> -{" "}
-                    {process.env.NEXT_PUBLIC_INSTANCE_LOG_RETENTION}
+                    {env("NEXT_PUBLIC_INSTANCE_LOG_RETENTION")}
                   </li>
                 )}
-                {process.env.NEXT_PUBLIC_INSTANCE_IP_DATA === "true" && (
+                {env("NEXT_PUBLIC_INSTANCE_IP_DATA") === "true" && (
                   <li className="py-2">
                     <span className="font-bold">IP Addresses</span> - Internet
                     Protocol addresses are collected
                   </li>
                 )}
-                {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
+                {env("NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA") === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Pages Viewed</span> -
                     page/Request URLs are collected
                   </li>
                 )}{" "}
-                {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
+                {env("NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA") === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Device Type</span> - user agent
                     data is collected
                   </li>
                 )}
-                {process.env.NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA === "true" && (
+                {env("NEXT_PUBLIC_INSTANCE_PAGE_VIEW_DATA") === "true" && (
                   <li className="py-2">
                     <span className="font-bold">Diagnostic Data</span> -
                     diagnostic data is collected
                   </li>
                 )}
-                {process.env.NEXT_PUBLIC_INSTANCE_OTHER_DATA && (
+                {env("NEXT_PUBLIC_INSTANCE_OTHER_DATA") && (
                   <li className="py-2">
                     <span className="font-bold">Other Data</span> -{" "}
-                    {process.env.NEXT_PUBLIC_INSTANCE_OTHER_DATA}
+                    {env("NEXT_PUBLIC_INSTANCE_OTHER_DATA")}
                   </li>
                 )}
               </ul>
             </div>
             {/* Instance information section */}
-            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME &&
-              process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
+            {env("NEXT_PUBLIC_INSTANCE_OPERATOR_NAME") &&
+              env("NEXT_PUBLIC_INSTANCE_PROVIDER") && (
                 <details className="group mt-8 p-4 bg-gray-300/40 dark:bg-gray-700/30 border-2 border-gray-300 dark:border-gray-600 rounded-lg">
                   <summary className="flex cursor-pointer items-center justify-between">
                     <h2 className="font-semibold capitalize">
@@ -339,19 +335,19 @@ const Privacy = () => {
                       Instance Operator:
                     </span>
                     <br />
-                    {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME && (
+                    {env("NEXT_PUBLIC_INSTANCE_OPERATOR_NAME") && (
                       <a
                         target="_blank"
                         rel="noreferrer"
-                        href={process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK}
+                        href={env("NEXT_PUBLIC_INSTANCE_OPERATOR_LINK")}
                       >
-                        {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_LINK ? (
+                        {env("NEXT_PUBLIC_INSTANCE_OPERATOR_LINK") ? (
                           <span className="hover:underline">
-                            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                            {env("NEXT_PUBLIC_INSTANCE_OPERATOR_NAME")}
                           </span>
                         ) : (
                           <span>
-                            {process.env.NEXT_PUBLIC_INSTANCE_OPERATOR_NAME}
+                            {env("NEXT_PUBLIC_INSTANCE_OPERATOR_NAME")}
                           </span>
                         )}
                       </a>
@@ -360,8 +356,8 @@ const Privacy = () => {
                   <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
                     <span className="underline capitalize">Country:</span>
                     <br />
-                    {process.env.NEXT_PUBLIC_INSTANCE_COUNTRY && (
-                      <span>{process.env.NEXT_PUBLIC_INSTANCE_COUNTRY}</span>
+                    {env("NEXT_PUBLIC_INSTANCE_COUNTRY") && (
+                      <span>{env("NEXT_PUBLIC_INSTANCE_COUNTRY")}</span>
                     )}
                   </p>
                   <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
@@ -369,8 +365,8 @@ const Privacy = () => {
                       Hosting Provider:
                     </span>
                     <br />
-                    {process.env.NEXT_PUBLIC_INSTANCE_PROVIDER && (
-                      <span>{process.env.NEXT_PUBLIC_INSTANCE_PROVIDER}</span>
+                    {env("NEXT_PUBLIC_INSTANCE_PROVIDER") && (
+                      <span>{env("NEXT_PUBLIC_INSTANCE_PROVIDER")}</span>
                     )}
                   </p>
                   <p className="mt-4 text-left leading-relaxed text-gray-800 dark:text-gray-200">
@@ -378,7 +374,7 @@ const Privacy = () => {
                       Uses Cloudflare?
                     </span>
                     <br />
-                    {process.env.NEXT_PUBLIC_INSTANCE_CLOUDFLARE === "true" ? (
+                    {env("NEXT_PUBLIC_INSTANCE_CLOUDFLARE") === "true" ? (
                       <span>Yes</span>
                     ) : (
                       <span>No</span>

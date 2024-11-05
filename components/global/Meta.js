@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { env } from "next-runtime-env";
 
 const Meta = (props) => {
   const title = `BiblioReads ${props.title ? `- ${props.title}` : ""}  `;
@@ -46,10 +47,10 @@ const Meta = (props) => {
       <meta property="og:description" content={descriptionOG} />
       <meta property="og:site_name" content="BiblioReads" />
       <meta property="og:type" content="website" />
-      {process.env.NEXT_PUBLIC_HOST_URL && (
+      {env("NEXT_PUBLIC_HOST_URL") && (
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_HOST_URL}/social.png`}
+          content={`${env("NEXT_PUBLIC_HOST_URL")}/social.png`}
         />
       )}
     </Head>
