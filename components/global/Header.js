@@ -6,7 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
-    <header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 border-rose-300 dark:border-[#881133]">
+    (<header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 border-rose-300 dark:border-[#881133]">
       <div className="flex justify-evenly items-center h-16">
         <div className="flex">
           <a href="/" aria-label="Back to homepage">
@@ -16,32 +16,40 @@ const Header = () => {
         <div>
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
-              <Link href="/quotes">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+              <Link
+                href="/quotes"
+                className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+                
                   Quotes
-                </a>
+                
               </Link>
             </li>
             <li className="flex">
-              <Link href="/library">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+              <Link
+                href="/library"
+                className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+                
                   Library
-                </a>
+                
               </Link>
             </li>
             <li className="flex">
-              <Link href="/about">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+              <Link
+                href="/about"
+                className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+                
                   About
-                </a>
+                
               </Link>
             </li>
 
             <li className="flex">
-              <Link href="/privacy">
-                <a className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+              <Link
+                href="/privacy"
+                className="flex items-center px-4 -mb-1 border-b-2 border-rose-400 hover:border-rose-600 dark:hover:border-white/90 transition duration-300 delay-150 hover:delay-50 dark:border-gray-300/90 hover:text-rose-900 dark:hover:text-white/90">
+                
                   Privacy
-                </a>
+                
               </Link>
             </li>
             <li className="flex">
@@ -83,21 +91,21 @@ const Header = () => {
         </div>
         <ul className="flex">
           <li className="flex items-center justify-center align-middle content-center mr-4">
-            <Link href="/search">
-              <a
-                className="mt-0.5 text-gray-900 hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
-                aria-label="Search"
+            <Link
+              href="/search"
+              className="mt-0.5 text-gray-900 hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 duration-300 delay-150 hover:delay-50 transition"
+              aria-label="Search">
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 50 50"
+                className="h-7 w-7"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 50 50"
-                  className="h-7 w-7"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z" />
-                </svg>
-              </a>
+                <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z" />
+              </svg>
+
             </Link>
           </li>
           <li>
@@ -105,7 +113,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-    </header>
+    </header>)
   );
 };
 

@@ -148,7 +148,7 @@ const AuthorResultData = ({ scrapedData }) => {
                       alt=""
                       width="286"
                       height="446"
-                      fetchpriority="high"
+                      fetchPriority="high"
                       loading="eager"
                       onLoad={() => setImageLoaded(true)}
                     />

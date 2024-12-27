@@ -3,7 +3,7 @@ import React from "react";
 
 const UnsupportedRoute = (props) => {
   return (
-    <div className="flex justify-center items-center text-center my-[16vh]">
+    (<div className="flex justify-center items-center text-center my-[16vh]">
       <div className="flex flex-col text-gray-800 dark:text-gray-100 bg-white bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-60 py-6 m-4 px-4 sm:px-12 my-[10vh] rounded-2xl max-w-lg items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -83,10 +83,12 @@ const UnsupportedRoute = (props) => {
           </p>
         </div>
         <div className="flex justify-center my-8">
-          <Link href="/">
-            <a className="mr-12 font-semibold text-md text-white dark:text-white bg-slate-500 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 transition duration-300 delay-40 hover:delay-40">
+          <Link
+            href="/"
+            className="mr-12 font-semibold text-md text-white dark:text-white bg-slate-500 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 transition duration-300 delay-40 hover:delay-40">
+            
               Go Home
-            </a>
+            
           </Link>
           <a
             href={props.url}
@@ -98,7 +100,7 @@ const UnsupportedRoute = (props) => {
           </a>
         </div>
       </div>
-    </div>
+    </div>)
   );
 };
 

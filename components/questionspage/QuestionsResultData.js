@@ -10,36 +10,35 @@ const QuestionResults = ({ scrapedData }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div
+    (<div
       id="questionResults"
       className="flex flex-col p-12 justify-center items-center text-center min-h-[80vh]"
     >
       <Meta title={scrapedData.book && `${scrapedData.book} - Questions`} />
-
       {scrapedData.questions && (
         <div className="flex flex-col lg:flex-row justify-center items-center">
           <Link
             href={scrapedData.bookURL.replace("https://www.goodreads.com", "")}
-          >
-            <a className="flex lg:mr-8">
-              {!imageError ? (
-                <CoverImage
-                  src={scrapedData.image.replace("._SX98_", "")}
-                  alt={`${scrapedData.book && scrapedData.book} book cover`}
-                  width={98}
-                  height={98}
-                  onError={() => setImageError(true)}
-                />
-              ) : (
-                <img
-                  src="/cover-placeholder.svg"
-                  alt=""
-                  width="100"
-                  height="250"
-                  className="rounded-lg border-2  shadow-sm drop-shadow-sm mx-auto"
-                />
-              )}
-            </a>
+            className="flex lg:mr-8">
+
+            {!imageError ? (
+              <CoverImage
+                src={scrapedData.image.replace("._SX98_", "")}
+                alt={`${scrapedData.book && scrapedData.book} book cover`}
+                width={98}
+                height={98}
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <img
+                src="/cover-placeholder.svg"
+                alt=""
+                width="100"
+                height="250"
+                className="rounded-lg border-2  shadow-sm drop-shadow-sm mx-auto"
+              />
+            )}
+
           </Link>
           <h2 className="max-w-2xl lg:max-w-3xl font-bold text-3xl md:text-5xl pt-4 pb-5 my-2 decoration-rose-600 dark:text-gray-100/80 capitalize">
             Questions About{" "}
@@ -48,8 +47,8 @@ const QuestionResults = ({ scrapedData }) => {
                 "https://www.goodreads.com",
                 ""
               )}
-            >
-              <a className="hover:underline">{scrapedData.book}</a>
+              className="hover:underline">
+              {scrapedData.book}
             </Link>
             :
           </h2>
@@ -81,7 +80,7 @@ const QuestionResults = ({ scrapedData }) => {
       {scrapedData.unansweredQuestions && (
         <UnansweredQuestionCard questions={scrapedData.unansweredQuestions} />
       )}
-    </div>
+    </div>)
   );
 };
 

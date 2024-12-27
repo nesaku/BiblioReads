@@ -4,7 +4,7 @@ import React from "react";
 
 const ContactForm = () => {
   return (
-    <div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
+    (<div className="px-4 py-8 mb-20 mx-auto max-w-screen-sm text-center backdrop-blur-lg rounded-2xl">
       <form
         action={
           env("NEXT_PUBLIC_CONTACT_FORM_SUBMISSION")
@@ -73,8 +73,8 @@ const ContactForm = () => {
         </div>
         <p className="text-gray-900 dark:text-gray-400 p-4">
           By submitting this form you agree to our{" "}
-          <Link href="/privacy">
-            <a className="underline">Privacy Policy</a>
+          <Link href="/privacy" className="underline">
+            Privacy Policy
           </Link>
           .
         </p>
@@ -85,7 +85,7 @@ const ContactForm = () => {
           Send message
         </button>
       </form>
-    </div>
+    </div>)
   );
 };
 

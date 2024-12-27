@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutHero = () => {
   return (
-    <div
+    (<div
       id="hero"
       className="mx-auto max-w-screen-xl px-4 pt-32 pb-24 lg:flex lg:mt-20"
     >
@@ -26,13 +26,13 @@ const AboutHero = () => {
           </span>
           .
         </h1>
-        <Link href="/search">
+        <Link href="/search" legacyBehavior>
           <button className="mt-20 font-semibold text-md lg:text-lg text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-6 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
             Search Now
           </button>
         </Link>
       </div>
-    </div>
+    </div>)
   );
 };
 

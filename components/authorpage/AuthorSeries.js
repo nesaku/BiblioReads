@@ -4,22 +4,21 @@ import CoverImage from "../global/CoverImage";
 
 const AuthorSeries = (props) => {
   return (
-    <div id="authorSeries" className=" dark:text-gray-100/80">
+    (<div id="authorSeries" className=" dark:text-gray-100/80">
       <h2 className="font-bold text-2xl pt-4 my-2 underline decoration-rose-600 ">
         Series By {props.name}:
       </h2>
-
       {props.series.map((data, i) => (
         <div key={i} className="max-w-[1820px]">
           <a href={data.seriesURL}>
             <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
               <div className="ml-8 sm:ml-16 w-48 sm:w-full">
-                <Link href={data.seriesURL}>
+                <Link href={data.seriesURL} legacyBehavior>
                   <h3 className="text-xl sm:text-2xl font-semibold hover:underline">
                     {data.title}
                   </h3>
                 </Link>
-                <Link href={data.authorURL}>
+                <Link href={data.authorURL} legacyBehavior>
                   <p className="text-md hover:underline" href={data.authorURL}>
                     {data.author}
                   </p>
@@ -59,7 +58,7 @@ const AuthorSeries = (props) => {
           </a>
         </div>
       ))}
-    </div>
+    </div>)
   );
 };
 

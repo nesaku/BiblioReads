@@ -23,7 +23,7 @@ const ThemeToggle = () => {
   return (
     // Change the button icon based on the preferred theme
 
-    <button
+    (<button
       type="button"
       className="flex p-2 border-2 border-rose-200 hover:border-rose-900 dark:border-[#710e2a] hover:dark:border-rose-200 duration-200 delay-150 hover:delay-50 transition rounded-lg bg-rose-800 hover:bg-rose-900 dark:bg-[#710e2a]"
       onClick={themeSelector}
@@ -69,7 +69,7 @@ const ThemeToggle = () => {
           )}
         </svg>
       )}
-    </button>
+    </button>)
   );
 };
 

@@ -4,7 +4,7 @@ import CoverImage from "../global/CoverImage";
 
 const EditionsList = (props) => {
   return (
-    <div id="editionsList">
+    (<div id="editionsList">
       {props.editions.map((data, i) => (
         <div key={i} className="max-w-[1820px]">
           <a href={data.url}>
@@ -13,7 +13,7 @@ const EditionsList = (props) => {
               className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
             >
               <div className="ml-8 sm:ml-16 w-48 sm:w-full">
-                <Link href={data.url}>
+                <Link href={data.url} legacyBehavior>
                   <h3 className="text-xl sm:text-2xl font-semibold hover:underline">
                     {data.title}
                   </h3>
@@ -76,7 +76,7 @@ const EditionsList = (props) => {
           </a>
         </div>
       ))}
-    </div>
+    </div>)
   );
 };
 

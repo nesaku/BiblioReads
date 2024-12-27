@@ -49,47 +49,45 @@ const LibraryResultData = ({ currentTab }) => {
     authors: { component: AuthorList, data: savedAuthors },
     // quotes: { component: QuotesList, data: savedQuotes },
   };
-  return (
-    <>
-      {isLoading ? (
-        <div className="pt-20">
-          <SmallLoader other={true} />
-        </div>
-      ) : (
-        <>
-          {Object.entries(currentTabs).map(
-            ([tabKey, { component: Component, data }], i) =>
-              currentTab === tabKey && (
-                <div key={i}>
-                  {Object.keys(data).length === 0 && (
-                    <EmptyLibrary currentTab={currentTab} />
-                  )}
-                  <Component libraryData={data} />
-                </div>
-              )
-          )}
-        </>
-        /*  <>
-          {currentTab === "books" && (
-            <>
-              {Object.keys(savedBooks).length === 0 && (
-                <EmptyLibrary currentTab={currentTab} />
-              )}
-              <BookList libraryData={savedBooks} />
-            </>
-          )}
-          {currentTab === "authors" && (
-            <>
-              {Object.keys(savedAuthors).length === 0 && (
-                <EmptyLibrary currentTab={currentTab} />
-              )}
-              <BookList libraryData={savedAuthors} />
-            </>
-          )}
-        </> */
-      )}
-    </>
-  );
+  return (<>
+    {isLoading ? (
+      <div className="pt-20">
+        <SmallLoader other={true} />
+      </div>
+    ) : (
+      (<>
+        {Object.entries(currentTabs).map(
+          ([tabKey, { component: Component, data }], i) =>
+            currentTab === tabKey && (
+              <div key={i}>
+                {Object.keys(data).length === 0 && (
+                  <EmptyLibrary currentTab={currentTab} />
+                )}
+                <Component libraryData={data} />
+              </div>
+            )
+        )}
+      </>)
+      /*  <>
+        {currentTab === "books" && (
+          <>
+            {Object.keys(savedBooks).length === 0 && (
+              <EmptyLibrary currentTab={currentTab} />
+            )}
+            <BookList libraryData={savedBooks} />
+          </>
+        )}
+        {currentTab === "authors" && (
+          <>
+            {Object.keys(savedAuthors).length === 0 && (
+              <EmptyLibrary currentTab={currentTab} />
+            )}
+            <BookList libraryData={savedAuthors} />
+          </>
+        )}
+      </> */
+    )}
+  </>);
 };
 
 export default LibraryResultData;

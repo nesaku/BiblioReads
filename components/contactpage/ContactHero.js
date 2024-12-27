@@ -4,7 +4,7 @@ import React from "react";
 const ContactHero = () => {
   return (
     /*     <div className="mx-auto max-w-screen-xl min-h-[70vh] px-4 pt-20 pb-4 lg:flex lg:mt-20"> */
-    <div
+    (<div
       className={`mx-auto max-w-screen-xl px-4 pt-20 pb-4 lg:flex lg:mt-20 ${
         env("NEXT_PUBLIC_ENABLE_CONTACT_FORM") != "true" && "min-h-[70vh]"
       }`}
@@ -57,7 +57,7 @@ const ContactHero = () => {
               )}
         </div>
       </div>
-    </div>
+    </div>)
   );
 };
 

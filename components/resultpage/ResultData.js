@@ -108,10 +108,9 @@ const ResultData = ({ scrapedData }) => {
                   "https://www.goodreads.com",
                   ""
                 )}
+                className="text-md italic text-center underline hover:text-rose-600"
               >
-                <a className="text-md italic text-center underline hover:text-rose-600">
-                  {scrapedData.series}
-                </a>
+                {scrapedData.series}
               </Link>
             )}
             <h1 className="font-bold text-3xl xl:text-4xl my-1 p-2 uppercase max-w-2xl mx-auto">
@@ -178,7 +177,7 @@ const ResultData = ({ scrapedData }) => {
                       alt=""
                       width="620"
                       height="962"
-                      fetchpriority="high"
+                      fetchPriority="high"
                       loading="eager"
                       onLoad={() => setImageLoaded(true)}
                     />
@@ -274,23 +273,22 @@ const ResultData = ({ scrapedData }) => {
                         "https://www.goodreads.com",
                         ""
                       )}
+                      className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-2 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                     >
-                      <a className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-2 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                        Browse This Series
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 ml-2 -mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </a>
+                      Browse This Series
+                      <svg
+                        aria-hidden="true"
+                        className="w-5 h-5 ml-2 -mr-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
                     </Link>
                   </div>
                 )}
@@ -305,24 +303,23 @@ const ResultData = ({ scrapedData }) => {
                           "https://www.goodreads.com",
                           ""
                         )}
+                        className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                       >
-                        <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                          {scrapedData.quotes}{" "}
-                          {scrapedData.quotes == "1" ? "Quote" : "Quotes"}
-                          <svg
-                            aria-hidden="true"
-                            className="w-5 h-5 ml-2 -mr-1"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            ></path>
-                          </svg>
-                        </a>
+                        {scrapedData.quotes}{" "}
+                        {scrapedData.quotes == "1" ? "Quote" : "Quotes"}
+                        <svg
+                          aria-hidden="true"
+                          className="w-5 h-5 ml-2 -mr-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
                       </Link>
                     </div>
                   )}
@@ -335,26 +332,25 @@ const ResultData = ({ scrapedData }) => {
                             "https://www.goodreads.com/book",
                             "/work/questions"
                           )}
+                        className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                       >
-                        <a className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600">
-                          {scrapedData.questions}{" "}
-                          {scrapedData.questions == "1"
-                            ? "Question"
-                            : "Questions"}
-                          <svg
-                            aria-hidden="true"
-                            className="w-5 h-5 ml-2 -mr-1"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            ></path>
-                          </svg>
-                        </a>
+                        {scrapedData.questions}{" "}
+                        {scrapedData.questions == "1"
+                          ? "Question"
+                          : "Questions"}
+                        <svg
+                          aria-hidden="true"
+                          className="w-5 h-5 ml-2 -mr-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
                       </Link>
                     </div>
                   )}
@@ -462,11 +458,9 @@ const ResultData = ({ scrapedData }) => {
                     "/work/editions/"
                   )}
                 >
-                  <a>
-                    <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
-                      View More Editions &#8250;
-                    </p>
-                  </a>
+                  <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
+                    View More Editions &#8250;
+                  </p>
                 </Link>
               </div>
             )}
@@ -536,7 +530,6 @@ const ResultData = ({ scrapedData }) => {
           </div>
         </div>
       )}
-
       <div className="flex flex-col text-center align-center items-center justify-center lg:text-left lg:block px-4 2xl:ml-[12vw] 2xl:mr-[vw] mt-2">
         {scrapedData.quotesURL && scrapedData.quotesURL != "" && (
           <SimilarBooks quotesURL={scrapedData.quotesURL} />

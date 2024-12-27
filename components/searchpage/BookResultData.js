@@ -13,7 +13,7 @@ const SearchResults = (props) => {
   };
 
   return (
-    <div
+    (<div
       id="booksSearchResults"
       className="flex flex-col p-12 justify-center items-center"
     >
@@ -28,19 +28,18 @@ const SearchResults = (props) => {
             : " "
         }
       />
-
       {props.result &&
         props.result.map((data, i) => (
           <div id="resultCard" key={i} className="max-w-[1000px]">
             <a href={data.bookURL.split("?")[0]}>
               <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
                 <div className="ml-8 pr-2 sm:pr-8 sm:ml-16 w-40 sm:w-64 lg:w-[1000px]">
-                  <Link href={data.bookURL.split("?")[0]}>
+                  <Link href={data.bookURL.split("?")[0]} legacyBehavior>
                     <h3 className="text-lg sm:text-2xl font-semibold hover:underline break-words">
                       {data.title}
                     </h3>
                   </Link>
-                  <Link href={data.authorURL}>
+                  <Link href={data.authorURL} legacyBehavior>
                     <p className="text-md hover:underline w-fit">
                       {data.author}
                     </p>
@@ -78,7 +77,7 @@ const SearchResults = (props) => {
             </a>
           </div>
         ))}
-    </div>
+    </div>)
   );
 };
 

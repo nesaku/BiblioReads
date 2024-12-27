@@ -14,7 +14,7 @@ const AuthorBooks = (props) => {
   };
 
   return (
-    <div id="authorBooks" className="dark:text-gray-100/80">
+    (<div id="authorBooks" className="dark:text-gray-100/80">
       <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 ">
         {props.name}&apos;s Books:{" "}
       </h2>
@@ -29,38 +29,38 @@ const AuthorBooks = (props) => {
             className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
           >
             <Link href={`${data.url}`}>
-              <a>
-                {data.cover && (
-                  <CoverImage
-                    src={data.cover}
-                    alt={`${data.title && data.title} book cover`}
-                    extraClasses="text-center mx-auto"
+
+              {data.cover && (
+                <CoverImage
+                  src={data.cover}
+                  alt={`${data.title && data.title} book cover`}
+                  extraClasses="text-center mx-auto"
+                />
+              )}
+              <div className="flex justify-center items-center text-center mt-4 mb-2">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.0621 1.65925L15.5435 6.67764C15.716 7.02667 16.0496 7.26852 16.4356 7.3244L21.9843 8.12919C22.9562 8.27027 23.344 9.46212 22.641 10.146L18.626 14.0522C18.3469 14.3239 18.2194 14.7155 18.2854 15.0989L19.2331 20.6147C19.3992 21.5807 18.3832 22.3173 17.514 21.8615L12.5514 19.2575C12.2063 19.0766 11.7937 19.0766 11.4486 19.2575L6.48598 21.8615C5.6168 22.3177 4.60078 21.5807 4.7669 20.6147L5.71455 15.0989C5.78064 14.7155 5.65306 14.3239 5.37404 14.0522L1.35905 10.146C0.655998 9.46166 1.04378 8.26982 2.01575 8.12919L7.56441 7.3244C7.95036 7.26852 8.28398 7.02667 8.45653 6.67764L10.9379 1.65925C11.372 0.780251 12.6276 0.780251 13.0621 1.65925Z"
+                    fill="#ED8A19"
                   />
-                )}
-                <div className="flex justify-center items-center text-center mt-4 mb-2">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M13.0621 1.65925L15.5435 6.67764C15.716 7.02667 16.0496 7.26852 16.4356 7.3244L21.9843 8.12919C22.9562 8.27027 23.344 9.46212 22.641 10.146L18.626 14.0522C18.3469 14.3239 18.2194 14.7155 18.2854 15.0989L19.2331 20.6147C19.3992 21.5807 18.3832 22.3173 17.514 21.8615L12.5514 19.2575C12.2063 19.0766 11.7937 19.0766 11.4486 19.2575L6.48598 21.8615C5.6168 22.3177 4.60078 21.5807 4.7669 20.6147L5.71455 15.0989C5.78064 14.7155 5.65306 14.3239 5.37404 14.0522L1.35905 10.146C0.655998 9.46166 1.04378 8.26982 2.01575 8.12919L7.56441 7.3244C7.95036 7.26852 8.28398 7.02667 8.45653 6.67764L10.9379 1.65925C11.372 0.780251 12.6276 0.780251 13.0621 1.65925Z"
-                      fill="#ED8A19"
-                    />
-                  </svg>
-                  <span className="text-sm ml-2">
-                    {data.rating.split("avg")[0].replace("really liked it", "")}
-                  </span>
-                </div>
-                <div className="group w-36 h-20 text-center mx-auto text-md font-semibold">
-                  <span className="break-words">{data.title.slice(0, 40)}</span>
-                  <span className="hidden group-hover:inline">
-                    {data.title.slice(40, 50)}
-                  </span>
-                </div>
-              </a>
+                </svg>
+                <span className="text-sm ml-2">
+                  {data.rating.split("avg")[0].replace("really liked it", "")}
+                </span>
+              </div>
+              <div className="group w-36 h-20 text-center mx-auto text-md font-semibold">
+                <span className="break-words">{data.title.slice(0, 40)}</span>
+                <span className="hidden group-hover:inline">
+                  {data.title.slice(40, 50)}
+                </span>
+              </div>
+
             </Link>
           </div>
         ))}
@@ -70,35 +70,35 @@ const AuthorBooks = (props) => {
               "https://www.goodreads.com/author/show/",
               "/author/list/"
             )}`}
-          >
-            <a className="flex snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
-              <div className="flex flex-col justify-center items-center ">
-                <svg
-                  className="fill-gray-700 dark:fill-white max-w-24 max-h-24"
-                  viewBox="0 0 1024 1024"
-                >
-                  <path
-                    d="M835.8 375c-17.7-41.9-43.1-79.6-75.4-111.9-32.3-32.3-70-57.7-111.9-75.4-43.4-18.4-89.5-27.7-137-27.7s-93.6 9.3-137 27.7c-41.9 17.7-79.6 43.1-111.9 75.4-32.3 32.3-57.7 70-75.4 111.9-18.4 43.4-27.7 89.5-27.7 137s9.3 93.6 27.7 137c17.7 41.9 43.1 79.6 75.4 111.9 32.3 32.3 70 57.7 111.9 75.4 43.4 18.4 89.5 27.7 137 27.7s93.6-9.3 137-27.7c41.9-17.7 79.6-43.1 111.9-75.4 32.3-32.3 57.7-70 75.4-111.9 18.4-43.4 27.7-89.5 27.7-137s-9.4-93.6-27.7-137zM511.4 832c-176.7 0-320-143.3-320-320s143.3-320 320-320 320 143.3 320 320-143.2 320-320 320z"
-                    fill=""
-                  />
-                  <path
-                    d="M336 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
-                    fill=""
-                  />
-                  <path
-                    d="M512 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
-                    fill=""
-                  />
-                  <path
-                    d="M688 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
-                    fill=""
-                  />
-                </svg>
-                <p className="mt-2 w-36 text-center mx-auto text-lg font-semibold">
-                  View More Books
-                </p>
-              </div>
-            </a>
+            className="flex snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+
+            <div className="flex flex-col justify-center items-center ">
+              <svg
+                className="fill-gray-700 dark:fill-white max-w-24 max-h-24"
+                viewBox="0 0 1024 1024"
+              >
+                <path
+                  d="M835.8 375c-17.7-41.9-43.1-79.6-75.4-111.9-32.3-32.3-70-57.7-111.9-75.4-43.4-18.4-89.5-27.7-137-27.7s-93.6 9.3-137 27.7c-41.9 17.7-79.6 43.1-111.9 75.4-32.3 32.3-57.7 70-75.4 111.9-18.4 43.4-27.7 89.5-27.7 137s9.3 93.6 27.7 137c17.7 41.9 43.1 79.6 75.4 111.9 32.3 32.3 70 57.7 111.9 75.4 43.4 18.4 89.5 27.7 137 27.7s93.6-9.3 137-27.7c41.9-17.7 79.6-43.1 111.9-75.4 32.3-32.3 57.7-70 75.4-111.9 18.4-43.4 27.7-89.5 27.7-137s-9.4-93.6-27.7-137zM511.4 832c-176.7 0-320-143.3-320-320s143.3-320 320-320 320 143.3 320 320-143.2 320-320 320z"
+                  fill=""
+                />
+                <path
+                  d="M336 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                  fill=""
+                />
+                <path
+                  d="M512 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                  fill=""
+                />
+                <path
+                  d="M688 512.2m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z"
+                  fill=""
+                />
+              </svg>
+              <p className="mt-2 w-36 text-center mx-auto text-lg font-semibold">
+                View More Books
+              </p>
+            </div>
+
           </Link>
         )}
       </div>
@@ -126,7 +126,7 @@ const AuthorBooks = (props) => {
           </svg>
         </button>
       </div>
-    </div>
+    </div>)
   );
 };
 

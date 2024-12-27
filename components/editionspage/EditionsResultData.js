@@ -41,7 +41,7 @@ const EditionResults = ({ scrapedData }) => {
   }, [selectedEdition]);
 
   return (
-    <div
+    (<div
       id="editionResults"
       className="flex flex-col p-12 justify-center items-center text-center dark:text-gray-100/80"
     >
@@ -49,13 +49,12 @@ const EditionResults = ({ scrapedData }) => {
       <h2 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600">
         {scrapedData.book && `${scrapedData.book}:`}
       </h2>
-
       {scrapedData.authorURL && (
         <div
           id="editionDescription"
           className="flex flex-col items-center max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
         >
-          <Link href={scrapedData.authorURL}>
+          <Link href={scrapedData.authorURL} legacyBehavior>
             <p className="text-lg w-fit pt-6 pb-1">
               By:{" "}
               <span className="text-rose-900 dark:text-rose-600 hover:underline">
@@ -140,7 +139,7 @@ const EditionResults = ({ scrapedData }) => {
             )}
         </>
       )}
-    </div>
+    </div>)
   );
 };
 

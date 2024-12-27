@@ -8,13 +8,12 @@ import { env } from "next-runtime-env";
 // Show the default privacy policy unless instance privacy info is configured
 const Privacy = () => {
   return (
-    <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
+    (<div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientpage h-full">
       <Meta title={"Privacy"} />
       <Header />
-
       {env("NEXT_PUBLIC_INSTANCE_CUSTOM_PRIVACY") != "true" ? (
         // Default privacy policy
-        <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
+        (<div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:mt-20">
           <div className="mx-auto max-w-3xl text-center text-gray-900 dark:text-white ">
             <h1 className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-7xl p-2 capitalize">
               Privacy Policy
@@ -185,8 +184,8 @@ const Privacy = () => {
                   Codeberg
                 </a>
                 . Alternatively, you can use the form on our{" "}
-                <Link href="/contact">
-                  <a className="underline">contact page</a>
+                <Link href="/contact" className="underline">
+                  contact page
                 </Link>
                 .
               </p>
@@ -205,10 +204,10 @@ const Privacy = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div>)
       ) : (
         // Instance privacy configuration
-        <div className="flex justify-center items-center text-center min-h-[80vh]">
+        (<div className="flex justify-center items-center text-center min-h-[80vh]">
           <div className="flex flex-col text-gray-800 dark:text-gray-100 bg-white bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-60 py-6 m-4 px-4 sm:px-12 my-[10vh] rounded-2xl max-w-lg items-center">
             <svg
               version="1.1"
@@ -461,10 +460,10 @@ const Privacy = () => {
               </p>
             </details>
           </div>
-        </div>
+        </div>)
       )}
       <Footer />
-    </div>
+    </div>)
   );
 };
 

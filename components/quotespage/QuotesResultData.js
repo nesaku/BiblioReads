@@ -22,7 +22,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
   };
 
   return (
-    <div
+    (<div
       id="quotesResults"
       className={`flex flex-col p-12 justify-center items-center text-center ${
         singleQuote && "min-h-[80vh] m-auto max-w-7xl"
@@ -107,7 +107,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
                 <h3 className="text-lg font-bold pr-12">Popular Tags:</h3>
                 {scrapedData.popularTags.slice(0, 15).map((data, i) => (
                   <div key={i}>
-                    <Link href={data.url}>
+                    <Link href={data.url} legacyBehavior>
                       <button
                         className={
                           data.name.includes(scrapedData.name)
@@ -126,7 +126,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
                 <h3 className="text-lg font-bold pr-2">Popular Tags:</h3>
                 {scrapedData.popularTags.slice(0, 5).map((data, i) => (
                   <div key={i}>
-                    <Link href={data.url}>
+                    <Link href={data.url} legacyBehavior>
                       <button
                         className={
                           data.name.includes(scrapedData.name)
@@ -214,7 +214,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
       {scrapedData.quotes && (
         <QuoteCard quotes={scrapedData.quotes} singleQuote={singleQuote} />
       )}
-    </div>
+    </div>)
   );
 };
 

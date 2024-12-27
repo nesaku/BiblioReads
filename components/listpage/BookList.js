@@ -5,7 +5,7 @@ import CoverImage from "../global/CoverImage";
 
 const BookList = (props) => {
   return (
-    <div id="bookList">
+    (<div id="bookList">
       {props.loading && <SmallLoader height="50" />}
       {!props.loading &&
         props.books.map((data, i) => (
@@ -16,7 +16,7 @@ const BookList = (props) => {
                   <h3 className="text-xs sm:text-sm py-2 ">
                     {data.bookNumber}
                   </h3>
-                  <Link href={data.bookURL}>
+                  <Link href={data.bookURL} legacyBehavior>
                     <h2 className="max-w-md text-xl sm:text-2xl font-semibold hover:underline">
                       {data.title}
                     </h2>
@@ -26,7 +26,7 @@ const BookList = (props) => {
                       "https://www.goodreads.com",
                       ""
                     )}
-                  >
+                    legacyBehavior>
                     <p className="text-md hover:underline w-fit">
                       {data.author}
                     </p>
@@ -66,7 +66,7 @@ const BookList = (props) => {
             </a>
           </div>
         ))}
-    </div>
+    </div>)
   );
 };
 
