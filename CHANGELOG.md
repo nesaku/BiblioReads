@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] (Holo) - Dec 26, 2024
+
+### Updated to Next.js 15 - Possible Breaking Changes
+
+While v3.0.0 has been tested extensively, there is still the possibility for breaking changes.
+Please open an issue if you have identified or experienced a breaking change.
+
+### Added
+
+- Add a short animation to reduce flashing when changing review pages
+
+### Changed
+
+- Update to Next.js 15
+- Change the package used for pagination
+- Change the package used for PWA support
+- Remove <a> tags inside <Link> tags (or use legacyBehavior)
+
+### Fixed
+
+- Fix fetchpriority attribute spelling
+
 ## [2.25.0] - Nov 3, 2024
 
 ### Changed

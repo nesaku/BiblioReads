@@ -38,3 +38,19 @@ details > summary::-webkit-details-marker {
     opacity: 1;
   }
 }
+
+/* Reduce flashing during pagination */
+.pagination-content {
+  transition: opacity 0.1s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+.pagination-content.fade-out {
+  opacity: 0.5;
+  transform: translateY(20px);
+}
+
+.pagination-content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}

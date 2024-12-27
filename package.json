@@ -1,6 +1,6 @@
 {
   "name": "biblioreads",
-  "version": "2.25.0",
+  "version": "3.0.0",
   "description": "An Alternative Goodreads Front-End",
   "private": true,
   "author": "Nesaku",
@@ -12,23 +12,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "babel-loader": "^9.1.0",
-    "cheerio": "^1.0.0-rc.12",
-    "dompurify": "^2.4.3",
-    "idb": "^8.0.0",
-    "next": "12.3.1",
-    "next-pwa": "^5.6.0",
+    "@ducanh2912/next-pwa": "^10.2.9",
+    "@nextui-org/pagination": "^2.2.7",
+    "cheerio": "^1.0.0",
+    "dompurify": "^3.2.3",
+    "idb": "^8.0.1",
+    "next": "15.1.2",
     "next-runtime-env": "^1.7.4",
-    "next-themes": "^0.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-paginate": "^8.1.4"
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.12",
-    "eslint": "8.25.0",
-    "eslint-config-next": "12.3.1",
-    "postcss": "^8.4.20",
-    "tailwindcss": "^3.1.8"
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
   }
 }

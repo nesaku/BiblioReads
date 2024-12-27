@@ -2,14 +2,20 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v2.25.0";
-  const versionSlug = "2250---nov-3-2024";
+  const version = "v3.0.0";
+  const versionSlug = "300---dec-26-2024";
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {
-      if (!sessionStorage.getItem("version")) {
-        console.log(`%c${version} (Oreki)`, `color:green`);
-        sessionStorage.setItem("version", version ? version : "true");
+      if (
+        !sessionStorage.getItem("version") ||
+        sessionStorage.getItem("version") !== version
+      ) {
+        console.log(`%c${version} (Holo)`, `color:green`);
+        sessionStorage.setItem(
+          "version",
+          version ? version : "no version found"
+        );
       }
     } else {
       console.error(
@@ -28,58 +34,65 @@ const Footer = () => {
           >
             <ul className="flex flex-wrap justify-center items-center gap-8 sm:gap-6 text-sm font-bold">
               <li>
-                <Link href="/search">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Search
-                  </a>
+                <Link
+                  href="/search"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Search
                 </Link>
               </li>
 
               <li>
-                <Link href="/quotes">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Quotes
-                  </a>
+                <Link
+                  href="/quotes"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Quotes
                 </Link>
               </li>
 
               <li>
-                <Link href="/library">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Library
-                  </a>
+                <Link
+                  href="/library"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Library
                 </Link>
               </li>
 
               <li>
-                <Link href="/about">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    About
-                  </a>
+                <Link
+                  href="/about"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  About
                 </Link>
               </li>
 
               <li>
-                <Link href="/contact">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Contact
-                  </a>
+                <Link
+                  href="/contact"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Contact
                 </Link>
               </li>
 
               <li>
-                <Link href="/privacy">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Privacy
-                  </a>
+                <Link
+                  href="/privacy"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Privacy
                 </Link>
               </li>
 
               <li>
-                <Link href="/disclaimer">
-                  <a className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90">
-                    Disclaimer
-                  </a>
+                <Link
+                  href="/disclaimer"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
+                >
+                  Disclaimer
                 </Link>
               </li>
 

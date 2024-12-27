@@ -5,7 +5,7 @@ import Meta from "../components/global/Meta";
 
 const _offline = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-center capitalize h-[90vh]">
+    (<div className="flex flex-col items-center justify-center text-center capitalize h-[90vh]">
       <Meta title={"Offline"} />
       {/* Base 64 Encoded Logo */}
       <img
@@ -19,12 +19,14 @@ const _offline = () => {
       <h2 className="my-10 text-4xl text-transparent font-bold text-black dark:text-gray-200">
         Check you&apos;re internet connection and try again.
       </h2>
-      <Link href="/">
-        <a className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 mt-4 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
+      <Link
+        href="/"
+        className="font-semibold text-md text-gray-900 dark:text-white bg-rose-500 ring ring-rose-600 ring-offset-2 ring-offset-rose-100 mt-4 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 transition duration-300 delay-40 hover:delay-40">
+        
           Go Home
-        </a>
+        
       </Link>
-    </div>
+    </div>)
   );
 };
 

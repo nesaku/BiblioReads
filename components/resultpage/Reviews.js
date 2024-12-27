@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import { Pagination } from "@nextui-org/pagination";
 import ReviewCard from "./ReviewCard";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
@@ -18,13 +18,24 @@ const Reviews = (props) => {
     offset: 0,
     numberPerPage: 6,
     pageCount: 0,
+    currentPage: 1,
     currentData: [],
+    isFading: false,
   });
+
+  // Pagination styling
+  const customStyles = {
+    wrapper: "flex capitalize justify-center items-center mb-10 mt-20 text-md",
+    item: "m-2 p-3 rounded-md font-semibold text-md bg-rose-50 dark:bg-gray-800 hover:bg-rose-300 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600",
+    activeItem: "text-rose-600 dark:text-rose-600", // Ensure full coverage with background color
+    cursor: "p-2 font-semibold",
+    disabled: "text-gray-500 cursor-not-allowed",
+  };
 
   useEffect(() => {
     setPagination((prevState) => ({
       ...prevState,
-      pageCount: prevState.data.length / prevState.numberPerPage,
+      pageCount: Math.ceil(prevState.data.length / prevState.numberPerPage),
       currentData: prevState.data.slice(
         pagination.offset,
         pagination.offset + pagination.numberPerPage
@@ -32,10 +43,42 @@ const Reviews = (props) => {
     }));
   }, [pagination.numberPerPage, pagination.offset]);
 
-  const handlePageClick = (event) => {
-    const selected = event.selected;
-    const offset = selected * pagination.numberPerPage;
-    setPagination({ ...pagination, offset });
+  const handlePageClick = (pageNumber) => {
+    setPagination({ ...pagination, isFading: true });
+
+    const offset = (pageNumber - 1) * pagination.numberPerPage;
+
+    setTimeout(() => {
+      setPagination((prevState) => ({
+        ...prevState,
+        offset,
+        currentPage: pageNumber,
+        currentData: prevState.data.slice(
+          offset,
+          offset + pagination.numberPerPage
+        ),
+        isFading: false, // Trigger fade-in effect
+      }));
+    }, 20);
+  };
+
+  const renderPaginationItem = ({
+    ref,
+    value,
+    isActive,
+    className,
+    setPage,
+  }) => {
+    const activeClass = isActive ? customStyles.activeItem : "";
+    return (
+      <li
+        ref={ref}
+        className={`${className} ${activeClass}`}
+        onClick={() => setPage(value)}
+      >
+        {value}
+      </li>
+    );
   };
 
   return (
@@ -44,6 +87,7 @@ const Reviews = (props) => {
         <h2 className="font-bold text-2xl mt-0 mb-4 underline decoration-rose-600 text-center lg:text-left">
           Reviews:
         </h2>
+
         <button
           type="button"
           onClick={() => {
@@ -439,44 +483,45 @@ const Reviews = (props) => {
               filterStars === undefined &&
               sortBy === undefined && (
                 <div id="pagination">
-                  {pagination.currentData &&
-                    pagination.currentData.map((data, i) => (
-                      <div
-                        id="default"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                        key={i}
-                      >
-                        <ReviewCard
-                          mobile={false}
-                          image={data.image}
-                          showAvatars={showAvatars}
-                          author={data.author}
-                          date={data.date}
-                          stars={data.stars}
-                          text={data.text}
-                          likes={data.likes}
-                        />
-                      </div>
-                    ))}
-                  <ReactPaginate
-                    previousLabel={"previous"}
-                    nextLabel={"next"}
-                    breakLabel={"..."}
-                    pageCount={pagination.pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={handlePageClick}
-                    containerClassName={
-                      "flex capitalize justify-center items-center mb-10 mt-20 text-md"
-                    }
-                    pageLinkClassName={
-                      "m-2 p-3 rounded-md font-semibold text-md bg-rose-50 dark:bg-gray-800 hover:bg-rose-300 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
-                    }
-                    activeClassName={"text-rose-600 dark:text-rose-600"}
-                    nextLinkClassName={"p-2 font-semibold"}
-                    previousLinkClassName={"p-2 font-semibold"}
-                    disabledLinkClassName={"text-gray-500 cursor-not-allowed"}
-                  />
+                  <div
+                    className={`pagination-content ${
+                      pagination.isFading ? "fade-out" : "fade-in"
+                    }`}
+                  >
+                    {pagination.currentData &&
+                      pagination.currentData.map((data, i) => (
+                        <div
+                          id="default"
+                          className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                          key={i}
+                        >
+                          <ReviewCard
+                            mobile={false}
+                            image={data.image}
+                            showAvatars={showAvatars}
+                            author={data.author}
+                            date={data.date}
+                            stars={data.stars}
+                            text={data.text}
+                            likes={data.likes}
+                          />
+                        </div>
+                      ))}
+                    <Pagination
+                      total={pagination.pageCount}
+                      initialPage={pagination.currentPage}
+                      onChange={handlePageClick}
+                      showShadow
+                      color="primary"
+                      classNames={{
+                        wrapper: customStyles.wrapper,
+                        item: customStyles.item,
+                        cursor: customStyles.cursor,
+                        disabled: customStyles.disabled,
+                      }}
+                      renderItem={renderPaginationItem}
+                    />
+                  </div>
                 </div>
               )}
           </div>
