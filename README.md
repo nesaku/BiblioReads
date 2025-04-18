@@ -56,6 +56,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | [reads.nezumi.party](https://reads.nezumi.party)                                                                                              |          :it:          | Vodafone Italia | Run by [greyratdev](https://nezumi.party)                   |
 | [br.bloat.cat](https://br.bloat.cat)                                                                                                          |          :de:          | Datalix         | Run by [bloat.cat](https://bloat.cat)                       |
 | [read.canine.tools](https://read.canine.tools)                                                                                                |          :us:          | RoyaleHosting   | Run by [canine.tools](https://canine.tools)                 |
+| [biblioreads.franklyflawless.org](https://biblioreads.franklyflawless.org)                                                                    |          :de:          | Hetzner         | Run by [FranklyFlawless](https://franklyflawless.org)       |
 | Onion:                                                                                                                                        |                        |                 |                                                             |
 | [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner         | Run by [~vern](https://vern.cc)                             |
 | I2P:                                                                                                                                          |                        |                 |                                                             |
@@ -240,6 +241,8 @@ Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for 
 - idb
 - next-pwa
 - next-themes
+- next-runtime-env
+- @nextui-org/pagination
 
 ### Getting Started
 

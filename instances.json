@@ -75,5 +75,10 @@
     "url": "https://read.canine.tools",
     "countries": ["US"],
     "cloudflare": false
+  },
+  {
+    "url": "https://biblioreads.franklyflawless.org",
+    "countries": ["DE"],
+    "cloudflare": false
   }
 ]

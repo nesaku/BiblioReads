@@ -5,7 +5,7 @@ import Footer from "../../components/global/Footer";
 import Header from "../../components/global/Header";
 import Meta from "../../components/global/Meta";
 
-// SSR redirect /vi/{path} to /vi/{path}
+// SSR redirect /vi/{path} to /{path}
 export async function getServerSideProps(context) {
   const { resolvedUrl } = context;
   if (resolvedUrl) {
