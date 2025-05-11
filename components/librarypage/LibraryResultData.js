@@ -26,6 +26,7 @@ const LibraryResultData = ({ currentTab }) => {
         });
         const books = await db.getAll("books");
         setSavedBooks(books);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error getting books:", error);
         if (error.name === "NotFoundError") {
@@ -52,6 +53,7 @@ const LibraryResultData = ({ currentTab }) => {
         });
         const authors = await db.getAll("authors");
         setSavedAuthors(authors);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error getting authors:", error);
         if (error.name === "NotFoundError") {
@@ -78,6 +80,7 @@ const LibraryResultData = ({ currentTab }) => {
         });
         const quotes = await db.getAll("quotes");
         setSavedQuotes(quotes);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error getting quotes:", error);
         if (error.name === "NotFoundError") {
