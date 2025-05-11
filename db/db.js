@@ -3,7 +3,7 @@ import { openDB } from "idb";
 export async function initializeDB() {
   // console.log("Initializing DB");
   try {
-    return await openDB("library", 2, {
+    return await openDB("library", 3, {
       upgrade(db) {
         // console.log("Running upgrade");
         const objectStores = ["books", "authors", "quotes"];

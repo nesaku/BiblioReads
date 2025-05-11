@@ -2,8 +2,10 @@
 import Link from "next/link";
 import Meta from "../global/Meta";
 import CoverImage from "../global/CoverImage";
+import { useState } from "react";
 
 const SearchResults = (props) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const capitalizeTitle = (title) => {
     return title
       .toLowerCase()
@@ -13,7 +15,7 @@ const SearchResults = (props) => {
   };
 
   return (
-    (<div
+    <div
       id="booksSearchResults"
       className="flex flex-col p-12 justify-center items-center"
     >
@@ -71,13 +73,15 @@ const SearchResults = (props) => {
                   <CoverImage
                     src={data.cover}
                     alt={`${data.title && data.title} book cover`}
+                    extraClasses={!imageLoaded && "hidden"}
+                    onLoad={() => setImageLoaded(true)}
                   />
                 </div>
               </div>
             </a>
           </div>
         ))}
-    </div>)
+    </div>
   );
 };
 
