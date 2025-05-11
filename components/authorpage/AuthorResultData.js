@@ -9,6 +9,7 @@ import AuthorSeries from "./AuthorSeries";
 import Toast from "../global/Toast";
 import LibraryButton from "../global/LibraryButton";
 import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import CoverImage from "../global/CoverImage";
 
 const AuthorResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -109,6 +110,7 @@ const AuthorResultData = ({ scrapedData }) => {
                     alt=""
                     width="286"
                     height="446"
+                    className="mx-auto"
                   />
                 </>
               )}
@@ -124,35 +126,15 @@ const AuthorResultData = ({ scrapedData }) => {
               )}
               {scrapedData.image && (
                 <>
-                  {/* Load WebP Image With JPG Fallback & 404 Not Found Image*/}
-                  <picture className={imageLoaded ? "" : "hidden"}>
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        scrapedData.image
-                      )}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                    />
-                    <source
-                      srcSet={`/img?url=${cleanImageUrl(
-                        scrapedData.image
-                      )}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                    />
-                    <img
-                      src={`/img?url=${cleanImageUrl(
-                        scrapedData.image
-                      )}&maxage=30d`}
-                      className="rounded-2xl border-2 mx-auto shadow-2xl drop-shadow-xl"
-                      alt=""
-                      width="286"
-                      height="446"
-                      fetchPriority="high"
-                      loading="eager"
-                      onLoad={() => setImageLoaded(true)}
-                    />
-                  </picture>
+                  <CoverImage
+                    src={scrapedData.image}
+                    alt={scrapedData.name}
+                    extraClasses="mx-auto"
+                    width="286"
+                    height="446"
+                    loading="eager"
+                    onLoad={() => setImageLoaded(true)}
+                  />
                 </>
               )}
             </div>

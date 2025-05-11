@@ -10,6 +10,7 @@ import ReadMore from "./ReadMore";
 import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
 import ReviewBreakdown from "./ReviewBreakdown";
+import CoverImage from "../global/CoverImage";
 
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -144,6 +145,7 @@ const ResultData = ({ scrapedData }) => {
                     alt=""
                     width="620"
                     height="962"
+                    className="mx-auto"
                   />
                 </>
               )}
@@ -159,29 +161,16 @@ const ResultData = ({ scrapedData }) => {
               )}
               {scrapedData.cover && (
                 <>
-                  {/* Load WebP Image With JPG Fallback*/}
-                  <picture className={imageLoaded ? "" : "hidden"}>
-                    <source
-                      srcSet={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                    />
-                    <source
-                      srcSet={`/img?url=${scrapedData.cover}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-2xl mx-auto shadow-2xl drop-shadow-xl"
-                    />
-                    <img
-                      src={`/img?url=${scrapedData.cover}&maxage=30d`}
-                      className="rounded-2xl border-2 mx-auto shadow-2xl drop-shadow-xl"
-                      alt=""
-                      width="620"
-                      height="962"
-                      fetchPriority="high"
-                      loading="eager"
-                      onLoad={() => setImageLoaded(true)}
-                    />
-                  </picture>
+                  <CoverImage
+                    src={scrapedData.cover}
+                    alt={scrapedData.title}
+                    width="620"
+                    height="962"
+                    fetchPriority="high"
+                    loading="eager"
+                    onLoad={() => setImageLoaded(true)}
+                    extraClasses="mx-auto"
+                  />
                 </>
               )}
 

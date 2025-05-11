@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import DOMPurify from "dompurify";
 import Meta from "../global/Meta";
+import CoverImage from "../global/CoverImage";
 
 const QuotesResultData = ({ scrapedData, query }) => {
   return (
@@ -27,26 +28,12 @@ const QuotesResultData = ({ scrapedData, query }) => {
             <div className="flex items-center justify-between">
               {data.img && (
                 <div className="hidden w-[240px] lg:block overflow-hidden hover:rounded-xl ml-10 px-4">
-                  <picture>
-                    <source
-                      srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
-                      type="image/webp"
-                      className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    />
-                    <source
-                      srcSet={`/img?url=${data.img}&maxage=30d`}
-                      type="image/jpeg"
-                      className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    />
-                    <img
-                      src={`/img?url=${data.img}&maxage=30d`}
-                      alt={`${data.imgAlt}`}
-                      className="rounded-md border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                      loading="lazy"
-                      width="60"
-                      height="120"
-                    />
-                  </picture>
+                  <CoverImage
+                    src={data.img}
+                    alt={`${data.imgAlt}`}
+                    width="60"
+                    height="120"
+                  />
                 </div>
               )}
               <div className="mt-8 space-y-8">

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import CoverImage from "../global/CoverImage";
 
 const QuoteCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
@@ -22,28 +23,13 @@ const QuoteCard = (props) => {
             }`}
           >
             {data.img && (
-              <div className="hidden w-[240px] lg:block overflow-hidden hover:rounded-xl ml-10 px-4">
-                <picture>
-                  <source
-                    srcSet={`/img?url=${data.img}&output=webp&maxage=30d`}
-                    type="image/webp"
-                    className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <source
-                    srcSet={`/img?url=${data.img}&maxage=30d`}
-                    type="image/jpeg"
-                    className="rounded-md shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                  />
-                  <img
-                    src={`/img?url=${data.img}&maxage=30d`}
-                    alt={`${data.imgAlt}`}
-                    className="rounded-md border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900"
-                    loading="lazy"
-                    width="60"
-                    height="120"
-                  />
-                </picture>
-              </div>
+              <CoverImage
+                src={data.img}
+                alt={data.imgAlt}
+                loading="lazy"
+                width="60"
+                height="120"
+              />
             )}
             <div className={`${!props.singleQuote && "mt-8 space-y-8"}`}>
               <div

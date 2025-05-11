@@ -1,5 +1,5 @@
 import { cleanImageUrl } from "../../utils/cleanImageUrl";
-
+// Load WebP Image With JPG Fallback
 const CoverImage = ({
   src,
   alt,
@@ -7,6 +7,7 @@ const CoverImage = ({
   height = 148,
   extraClasses = "",
   loading = "lazy",
+  onLoad = null,
   onError = null,
 }) => (
   <picture>
@@ -27,6 +28,7 @@ const CoverImage = ({
       height={height}
       className={`rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 ${extraClasses}`}
       loading={loading}
+      onLoad={onLoad}
       onError={onError}
     />
   </picture>

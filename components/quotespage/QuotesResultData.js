@@ -22,7 +22,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
   };
 
   return (
-    (<div
+    <div
       id="quotesResults"
       className={`flex flex-col p-12 justify-center items-center text-center ${
         singleQuote && "min-h-[80vh] m-auto max-w-7xl"
@@ -186,7 +186,7 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
                 </div>
               </div>
             </form>
-            {validQuery === false && (
+            {!validQuery && (
               <div id="formError">
                 <p className="mt-2 max-w-lg text-red-600/80 break-words">
                   Please make sure you are not pasting in a URL. An example of a
@@ -196,25 +196,26 @@ const QuotesResults = ({ scrapedData, singleQuote }) => {
               </div>
             )}
           </div>
-          <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 dark:text-gray-100/80 capitalize">
-            No Quotes Found
-            <div className="flex justify-center mt-10">
-              <a
-                href={scrapedData.scrapeURL}
-                target="_blank"
-                rel="noreferrer"
-                className="font-semibold text-sm text-white dark:text-white bg-slate-500 dark:bg-slate-700 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 hover:dark:bg-slate-600 transition duration-300 delay-40 hover:delay-40"
-              >
-                View On Goodreads
-              </a>
-            </div>
-          </h2>
+
+          <div className="flex justify-center mt-10">
+            <h2 className="font-bold text-4xl text-center pt-4 py-2 mt-24 dark:text-gray-100/80 capitalize">
+              No Quotes Found{" "}
+            </h2>
+            <a
+              href={scrapedData.scrapeURL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-sm text-white dark:text-white bg-slate-500 dark:bg-slate-700 ring ring-slate-600 ring-offset-2 ring-offset-slate-100 py-5 px-6 rounded-xl shadow-lg shadow-slate-500 hover:shadow-xl hover:bg-slate-600 hover:dark:bg-slate-600 transition duration-300 delay-40 hover:delay-40"
+            >
+              View On Goodreads
+            </a>
+          </div>
         </div>
       )}
       {scrapedData.quotes && (
         <QuoteCard quotes={scrapedData.quotes} singleQuote={singleQuote} />
       )}
-    </div>)
+    </div>
   );
 };
 
