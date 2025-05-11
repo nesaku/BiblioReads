@@ -9,7 +9,7 @@ const Library = () => {
   const [selectedTab, setSelectedTab] = useState("books");
 
   return (
-    <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 h-screen">
+    <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge text-gray-900 dark:text-gray-100 min-h-screen">
       <Meta title="Library" />
       <Header />
       <div id="libraryResults" className="min-h-[70vh]">

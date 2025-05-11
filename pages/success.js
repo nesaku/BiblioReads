@@ -8,7 +8,7 @@ const Success = () => {
     <div className="bg-gradient-to-tr from-rose-50 to-rose-200 dark:bg-gradientedge">
       <Meta title={"Success"} />
       <Header />
-      <div className="grid place-items-center w-full m-auto h-screen">
+      <div className="grid place-items-center w-full m-auto min-h-screen">
         <div className="shadow-lg rounded-2xl px-6 py-8 backdrop-blur-lg bg-white/40 dark:bg-gray-800">
           <div className="w-full h-full text-center">
             <div className="flex h-full flex-col justify-between">

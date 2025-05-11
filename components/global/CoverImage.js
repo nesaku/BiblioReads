@@ -6,6 +6,7 @@ const CoverImage = ({
   width = 98,
   height = 148,
   extraClasses = "",
+  loading = "lazy",
   onError = null,
 }) => (
   <picture>
@@ -25,7 +26,7 @@ const CoverImage = ({
       width={width}
       height={height}
       className={`rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 ${extraClasses}`}
-      loading="lazy"
+      loading={loading}
       onError={onError}
     />
   </picture>
