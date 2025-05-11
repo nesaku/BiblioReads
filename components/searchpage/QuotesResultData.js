@@ -5,7 +5,7 @@ import CoverImage from "../global/CoverImage";
 
 const QuotesResultData = ({ scrapedData, query }) => {
   return (
-    <div
+    <section
       id="quotesSearchResults"
       className="flex flex-col justify-center items-center"
     >
@@ -95,7 +95,7 @@ const QuotesResultData = ({ scrapedData, query }) => {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

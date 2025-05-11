@@ -12,7 +12,7 @@ const FAQ = () => {
             open
           >
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">How Does I Use This?</h2>
+              <h3 className="font-semibold capitalize">How Does I Use This?</h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -80,7 +80,7 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">How Does This Work?</h2>
+              <h3 className="font-semibold capitalize">How Does This Work?</h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -137,9 +137,9 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">
+              <h3 className="font-semibold capitalize">
                 How Did You Come Up With The Name?
-              </h2>
+              </h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -185,9 +185,9 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">
+              <h3 className="font-semibold capitalize">
                 What Do You Do With My Data?
-              </h2>
+              </h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -259,9 +259,9 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">
+              <h3 className="font-semibold capitalize">
                 Why Is This Slower Than Goodreads?
-              </h2>
+              </h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -307,9 +307,9 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">
+              <h3 className="font-semibold capitalize">
                 Why Is This Missing Functionality?
-              </h2>
+              </h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg
@@ -380,7 +380,7 @@ const FAQ = () => {
           </details>
           <details className="group p-6 border-t-2 border-gray-400 dark:border-gray-400">
             <summary className="flex cursor-pointer items-center justify-between">
-              <h2 className="font-semibold capitalize">Got Some Feedback?</h2>
+              <h3 className="font-semibold capitalize">Got Some Feedback?</h3>
 
               <span className="relative ml-1.5 h-5 w-5 flex-shrink-0">
                 <svg

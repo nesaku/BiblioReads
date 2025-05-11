@@ -9,12 +9,12 @@ const ReadMore = ({ children }) => {
   return (
     <p id="text">
       {isReadMore ? text.slice(0, 600) : text}
-      <span
+      <button
         onClick={toggleReadMore}
         className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
       >
         {isReadMore ? " ...read more." : "(Show less)"}
-      </span>
+      </button>
     </p>
   );
 };

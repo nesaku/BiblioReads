@@ -28,9 +28,9 @@ const Features = () => {
                 />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
+            <h3 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
               No ADS & Tracking
-            </h2>
+            </h3>
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Simple. We don&apos;t show ads and no personal information is ever
               collected.
@@ -49,9 +49,9 @@ const Features = () => {
                 <path d="M8 10v-5l8 7-8 7v-5h-8v-4h8zm2-8v2h12v16h-12v2h14v-20h-14z" />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
+            <h3 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
               No sign up required
-            </h2>
+            </h3>
 
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Use BiblioReads without signing up for an account and you never
@@ -71,9 +71,9 @@ const Features = () => {
                 <path d="M4.508 16.557l1.406-1.9c-.289-1.201-.005-2.543.869-4.008.341-.572.753-1.128 1.211-1.668.277.649.857 1.694 1.131 2.081-.036-.519-.267-2.085.002-3.286 1.036-.995 2.232-1.903 3.49-2.693.094.599.311 1.812.449 2.135.06-.433.336-1.993.77-2.851 1.875-1.032 3.814-1.787 5.516-2.141-.459 1.311-1.147 2.976-2.021 4.713-.85.59-2.346 1.092-2.908 1.189.469.132 1.544.22 2.152.247-.193.348-.392.696-.599 1.042-.526.879-1.069 1.664-1.617 2.39-.943.464-2.371.845-2.937.875.362.19 1.237.413 1.777.54-1.717 1.904-3.436 3.015-4.907 3.179 1.232-2.189 2.239-3.938 2.642-4.505-4.444 3.412-7.182 8.675-8.934 12.104l2.505-.789c.421-.77 1.727-2.952 2.772-4.829.268.041.535.06.801.06 7.398.001 13.598-15.213 13.922-18.442-8.141 0-21.536 8.975-17.492 16.557z" />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
+            <h3 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
               Lightweight
-            </h2>
+            </h3>
 
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               View your results without any of the useless bloat.
@@ -115,9 +115,9 @@ const Features = () => {
                 <path d="M24 21v-6h-18v6h18zm-3-4c.553 0 1 .448 1 1s-.447 1-1 1c-.552 0-1-.448-1-1s.448-1 1-1zm-7.806 0h1.275l-.864 2h-1.274l.863-2zm-2.141 0h1.275l-.863 2h-1.275l.863-2zm-2.19 0h1.275l-.863 2h-1.275l.863-2zm-4.863.941c-2.253-.29-4-2.194-4-4.524 0-2.252 1.626-4.121 3.767-4.506.177-3.294 2.895-5.911 6.233-5.911s6.056 2.617 6.233 5.911c2.005.361 3.541 2.029 3.729 4.089h-1.991c-.279-2.105-2.674-2.333-3.65-2.401.117-1.958-.555-5.599-4.321-5.599-4.438 0-4.359 4.75-4.321 5.599-.945-.037-3.679.341-3.679 2.818 0 1.223.856 2.245 2 2.511v2.013z" />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
+            <h3 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
               All requests are proxied
-            </h2>
+            </h3>
 
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Every request you make on BiblioReads is proxied, your requests
@@ -137,9 +137,9 @@ const Features = () => {
                 <path d="M20 2c0-1.105-.896-2-2-2h-12c-1.105 0-2 .896-2 2v20c0 1.104.895 2 2 2h12c1.104 0 2-.896 2-2v-20zm-9.501 0h3.001c.276 0 .5.224.5.5s-.224.5-.5.5h-3.001c-.275 0-.499-.224-.499-.5s.224-.5.499-.5zm1.501 20c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm6-3h-12v-14.024h12v14.024z" />
               </svg>
             </div>
-            <h2 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
+            <h3 className="mt-4 text-xl uppercase font-bold text-gray-900 dark:text-white">
               Modern Design
-            </h2>
+            </h3>
 
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Responsive design with built-in light & dark mode support.

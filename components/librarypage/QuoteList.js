@@ -1,31 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react";
+
 import CoverImage from "../global/CoverImage";
-import { initializeDB } from "@/db/db";
 
 const QuoteList = ({ libraryData }) => {
-  const [savedQuoteAuthors, setSavedQuoteAuthors] = useState({});
-
-  useEffect(() => {
-    const fetchSavedQuoteAuthors = async () => {
-      try {
-        const db = await initializeDB();
-        const allSavedQuotes = await db.getAll("quotes");
-        const authorsWithSavedQuotes = {};
-        allSavedQuotes.forEach((quote) => {
-          if (quote.author) {
-            authorsWithSavedQuotes[quote.author] = true;
-          }
-        });
-        setSavedQuoteAuthors(authorsWithSavedQuotes);
-      } catch (error) {
-        console.error("Error fetching saved quote authors:", error);
-      }
-    };
-
-    fetchSavedQuoteAuthors();
-  }, []);
-
   return (
     <div
       id="quoteList"

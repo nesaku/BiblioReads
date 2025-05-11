@@ -126,24 +126,6 @@ const LibraryResultData = ({ currentTab }) => {
               )
           )}
         </>
-        /*  <>
-        {currentTab === "books" && (
-          <>
-            {Object.keys(savedBooks).length === 0 && (
-              <EmptyLibrary currentTab={currentTab} />
-            )}
-            <BookList libraryData={savedBooks} />
-          </>
-        )}
-        {currentTab === "authors" && (
-          <>
-            {Object.keys(savedAuthors).length === 0 && (
-              <EmptyLibrary currentTab={currentTab} />
-            )}
-            <BookList libraryData={savedAuthors} />
-          </>
-        )}
-      </> */
       )}
     </>
   );

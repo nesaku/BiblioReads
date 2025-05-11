@@ -14,7 +14,7 @@ const AuthorBooks = (props) => {
   };
 
   return (
-    (<div id="authorBooks" className="dark:text-gray-100/80">
+    <div id="authorBooks" className="dark:text-gray-100/80">
       <h2 className="font-bold text-2xl my-2 underline decoration-rose-600 ">
         {props.name}&apos;s Books:{" "}
       </h2>
@@ -29,7 +29,6 @@ const AuthorBooks = (props) => {
             className="snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
           >
             <Link href={`${data.url}`}>
-
               {data.cover && (
                 <CoverImage
                   src={data.cover}
@@ -60,7 +59,6 @@ const AuthorBooks = (props) => {
                   {data.title.slice(40, 50)}
                 </span>
               </div>
-
             </Link>
           </div>
         ))}
@@ -70,8 +68,8 @@ const AuthorBooks = (props) => {
               "https://www.goodreads.com/author/show/",
               "/author/list/"
             )}`}
-            className="flex snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
-
+            className="flex snap-center shrink-0 first:-ml-12 max-w-xs xl:max-w-sm p-2 sm:py-6 px-2 hover:py-6 bg-white/40 dark:bg-slate-800 rounded-2xl  hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40"
+          >
             <div className="flex flex-col justify-center items-center ">
               <svg
                 className="fill-gray-700 dark:fill-white max-w-24 max-h-24"
@@ -98,7 +96,6 @@ const AuthorBooks = (props) => {
                 View More Books
               </p>
             </div>
-
           </Link>
         )}
       </div>
@@ -126,7 +123,7 @@ const AuthorBooks = (props) => {
           </svg>
         </button>
       </div>
-    </div>)
+    </div>
   );
 };
 

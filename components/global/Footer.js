@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="flex justify-center items-center content-center mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-6">
           <nav
-            aria-label="Footer Nav"
+            aria-label="Footer Navigation"
             className="rounded-3xl border-4 border-gray-900 p-6 dark:border-gray-700"
           >
             <ul className="flex flex-wrap justify-center items-center gap-8 sm:gap-6 text-sm font-bold">

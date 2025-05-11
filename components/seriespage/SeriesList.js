@@ -4,7 +4,7 @@ import CoverImage from "../global/CoverImage";
 
 const SeriesList = (props) => {
   return (
-    (<div id="seriesList">
+    <section id="seriesList">
       {props.books.map((data, i) => (
         <div key={i} className="max-w-[1820px]">
           <a href={data.bookURL}>
@@ -18,7 +18,8 @@ const SeriesList = (props) => {
                 </Link>
                 <Link
                   href={data.authorURL.replace("https://www.goodreads.com", "")}
-                  legacyBehavior>
+                  legacyBehavior
+                >
                   <p className="text-md hover:underline w-fit">{data.author}</p>
                 </Link>
 
@@ -85,7 +86,8 @@ const SeriesList = (props) => {
                 </Link>
                 <Link
                   href={data.authorURL.replace("https://www.goodreads.com", "")}
-                  legacyBehavior>
+                  legacyBehavior
+                >
                   <p className="text-md hover:underline w-fit">{data.author}</p>
                 </Link>
 
@@ -141,7 +143,7 @@ const SeriesList = (props) => {
           </a>
         </div>
       ))}
-    </div>)
+    </section>
   );
 };
 
