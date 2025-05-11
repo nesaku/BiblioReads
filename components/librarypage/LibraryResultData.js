@@ -4,10 +4,12 @@ import SmallLoader from "../global/SmallLoader";
 import BookList from "./BookList";
 import AuthorList from "./AuthorList";
 import EmptyLibrary from "./EmptyLibrary";
+import QuoteList from "./QuoteList";
 
 const LibraryResultData = ({ currentTab }) => {
   const [savedBooks, setSavedBooks] = useState({});
   const [savedAuthors, setSavedAuthors] = useState({});
+  const [savedQuotes, setSavedQuotes] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -44,31 +46,49 @@ const LibraryResultData = ({ currentTab }) => {
     getAuthors();
   }, []);
 
+  useEffect(() => {
+    const getQuotes = async () => {
+      const db = await openDB("library", 2, {
+        upgrade(db) {
+          if (!db.objectStoreNames.contains("quotes")) {
+            db.createObjectStore("quotes");
+          }
+        },
+      });
+      const quotes = await db.getAll("quotes");
+      setSavedQuotes(quotes);
+      setIsLoading(false);
+    };
+
+    getQuotes();
+  }, []);
+
   const currentTabs = {
     books: { component: BookList, data: savedBooks },
     authors: { component: AuthorList, data: savedAuthors },
-    // quotes: { component: QuotesList, data: savedQuotes },
+    quotes: { component: QuoteList, data: savedQuotes },
   };
-  return (<>
-    {isLoading ? (
-      <div className="pt-20">
-        <SmallLoader other={true} />
-      </div>
-    ) : (
-      (<>
-        {Object.entries(currentTabs).map(
-          ([tabKey, { component: Component, data }], i) =>
-            currentTab === tabKey && (
-              <div key={i}>
-                {Object.keys(data).length === 0 && (
-                  <EmptyLibrary currentTab={currentTab} />
-                )}
-                <Component libraryData={data} />
-              </div>
-            )
-        )}
-      </>)
-      /*  <>
+  return (
+    <>
+      {isLoading ? (
+        <div className="pt-20">
+          <SmallLoader other={true} />
+        </div>
+      ) : (
+        <>
+          {Object.entries(currentTabs).map(
+            ([tabKey, { component: Component, data }], i) =>
+              currentTab === tabKey && (
+                <div key={i}>
+                  {Object.keys(data).length === 0 && (
+                    <EmptyLibrary currentTab={currentTab} />
+                  )}
+                  <Component libraryData={data} />
+                </div>
+              )
+          )}
+        </>
+        /*  <>
         {currentTab === "books" && (
           <>
             {Object.keys(savedBooks).length === 0 && (
@@ -86,8 +106,9 @@ const LibraryResultData = ({ currentTab }) => {
           </>
         )}
       </> */
-    )}
-  </>);
+      )}
+    </>
+  );
 };
 
 export default LibraryResultData;

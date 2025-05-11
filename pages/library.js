@@ -26,26 +26,25 @@ const Library = () => {
             currentTab={selectedTab}
             startTab
           />
-          {
-            <LibraryTab
-              name="authors"
-              setTab={() => setSelectedTab("authors")}
-              currentTab={selectedTab}
-              endTab
-            /> /*
+          <LibraryTab
+            name="authors"
+            setTab={() => setSelectedTab("authors")}
+            currentTab={selectedTab}
+          />
           <LibraryTab
             name="quotes"
-            setTab={setSelectedTab}
+            setTab={() => setSelectedTab("quotes")}
             currentTab={selectedTab}
-           
+            endTab
           />
-                  <LibraryTab
+          {/*
+          <LibraryTab
             name="options"
             setTab={setSelectedTab}
             currentTab={selectedTab}
             endTab
-          /> */
-          }
+          />{" "}
+          */}
         </ul>
 
         <LibraryResultData currentTab={selectedTab} />

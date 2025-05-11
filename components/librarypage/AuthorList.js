@@ -42,6 +42,8 @@ const AuthorList = ({ libraryData }) => {
                       <CoverImage
                         src={data.image}
                         alt={`A head shot of ${data.name && data.name}`}
+                        width="98"
+                        height="148"
                       />
                     )}
                   </div>

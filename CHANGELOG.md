@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - May 12, 2025
+
+### Added
+
+- Add the quotes tab to the library page and saving quotes functionality
+
+### Fixed
+
+- Fix the author image border showing up while the image is still loading
+
 ## [3.1.1] - May 12, 2025
 
 ### Changed
@@ -25,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed the library page background not reaching the bottom of the page when more than three books are added
+- Fix the library page background not reaching the bottom of the page when more than three books are added
 
 ## [3.0.0] (Holo) - Dec 26, 2024
 

@@ -129,7 +129,7 @@ const AuthorResultData = ({ scrapedData }) => {
                   <CoverImage
                     src={scrapedData.image}
                     alt={scrapedData.name}
-                    extraClasses="mx-auto"
+                    extraClasses={`mx-auto ${!imageLoaded && "hidden"}`}
                     width="286"
                     height="446"
                     loading="eager"

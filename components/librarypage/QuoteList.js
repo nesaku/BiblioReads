@@ -1,0 +1,86 @@
+/* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from "react";
+import CoverImage from "../global/CoverImage";
+import { initializeDB } from "@/db/db";
+
+const QuoteList = ({ libraryData }) => {
+  const [savedQuoteAuthors, setSavedQuoteAuthors] = useState({});
+
+  useEffect(() => {
+    const fetchSavedQuoteAuthors = async () => {
+      try {
+        const db = await initializeDB();
+        const allSavedQuotes = await db.getAll("quotes");
+        const authorsWithSavedQuotes = {};
+        allSavedQuotes.forEach((quote) => {
+          if (quote.author) {
+            authorsWithSavedQuotes[quote.author] = true;
+          }
+        });
+        setSavedQuoteAuthors(authorsWithSavedQuotes);
+      } catch (error) {
+        console.error("Error fetching saved quote authors:", error);
+      }
+    };
+
+    fetchSavedQuoteAuthors();
+  }, []);
+
+  return (
+    <div
+      id="quoteList"
+      className="flex flex-col dark:text-gray-100/80 px-4 items-center justify-center"
+    >
+      {Object.values(libraryData)
+        .sort((a, b) => a.timestamp - b.timestamp)
+        .map((data, i) => {
+          if (Object.keys(data).length === 0) {
+            return null;
+          }
+
+          return (
+            <div key={i} className="max-w-[1000px] w-full">
+              <div className="flex items-center justify-between text-left mt-8 py-6 sm:p-8 bg-white/40 dark:bg-slate-800 rounded-2xl hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+                <div className="ml-8 sm:ml-16 w-48 sm:w-11/12">
+                  <h3 className="text-xl sm:text-2xl font-semibold px-2">
+                    {data.text}
+
+                    <a
+                      href={data.imgURL}
+                      className="text-sm text-normal  hover:underline"
+                    >
+                      <p> -{data.author}</p>
+                    </a>
+                  </h3>
+                  <div className="flex items-center mt-4 pr-2">
+                    <span className="capitalize text-sm">
+                      Added:{" "}
+                      {new Date(data.timestamp).toLocaleString("default", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                      })}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex mr-8">
+                  {data.img && (
+                    <CoverImage
+                      src={data.img}
+                      alt={`A head shot of ${data.author && data.author}`}
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+    </div>
+  );
+};
+
+export default QuoteList;
