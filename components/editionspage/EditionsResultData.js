@@ -5,39 +5,58 @@ import Link from "next/link";
 import SmallLoader from "../global/SmallLoader";
 
 const EditionResults = ({ scrapedData }) => {
-  const [selectedEdition, setSelectedEdition] = useState(null);
-  const [filteredData, setFilteredData] = useState({});
+  const [selectedEdition, setSelectedEdition] = useState("default");
+  const [filteredData, setFilteredData] = useState({editions: []});
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasMoreEditions, setHasMoreEditions] = useState(true);
+
+  const fetchData = async (selectedEdition, load_more = false) => {
+    setIsLoading(true);
+    const entries = selectedEdition === "default" ? scrapedData.editions.length : filteredData.editions.length
+    const page = load_more ?  Math.ceil(entries / 10) + 1 : 1
+    const res = await fetch(`/api/works/editions`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        queryURL: `${scrapedData.scrapeURL}?filter_by_format=${selectedEdition}&page=${page}&utf8=✓`,
+      }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.editions.length > 0) {
+        if (selectedEdition === "default") {
+          scrapedData.editions = scrapedData.editions.concat(data.editions)
+        } else {
+          setFilteredData({editions: load_more ? filteredData.editions.concat(data.editions) : data.editions})
+        }
+        setHasMoreEditions(true);
+      } else {
+        setHasMoreEditions(false);
+      }
+    } else {
+      setError(true);
+    }
+    setIsLoading(false);
+  };
 
   const editionChangeHandler = (e) => {
     const edition = e.target.value;
     setSelectedEdition(edition);
   };
-
+  
+  const nextPageHandler = () => {
+    fetchData(selectedEdition || "default", true);
+  };
+  
   useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      const res = await fetch(`/api/works/editions`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          queryURL: `${scrapedData.scrapeURL}?filter_by_format=${selectedEdition}&sort=avg_rating&utf8=✓`,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setFilteredData(data);
-        setIsLoading(false);
-      } else {
-        setError(true);
-        setIsLoading(false);
-      }
-    };
-
-    selectedEdition && selectedEdition != "default" && fetchData();
+    setHasMoreEditions(true);
+    if (selectedEdition && selectedEdition !== "default") {
+      setFilteredData({editions: []});
+      fetchData(selectedEdition, false);
+    }
   }, [selectedEdition]);
 
   return (
@@ -130,13 +149,38 @@ const EditionResults = ({ scrapedData }) => {
               An Error Has Occurred. Please Try Again Later.
             </p>
           )}
-          {filteredData.editions &&
-            filteredData.editions.length === 0 &&
-            selectedEdition != "default" && (
+          {!isLoading && 
+           filteredData.editions &&
+           filteredData.editions.length === 0 &&
+           selectedEdition != "default" && (
               <p className="pt-10 text-lg capitalize min-h-[42vh]">
                 There are no editions with the selected format.
               </p>
             )}
+          {(!(!isLoading && filteredData.editions && filteredData.editions.length === 0 && selectedEdition != "default")) && (
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={nextPageHandler}
+                disabled={isLoading || !hasMoreEditions}
+                className={`flex items-center px-6 py-3 rounded-lg font-semibold text-md transition duration-300 ${
+                  isLoading || !hasMoreEditions
+                    ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed"
+                    : "bg-rose-200 dark:bg-[#710e2a] hover:bg-rose-300 dark:hover:bg-rose-800"
+                } border-2 border-rose-800 dark:border-[#710e2a] hover:border-rose-600 dark:hover:border-rose-200`}
+              >
+                {isLoading ? (
+                  <>
+                    <SmallLoader height="4" />
+                    <span className="ml-2">Loading...</span>
+                  </>
+                ) : !hasMoreEditions ? (
+                  "No More Editions"
+                ) : (
+                  "Load More Editions"
+                )}
+              </button>
+            </div>
+          )}
         </>
       )}
     </div>)
