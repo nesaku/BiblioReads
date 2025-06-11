@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 
 const EditionScraper = async (req, res) => {
   if (req.method === "POST") {
-    const scrapeURL = req.body.queryURL.split("&")[0];
+    const scrapeURL = req.body.queryURL;
 
     try {
       const response = await fetch(`${scrapeURL}`, {
