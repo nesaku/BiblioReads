@@ -6,15 +6,18 @@ import SmallLoader from "../global/SmallLoader";
 
 const EditionResults = ({ scrapedData }) => {
   const [selectedEdition, setSelectedEdition] = useState("default");
-  const [filteredData, setFilteredData] = useState({editions: []});
+  const [filteredData, setFilteredData] = useState({ editions: [] });
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMoreEditions, setHasMoreEditions] = useState(true);
 
   const fetchData = async (selectedEdition, load_more = false) => {
     setIsLoading(true);
-    const entries = selectedEdition === "default" ? scrapedData.editions.length : filteredData.editions.length
-    const page = load_more ?  Math.ceil(entries / 10) + 1 : 1
+    const entries =
+      selectedEdition === "default"
+        ? scrapedData.editions.length
+        : filteredData.editions.length;
+    const page = load_more ? Math.ceil(entries / 10) + 1 : 1;
     const res = await fetch(`/api/works/editions`, {
       method: "POST",
       headers: {
@@ -28,9 +31,13 @@ const EditionResults = ({ scrapedData }) => {
       const data = await res.json();
       if (data.editions.length > 0) {
         if (selectedEdition === "default") {
-          scrapedData.editions = scrapedData.editions.concat(data.editions)
+          scrapedData.editions = scrapedData.editions.concat(data.editions);
         } else {
-          setFilteredData({editions: load_more ? filteredData.editions.concat(data.editions) : data.editions})
+          setFilteredData({
+            editions: load_more
+              ? filteredData.editions.concat(data.editions)
+              : data.editions,
+          });
         }
         setHasMoreEditions(true);
       } else {
@@ -46,21 +53,21 @@ const EditionResults = ({ scrapedData }) => {
     const edition = e.target.value;
     setSelectedEdition(edition);
   };
-  
+
   const nextPageHandler = () => {
     fetchData(selectedEdition || "default", true);
   };
-  
+
   useEffect(() => {
     setHasMoreEditions(true);
     if (selectedEdition && selectedEdition !== "default") {
-      setFilteredData({editions: []});
+      setFilteredData({ editions: [] });
       fetchData(selectedEdition, false);
     }
   }, [selectedEdition]);
 
   return (
-    (<div
+    <div
       id="editionResults"
       className="flex flex-col p-12 justify-center items-center text-center dark:text-gray-100/80"
     >
@@ -149,29 +156,44 @@ const EditionResults = ({ scrapedData }) => {
               An Error Has Occurred. Please Try Again Later.
             </p>
           )}
-          {!isLoading && 
-           filteredData.editions &&
-           filteredData.editions.length === 0 &&
-           selectedEdition != "default" && (
+          {!isLoading &&
+            filteredData.editions &&
+            filteredData.editions.length === 0 &&
+            selectedEdition != "default" && (
               <p className="pt-10 text-lg capitalize min-h-[42vh]">
                 There are no editions with the selected format.
               </p>
             )}
-          {(!(!isLoading && filteredData.editions && filteredData.editions.length === 0 && selectedEdition != "default")) && (
+          {!(
+            !isLoading &&
+            filteredData.editions &&
+            filteredData.editions.length === 0 &&
+            selectedEdition != "default"
+          ) && (
             <div className="flex justify-center mt-8">
               <button
                 onClick={nextPageHandler}
                 disabled={isLoading || !hasMoreEditions}
-                className={`flex items-center px-6 py-3 rounded-lg font-semibold text-md transition duration-300 ${
-                  isLoading || !hasMoreEditions
-                    ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed"
-                    : "bg-rose-200 dark:bg-[#710e2a] hover:bg-rose-300 dark:hover:bg-rose-800"
-                } border-2 border-rose-800 dark:border-[#710e2a] hover:border-rose-600 dark:hover:border-rose-200`}
+                className={`flex items-center px-6 py-3 rounded-lg font-semibold text-md transition duration-300 
+                  ${
+                    isLoading &&
+                    "cursor-not-allowed ring-2 ring-rose-400 dark:ring-[#710e2a]"
+                  }
+                   ${
+                     !hasMoreEditions &&
+                     "cursor-not-allowed ring ring-slate-400 bg-slate-300/30 dark:bg-slate-600 dark:ring-slate-700"
+                   }
+                  ${
+                    hasMoreEditions &&
+                    !isLoading &&
+                    "hover:ring hover:ring-rose-600 hover:bg-rose-300 dark:hover:bg-rose-900 ring ring-rose-400 dark:ring-[#710e2a]"
+                  }
+                  bg-white/40 dark:bg-slate-800 
+                  `}
               >
                 {isLoading ? (
                   <>
                     <SmallLoader height="4" />
-                    <span className="ml-2">Loading...</span>
                   </>
                 ) : !hasMoreEditions ? (
                   "No More Editions"
@@ -183,7 +205,7 @@ const EditionResults = ({ scrapedData }) => {
           )}
         </>
       )}
-    </div>)
+    </div>
   );
 };
 
