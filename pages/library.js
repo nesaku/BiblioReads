@@ -35,16 +35,13 @@ const Library = () => {
             name="quotes"
             setTab={() => setSelectedTab("quotes")}
             currentTab={selectedTab}
-            endTab
           />
-          {/*
           <LibraryTab
-            name="options"
-            setTab={setSelectedTab}
+            name="settings"
+            setTab={() => setSelectedTab("settings")}
             currentTab={selectedTab}
             endTab
-          />{" "}
-          */}
+          />
         </ul>
 
         <LibraryResultData currentTab={selectedTab} />

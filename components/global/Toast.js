@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Toast = ({ message = "" }) => {
+const Toast = ({ message = "", type = "info" }) => {
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -27,7 +27,7 @@ const Toast = ({ message = "" }) => {
   return (
     show && (
       <div className="fade-in fixed bottom-0 right-0 m-4 p-2 z-10">
-        {message.includes("added") ? (
+        {message.includes("added") || type === "success" ? (
           <div
             id="toast-success"
             className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg drop-shadow-lg shadow dark:text-gray-400 dark:bg-gray-800"
@@ -56,7 +56,7 @@ const Toast = ({ message = "" }) => {
               <CloseIcon />
             </button>
           </div>
-        ) : message.includes("error") ? (
+        ) : message.includes("error") || type === "error" ? (
           <div
             id="toast-error"
             className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg drop-shadow-lg shadow dark:text-gray-400 dark:bg-gray-800"

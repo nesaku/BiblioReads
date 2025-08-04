@@ -170,7 +170,7 @@ const ResultData = ({ scrapedData }) => {
                     fetchPriority="high"
                     loading="eager"
                     onLoad={() => setImageLoaded(true)}
-                    extraClasses="mx-auto"
+                    extraClasses={`mx-auto ${!imageLoaded && "hidden"}`}
                   />
                 </>
               )}

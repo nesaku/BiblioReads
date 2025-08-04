@@ -5,6 +5,7 @@ import BookList from "./BookList";
 import AuthorList from "./AuthorList";
 import EmptyLibrary from "./EmptyLibrary";
 import QuoteList from "./QuoteList";
+import LibrarySettings from "./LibrarySettings";
 
 const LibraryResultData = ({ currentTab }) => {
   const [savedBooks, setSavedBooks] = useState({});
@@ -98,6 +99,7 @@ const LibraryResultData = ({ currentTab }) => {
     books: { component: BookList, data: savedBooks },
     authors: { component: AuthorList, data: savedAuthors },
     quotes: { component: QuoteList, data: savedQuotes },
+    settings: { component: LibrarySettings, data: {} },
   };
   return (
     <>
@@ -109,7 +111,7 @@ const LibraryResultData = ({ currentTab }) => {
       )}
 
       {isLoading ? (
-        <div className="pt-30">
+        <div className="pt-32">
           <SmallLoader other={true} />
         </div>
       ) : (
@@ -118,9 +120,10 @@ const LibraryResultData = ({ currentTab }) => {
             ([tabKey, { component: Component, data }], i) =>
               currentTab === tabKey && (
                 <div key={i}>
-                  {Object.keys(data).length === 0 && (
-                    <EmptyLibrary currentTab={currentTab} />
-                  )}
+                  {currentTab != "settings" &&
+                    Object.keys(data).length === 0 && (
+                      <EmptyLibrary currentTab={currentTab} />
+                    )}
                   <Component libraryData={data} />
                 </div>
               )
