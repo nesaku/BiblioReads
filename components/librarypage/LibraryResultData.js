@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { openDB } from "idb";
+import { initializeDB } from "@/db/db";
 import SmallLoader from "../global/SmallLoader";
 import BookList from "./BookList";
 import AuthorList from "./AuthorList";
@@ -8,91 +8,39 @@ import QuoteList from "./QuoteList";
 import LibrarySettings from "./LibrarySettings";
 
 const LibraryResultData = ({ currentTab }) => {
-  const [savedBooks, setSavedBooks] = useState({});
-  const [savedAuthors, setSavedAuthors] = useState({});
-  const [savedQuotes, setSavedQuotes] = useState({});
+  const [savedBooks, setSavedBooks] = useState([]);
+  const [savedAuthors, setSavedAuthors] = useState([]);
+  const [savedQuotes, setSavedQuotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [triggerAlert, setTriggerAlert] = useState(false);
 
   useEffect(() => {
-    const getBooks = async () => {
+    const fetchLibraryData = async () => {
       setIsLoading(true);
       try {
-        const db = await openDB("library", 3, {
-          upgrade(db) {
-            if (!db.objectStoreNames.contains("books")) {
-              db.createObjectStore("books");
-            }
-          },
-        });
-        const books = await db.getAll("books");
+        const db = await initializeDB();
+
+        const [books, authors, quotes] = await Promise.all([
+          db.getAll("books"),
+          db.getAll("authors"),
+          db.getAll("quotes"),
+        ]);
+
         setSavedBooks(books);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error getting books:", error);
-        if (error.name === "NotFoundError") {
-          setTriggerAlert(true);
-          setIsLoading(false);
-          setSavedBooks([]);
-        }
-      }
-    };
-
-    getBooks();
-  }, []);
-
-  useEffect(() => {
-    const getAuthors = async () => {
-      setIsLoading(true);
-      try {
-        const db = await openDB("library", 3, {
-          upgrade(db) {
-            if (!db.objectStoreNames.contains("authors")) {
-              db.createObjectStore("authors");
-            }
-          },
-        });
-        const authors = await db.getAll("authors");
         setSavedAuthors(authors);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error getting authors:", error);
-        if (error.name === "NotFoundError") {
-          setTriggerAlert(true);
-          setIsLoading(false);
-          setSavedAuthors([]);
-        }
-      }
-    };
-
-    getAuthors();
-  }, []);
-
-  useEffect(() => {
-    const getQuotes = async () => {
-      setIsLoading(true);
-      try {
-        const db = await openDB("library", 3, {
-          upgrade(db) {
-            if (!db.objectStoreNames.contains("quotes")) {
-              db.createObjectStore("quotes");
-            }
-          },
-        });
-        const quotes = await db.getAll("quotes");
         setSavedQuotes(quotes);
-        setIsLoading(false);
       } catch (error) {
-        console.error("Error getting quotes:", error);
-        if (error.name === "NotFoundError") {
-          setTriggerAlert(true);
-          setIsLoading(false);
-          setSavedQuotes([]);
-        }
+        console.error("Error fetching library data:", error);
+        setTriggerAlert(true);
+        setSavedBooks([]);
+        setSavedAuthors([]);
+        setSavedQuotes([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    getQuotes();
+    fetchLibraryData();
   }, []);
 
   const currentTabs = {
@@ -101,6 +49,7 @@ const LibraryResultData = ({ currentTab }) => {
     quotes: { component: QuoteList, data: savedQuotes },
     settings: { component: LibrarySettings, data: {} },
   };
+
   return (
     <>
       {triggerAlert && (
@@ -120,10 +69,9 @@ const LibraryResultData = ({ currentTab }) => {
             ([tabKey, { component: Component, data }], i) =>
               currentTab === tabKey && (
                 <div key={i}>
-                  {currentTab != "settings" &&
-                    Object.keys(data).length === 0 && (
-                      <EmptyLibrary currentTab={currentTab} />
-                    )}
+                  {currentTab !== "settings" && data.length === 0 && (
+                    <EmptyLibrary currentTab={currentTab} />
+                  )}
                   <Component libraryData={data} />
                 </div>
               )

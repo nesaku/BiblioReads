@@ -1,23 +1,23 @@
 import { openDB } from "idb";
 
 export async function initializeDB() {
-  // console.log("Initializing DB");
   try {
-    return await openDB("library", 3, {
-      upgrade(db) {
-        // console.log("Running upgrade");
-        const objectStores = ["books", "authors", "quotes"];
-        objectStores.forEach((store) => {
+    const db = await openDB("library", 4, {
+      upgrade(db, oldVersion, newVersion, transaction) {
+        const requiredStores = ["books", "authors", "quotes"];
+
+        requiredStores.forEach((store) => {
           if (!db.objectStoreNames.contains(store)) {
             db.createObjectStore(store);
-            //console.log(`Object store '${store}' created`);
-          } else {
-            //console.log(`Object store '${store}' already exists`);
+            // console.log(`Created object store: ${store}`);
           }
         });
       },
     });
+
+    return db;
   } catch (error) {
     console.error("Error initializing database:", error);
+    throw error;
   }
 }

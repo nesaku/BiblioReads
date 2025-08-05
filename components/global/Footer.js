@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v3.4.0";
-  const versionSlug = "340---aug-4-2025";
+  const version = "v3.4.1";
+  const versionSlug = "341---aug-4-2025";
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {
