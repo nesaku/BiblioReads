@@ -15,24 +15,38 @@ const Slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/book-scraper`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          queryURL: `https://www.goodreads.com/book/show/${slug}`,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setScrapedData(data);
-      } else if (!res.ok) {
-        // TODO: come up with a better solution than retrying until a successful response is received
-        setTimeout(function () {
-          fetchData();
-        }, 2000);
-      } else {
+      const query = {
+        queryURL: `https://www.goodreads.com/book/show/${slug}`,
+      };
+
+      try {
+        // First try the old API if it doesn't work try the new one
+        // TODO: remove multiple scrapers
+        let res = await fetch("/api/book-scraper", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(query),
+        });
+
+        if (!res.ok) {
+          res = await fetch("/api/book-scraper-new", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(query),
+          });
+        }
+
+        if (res.ok) {
+          const data = await res.json();
+          setScrapedData(data);
+        } else {
+          setError(true);
+        }
+      } catch (error) {
         setError(true);
       }
     };

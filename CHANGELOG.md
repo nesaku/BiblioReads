@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.0] - Sep 29, 2025
+
+### Added
+
+- Add a new scraper that restores core book page functionality
+
+### Changed
+
+- Fetch the existing book-scraper API first, on error, fetch the new API
+
+### Fixed
+
+- Fix book pages not loading
+
+### TODO
+
+- Fix the similar books scraper API
+- Build a new reviews scraper API
+
 ## [3.4.1] - Aug 4, 2025
 
 ### Changed

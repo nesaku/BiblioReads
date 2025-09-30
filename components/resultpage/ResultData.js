@@ -382,16 +382,10 @@ const ResultData = ({ scrapedData }) => {
               <div className="flex justify-center lg:justify-start">
                 <div>
                   <span className="text-md">
-                    {scrapedData.ratingCount.includes("1")
-                      ? `${scrapedData.ratingCount}Rating`
-                      : `${scrapedData.ratingCount}Ratings`}{" "}
-                    &amp;{" "}
-                    {scrapedData.reviewsCount.includes("reviews")
-                      ? scrapedData.reviewsCount.split("reviews")[0]
-                      : scrapedData.reviewsCount.split("review")[0]}
-                    {scrapedData.reviewsCount.includes("reviews")
-                      ? "Reviews"
-                      : "Review"}
+                    {scrapedData.ratingCount}{" "}
+                    {scrapedData.ratingCount === "1" ? "Rating" : "Ratings"}{" "}
+                    &amp; {scrapedData.reviewsCount}{" "}
+                    {scrapedData.reviewsCount === "1" ? "Review" : "Reviews"}
                   </span>
                 </div>
               </div>
@@ -522,9 +516,8 @@ const ResultData = ({ scrapedData }) => {
         </div>
       )}
       <div className="flex flex-col text-center align-center items-center justify-center lg:text-left lg:block px-4 2xl:ml-[12vw] 2xl:mr-[vw] mt-2">
-        {scrapedData.quotesURL && scrapedData.quotesURL != "" && (
-          <SimilarBooks quotesURL={scrapedData.quotesURL} />
-        )}
+        {scrapedData.bookID && <SimilarBooks bookID={scrapedData.bookID} />}
+
         {scrapedData.reviews && scrapedData.reviews != "" && (
           <Reviews data={scrapedData.reviews} />
         )}

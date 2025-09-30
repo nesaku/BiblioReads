@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import SmallLoader from "../global/SmallLoader";
 import CoverImage from "../global/CoverImage";
 
+// TODO: Fix the similar books scraper
 // Instead of waiting for the similar books section to be lazy loaded, get the results directly from the Goodreads similar books page
-const SimilarBooks = ({ quotesURL, mobile }) => {
+const SimilarBooks = ({ bookID, mobile }) => {
   const [scrapedData, setScrapedData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,7 +20,7 @@ const SimilarBooks = ({ quotesURL, mobile }) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        queryURL: `${quotesURL.replace("/work/quotes/", "/book/similar/")}`,
+        queryURL: `https://goodreads.com/book/similar/${bookID}`,
       }),
     });
     if (res.ok) {
