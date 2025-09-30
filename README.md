@@ -1,3 +1,6 @@
+> [!WARNING]
+> This branch uses Next.js 12 and is deprecated. Please seen the [main](https://github.com/nesaku/BiblioReads/tree/main) branch for the latest version.
+
 <div align="center">
 <img src="./public/readme/logo.svg?raw=true" width="256" height="256" alt="">
 </div>
