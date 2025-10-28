@@ -10,12 +10,14 @@ const FormQuery = () => {
   // When the button is clicked/submitted push the input value to the search url
   const onSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.includes("http" || "www")) {
-      if (inputValue.includes("https://www.goodreads.com")) {
-        router.push(`${inputValue.replace("https://www.goodreads.com", "")}`);
-      } else {
-        setValidQuery(false);
-      }
+    if (inputValue.startsWith("https://www.goodreads.com")) {
+      router.push(inputValue.replace("https://www.goodreads.com", ""));
+    } else if (
+      inputValue.startsWith("http://") ||
+      inputValue.startsWith("https://") ||
+      inputValue.startsWith("www.")
+    ) {
+      setValidQuery(false);
     } else {
       router.push(`/search/${inputValue.replaceAll("/", "-")}`);
     }

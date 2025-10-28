@@ -2,14 +2,12 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 
 const Footer = () => {
-  const version = "v3.5.0";
-  const date = "sep-29-2025";
+  const version = "v3.5.1";
+  const date = "oct-27-2025";
 
   const versionSlug = `${version
     .replace(/^v/, "")
     .replaceAll(".", "")}---${date}`;
-
-  console.log(versionSlug);
 
   useEffect(() => {
     if (typeof sessionStorage !== "undefined") {

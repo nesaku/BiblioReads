@@ -516,7 +516,18 @@ const ResultData = ({ scrapedData }) => {
         </div>
       )}
       <div className="flex flex-col text-center align-center items-center justify-center lg:text-left lg:block px-4 2xl:ml-[12vw] 2xl:mr-[vw] mt-2">
-        {scrapedData.bookID && <SimilarBooks bookID={scrapedData.bookID} />}
+        {/* Make the SimilarBooks component work with both API response formatss */}
+        {(scrapedData.bookID || scrapedData.quotesURL) && (
+          <SimilarBooks
+            bookID={
+              scrapedData.bookID ||
+              scrapedData.quotesURL.replace(
+                "https://www.goodreads.com/work/quotes/",
+                ""
+              )
+            }
+          />
+        )}
 
         {scrapedData.reviews && scrapedData.reviews != "" && (
           <Reviews data={scrapedData.reviews} />

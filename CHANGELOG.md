@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.1] - Oct 27, 2025
+
+### Changed
+
+- Show the similar books when either API response format is returned
+- Improve search box filtering logic
+
 ## [3.5.0] - Sep 29, 2025
 
 ### Added
@@ -17,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix book pages not loading
+- Fix book pages not loading - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/35)
 
 ### TODO
 

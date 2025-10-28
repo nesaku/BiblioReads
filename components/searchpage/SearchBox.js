@@ -11,13 +11,19 @@ const SearchBox = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!inputValue.includes("https://")) {
+    if (inputValue.startsWith("https://www.goodreads.com")) {
+      router.push(inputValue.replace("https://www.goodreads.com", ""));
+    } else if (
+      inputValue.startsWith("http://") ||
+      inputValue.startsWith("https://") ||
+      inputValue.startsWith("www.")
+    ) {
+      setValidQuery(false);
+    } else {
       router.push({
         pathname: `/search/${inputValue.replaceAll("/", "-")}`,
-        query: { type: queryType ? queryType : "books" },
+        query: { type: queryType || "books" },
       });
-    } else {
-      setValidQuery(false);
     }
   };
 
@@ -106,7 +112,7 @@ const SearchBox = (props) => {
       </form>
       {validQuery === false && (
         <div id="formError">
-          <p className="mt-2 max-w-lg text-red-600/80 break-words">
+          <p className="mt-12 text-red-600/80 break-words">
             Please make sure you are not pasting in a URL. An example of a valid
             query is: <span className="underline">The Hobbit</span>
           </p>
