@@ -35,10 +35,18 @@ const BookScraper = async (req, res) => {
         })
         .toArray();
       const rating = $("div.RatingStatistics__rating").text().slice(0, 4);
-      const ratingCount = $('[data-testid="ratingsCount"]')
-        .text()
-        .split("rating")[0];
-      const reviewsCount = $('[data-testid="reviewsCount"]').text();
+      const ratingCount =
+        $('[data-testid="ratingsCount"]')
+          .first()
+          .text()
+          .match(/[\d,]+/)?.[0] || null;
+
+      const reviewsCount =
+        $('[data-testid="reviewsCount"]')
+          .first()
+          .text()
+          .match(/[\d,]+/)?.[0] || null;
+
       const desc = $('[data-testid="description"]').text();
       const genres = $('[data-testid="genresList"] > ul > span > span')
         .map((i, el) => $(el).find("span").text().replace("Genres", ""))

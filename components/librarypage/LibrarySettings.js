@@ -194,7 +194,10 @@ const LibrarySettings = () => {
 
       {/* Import Confirmation Modal */}
       {showImportModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+        <div
+          id="importModal"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20"
+        >
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
             <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
               Confirm Import
@@ -229,9 +232,12 @@ const LibrarySettings = () => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+        <div
+          id="deleteModal"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20"
+        >
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
-            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
+            <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">
               Confirm Deletion
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
@@ -239,7 +245,7 @@ const LibrarySettings = () => {
               <span className="font-bold">delete all library data</span>? This
               action cannot be undone.
             </p>
-            <div className="flex justify-end space-x-2">
+            <div className="flex justify-center space-x-2">
               <button
                 onClick={() => setShowDeleteModal(false)}
                 className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"

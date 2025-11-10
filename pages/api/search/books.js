@@ -38,7 +38,8 @@ const SearchScraper = async (req, res) => {
             .find(
               "tr > td:nth-child(2) > div > span.greyText.smallText.uitext > span.minirating"
             )
-            .text();
+            .text()
+            .match(/\d+\.\d{2}/)?.[0];
 
           const id = i + 1;
           return {

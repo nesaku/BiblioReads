@@ -106,7 +106,9 @@ const EditionResults = ({ scrapedData }) => {
             Editions:
           </h3>
           <div className="flex items-center mt-6">
-            <p className="mr-4">Format:</p>
+            <label htmlFor="edition" className="mr-4 font-medium">
+              Format:
+            </label>
             <select
               name="editionSelection"
               id="edition"

@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.2] - Nov 9, 2025
+
+### Added
+
+- Add a status route at /api/status
+
+### Changed
+
+- Modularize the version info
+
+### Fixed
+
+- Fix duplicate rating and review values shown on the book page
+- Fix text shown in the rating section on the search page
+- Fix confirmation modal button alignment
+
 ## [3.5.1] - Oct 27, 2025
 
 ### Changed
@@ -28,8 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### TODO
 
-- Fix the similar books scraper API
-- Build a new reviews scraper API
+- ~~Fix the similar books scraper API~~
+- ~~Build a new reviews scraper API~~
 
 ## [3.4.1] - Aug 4, 2025
 
