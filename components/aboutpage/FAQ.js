@@ -235,8 +235,8 @@ const FAQ = () => {
               >
                 privacy policy
               </a>{" "}
-              for more info. If you still don&apos;t trust us, feel free to take
-              a look at our{" "}
+              for more info. We believe in transparency, feel free to take a
+              look at our{" "}
               <a
                 className="text-blue-600 dark:text-blue-500 underline"
                 href="https://github.com/nesaku/BiblioReads"

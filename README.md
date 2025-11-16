@@ -220,9 +220,10 @@ docker run -d \
 
 ##### Docker-Compose:
 
-1. Download (or copy) `docker-compose.yml` from the repository
-2. Edit the default environment variables with your variables (Optional)
-3. Run the command `docker-compose up -d`
+1. Download (or copy) `docker-compose.yml` from [here](https://github.com/nesaku/BiblioReads-Docker/blob/main/docker-compose.yml).
+2. Edit or add environment variables to the `docker-compose.yml`
+   - A full list of environment variables can be found [here](https://github.com/nesaku/BiblioReads/blob/main/.env.local.example)
+3. Run the command `docker-compose up -d` to start the container
 
 #### More Information:
 
