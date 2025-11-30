@@ -1,5 +1,10 @@
 // Return higher resolution images
 export function cleanImageUrl(url) {
+  // Handle empty or undefined values
+  if (typeof url !== "string") {
+    return url || "";
+  }
+
   if (url.includes("._UY") || url.includes("._UX")) {
     return url;
   }

@@ -3,6 +3,7 @@ import CoverImage from "../global/CoverImage";
 import Meta from "../global/Meta";
 import ReadMore from "../resultpage/ReadMore";
 import NomineeGrid from "./NomineeGrid";
+import YearLinks from "./YearLinks";
 
 const WinnerPage = ({ scrapedData }) => {
   return (
@@ -14,6 +15,7 @@ const WinnerPage = ({ scrapedData }) => {
         <h1 className="font-bold text-5xl pt-4 mt-2 underline decoration-rose-600 capitalize">
           {scrapedData.genre} Of {scrapedData.scrapeURL.match(/\d{4}$/)}
         </h1>
+        <YearLinks scrapeURL={scrapedData.scrapeURL} />
       </div>
       <>
         {scrapedData.title && (
@@ -71,7 +73,7 @@ const WinnerPage = ({ scrapedData }) => {
             </div>
             <div
               id="winnerContent"
-              className="max-w-full md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 lg:p-0 text-center lg:text-left"
+              className="max-w-full md:max-w-full lg:w-1/2 mx-auto lg:mx-0 p-4 text-center lg:text-left"
             >
               <div id="numberOfVotes">
                 <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline decoration-rose-600">

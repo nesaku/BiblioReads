@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import CoverImage from "../global/CoverImage";
+import YearLinks from "./YearLinks";
 
 const GenreGrid = ({ scrapedData }) => {
   return (
@@ -9,12 +9,13 @@ const GenreGrid = ({ scrapedData }) => {
         id="awardHeading"
         className="flex flex-col justify-center items-center dark:text-gray-100/80 text-center "
       >
-        {/* The heading text can't be extracted dynamically because this it an image in the 2024 Awards */}
+        {/* The heading text can't be extracted dynamically because this it an image for the latest award year */}
         <h1 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 capitalize">
           Readers' Favorite Books
           {scrapedData.scrapeURL.match(/\d{4}$/) &&
-            `Of ${scrapedData.scrapeURL.match(/\d{4}$/)}`}
+            ` Of ${scrapedData.scrapeURL.match(/\d{4}$/)}`}
         </h1>
+        <YearLinks scrapeURL={scrapedData.scrapeURL} />
       </div>
       <div
         id="genreGrid"
@@ -33,10 +34,21 @@ const GenreGrid = ({ scrapedData }) => {
                 )}
 
                 <div className="relative group m-4">
-                  <CoverImage
-                    src={data.cover}
-                    alt={`${data.title} book cover`}
-                  />
+                  {data.cover ? (
+                    <CoverImage
+                      src={data.cover}
+                      alt={`${data.title} book cover`}
+                    />
+                  ) : (
+                    <img
+                      alt=""
+                      width="98"
+                      height="148"
+                      class="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 "
+                      loading="lazy"
+                      src="/cover-placeholder.svg"
+                    />
+                  )}
                   {/*          <span
                     className="absolute left-1/2 bottom-full -translate-x-1/2 mb-2 hidden group-hover:block 
                    bg-gray-800 text-white text-sm px-2 py-1 rounded-md shadow-lg 

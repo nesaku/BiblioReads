@@ -57,19 +57,19 @@ const WinnerPage = async (req, res) => {
           const $el = $(el);
           const url = $el
             .find(
-              "div.answerWrapper > div.tooltipTrigger > a.pollAnswer__bookLink"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink"
             )
             .attr("href")
             .split("?")[0];
           const numberOfVotes = $el.find("strong.result").text();
           const cover = $el
             .find(
-              "div.answerWrapper > div.tooltipTrigger > a.pollAnswer__bookLink > img"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img"
             )
             .attr("src");
           const title = $el
             .find(
-              "div.answerWrapper > div.tooltipTrigger > a.pollAnswer__bookLink > img"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img"
             )
             .attr("alt");
           const id = i + 1;

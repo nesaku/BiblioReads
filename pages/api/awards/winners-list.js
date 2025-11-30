@@ -21,12 +21,12 @@ const WinnersList = async (req, res) => {
           const $el = $(el);
           const name = $el.find("a > h4").text();
           const url = $el.find("a").attr("href");
-          const cover = $el
-            .find("div.category__winnerImageContainer > img")
-            .attr("src");
-          const title = $el
-            .find("div.category__winnerImageContainer > img")
-            .attr("alt");
+          // Match both regular and audio books
+          const $winnerIMG = $el.find(
+            "div[class^='category__winnerImageContainer'] img"
+          );
+          const cover = $winnerIMG.attr("src");
+          const title = $winnerIMG.attr("alt");
           const id = i + 1;
           return {
             id: id,

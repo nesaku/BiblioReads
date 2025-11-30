@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.3] - Nov 29, 2025
+
+### Added
+
+- Add a year selector for Choice Award categories
+
+### Fixed
+
+- Fix 2024 Choice Awards not working - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/37)
+- Fix the audiobook Choice Award category not being shown
+
 ## [3.5.2] - Nov 9, 2025
 
 ### Added

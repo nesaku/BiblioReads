@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import CoverImage from "../global/CoverImage";
 
 const NomineeGrid = ({ nominees }) => {
@@ -36,8 +35,8 @@ const NomineeGrid = ({ nominees }) => {
                   </span>
                 </div>
                 {data.numberOfVotes && (
-                  <div>
-                    <h3 className="text-center text-gray-300">
+                  <div id="numberOfVotes">
+                    <h3 className="text-center text-gray-600 dark:text-gray-300">
                       {data.numberOfVotes}
                     </h3>
                   </div>
