@@ -17,7 +17,7 @@
     "cheerio": "^1.0.0",
     "dompurify": "^3.2.3",
     "idb": "^8.0.1",
-    "next": "15.1.2",
+    "next": "^15.1.9",
     "next-runtime-env": "^1.7.4",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
