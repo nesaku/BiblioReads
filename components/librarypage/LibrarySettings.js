@@ -93,7 +93,7 @@ const LibrarySettings = () => {
 
       const insertTx = db.transaction(
         ["books", "authors", "quotes"],
-        "readwrite"
+        "readwrite",
       );
       for (const [store, items] of Object.entries(data)) {
         items.forEach((item) => {
@@ -167,7 +167,7 @@ const LibrarySettings = () => {
           accept="application/json"
           ref={fileInputRef}
           onChange={handleFileSelect}
-          className="font-medium w-sm px-2 py-10 text-center text-gray-900 bg-gray-50/80 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600"
+          className="font-medium max-w-xs md:max-w-sm px-2 py-10 text-center text-gray-900 bg-gray-50/80 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600"
         />
         <label className="flex items-center mt-4 text-md font-medium text-gray-700 dark:text-gray-300">
           <input
