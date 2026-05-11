@@ -1,13 +1,13 @@
 import { env } from "next-runtime-env";
 
-const cheerio = require("cheerio");
-
 const SearchScraper = async (req, res) => {
   if (req.method === "POST") {
     const scrapeURL = req.body.queryURL.split("&")[0];
+    const query = scrapeURL.split("q=")[1] || "";
+    const apiURL = `https://www.goodreads.com/book/auto_complete?format=json&q=${query}`; // Use the Goodreads autocomplete API
 
     try {
-      const response = await fetch(`${scrapeURL}`, {
+      const response = await fetch(apiURL, {
         method: "GET",
         headers: new Headers({
           "User-Agent":
@@ -15,55 +15,35 @@ const SearchScraper = async (req, res) => {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
         }),
       });
-      const htmlString = await response.text();
-      const $ = cheerio.load(htmlString);
-      const numberOfResults = $(".leftContainer > h3").text();
-      const result = $("table > tbody > tr")
-        .map((i, el) => {
-          const $el = $(el);
-          const cover = $el.find("tr > td > a > img").attr("src");
-          const title = $el.find("tr > td:nth-child(2) > a > span").text();
-          const bookURL = $el.find("tr > td:nth-child(2) > a").attr("href");
-          const author = $el
-            .find(
-              "tr > td:nth-child(2) > span[itemprop = 'author'] > div > a > span[itemprop = 'name']"
-            )
-            .html();
-          const authorURL = $el
-            .find("tr > td:nth-child(2) > span[itemprop = 'author'] > div > a")
-            .attr("href")
-            .replace("https://www.goodreads.com", "")
-            .split("?")[0];
-          const rating = $el
-            .find(
-              "tr > td:nth-child(2) > div > span.greyText.smallText.uitext > span.minirating"
-            )
-            .text()
-            .match(/\d+\.\d{2}/)?.[0];
 
-          const id = i + 1;
-          return {
-            id: id,
-            cover: cover,
-            title: title,
-            bookURL: bookURL,
-            author: author,
-            authorURL: authorURL,
-            rating: rating,
-          };
-        })
-        .toArray();
+      const data = await response.json();
+
+      // Convert Goodreads JSON to match existing format
+      const result = data.map((item, i) => ({
+        id: i + 1,
+        cover: item.imageUrl,
+        title: item.title,
+        bookURL: item.bookUrl,
+        author: item.author?.name || "",
+        authorURL: item.author?.profileUrl?.replace(
+          "https://www.goodreads.com",
+          "",
+        ),
+        rating: item.avgRating ? String(item.avgRating) : "0.00",
+      }));
+
+      const numberOfResults = `${result.length} results`;
 
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",
         source: "https://github.com/nesaku/biblioreads",
-        scrapeURL: scrapeURL,
+        apiURL: apiURL,
         searchType: "books",
         numberOfResults: numberOfResults,
         result: result,
@@ -74,7 +54,7 @@ const SearchScraper = async (req, res) => {
       console.error("An error has occurred with the scraper.");
       return res.json({
         status: "Error - Invalid Query",
-        scrapeURL: scrapeURL,
+        apiURL: apiURL,
       });
     }
   } else {

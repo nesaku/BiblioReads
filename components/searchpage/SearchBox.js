@@ -79,18 +79,12 @@ const SearchBox = (props) => {
           </div>
         </div>
         {/* TODO: See line 22 on pages/search/[...slug].js */}
-        <SearchByButton
+        {/* <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
           value="books"
           text="Books"
         />
-        {/*         <SearchByButton
-          setQueryType={setQueryType}
-          queryType={queryType}
-          value="people"
-          text="People"
-        /> */}
         <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
@@ -102,7 +96,15 @@ const SearchBox = (props) => {
           queryType={queryType}
           value="lists"
           text="Lists"
-        />
+        /> */}
+
+        {/*         <SearchByButton
+          setQueryType={setQueryType}
+          queryType={queryType}
+          value="people"
+          text="People"
+        /> */}
+
         {/*      <SearchByButton
           setQueryType={setQueryType}
           queryType={queryType}
