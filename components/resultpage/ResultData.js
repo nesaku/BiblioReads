@@ -108,7 +108,7 @@ const ResultData = ({ scrapedData }) => {
               <Link
                 href={scrapedData.seriesURL.replace(
                   "https://www.goodreads.com",
-                  ""
+                  "",
                 )}
                 className="text-md italic text-center underline hover:text-rose-600"
               >
@@ -203,7 +203,7 @@ const ResultData = ({ scrapedData }) => {
                         target="_blank"
                         rel="noreferrer"
                         href={`https://www.amazon.com/s?k=${encodeURIComponent(
-                          scrapedData.title
+                          scrapedData.title,
                         )}`}
                         className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
                       >
@@ -214,7 +214,7 @@ const ResultData = ({ scrapedData }) => {
                         target="_blank"
                         rel="noreferrer"
                         href={`https://www.barnesandnoble.com/s/${encodeURIComponent(
-                          scrapedData.title
+                          scrapedData.title,
                         )}`}
                         className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
                       >
@@ -225,7 +225,7 @@ const ResultData = ({ scrapedData }) => {
                         target="_blank"
                         rel="noreferrer"
                         href={`https://www.abebooks.com/servlet/SearchResults?kn=${encodeURIComponent(
-                          scrapedData.title
+                          scrapedData.title,
                         )}`}
                         className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
                       >
@@ -236,7 +236,7 @@ const ResultData = ({ scrapedData }) => {
                         target="_blank"
                         rel="noreferrer"
                         href={`https://www.amazon.com/s?k=${encodeURIComponent(
-                          scrapedData.title
+                          scrapedData.title,
                         )}&i=audible`}
                         className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
                       >
@@ -246,7 +246,7 @@ const ResultData = ({ scrapedData }) => {
                         target="_blank"
                         rel="noreferrer"
                         href={`https://search.worldcat.org/search?q=${encodeURIComponent(
-                          scrapedData.title
+                          scrapedData.title,
                         )}&itemType=book`}
                         className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
                       >
@@ -262,7 +262,7 @@ const ResultData = ({ scrapedData }) => {
                     <Link
                       href={scrapedData.seriesURL.replace(
                         "https://www.goodreads.com",
-                        ""
+                        "",
                       )}
                       className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-2 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                     >
@@ -290,10 +290,7 @@ const ResultData = ({ scrapedData }) => {
                   {scrapedData.quotes != "Add" && (
                     <div className="mt-4 items-center justify-center flex">
                       <Link
-                        href={scrapedData.quotesURL.replace(
-                          "https://www.goodreads.com",
-                          ""
-                        )}
+                        href={`/work/quotes/${scrapedData.legacyBookID}`}
                         className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                       >
                         {scrapedData.quotes}{" "}
@@ -317,12 +314,7 @@ const ResultData = ({ scrapedData }) => {
                   {scrapedData.questions != "Ask" && (
                     <div className="mt-4 items-center justify-center flex">
                       <Link
-                        href={scrapedData.questionsURL
-                          .replace("questions", "")
-                          .replace(
-                            "https://www.goodreads.com/book",
-                            "/work/questions"
-                          )}
+                        href={`/work/questions/${scrapedData.legacyBookID}`}
                         className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                       >
                         {scrapedData.questions}{" "}
@@ -437,12 +429,7 @@ const ResultData = ({ scrapedData }) => {
                 <span className="flex justify-center lg:justify-start mx-auto lg:mx-0 max-w-md text-md">
                   {scrapedData.bookEdition}
                 </span>
-                <Link
-                  href={scrapedData.quotesURL.replace(
-                    "https://www.goodreads.com/work/quotes/",
-                    "/work/editions/"
-                  )}
-                >
+                <Link href={`/work/editions/${scrapedData.legacyBookID}`}>
                   <p className="mt-3 mb-4 mx-auto lg:mx-0 max-w-md underline hover:text-rose-600">
                     View More Editions &#8250;
                   </p>
@@ -516,16 +503,10 @@ const ResultData = ({ scrapedData }) => {
         </div>
       )}
       <div className="flex flex-col text-center align-center items-center justify-center lg:text-left lg:block px-4 2xl:ml-[12vw] 2xl:mr-[vw] mt-2">
-        {/* Make the SimilarBooks component work with both API response formatss */}
-        {(scrapedData.bookID || scrapedData.quotesURL) && (
+        {scrapedData.bookID && (
           <SimilarBooks
-            bookID={
-              scrapedData.bookID ||
-              scrapedData.quotesURL.replace(
-                "https://www.goodreads.com/work/quotes/",
-                ""
-              )
-            }
+            bookID={scrapedData.bookID}
+            legacyBookID={scrapedData.legacyBookID}
           />
         )}
 

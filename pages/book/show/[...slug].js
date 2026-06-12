@@ -20,8 +20,6 @@ const Slug = () => {
       };
 
       try {
-        // First try the old API if it doesn't work try the new one
-        // TODO: remove multiple scrapers
         let res = await fetch("/api/book-scraper", {
           method: "POST",
           headers: {
@@ -29,16 +27,6 @@ const Slug = () => {
           },
           body: JSON.stringify(query),
         });
-
-        if (!res.ok) {
-          res = await fetch("/api/book-scraper-new", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(query),
-          });
-        }
 
         if (res.ok) {
           const data = await res.json();

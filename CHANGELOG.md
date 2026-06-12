@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - June 12, 2026
+
+### Changed
+
+- Use GraphQL for some API routes
+- Rewrite the book-scraper and similar-scraper while keeping the existing data response shape/format
+- Deprecate unused scrapers and move into a separate deprecated API route path
+- Update the ResultData component to work with the new book scraper response
+
+### Fixed
+
+- Fix the internal server error on book pages - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/44)
+
+### TODO
+
+- Build a new reviews scraper
+- Update the reviews UI, to work with the new scraper
+- Fix rating distribution, reviewBreakdown is already returned by book-scraper
+- Improve pagination handling and loading more reviews
+
 ## [3.6.1] - June 6, 2026
 
 ### Fixed
