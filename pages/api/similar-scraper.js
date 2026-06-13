@@ -68,9 +68,8 @@ const SimilarScraper = async (req, res) => {
     return res.json({ status: "Error 405 - Method Not Allowed" });
   }
 
-  const scrapeURL = `https://www.goodreads.com/book/show/${req.body.legacyBookID ?? ""}`;
+  const scrapeURL = `https://www.goodreads.com/book/similar/${req.body.legacyBookID ?? ""}`;
   const bookID = req.body.bookID ?? "";
-(scrapeURL, bookID);
 
   const userAgent =
     env("NEXT_PUBLIC_USER_AGENT") ||

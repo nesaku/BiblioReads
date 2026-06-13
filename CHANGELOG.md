@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - June 13, 2026
+
+### Added
+
+- Build a new reviews scraper
+- Add the ability to load more reviews
+
+### Changed
+
+- Update the reviews UI, to work with the new scraper
+- Use infinite scroll instead of pagination
+
+### Fixed
+
+- Fix the rating distribution/reviewBreakdown not being shown
+
 ## [4.0.0] - June 12, 2026
 
 ### Changed
@@ -20,10 +36,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### TODO
 
-- Build a new reviews scraper
-- Update the reviews UI, to work with the new scraper
-- Fix rating distribution, reviewBreakdown is already returned by book-scraper
-- Improve pagination handling and loading more reviews
+- ~~Build a new reviews scraper~~
+- ~~Update the reviews UI, to work with the new scraper~~
+- ~~Fix rating distribution, reviewBreakdown is already returned by book-scraper~~
+- ~~Improve pagination handling and loading more reviews~~
 
 ## [3.6.1] - June 6, 2026
 

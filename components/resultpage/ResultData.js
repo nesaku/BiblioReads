@@ -88,6 +88,22 @@ const ResultData = ({ scrapedData }) => {
     </svg>
   );
 
+  const arrowSVG = (
+    <svg
+      aria-hidden="true"
+      className="w-5 h-5 ml-2 -mr-1"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+
   return (
     <>
       {scrapedData.title && (
@@ -161,18 +177,16 @@ const ResultData = ({ scrapedData }) => {
                 />
               )}
               {scrapedData.cover && (
-                <>
-                  <CoverImage
-                    src={scrapedData.cover}
-                    alt={scrapedData.title}
-                    width="620"
-                    height="962"
-                    fetchPriority="high"
-                    loading="eager"
-                    onLoad={() => setImageLoaded(true)}
-                    extraClasses={`mx-auto ${!imageLoaded && "hidden"}`}
-                  />
-                </>
+                <CoverImage
+                  src={scrapedData.cover}
+                  alt={scrapedData.title}
+                  width="620"
+                  height="962"
+                  fetchPriority="high"
+                  loading="eager"
+                  onLoad={() => setImageLoaded(true)}
+                  extraClasses={`mx-auto ${!imageLoaded && "hidden"}`}
+                />
               )}
 
               <div className="flex flex-col mt-0 lg:mt-16 xl:mt-0">
@@ -199,60 +213,39 @@ const ResultData = ({ scrapedData }) => {
                   </button>
                   {isOpened && (
                     <div className="absolute top-24 w-72 rounded-md shadow-lg mt-1 text-md font-medium bg-rose-50 dark:bg-gray-800 ring-2 ring-slate-400 dark:ring-slate-200 dark:ring-opacity-20">
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://www.amazon.com/s?k=${encodeURIComponent(
-                          scrapedData.title,
-                        )}`}
-                        className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
-                      >
-                        Amazon
-                        {externalSVG}
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://www.barnesandnoble.com/s/${encodeURIComponent(
-                          scrapedData.title,
-                        )}`}
-                        className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
-                      >
-                        Barnes &amp; Noble
-                        {externalSVG}
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://www.abebooks.com/servlet/SearchResults?kn=${encodeURIComponent(
-                          scrapedData.title,
-                        )}`}
-                        className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
-                      >
-                        AbeBooks
-                        {externalSVG}
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://www.amazon.com/s?k=${encodeURIComponent(
-                          scrapedData.title,
-                        )}&i=audible`}
-                        className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
-                      >
-                        Audible {externalSVG}
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={`https://search.worldcat.org/search?q=${encodeURIComponent(
-                          scrapedData.title,
-                        )}&itemType=book`}
-                        className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
-                      >
-                        Libraries
-                        {externalSVG}
-                      </a>
+                      {[
+                        {
+                          label: "Amazon",
+                          href: `https://www.amazon.com/s?k=${encodeURIComponent(scrapedData.title)}`,
+                        },
+                        {
+                          label: "Barnes & Noble",
+                          href: `https://www.barnesandnoble.com/s/${encodeURIComponent(scrapedData.title)}`,
+                        },
+                        {
+                          label: "AbeBooks",
+                          href: `https://www.abebooks.com/servlet/SearchResults?kn=${encodeURIComponent(scrapedData.title)}`,
+                        },
+                        {
+                          label: "Audible",
+                          href: `https://www.amazon.com/s?k=${encodeURIComponent(scrapedData.title)}&i=audible`,
+                        },
+                        {
+                          label: "Libraries",
+                          href: `https://search.worldcat.org/search?q=${encodeURIComponent(scrapedData.title)}&itemType=book`,
+                        },
+                      ].map(({ label, href }) => (
+                        <a
+                          key={label}
+                          target="_blank"
+                          rel="noreferrer"
+                          href={href}
+                          className="flex justify-between items-center px-8 py-3 hover:bg-rose-300/80 dark:hover:bg-slate-700"
+                        >
+                          {label}
+                          {externalSVG}
+                        </a>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -267,19 +260,7 @@ const ResultData = ({ scrapedData }) => {
                       className="flex justify-center items-center h-16 w-72 py-5 px-4 mt-2 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-2xl shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                     >
                       Browse This Series
-                      <svg
-                        aria-hidden="true"
-                        className="w-5 h-5 ml-2 -mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
+                      {arrowSVG}
                     </Link>
                   </div>
                 )}
@@ -287,56 +268,33 @@ const ResultData = ({ scrapedData }) => {
                   id="quotes-questions"
                   className="flex justify-around mt-2 mb-4"
                 >
-                  {scrapedData.quotes != "Add" && (
+                  {scrapedData.quotes !== "Add" && scrapedData.quotesURL && (
                     <div className="mt-4 items-center justify-center flex">
                       <Link
                         href={`/work/quotes/${scrapedData.legacyBookID}`}
                         className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                       >
                         {scrapedData.quotes}{" "}
-                        {scrapedData.quotes == "1" ? "Quote" : "Quotes"}
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 ml-2 -mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
+                        {scrapedData.quotes === "1" ? "Quote" : "Quotes"}
+                        {arrowSVG}
                       </Link>
                     </div>
                   )}
-                  {scrapedData.questions != "Ask" && (
-                    <div className="mt-4 items-center justify-center flex">
-                      <Link
-                        href={`/work/questions/${scrapedData.legacyBookID}`}
-                        className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
-                      >
-                        {scrapedData.questions}{" "}
-                        {scrapedData.questions == "1"
-                          ? "Question"
-                          : "Questions"}
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 ml-2 -mr-1"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
+                  {scrapedData.questions !== "Ask" &&
+                    scrapedData.questionsURL && (
+                      <div className="mt-4 items-center justify-center flex">
+                        <Link
+                          href={`/work/questions/${scrapedData.legacyBookID}`}
+                          className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                         >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </Link>
-                    </div>
-                  )}
+                          {scrapedData.questions}{" "}
+                          {scrapedData.questions === "1"
+                            ? "Question"
+                            : "Questions"}
+                          {arrowSVG}
+                        </Link>
+                      </div>
+                    )}
                 </div>
               </div>
             </div>
@@ -347,7 +305,7 @@ const ResultData = ({ scrapedData }) => {
           >
             <div id="bookRating">
               <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline decoration-rose-600">
-                Rating:{" "}
+                Rating:
               </h2>
               <div className="flex justify-center lg:justify-start">
                 <svg
@@ -362,25 +320,19 @@ const ResultData = ({ scrapedData }) => {
                     fill="#ED8A19"
                   />
                 </svg>
-                <div>
-                  <span className="ml-2 text-md">{scrapedData.rating}</span>
-                </div>
+                <span className="ml-2 text-md">{scrapedData.rating}</span>
               </div>
             </div>
             <div id="bookRatingsAndReviews">
               <h2 className="font-bold text-2xl mb-2 mt-8 lg:mt-0 underline decoration-rose-600">
-                Number Of Ratings & Reviews:
+                Number Of Ratings &amp; Reviews:
               </h2>
-              <div className="flex justify-center lg:justify-start">
-                <div>
-                  <span className="text-md">
-                    {scrapedData.ratingCount}{" "}
-                    {scrapedData.ratingCount === "1" ? "Rating" : "Ratings"}{" "}
-                    &amp; {scrapedData.reviewsCount}{" "}
-                    {scrapedData.reviewsCount === "1" ? "Review" : "Reviews"}
-                  </span>
-                </div>
-              </div>
+              <span className="text-md">
+                {scrapedData.ratingCount}{" "}
+                {scrapedData.ratingCount === "1" ? "Rating" : "Ratings"} &amp;{" "}
+                {scrapedData.reviewsCount}{" "}
+                {scrapedData.reviewsCount === "1" ? "Review" : "Reviews"}
+              </span>
             </div>
 
             {scrapedData.desc && (
@@ -389,7 +341,7 @@ const ResultData = ({ scrapedData }) => {
                 className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
               >
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                  Description:{" "}
+                  Description:
                 </h2>
 
                 {scrapedData.desc.length < 600 ? (
@@ -399,26 +351,12 @@ const ResultData = ({ scrapedData }) => {
                 )}
               </div>
             )}
-            {scrapedData.genres != "" && (
-              <div
-                id="bookGenres"
-                className={
-                  scrapedData.genres
-                    ? "max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
-                    : "hidden"
-                }
-              >
+            {scrapedData.genres?.length > 0 && (
+              <div className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0">
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                  Genres:{" "}
+                  Genres:
                 </h2>
-                <span>
-                  {JSON.stringify(scrapedData.genres)
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace(",", "")
-                    .replaceAll(",", ", ")
-                    .replaceAll('"', "")}
-                </span>
+                <span>{scrapedData.genres.join(", ")}</span>
               </div>
             )}
             {scrapedData.bookEdition && (
@@ -444,59 +382,50 @@ const ResultData = ({ scrapedData }) => {
                 {scrapedData.publishDate}
               </span>
             </div>
-            <div id="bookISBN">
-              <h2
-                className={
-                  scrapedData.isbn
-                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
-                    : "hidden"
-                }
+            {scrapedData.isbn && (
+              <div id="bookISBN">
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  ISBN:
+                </h2>
+                <span className="text-md">{scrapedData.isbn}</span>
+              </div>
+            )}
+            {scrapedData.lang && (
+              <div id="bookLang">
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Language:
+                </h2>
+                <span className="text-md">{scrapedData.lang}</span>
+              </div>
+            )}
+            {scrapedData.scrapeURL && (
+              <div
+                id="bookURL"
+                className="hidden sm:flex flex-col mb-4 mx-auto"
               >
-                ISBN:
-              </h2>
-              <span className="text-md">{scrapedData.isbn}</span>
-            </div>
-            <div id="bookLang">
-              <h2
-                className={
-                  scrapedData.lang
-                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
-                    : "hidden"
-                }
-              >
-                Language:{" "}
-              </h2>
-              <span className="text-md">{scrapedData.lang}</span>
-            </div>
-            <div id="bookURL" className="hidden sm:flex flex-col mb-4 mx-auto">
-              <h2
-                className={
-                  scrapedData.scrapeURL
-                    ? "font-bold text-2xl my-2 capitalize underline decoration-rose-600"
-                    : "hidden"
-                }
-              >
-                Goodreads URL:{" "}
-              </h2>
-              <a
-                className="text-blue-600 dark:text-blue-500 underline truncate max-w-lg mx-auto lg:mx-0"
-                target="_blank"
-                rel="noreferrer"
-                href={
-                  scrapedData.scrapeURL.includes("https://www.goodreads.com")
-                    ? scrapedData.scrapeURL
-                    : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`
-                }
-              >
-                <p className="text-sm">
-                  {scrapedData.scrapeURL.includes("https://www.goodreads.com")
-                    ? scrapedData.scrapeURL
-                    : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
-                </p>
-              </a>
-            </div>
+                <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                  Goodreads URL:
+                </h2>
+                <a
+                  className="text-blue-600 dark:text-blue-500 underline truncate max-w-lg mx-auto lg:mx-0"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={
+                    scrapedData.scrapeURL.includes("https://www.goodreads.com")
+                      ? scrapedData.scrapeURL
+                      : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`
+                  }
+                >
+                  <p className="text-sm">
+                    {scrapedData.scrapeURL.includes("https://www.goodreads.com")
+                      ? scrapedData.scrapeURL
+                      : `https://www.goodreads.com/book/show/${scrapedData.scrapeURL}`}
+                  </p>
+                </a>
+              </div>
+            )}
 
-            {scrapedData.reviewBreakdown && scrapedData.reviews != 0 && (
+            {scrapedData.reviewBreakdown && (
               <ReviewBreakdown data={scrapedData} />
             )}
           </div>
@@ -510,8 +439,11 @@ const ResultData = ({ scrapedData }) => {
           />
         )}
 
-        {scrapedData.reviews && scrapedData.reviews != "" && (
-          <Reviews data={scrapedData.reviews} />
+        {scrapedData.resourceID && (
+          <Reviews
+            resourceID={scrapedData.resourceID}
+            legacyBookID={scrapedData.legacyBookID}
+          />
         )}
       </div>
     </>

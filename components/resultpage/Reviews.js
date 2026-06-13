@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Pagination } from "@nextui-org/pagination";
+import { useState, useEffect, useRef, useCallback } from "react";
 import ReviewCard from "./ReviewCard";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
@@ -13,73 +12,131 @@ const Reviews = (props) => {
 
   const [searchText, setSearchText] = useState("");
 
-  const [pagination, setPagination] = useState({
-    data: props.data,
-    offset: 0,
-    numberPerPage: 6,
-    pageCount: 0,
-    currentPage: 1,
-    currentData: [],
-    isFading: false,
-  });
+  const [reviews, setReviews] = useState([]);
+  const [nextPageToken, setNextPageToken] = useState(null);
+  const [totalReviewCount, setTotalReviewCount] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [hasFetchedOnce, setHasFetchedOnce] = useState(false);
 
-  // Pagination styling
-  const customStyles = {
-    wrapper: "flex capitalize justify-center items-center mb-10 mt-20 text-md",
-    item: "m-2 p-3 rounded-md font-semibold text-md bg-rose-50 dark:bg-gray-800 hover:bg-rose-300 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600",
-    activeItem: "text-rose-600 dark:text-rose-600", // Ensure full coverage with background color
-    cursor: "p-2 font-semibold",
-    disabled: "text-gray-500 cursor-not-allowed",
-  };
+  const loaderRef = useRef(null);
 
+  // Map filter values to numeric ratings
+  const filterStarValue = filterStars
+    ? parseInt(filterStars.match(/\d+/)?.[0], 10)
+    : undefined;
+
+  const fetchReviews = useCallback(
+    async (pageToken) => {
+      if (!props.resourceID) return;
+
+      setLoading(true);
+      try {
+        const res = await fetch("/api/reviews-scraper", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            resourceID: props.resourceID,
+            legacyBookID: props.legacyBookID,
+            nextPageToken: pageToken,
+          }),
+        });
+        const data = await res.json();
+
+        if (data.status !== "Received" || !data.reviews) {
+          setError(true);
+          return;
+        }
+
+        setReviews((prev) =>
+          pageToken ? [...prev, ...data.reviews] : data.reviews,
+        );
+        setNextPageToken(data.nextPageToken ?? null);
+        if (totalReviewCount === null) setTotalReviewCount(data.totalCount);
+      } catch (err) {
+        console.error("Failed to fetch reviews:", err);
+        setError(true);
+      } finally {
+        setLoading(false);
+        setHasFetchedOnce(true);
+      }
+    },
+    [props.resourceID, props.legacyBookID, totalReviewCount],
+  );
+
+  // Initial fetch on mount
   useEffect(() => {
-    setPagination((prevState) => ({
-      ...prevState,
-      pageCount: Math.ceil(prevState.data.length / prevState.numberPerPage),
-      currentData: prevState.data.slice(
-        pagination.offset,
-        pagination.offset + pagination.numberPerPage
-      ),
-    }));
-  }, [pagination.numberPerPage, pagination.offset]);
+    if (props.resourceID && !hasFetchedOnce) {
+      fetchReviews(null);
+    }
+  }, [props.resourceID, hasFetchedOnce, fetchReviews]);
 
-  const handlePageClick = (pageNumber) => {
-    setPagination({ ...pagination, isFading: true });
+  // Infinite scroll by keeping track of the element near the bottom of the list
+  useEffect(() => {
+    if (!showReviews) return;
+    const sentinel = loaderRef.current;
+    if (!sentinel) return;
 
-    const offset = (pageNumber - 1) * pagination.numberPerPage;
-
-    setTimeout(() => {
-      setPagination((prevState) => ({
-        ...prevState,
-        offset,
-        currentPage: pageNumber,
-        currentData: prevState.data.slice(
-          offset,
-          offset + pagination.numberPerPage
-        ),
-        isFading: false, // Trigger fade-in effect
-      }));
-    }, 20);
-  };
-
-  const renderPaginationItem = ({
-    ref,
-    value,
-    isActive,
-    className,
-    setPage,
-  }) => {
-    const activeClass = isActive ? customStyles.activeItem : "";
-    return (
-      <li
-        ref={ref}
-        className={`${className} ${activeClass}`}
-        onClick={() => setPage(value)}
-      >
-        {value}
-      </li>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          nextPageToken &&
+          !loading &&
+          filterStars === undefined &&
+          sortBy === undefined &&
+          searchText === ""
+        ) {
+          fetchReviews(nextPageToken);
+        }
+      },
+      { rootMargin: "200px" },
     );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [
+    showReviews,
+    nextPageToken,
+    loading,
+    filterStars,
+    sortBy,
+    searchText,
+    fetchReviews,
+  ]);
+
+  // Filtering, searching, and sorting to the reviews loaded 
+  const getDisplayedReviews = () => {
+    let data = [...reviews];
+
+    if (filterStarValue !== undefined) {
+      data = data.filter((review) => review.rating === filterStarValue);
+    }
+
+    if (searchText) {
+      data = data.filter((review) =>
+        review.text?.toLowerCase().includes(searchText.toLowerCase()),
+      );
+    }
+
+    if (sortBy === "popular") {
+      data.sort((a, b) => (b.likeCount || 0) - (a.likeCount || 0));
+    } else if (sortBy === "new-old") {
+      data.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      );
+    } else if (sortBy === "old-new") {
+      data.sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+      );
+    }
+
+    return data;
   };
+
+  const displayedReviews = getDisplayedReviews();
 
   return (
     <>
@@ -88,31 +145,44 @@ const Reviews = (props) => {
           Reviews:
         </h2>
 
-        <button
-          type="button"
-          onClick={() => {
-            showReviews ? setShowReviews(false) : setShowReviews(true);
-          }}
-          className="flex m-auto lg:mx-0 py-4 lg:py-5 px-3 lg:px-16 mt-6 mb-8 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
-        >
-          {showReviews ? "Hide" : "Show"} Reviews
-          {!showReviews && (
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 ml-2 -mr-1 hidden lg:block"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          )}
-        </button>
+        {loading && reviews.length === 0 && (
+          <p className="text-center text-gray-500 dark:text-gray-400 mt-4">
+            Loading reviews…
+          </p>
+        )}
 
+        {error && reviews.length === 0 && (
+          <p className="text-center text-gray-500 dark:text-gray-400 mt-4">
+            Could not load reviews.
+          </p>
+        )}
+
+        {reviews.length > 0 && (
+          <button
+            type="button"
+            onClick={() => {
+              showReviews ? setShowReviews(false) : setShowReviews(true);
+            }}
+            className="flex m-auto lg:mx-0 py-4 lg:py-5 px-3 lg:px-16 mt-6 mb-8 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+          >
+            {showReviews ? "Hide" : "Show"} Reviews
+            {!showReviews && (
+              <svg
+                aria-hidden="true"
+                className="w-5 h-5 ml-2 -mr-1 hidden lg:block"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            )}
+          </button>
+        )}
         {showReviews && (
           <div id="reviews">
             <div className="flex flex-col xl:flex-row justify-center lg:justify-start xl:justify-between items-center lg:items-start">
@@ -215,6 +285,7 @@ const Reviews = (props) => {
                       ? "form-control block w-48 lg:w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-400 dark:text-gray-600 bg-gray-300 dark:bg-gray-600 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-rose-600 focus:outline-none cursor-not-allowed"
                       : "form-control block w-48 lg:w-[360px] m-0 px-3 py-1.5 text-base font-normal text-gray-900 dark:text-gray-200 bg-rose-50 dark:bg-gray-800 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-900 focus:bg-gray-200 focus:border-rose-600 focus:outline-none"
                   }
+                  value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   disabled={filterStars || sortBy}
                 />
@@ -252,277 +323,63 @@ const Reviews = (props) => {
               </div>
             </div>
 
-            {/* If popular sort order and star filter is set, order by default and then filter by stars */}
-            {filterStars &&
-              sortBy === "popular" &&
-              props.data
-                .sort((a, b) => a.id > b.id)
-                .map(
-                  (data, i) =>
-                    data.stars === filterStars && (
-                      <div
-                        id="review"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                        key={i}
-                      >
-                        <ReviewCard
-                          mobile={false}
-                          image={data.image}
-                          showAvatars={showAvatars}
-                          author={data.author}
-                          date={data.date}
-                          stars={data.stars}
-                          text={data.text}
-                          likes={data.likes}
-                        />
-                      </div>
-                    )
-                )}
+            <div id="review-list">
+              {displayedReviews.map((review) => (
+                <div
+                  className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
+                  key={review.id}
+                >
+                  <ReviewCard
+                    mobile={false}
+                    showAvatars={showAvatars}
+                    reviewer={review.reviewer}
+                    createdAt={review.createdAt}
+                    rating={review.rating}
+                    text={review.text}
+                    likeCount={review.likeCount}
+                  />
+                </div>
+              ))}
 
-            {/* If popular sort order is set but no star filter, then order by default */}
-            {filterStars === undefined &&
-              sortBy === "popular" &&
-              props.data
-                .sort((a, b) => a.id > b.id)
-                .map((data, i) => (
-                  <div
-                    id="sort-popular"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                    key={i}
-                  >
-                    <ReviewCard
-                      mobile={false}
-                      image={data.image}
-                      showAvatars={showAvatars}
-                      author={data.author}
-                      date={data.date}
-                      stars={data.stars}
-                      text={data.text}
-                      likes={data.likes}
-                    />
-                  </div>
-                ))}
-
-            {/* If new-old sort order and star filter is set, order by date and then filter by stars */}
-            {filterStars &&
-              sortBy === "new-old" &&
-              props.data
-                .sort(
-                  (a, b) =>
-                    new Date(a.date).getTime() - new Date(b.date).getTime()
-                )
-                .reverse()
-                .map(
-                  (data, i) =>
-                    data.stars === filterStars && (
-                      <div
-                        id="filter-sort-new-old"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                        key={i}
-                      >
-                        <ReviewCard
-                          mobile={false}
-                          image={data.image}
-                          showAvatars={showAvatars}
-                          author={data.author}
-                          date={data.date}
-                          stars={data.stars}
-                          text={data.text}
-                          likes={data.likes}
-                        />
-                      </div>
-                    )
-                )}
-
-            {/* If old-new sort order and star filter is set, order by date and then filter by stars */}
-            {filterStars &&
-              sortBy === "old-new" &&
-              props.data
-                .sort(
-                  (a, b) =>
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
-                )
-                .reverse()
-                .map(
-                  (data, i) =>
-                    data.stars === filterStars && (
-                      <div
-                        id="filter-sort-old-new"
-                        className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                        key={i}
-                      >
-                        <ReviewCard
-                          mobile={false}
-                          image={data.image}
-                          showAvatars={showAvatars}
-                          author={data.author}
-                          date={data.date}
-                          stars={data.stars}
-                          text={data.text}
-                          likes={data.likes}
-                        />
-                      </div>
-                    )
-                )}
-
-            {/* If new-old sort order is set but no star filter, then order by date */}
-            {filterStars === undefined &&
-              sortBy === "new-old" &&
-              props.data
-                .sort(
-                  (a, b) =>
-                    new Date(a.date).getTime() - new Date(b.date).getTime()
-                )
-                .reverse()
-                .map((data, i) => (
-                  <div
-                    id="sort-new-old"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                    key={i}
-                  >
-                    <ReviewCard
-                      mobile={false}
-                      image={data.image}
-                      showAvatars={showAvatars}
-                      author={data.author}
-                      date={data.date}
-                      stars={data.stars}
-                      text={data.text}
-                      likes={data.likes}
-                    />
-                  </div>
-                ))}
-
-            {/* If old-new sort order is set but no star filter, then order by date */}
-            {filterStars === undefined &&
-              sortBy === "old-new" &&
-              props.data
-                .sort(
-                  (a, b) =>
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
-                )
-                .reverse()
-                .map((data, i) => (
-                  <div
-                    id="sort-old-new"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                    key={i}
-                  >
-                    <ReviewCard
-                      mobile={false}
-                      image={data.image}
-                      showAvatars={showAvatars}
-                      author={data.author}
-                      date={data.date}
-                      stars={data.stars}
-                      text={data.text}
-                      likes={data.likes}
-                    />
-                  </div>
-                ))}
-
-            {/* If sort order is not set, then filter by stars */}
-            {sortBy === undefined &&
-              filterStars &&
-              props.data.map(
-                (data, i) =>
-                  data.stars === filterStars && (
-                    <div
-                      id="filter-stars"
-                      className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                      key={i}
-                    >
-                      <ReviewCard
-                        mobile={false}
-                        image={data.image}
-                        showAvatars={showAvatars}
-                        author={data.author}
-                        date={data.date}
-                        stars={data.stars}
-                        text={data.text}
-                        likes={data.likes}
-                      />
-                    </div>
-                  )
+              {displayedReviews.length === 0 && !loading && hasFetchedOnce && (
+                <p className="text-center my-6 text-gray-700 dark:text-gray-300">
+                  No reviews match your filters.
+                </p>
               )}
-            {/* If sort order and star filter are not set and the search box is used, then display default */}
-            {searchText &&
+            </div>
+
+            {/* Sentinel element used to trigger loading more reviews via infinite scroll */}
+            {filterStars === undefined &&
+              sortBy === undefined &&
+              searchText === "" && (
+                <div ref={loaderRef} className="h-10 w-full" />
+              )}
+
+            {loading && (
+              <p className="text-center my-4 text-gray-700 dark:text-gray-300">
+                Loading more reviews...
+              </p>
+            )}
+
+            {!loading &&
+              !nextPageToken &&
+              hasFetchedOnce &&
               filterStars === undefined &&
               sortBy === undefined &&
-              props.data
-                .filter((data) => {
-                  if (searchText == "") {
-                    return data;
-                  } else if (
-                    data.text.toLowerCase().includes(searchText.toLowerCase())
-                  ) {
-                    return data;
-                  }
-                })
-                .map((data, i) => (
-                  <div
-                    id="search-filter"
-                    className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                    key={i}
-                  >
-                    <ReviewCard
-                      mobile={false}
-                      image={data.image}
-                      showAvatars={showAvatars}
-                      author={data.author}
-                      date={data.date}
-                      stars={data.stars}
-                      text={data.text}
-                      likes={data.likes}
-                    />
-                  </div>
-                ))}
+              searchText === "" && (
+                <p className="text-center my-4 text-gray-500 dark:text-gray-400">
+                  No more reviews to load.
+                </p>
+              )}
 
-            {/* If sort order, star filter and search box are not set, then display default */}
-            {searchText === "" &&
+            {totalReviewCount !== null &&
               filterStars === undefined &&
-              sortBy === undefined && (
-                <div id="pagination">
-                  <div
-                    className={`pagination-content ${
-                      pagination.isFading ? "fade-out" : "fade-in"
-                    }`}
-                  >
-                    {pagination.currentData &&
-                      pagination.currentData.map((data, i) => (
-                        <div
-                          id="default"
-                          className="mx-auto lg:mx-0 my-2 p-4 bg-white bg-opacity-30 dark:bg-opacity-60 dark:bg-slate-800 dark:backdrop-blur-xl dark:drop-shadow-lg rounded-lg shadow"
-                          key={i}
-                        >
-                          <ReviewCard
-                            mobile={false}
-                            image={data.image}
-                            showAvatars={showAvatars}
-                            author={data.author}
-                            date={data.date}
-                            stars={data.stars}
-                            text={data.text}
-                            likes={data.likes}
-                          />
-                        </div>
-                      ))}
-                    <Pagination
-                      total={pagination.pageCount}
-                      initialPage={pagination.currentPage}
-                      onChange={handlePageClick}
-                      showShadow
-                      color="primary"
-                      classNames={{
-                        wrapper: customStyles.wrapper,
-                        item: customStyles.item,
-                        cursor: customStyles.cursor,
-                        disabled: customStyles.disabled,
-                      }}
-                      renderItem={renderPaginationItem}
-                    />
-                  </div>
-                </div>
+              sortBy === undefined &&
+              searchText === "" && (
+                <p className="text-center text-sm text-gray-400 dark:text-gray-500 mb-10">
+                  Showing {reviews.length.toLocaleString()} of{" "}
+                  {totalReviewCount.toLocaleString()} reviews
+                </p>
               )}
           </div>
         )}

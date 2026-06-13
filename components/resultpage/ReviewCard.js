@@ -9,80 +9,56 @@ const ReviewCard = (props) => {
     setIsReadMore(!isReadMore);
   };
 
-  // Display the appropriate number of stars based on the starVal props
-  function Stars(props) {
-    const starVal = props.starVal;
-    if (starVal === "Rating 5 out of 5") {
-      return (
-        <>
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-        </>
-      );
-    }
-    if (starVal === "Rating 4 out of 5") {
-      return (
-        <>
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-        </>
-      );
-    }
-    if (starVal === "Rating 3 out of 5") {
-      return (
-        <>
-          <StarIcon />
-          <StarIcon />
-          <StarIcon />
-        </>
-      );
-    }
-    if (starVal === "Rating 2 out of 5") {
-      return (
-        <>
-          <StarIcon />
-          <StarIcon />
-        </>
-      );
-    }
-    if (starVal === "Rating 1 out of 5") {
-      return (
-        <>
-          <StarIcon />
-        </>
-      );
-    }
-    if (starVal === undefined) {
+  // Display the appropriate number of stars based on the numeric rating
+  function Stars({ rating }) {
+    if (!rating) {
       return <span>&zwnj;</span>;
     }
-    return <span>Unknown</span>;
+    return (
+      <>
+        {Array.from({ length: rating }).map((_, i) => (
+          <StarIcon key={i} />
+        ))}
+      </>
+    );
   }
+
+  const sanitizeText = (text) =>
+    DOMPurify.sanitize(
+      text
+        .replaceAll(
+          "https://images.gr-assets.com",
+          "/img?url=https://images.gr-assets.com",
+        )
+        .replaceAll(
+          "https://i.gr-assets.com",
+          "/img?url=https://i.gr-assets.com",
+        )
+        .replaceAll(".gif", ".gif&n=-1"),
+    );
+
+  const { reviewer, rating, text, createdAt, likeCount } = props;
 
   return (
     <>
-      {props.author && (
+      {reviewer && (
         <div>
           <div className="flex justify-between items-center mt-2 ml-6">
             <div className="flex items-center">
               {props.showAvatars && (
                 <div className="mr-2 w-12 h-12 overflow-hidden shadow rounded-full border-gray-500">
-                  {props.image && (
+                  {reviewer.avatar && (
                     <picture>
                       <source
-                        srcSet={`/img?url=${props.image}&output=webp&maxage=30d`}
+                        srcSet={`/img?url=${reviewer.avatar}&output=webp&maxage=30d`}
                         type="image/webp"
                       />
                       <source
-                        srcSet={`/img?url=${props.image}&maxage=30d`}
+                        srcSet={`/img?url=${reviewer.avatar}&maxage=30d`}
                         type="image/jpeg"
                       />
                       <img
-                        src={`/img?url=${props.image}&maxage=30d`}
+                        src={`/img?url=${reviewer.avatar}&maxage=30d`}
                         alt=""
                         loading="lazy"
                       />
@@ -93,14 +69,14 @@ const ReviewCard = (props) => {
 
               <span className="text-slate-800 dark:text-gray-100 group">
                 <span className="text-md font-bold underline">
-                  {props.author}
+                  {reviewer.name}
                 </span>
-                <span className="text-sm">&nbsp;- {props.date}</span>
+                <span className="text-sm">&nbsp;- {createdAt}</span>
               </span>
             </div>
 
             <div className="flex items-center px-3 py-2 group mr-2 mt-1">
-              <Stars starVal={props.stars} />
+              <Stars rating={rating} />
             </div>
           </div>
           <div className="mt-8 space-y-8">
@@ -111,22 +87,11 @@ const ReviewCard = (props) => {
                   props.mobile ? "max-w-4xl" : "max-w-none"
                 } text-left`}
               >
-                {props.text &&
-                  (props.text.length < 600 ? (
+                {text &&
+                  (text.length < 600 ? (
                     <span
                       dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                          props.text
-                            .replaceAll(
-                              "https://images.gr-assets.com",
-                              "/img?url=https://images.gr-assets.com"
-                            )
-                            .replaceAll(
-                              "https://i.gr-assets.com",
-                              "/img?url=https://i.gr-assets.com"
-                            )
-                            .replaceAll(".gif", ".gif&n=-1")
-                        ),
+                        __html: sanitizeText(text),
                       }}
                     />
                   ) : (
@@ -138,18 +103,7 @@ const ReviewCard = (props) => {
                             : "block w-72 sm:w-full overflow-hidden"
                         }
                         dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(
-                            props.text
-                              .replaceAll(
-                                "https://images.gr-assets.com",
-                                "/img?url=https://images.gr-assets.com"
-                              )
-                              .replaceAll(
-                                "https://i.gr-assets.com",
-                                "/img?url=https://i.gr-assets.com"
-                              )
-                              .replaceAll(".gif", ".gif&n=-1")
-                          ),
+                          __html: sanitizeText(text),
                         }}
                       />
                       <span
@@ -159,18 +113,7 @@ const ReviewCard = (props) => {
                             : "hidden"
                         }
                         dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(
-                            props.text
-                              .replaceAll(
-                                "https://images.gr-assets.com",
-                                "/img?url=https://images.gr-assets.com"
-                              )
-                              .replaceAll(
-                                "https://i.gr-assets.com",
-                                "/img?url=https://i.gr-assets.com"
-                              )
-                              .replaceAll(".gif", ".gif&n=-1")
-                          ),
+                          __html: sanitizeText(text),
                         }}
                       />
                       <span
@@ -184,7 +127,7 @@ const ReviewCard = (props) => {
               </div>
             </div>
           </div>
-          {props.likes && (
+          {!!likeCount && (
             <div
               id="review-likes"
               className="flex align-middle items-center mt-4"
@@ -212,7 +155,7 @@ const ReviewCard = (props) => {
               </div>
               <div>
                 <p className="ml-1 text-slate-800 dark:text-gray-100">
-                  {props.likes}
+                  {likeCount}
                 </p>
               </div>
             </div>
