@@ -138,12 +138,19 @@ const ResultData = ({ scrapedData }) => {
               <span className="font-semibold">By:</span>{" "}
               {scrapedData.author.map((data, i) => (
                 <span key={i}>
+                  {i > 0 && ", "}
                   <a
                     className="text-md hover:underline hover:text-rose-600"
                     href={data.url}
                   >
-                    {(i ? ", " : "") + data.name}
+                    {data.name}
                   </a>
+                  {data.role && data.role !== "Author" && (
+                    <span className="text-sm text-gray-500 italic">
+                      {" "}
+                      ({data.role})
+                    </span>
+                  )}
                 </span>
               ))}
             </div>
@@ -379,23 +386,35 @@ const ResultData = ({ scrapedData }) => {
                 Publishing Date:
               </h2>
               <span className="flex justify-center lg:justify-start mx-auto lg:mx-0 max-w-md text-md">
-                {scrapedData.publishDate}
+                {scrapedData.publishDate}{" "}
+                {scrapedData.publisher && `by ${scrapedData.publisher}`}
               </span>
             </div>
-            {scrapedData.isbn && (
+
+            {scrapedData.isbn13 ? (
               <div id="bookISBN">
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                   ISBN:
                 </h2>
-                <span className="text-md">{scrapedData.isbn}</span>
+                <span className="text-md">{scrapedData.isbn13}</span>
               </div>
+            ) : (
+              scrapedData.asin && (
+                <div id="bookASIN">
+                  <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
+                    ISBN:
+                  </h2>
+                  <span className="text-md">{scrapedData.isbn13}</span>
+                </div>
+              )
             )}
-            {scrapedData.lang && (
+
+            {scrapedData.language && (
               <div id="bookLang">
                 <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
                   Language:
                 </h2>
-                <span className="text-md">{scrapedData.lang}</span>
+                <span className="text-md">{scrapedData.language}</span>
               </div>
             )}
             {scrapedData.scrapeURL && (

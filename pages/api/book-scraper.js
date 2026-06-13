@@ -29,9 +29,22 @@ const BOOK_QUERY = `
         publicationTime
         publisher
         asin
+        isbn
         isbn13
+        language {
+         name
+        }
       }
       primaryContributorEdge {
+        node {
+          id
+          legacyId
+          name
+          webUrl
+        }
+        role
+      }
+      secondaryContributorEdges {
         node {
           id
           legacyId
@@ -129,9 +142,11 @@ const BookScraper = async (req, res) => {
     const resourceID = bookData.work.id;
 
     const authorEdge = bookData.primaryContributorEdge;
+    const secondaryEdges = bookData.secondaryContributorEdges ?? [];
     const workData = bookData.work;
     const ratingStats = workData?.stats;
     const seriesData = bookData.bookSeries?.[0]?.series ?? null;
+    const seriesPosition = bookData.bookSeries?.[0]?.userPosition ?? null;
     const quotesData = workData?.quotes ?? null;
     const questionsData = workData?.questions ?? null;
 
@@ -157,14 +172,22 @@ const BookScraper = async (req, res) => {
       bookData.bookGenres?.map((g) => g.genre?.name?.trim()).filter(Boolean) ??
       [];
 
+    // Build an author list with primary contributor then secondary contributors
     const author = [
       {
         id: 1,
         name: authorEdge?.node?.name ?? null,
+        role: authorEdge?.role ?? null,
         url: authorEdge?.node?.webUrl
           ? new URL(authorEdge.node.webUrl).pathname
           : null,
       },
+      ...secondaryEdges.map((edge, index) => ({
+        id: index + 2,
+        name: edge?.node?.name ?? null,
+        role: edge?.role ?? null,
+        url: edge?.node?.webUrl ? new URL(edge.node.webUrl).pathname : null,
+      })),
     ];
     const result = {
       status: "Received",
@@ -179,6 +202,7 @@ const BookScraper = async (req, res) => {
       seriesURL: seriesData?.webUrl
         ? new URL(seriesData.webUrl).pathname
         : null,
+      seriesPosition,
       workURL: bookData.webUrl ?? null,
       title: bookData.title,
       author,
@@ -191,9 +215,14 @@ const BookScraper = async (req, res) => {
       publishDate: bookData.details?.publicationTime
         ? new Date(bookData.details.publicationTime).toDateString()
         : null,
+      publisher: bookData.details?.publisher,
+      language: bookData.details?.language.name,
+      asin: bookData.details?.asin,
+      isbn: bookData.details?.isbn,
+      isbn13: bookData.details?.isbn13 ?? null,
       related: [], // Moved to the SimilarBooks scraper
-      reviewBreakdown,
       reviews: [], // Moved to the Reviews scraper
+      reviewBreakdown,
       quotes: quotesCount,
       quotesURL,
       questions: questionsCount,
