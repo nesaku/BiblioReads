@@ -5,7 +5,7 @@ const GRAPHQL_URL =
   "https://kxbwmqov6jgg3daaamb744ycu4.appsync-api.us-east-1.amazonaws.com/graphql";
 
 const API_KEY =
-  env("NEXT_PUBLIC_GRAPHQL_API_KEY") || "da2-xpgsdydkbregjhpr6ejzqdhuwy";
+  env("NEXT_PUBLIC_GRAPHQL_API_KEY") || "da2-d2fyuybwsbf3poyquvbp2mbiwu";
 
 const REVIEWS_QUERY = `
   query getReviews($filters: BookReviewsFilterInput!, $pagination: PaginationInput) {
