@@ -11,7 +11,7 @@ const GenreGrid = ({ scrapedData }) => {
       >
         {/* The heading text can't be extracted dynamically because this it an image for the latest award year */}
         <h1 className="font-bold text-5xl pt-4 my-2 underline decoration-rose-600 capitalize">
-          Readers' Favorite Books
+          Readers&apos; Favorite Books
           {scrapedData.scrapeURL.match(/\d{4}$/) &&
             ` Of ${scrapedData.scrapeURL.match(/\d{4}$/)}`}
         </h1>
@@ -44,7 +44,7 @@ const GenreGrid = ({ scrapedData }) => {
                       alt=""
                       width="98"
                       height="148"
-                      class="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 "
+                      className="rounded-lg border-2 shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 "
                       loading="lazy"
                       src="/cover-placeholder.svg"
                     />

@@ -8,10 +8,26 @@ body {
   /* background-color: rgb(255 241 242); */
 }
 
+:focus-visible {
+  outline: 3px solid rgba(244, 63, 94, 0.75);
+  outline-offset: 3px;
+}
+
 @media (prefers-color-scheme: dark) {
   html,
   body {
     background-color: rgb(15 23 42);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -33,7 +33,7 @@ const SearchBox = (props) => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} noValidate>
         {props.main && (
           <h1 className="text-5xl md:text-6xl text-black dark:text-gray-200/80 font-semibold capitalize mb-10">
             Search For A Book Or Quote:
@@ -51,6 +51,8 @@ const SearchBox = (props) => {
                 type="text"
                 name="search"
                 aria-label="Search"
+                aria-invalid={!validQuery}
+                aria-describedby={validQuery ? undefined : "searchFormError"}
                 placeholder="The Hobbit"
                 className="rounded-md mx-10 py-3 px-5 text-left text-black dark:text-gray-200/90 text-sm bg-slate-200 dark:bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-slate-700"
                 value={inputValue}
@@ -59,13 +61,18 @@ const SearchBox = (props) => {
               />
             </div>
 
-            <button className="flex items-center mt-10 my-6 ont-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-4 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+            <button
+              type="submit"
+              className="flex items-center mt-10 my-6 font-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-4 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300 dark:focus-visible:ring-rose-600"
+            >
               <svg
                 className="mr-2 -ml-1 w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
               >
                 <path
                   strokeLinecap="round"
@@ -113,7 +120,7 @@ const SearchBox = (props) => {
         /> */}
       </form>
       {validQuery === false && (
-        <div id="formError">
+        <div id="searchFormError" role="alert" aria-live="assertive">
           <p className="mt-12 text-red-600/80 break-words">
             Please make sure you are not pasting in a URL. An example of a valid
             query is: <span className="underline">The Hobbit</span>

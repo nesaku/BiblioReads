@@ -35,7 +35,7 @@ const FormQuery = () => {
           </h2>
         </div>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} noValidate>
           <div className="flex flex-col items-center justify-center text-center">
             <div className="flex flex-col justify-center items-center">
               <h3 className="text-xl sm:text-2xl text-gray-900 dark:text-gray-200/80 font-semibold mb-10">
@@ -45,6 +45,8 @@ const FormQuery = () => {
                 type="text"
                 name="search"
                 aria-label="Search"
+                aria-invalid={!validQuery}
+                aria-describedby={validQuery ? undefined : "form-error-main"}
                 placeholder="The Hobbit OR https://www.goodreads.com/book/show/5907"
                 className="rounded-md w-7/12 transition-all duration-700 ease-in-out hover:w-full px-2 py-3 text-gray-900 dark:text-gray-200/90 text-sm bg-slate-200 dark:bg-slate-700 border-4 border-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-slate-700"
                 value={inputValue}
@@ -52,11 +54,14 @@ const FormQuery = () => {
                 required
               />
             </div>
-            <button className="mt-10 my-6 ont-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40">
+            <button
+              type="submit"
+              className="mt-10 my-6 font-semibold text-md text-gray-900 dark:text-gray-100/90 bg-rose-500 dark:bg-[#a22045] ring ring-rose-600 dark:ring-rose-700 ring-offset-2 ring-offset-rose-100 py-4 px-10 rounded-xl shadow-lg shadow-rose-500 hover:shadow-xl hover:bg-rose-600 dark:hover:bg-rose-900 transition duration-300 delay-40 hover:delay-40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300 dark:focus-visible:ring-rose-600"
+            >
               Search
             </button>
             {validQuery === false && (
-              <div id="formError">
+              <div id="form-error-main" role="alert" aria-live="assertive">
                 <p className="mt-2 max-w-lg text-red-600/80 break-words">
                   Please make sure your URL matches the correct format. Such as:{" "}
                   <span className="underline">

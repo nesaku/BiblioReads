@@ -96,9 +96,8 @@ const Footer = () => {
 
               <li>
                 <a
-                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90"
-                  href="#"
-                  target="_self"
+                  className="text-gray-900 duration-300 delay-150 hover:delay-50 transition hover:text-rose-900 dark:text-gray-100/80 dark:hover:text-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-100 dark:focus-visible:ring-offset-slate-900"
+                  href="#main-content"
                   rel="noreferrer"
                 >
                   Back to Top

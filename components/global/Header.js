@@ -7,6 +7,12 @@ import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   return (
     <header className="p-4 dark:bg-[#881133] text-gray-900 dark:text-gray-100/90 border-b-2 border-rose-300 dark:border-[#881133]">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-rose-50 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-rose-900 dark:focus:bg-slate-800 dark:focus:text-rose-100"
+      >
+        Skip to content
+      </a>
       <nav
         className="flex justify-evenly items-center h-16"
         aria-label="Main Navigation"
