@@ -5,19 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.2.0] - October 6, 2026
+## [4.2.0] - Oct 10, 2026
+
+### Added
+
+- Allow Goodreads CSV export files to be imported into the Library
+- Add the ability to rate books and add private notes in the Library
+- Improve Library management and features
 
 ### Changed
 
 - Improve accessibility
 
-## [4.1.1] - June 13, 2026
+## [4.1.1] - Jun 13, 2026
 
 ### Fixed
 
 - Fix only the primary contributor being shown when multiple contributors are present [v4.0.0 Regression]
 
-## [4.1.0] - June 13, 2026
+## [4.1.0] - Jun 13, 2026
 
 ### Added
 
@@ -33,7 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix the rating distribution/reviewBreakdown not being shown
 
-## [4.0.0] - June 12, 2026
+## [4.0.0] - Jun 12, 2026
 
 ### Changed
 
@@ -53,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ~~Fix rating distribution, reviewBreakdown is already returned by book-scraper~~
 - ~~Improve pagination handling and loading more reviews~~
 
-## [3.6.1] - June 6, 2026
+## [3.6.1] - Jun 6, 2026
 
 ### Fixed
 

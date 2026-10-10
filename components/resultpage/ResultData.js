@@ -39,40 +39,44 @@ const ResultData = ({ scrapedData }) => {
   useEffect(() => {
     async function manageBooks() {
       try {
-        const db = await initializeDB();
         const slug = router.query.slug;
+        if (!isClicked || !slug || !scrapedData) return;
 
-        if (slug) {
-          if (isSaved && scrapedData) {
-            const book = {
-              slug: slug[0],
-              timestamp: Date.now(),
-              cover: scrapedData.cover,
-              title: scrapedData.title,
-              author: scrapedData.author,
-              rating: scrapedData.rating,
-            };
+        const db = await initializeDB();
+        if (isSaved) {
+          const existingBook = await db.get("books", slug[0]);
+          const book = {
+            slug: slug[0],
+            timestamp: Date.now(),
+            cover: scrapedData.cover,
+            title: scrapedData.title,
+            author: scrapedData.author,
+            personalRating:
+              existingBook && existingBook.personalRating != null
+                ? existingBook.personalRating
+                : null,
+            privateNotes:
+              existingBook && existingBook.privateNotes
+                ? existingBook.privateNotes
+                : "",
+          };
 
-            await db.put("books", book, slug[0]);
-            if (isClicked) {
-              setShowToast("Book added to library");
-              setTimeout(() => setShowToast(""), 3000);
-            }
-          } else if (slug.length > 0) {
-            await db.delete("books", slug[0]);
-            if (isClicked) {
-              setShowToast("Book removed from library");
-              setTimeout(() => setShowToast(""), 3000);
-            }
-          }
+          await db.put("books", book, slug[0]);
+          setShowToast("Book added to library");
+        } else {
+          await db.delete("books", slug[0]);
+          setShowToast("Book removed from library");
         }
+        setTimeout(() => setShowToast(""), 3000);
+        setIsClicked(false);
       } catch (error) {
         console.error("Error managing books:", error);
+        setIsClicked(false);
       }
     }
 
     manageBooks();
-  }, [isSaved, scrapedData]);
+  }, [isClicked, isSaved, scrapedData, router.query.slug]);
 
   const externalSVG = (
     <svg
