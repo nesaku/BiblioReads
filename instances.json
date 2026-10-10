@@ -80,5 +80,10 @@
     "url": "https://biblioreads.franklyflawless.org",
     "countries": ["DE"],
     "cloudflare": false
+  },
+    {
+    "url": "https://biblioreads.utilibre.org",
+    "countries": ["DE"],
+    "cloudflare": true
   }
 ]
