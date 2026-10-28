@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,9 +9,7 @@ const WinnerPage = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
@@ -22,11 +20,11 @@ const WinnerPage = async (req, res) => {
         .attr("href")
         .split("?")[0]; //Split on the frontend
       const title = $(
-        "div.miniBookContent > div.u-marginTopXSmall > a.winningTitle"
+        "div.miniBookContent > div.u-marginTopXSmall > a.winningTitle",
       ).text();
 
       const author = $(
-        "div.miniBookContent > div.u-marginTopXSmall > div.gcaAuthor > span[itemprop='author'] > div.authorName__container > a.authorName"
+        "div.miniBookContent > div.u-marginTopXSmall > div.gcaAuthor > span[itemprop='author'] > div.authorName__container > a.authorName",
       )
         .map((i, el) => {
           const $el = $(el);
@@ -46,10 +44,10 @@ const WinnerPage = async (req, res) => {
 
       const desc = $("div.miniBookContent > div.gcaBookDescription").text();
       const longDesc = $(
-        "div.miniBookContent > div.gcaBookDescription > span[style='display:none']"
+        "div.miniBookContent > div.gcaBookDescription > span[style='display:none']",
       ).text();
       const numberOfVotes = $(
-        "div.miniBookContent > div.gcaWinnerHeader > span.greyText.gcaNumVotes"
+        "div.miniBookContent > div.gcaWinnerHeader > span.greyText.gcaNumVotes",
       ).text();
 
       const nominees = $("div.pollContents > div.pollAnswer")
@@ -57,19 +55,19 @@ const WinnerPage = async (req, res) => {
           const $el = $(el);
           const url = $el
             .find(
-              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink",
             )
             .attr("href")
             .split("?")[0];
           const numberOfVotes = $el.find("strong.result").text();
           const cover = $el
             .find(
-              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img",
             )
             .attr("src");
           const title = $el
             .find(
-              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img"
+              "div[class^='answerWrapper'] > div.tooltipTrigger > a.pollAnswer__bookLink > img",
             )
             .attr("alt");
           const id = i + 1;
@@ -87,7 +85,7 @@ const WinnerPage = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

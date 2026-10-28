@@ -1,4 +1,5 @@
 import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const GRAPHQL_URL =
   env("NEXT_PUBLIC_GRAPHQL_ENDPOINT") ||
@@ -71,9 +72,7 @@ const SimilarScraper = async (req, res) => {
   const scrapeURL = `https://www.goodreads.com/book/similar/${req.body.legacyBookID ?? ""}`;
   const bookID = req.body.bookID ?? "";
 
-  const userAgent =
-    env("NEXT_PUBLIC_USER_AGENT") ||
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36";
+  const userAgent = getUserAgent();
 
   try {
     const similarData = await graphqlRequest(

@@ -17,7 +17,10 @@ const nextConfig = withSerwist({
     return [
       {
         source: "/img",
-        destination: "https://wsrv.nl/",
+        destination:
+          process.env.IMAGE_PROXY === "next"
+            ? "/api/image-proxy"
+            : "https://wsrv.nl/",
       },
     ];
   },

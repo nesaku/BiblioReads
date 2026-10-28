@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -12,9 +12,7 @@ const BooksScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
 
@@ -57,16 +55,16 @@ const BooksScraper = async (req, res) => {
         })
         .toArray();
       const previousPage = $(
-        "div.leftContainer > div[style='float: right'] > div > a.previous_page"
+        "div.leftContainer > div[style='float: right'] > div > a.previous_page",
       ).attr("href");
       const nextPage = $(
-        "div.leftContainer > div[style='float: right'] > div > a.next_page"
+        "div.leftContainer > div[style='float: right'] > div > a.next_page",
       ).attr("href");
       const lastScraped = new Date().toISOString();
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

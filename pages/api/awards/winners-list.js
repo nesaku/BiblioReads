@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,9 +9,7 @@ const WinnersList = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
@@ -23,7 +21,7 @@ const WinnersList = async (req, res) => {
           const url = $el.find("a").attr("href");
           // Match both regular and audio books
           const $winnerIMG = $el.find(
-            "div[class^='category__winnerImageContainer'] img"
+            "div[class^='category__winnerImageContainer'] img",
           );
           const cover = $winnerIMG.attr("src");
           const title = $winnerIMG.attr("alt");
@@ -41,7 +39,7 @@ const WinnersList = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

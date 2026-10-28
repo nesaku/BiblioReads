@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,45 +9,43 @@ const QuestionsScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
       const image = $("div.bookImage > a > img").attr("src");
       const book = $(
-        "div.bookDetails.stacked > h1.communityQABookIndexTitle > a"
+        "div.bookDetails.stacked > h1.communityQABookIndexTitle > a",
       ).text();
       const bookURL = $(
-        "div.bookDetails.stacked > h1.communityQABookIndexTitle > a"
+        "div.bookDetails.stacked > h1.communityQABookIndexTitle > a",
       ).attr("href");
       const author = $("div.bookDetails.stacked > div.authorName > a").text();
       const questions = $(
-        'div.bigBoxBody > div.bigBoxContent.containerWithHeaderContent > div[id="communityQuestionsWithAnswers"] > div.communityQuestionAndAnswer'
+        'div.bigBoxBody > div.bigBoxContent.containerWithHeaderContent > div[id="communityQuestionsWithAnswers"] > div.communityQuestionAndAnswer',
       )
         .map((i, el) => {
           const $el = $(el);
           const date = $el
             .find(
-              "div.communityQuestion > div.communityQAFooter.questionFooter > ul.questionFooterActions > li.footerItem.communityQuestionTimestamp > a"
+              "div.communityQuestion > div.communityQAFooter.questionFooter > ul.questionFooterActions > li.footerItem.communityQuestionTimestamp > a",
             )
             .text();
 
           const avatar = $el
             .find(
-              "div.communityAnswerBody > div.answererUserIcon > a.leftAlignedImage.userPhoto > img"
+              "div.communityAnswerBody > div.answererUserIcon > a.leftAlignedImage.userPhoto > img",
             )
             .attr("src");
           const authorName = $el
             .find(
-              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswererName > a"
+              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswererName > a",
             )
             .text();
           const authorURL = $el
             .find(
-              "div.communityAnswerBody > div.answererUserIcon > a.leftAlignedImage.userPhoto"
+              "div.communityAnswerBody > div.answererUserIcon > a.leftAlignedImage.userPhoto",
             )
             .attr("href");
           const question = $el
@@ -55,22 +53,22 @@ const QuestionsScraper = async (req, res) => {
             .text();
           const spoilerQuestion = $el
             .find(
-              "div.communityQuestion > div.questionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer"
+              "div.communityQuestion > div.questionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer",
             )
             .text();
           const shortAnswer = $el
             .find(
-              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText"
+              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText",
             )
             .text();
           const answer = $el
             .find(
-              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText > span.expandableContainer > span.fullContent"
+              "div.communityAnswerBody > div.communityAnswerTextContainer > span.communityAnswerText > span.expandableContainer > span.fullContent",
             )
             .text();
           const likes = $el
             .find(
-              "div.communityQuestion > div.communityQAFooter.questionFooter > ul.questionFooterActions > li.footerItem.like > span.likeItContainer > a > span.likesCount"
+              "div.communityQuestion > div.communityQAFooter.questionFooter > ul.questionFooterActions > li.footerItem.like > span.likeItContainer > a > span.likesCount",
             )
             .text();
 
@@ -91,18 +89,18 @@ const QuestionsScraper = async (req, res) => {
         .toArray();
 
       const unansweredQuestions = $(
-        'div.bigBoxBody > div.bigBoxContent.containerWithHeaderContent > div[id="communityQuestionsWithoutAnswers"] > div.unansweredQuestion'
+        'div.bigBoxBody > div.bigBoxContent.containerWithHeaderContent > div[id="communityQuestionsWithoutAnswers"] > div.unansweredQuestion',
       )
         .map((i, el) => {
           const $el = $(el);
           const question = $el
             .find(
-              "div.questionHeaderAndActions > div.unansweredQuestionText > a"
+              "div.questionHeaderAndActions > div.unansweredQuestionText > a",
             )
             .text();
           const spoilerQuestion = $el
             .find(
-              "div.questionHeaderAndActions > div.unansweredQuestionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer"
+              "div.questionHeaderAndActions > div.unansweredQuestionText > div.spoiler > span.spoilerAnswerText > span.spoilerContainer",
             )
             .text();
 
@@ -119,7 +117,7 @@ const QuestionsScraper = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,16 +9,14 @@ const QuotesHomeScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
       const name = $("div.mainContent > div.mainContentFloat > h1").text();
       const quotes = $(
-        "div.mainContent > div.mainContentFloat > div.leftContainer > div.quotes > div.quote"
+        "div.mainContent > div.mainContentFloat > div.leftContainer > div.quotes > div.quote",
       )
         .map((i, el) => {
           const $el = $(el);
@@ -46,12 +44,12 @@ const QuotesHomeScraper = async (req, res) => {
             .attr("href");
           const slug = $el
             .find(
-              " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
+              " div.quoteDetails > div.quoteFooter > div.right > a.smallText",
             )
             .attr("href");
           const likes = $el
             .find(
-              " div.quoteDetails > div.quoteFooter > div.right > a.smallText"
+              " div.quoteDetails > div.quoteFooter > div.right > a.smallText",
             )
             .text();
           const id = i + 1;
@@ -71,7 +69,7 @@ const QuotesHomeScraper = async (req, res) => {
         .toArray();
 
       const popularTags = $(
-        "div.bigBoxContent.containerWithHeaderContent > ul.listTagsTwoColumn > li.greyText"
+        "div.bigBoxContent.containerWithHeaderContent > ul.listTagsTwoColumn > li.greyText",
       )
         .map((i, el) => {
           const $el = $(el);
@@ -89,7 +87,7 @@ const QuotesHomeScraper = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

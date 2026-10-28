@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 const cheerio = require("cheerio");
 
 const BookScraper = async (req, res) => {
@@ -13,9 +13,7 @@ const BookScraper = async (req, res) => {
     const response = await fetch(`${scrapeURL}`, {
       method: "GET",
       headers: {
-        "User-Agent":
-          env("NEXT_PUBLIC_USER_AGENT") ||
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+        "User-Agent": getUserAgent(),
       },
     });
 
@@ -27,10 +25,10 @@ const BookScraper = async (req, res) => {
 
     // Dynamically find the book and work keys
     const bookKey = Object.keys(apolloState).find((key) =>
-      key.startsWith("Book:")
+      key.startsWith("Book:"),
     );
     const workKey = Object.keys(apolloState).find((key) =>
-      key.startsWith("Work:")
+      key.startsWith("Work:"),
     );
 
     const bookData = apolloState[bookKey];

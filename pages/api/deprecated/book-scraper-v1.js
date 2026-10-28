@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,9 +9,7 @@ const BookScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
@@ -81,33 +79,33 @@ const BookScraper = async (req, res) => {
         .toArray();
 
       const rating5 = $(
-        ".ReviewsSectionStatistics__histogram > div > div:nth-child(1) > div:nth-child(3)"
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(1) > div:nth-child(3)",
       )
         .text()
         .split("(")[0]
         .replace(" ", "");
       const rating4 = $(
-        ".ReviewsSectionStatistics__histogram > div > div:nth-child(2) > div:nth-child(3)"
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(2) > div:nth-child(3)",
       )
         .text()
         .split("(")[0]
         .replace(" ", "");
       const rating3 = $(
-        ".ReviewsSectionStatistics__histogram > div > div:nth-child(3) > div:nth-child(3)"
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(3) > div:nth-child(3)",
       )
         .text()
         .split("(")[0]
         .replace(" ", "");
 
       const rating2 = $(
-        ".ReviewsSectionStatistics__histogram > div > div:nth-child(4) > div:nth-child(3)"
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(4) > div:nth-child(3)",
       )
         .text()
         .split("(")[0]
         .replace(" ", "");
 
       const rating1 = $(
-        ".ReviewsSectionStatistics__histogram > div > div:nth-child(5) > div:nth-child(3)"
+        ".ReviewsSectionStatistics__histogram > div > div:nth-child(5) > div:nth-child(3)",
       )
         .text()
         .split("(")[0]
@@ -130,7 +128,7 @@ const BookScraper = async (req, res) => {
             .attr("src");
           const author = $el
             .find(
-              "div > article > div > div > section:nth-child(2) > span:nth-child(1) > div > a"
+              "div > article > div > div > section:nth-child(2) > span:nth-child(1) > div > a",
             )
             .text();
           const date = $el
@@ -141,12 +139,12 @@ const BookScraper = async (req, res) => {
             .attr("aria-label");
           const text = $el
             .find(
-              "div > article > section > section:nth-child(2) > section > div > div > span"
+              "div > article > section > section:nth-child(2) > section > div > div > span",
             )
             .html();
           const likes = $el
             .find(
-              "div > article > section > footer > div > div:nth-child(1) > button > span"
+              "div > article > section > footer > div > div:nth-child(1) > button > span",
             )
             .text();
           const id = i + 1;
@@ -164,17 +162,17 @@ const BookScraper = async (req, res) => {
         .toArray();
 
       const quotes = $(
-        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1) > div.DiscussionCard__middle > div.DiscussionCard__stats",
       ).text();
       const quotesURL = $(
-        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1)"
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(1)",
       ).attr("href");
 
       const questions = $(
-        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3) > div.DiscussionCard__middle > div.DiscussionCard__stats"
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3) > div.DiscussionCard__middle > div.DiscussionCard__stats",
       ).text();
       const questionsURL = $(
-        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)"
+        "div.BookDiscussions > div.BookDiscussions__list > a.DiscussionCard:nth-child(3)",
       ).attr("href");
       const lastScraped = new Date().toISOString();
       {

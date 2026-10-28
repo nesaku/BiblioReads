@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -9,15 +9,13 @@ const AuthorScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
       const image = $(
-        "div[itemtype = 'http://schema.org/Person'] > div > a > img"
+        "div[itemtype = 'http://schema.org/Person'] > div > a > img",
       ).attr("src");
       const name = $("h1.authorName > span").text();
       const website = $("div.dataItem > a[itemprop = 'url']").text();
@@ -38,10 +36,10 @@ const AuthorScraper = async (req, res) => {
         })
         .toArray();
       const birthDate = $(
-        "div.rightContainer > div[itemprop = 'birthDate']"
+        "div.rightContainer > div[itemprop = 'birthDate']",
       ).text();
       const deathDate = $(
-        "div.rightContainer > div[itemprop = 'deathDate']"
+        "div.rightContainer > div[itemprop = 'deathDate']",
       ).text();
       const desc = $(".aboutAuthorInfo > span").html();
       const books = $("table.stacked> tbody > tr")
@@ -69,7 +67,7 @@ const AuthorScraper = async (req, res) => {
         .toArray();
 
       const series = $(
-        ".bigBoxBody > div > div[itemtype = 'http://schema.org/BookSeries']"
+        ".bigBoxBody > div > div[itemtype = 'http://schema.org/BookSeries']",
       )
         .map((i, el) => {
           const $el = $(el);
@@ -108,7 +106,7 @@ const AuthorScraper = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",

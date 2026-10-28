@@ -1,4 +1,4 @@
-import { env } from "next-runtime-env";
+import { getUserAgent } from "@/utils/userAgent";
 
 const cheerio = require("cheerio");
 
@@ -10,9 +10,7 @@ const EditionScraper = async (req, res) => {
       const response = await fetch(`${scrapeURL}`, {
         method: "GET",
         headers: new Headers({
-          "User-Agent":
-            env("NEXT_PUBLIC_USER_AGENT") ||
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+          "User-Agent": getUserAgent(),
         }),
       });
       const htmlString = await response.text();
@@ -21,13 +19,13 @@ const EditionScraper = async (req, res) => {
       const bookURL = $("div.mainContentFloat > h1 > a").attr("href");
       const author = $("div.leftContainer.workEditions > h2 > a").text();
       const authorURL = $("div.leftContainer.workEditions > h2 > a").attr(
-        "href"
+        "href",
       );
       const firstPublished = $(
-        "div.leftContainer.workEditions > h2 > span.originalPubDate"
+        "div.leftContainer.workEditions > h2 > span.originalPubDate",
       ).text();
       const editions = $(
-        "div.leftContainer.workEditions > div.elementList.clearFix"
+        "div.leftContainer.workEditions > div.elementList.clearFix",
       )
         .map((i, el) => {
           const $el = $(el);
@@ -48,25 +46,25 @@ const EditionScraper = async (req, res) => {
 
           const rating = $el
             .find(
-              'div.editionData > div.moreDetails > div:contains("Average rating:") > div.dataValue'
+              'div.editionData > div.moreDetails > div:contains("Average rating:") > div.dataValue',
             )
             .text();
 
           const ISBN = $el
             .find(
-              'div.editionData > div.moreDetails > div:contains("ISBN:") > div.dataValue'
+              'div.editionData > div.moreDetails > div:contains("ISBN:") > div.dataValue',
             )
             .text();
 
           const ASIN = $el
             .find(
-              'div.editionData > div.moreDetails > div:contains("ASIN:") > div.dataValue'
+              'div.editionData > div.moreDetails > div:contains("ASIN:") > div.dataValue',
             )
             .text();
 
           const editionLanguage = $el
             .find(
-              'div.editionData > div.moreDetails > div:contains("Edition language:") > div.dataValue'
+              'div.editionData > div.moreDetails > div:contains("Edition language:") > div.dataValue',
             )
             .text();
 
@@ -90,7 +88,7 @@ const EditionScraper = async (req, res) => {
       res.statusCode = 200;
       res.setHeader(
         "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=1800"
+        "public, s-maxage=600, stale-while-revalidate=1800",
       );
       return res.json({
         status: "Received",
