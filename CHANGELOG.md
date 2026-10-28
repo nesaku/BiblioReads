@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Upgraded to Next.js 16
 
+### Changed
+
+- Migrate to @serwist/next from @ducanh2912/next-pwa
+
 ## [4.2.0] - Oct 10, 2026
 
 ### Added

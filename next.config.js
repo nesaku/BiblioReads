@@ -4,13 +4,14 @@ const { configureRuntimeEnv } = require("next-runtime-env/build/configure");
 
 configureRuntimeEnv();
 
-const withPWA = require("@ducanh2912/next-pwa").default({
-  dest: "public",
+const withSerwist = require("@serwist/next").default({
+  swSrc: "service-worker.js",
+  swDest: "public/sw.js",
   register: true,
   disable: process.env.NODE_ENV === "development",
 });
 
-const nextConfig = withPWA({
+const nextConfig = withSerwist({
   reactStrictMode: true,
   async rewrites() {
     return [

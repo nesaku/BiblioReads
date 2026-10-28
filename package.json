@@ -6,13 +6,14 @@
   "author": "Nesaku",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^10.2.9",
+    "@serwist/next": "^9.5.13",
+    "@serwist/turbopack": "^9.5.13",
     "cheerio": "^1.0.0",
     "dompurify": "^3.2.3",
     "idb": "^8.0.1",
@@ -24,12 +25,19 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "esbuild": "^0.28.2",
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.3",
     "postcss": "^8",
+    "serwist": "^9.5.13",
     "tailwindcss": "^3.4.1"
   },
   "allowScripts": {
-    "unrs-resolver@1.12.2": true
+    "unrs-resolver@1.12.2": true,
+    "@swc/core@1.16.13": true,
+    "esbuild@0.28.2": true
+  },
+  "overrides": {
+    "zod": "4.6.6"
   }
 }
