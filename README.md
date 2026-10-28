@@ -226,9 +226,9 @@ docker run -d \
    - A full list of environment variables can be found [here](https://github.com/nesaku/BiblioReads/blob/main/.env.local.example)
 3. Run the command `docker-compose up -d` to start the container
 
-#### More Information:
+#### More Information and Issues:
 
-Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for more information.
+Visit the [Docker Image Repo](https://github.com/nesaku/BiblioReads-Docker) for more information and create issues related to the Docker image [here](https://github.com/nesaku/BiblioReads-Docker/issues).
 
 ---
 
