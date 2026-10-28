@@ -50,15 +50,15 @@ const ReviewCard = (props) => {
                   {reviewer.avatar && (
                     <picture>
                       <source
-                        srcSet={`/img?url=${reviewer.avatar}&output=webp&maxage=30d`}
+                        srcSet={`/img?url=${encodeURIComponent(reviewer.avatar)}&output=webp&maxage=30d`}
                         type="image/webp"
                       />
                       <source
-                        srcSet={`/img?url=${reviewer.avatar}&maxage=30d`}
+                        srcSet={`/img?url=${encodeURIComponent(reviewer.avatar)}&maxage=30d`}
                         type="image/jpeg"
                       />
                       <img
-                        src={`/img?url=${reviewer.avatar}&maxage=30d`}
+                        src={`/img?url=${encodeURIComponent(reviewer.avatar)}&maxage=30d`}
                         alt=""
                         loading="lazy"
                       />

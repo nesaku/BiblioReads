@@ -120,7 +120,7 @@ const ResultData = ({ scrapedData }) => {
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
-            coverIMG={`/img?url=${scrapedData.cover}&output=webp&maxage=30d`}
+            coverIMG={`/img?url=${encodeURIComponent(scrapedData.cover)}&output=webp&maxage=30d`}
           />
 
           <div id="sideContent" className="text-center mx-auto">

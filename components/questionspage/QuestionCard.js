@@ -26,15 +26,15 @@ const QuestionCard = (props) => {
                   {data.avatar && (
                     <picture>
                       <source
-                        srcSet={`/img?url=${data.avatar}&output=webp&maxage=30d`}
+                        srcSet={`/img?url=${encodeURIComponent(data.avatar)}&output=webp&maxage=30d`}
                         type="image/webp"
                       />
                       <source
-                        srcSet={`/img?url=${data.avatar}&maxage=30d`}
+                        srcSet={`/img?url=${encodeURIComponent(data.avatar)}&maxage=30d`}
                         type="image/jpeg"
                       />
                       <img
-                        src={`/img?url=${data.avatar}&maxage=30d`}
+                        src={`/img?url=${encodeURIComponent(data.avatar)}&maxage=30d`}
                         alt=""
                         loading="lazy"
                       />

@@ -90,7 +90,7 @@ const AuthorResultData = ({ scrapedData }) => {
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
-            coverIMG={`/img?url=${scrapedData.image}&output=webp&maxage=30d`}
+            coverIMG={`/img?url=${encodeURIComponent(scrapedData.image)}&output=webp&maxage=30d`}
           />
           <div id="sideContent" className="text-center mx-auto">
             <h2 className="font-bold text-4xl uppercase max-w-2xl mx-auto">
@@ -237,8 +237,8 @@ const AuthorResultData = ({ scrapedData }) => {
                           .replaceAll("https://www.goodreads.com", "")
                           .replaceAll(
                             "<a",
-                            '<a class=" text-rose-500 hover:underline"'
-                          )
+                            '<a class=" text-rose-500 hover:underline"',
+                          ),
                       ),
                     }}
                   />
@@ -252,8 +252,8 @@ const AuthorResultData = ({ scrapedData }) => {
                             .replaceAll("https://www.goodreads.com", "")
                             .replaceAll(
                               "<a",
-                              '<a class=" text-rose-500 hover:underline"'
-                            )
+                              '<a class=" text-rose-500 hover:underline"',
+                            ),
                         ),
                       }}
                     />
@@ -265,8 +265,8 @@ const AuthorResultData = ({ scrapedData }) => {
                         __html: DOMPurify.sanitize(
                           scrapedData.desc.replaceAll(
                             "https://www.goodreads.com",
-                            ""
-                          )
+                            "",
+                          ),
                         ),
                       }}
                     />

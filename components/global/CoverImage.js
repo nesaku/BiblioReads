@@ -12,17 +12,17 @@ const CoverImage = ({
 }) => (
   <picture>
     <source
-      srcSet={`/img?url=${cleanImageUrl(src)}&output=webp&maxage=30d`}
+      srcSet={`/img?url=${encodeURIComponent(cleanImageUrl(src))}&output=webp&maxage=30d`}
       type="image/webp"
       className={`rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 ${extraClasses}`}
     />
     <source
-      srcSet={`/img?url=${cleanImageUrl(src)}&maxage=30d`}
+      srcSet={`/img?url=${encodeURIComponent(cleanImageUrl(src))}&maxage=30d`}
       type="image/jpeg"
       className={`rounded-lg shadow-sm drop-shadow-sm bg-white dark:bg-slate-900 ${extraClasses}`}
     />
     <img
-      src={`/img?url=${cleanImageUrl(src)}&maxage=30d`}
+      src={`/img?url=${encodeURIComponent(cleanImageUrl(src))}&maxage=30d`}
       alt={alt}
       width={width}
       height={height}
