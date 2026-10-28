@@ -16,16 +16,16 @@
     "cheerio": "^1.0.0",
     "dompurify": "^3.2.3",
     "idb": "^8.0.1",
-    "next": "^15.1.9",
+    "next": "16.4.3",
     "next-runtime-env": "^1.7.4",
     "next-themes": "^0.4.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.2",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
   },
