@@ -18,7 +18,7 @@ const nextConfig = withSerwist({
       {
         source: "/img",
         destination:
-          process.env.IMAGE_PROXY === "next"
+          process.env.NEXT_PUBLIC_IMAGE_PROXY === "next"
             ? "/api/image-proxy"
             : "https://wsrv.nl/",
       },

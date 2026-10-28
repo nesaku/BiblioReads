@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import { getImageProxyUrl } from "../../utils/imageProxyUrl";
 
 const QuestionCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
@@ -26,15 +27,15 @@ const QuestionCard = (props) => {
                   {data.avatar && (
                     <picture>
                       <source
-                        srcSet={`/img?url=${encodeURIComponent(data.avatar)}&output=webp&maxage=30d`}
+                        srcSet={getImageProxyUrl(data.avatar, true)}
                         type="image/webp"
                       />
                       <source
-                        srcSet={`/img?url=${encodeURIComponent(data.avatar)}&maxage=30d`}
+                        srcSet={getImageProxyUrl(data.avatar)}
                         type="image/jpeg"
                       />
                       <img
-                        src={`/img?url=${encodeURIComponent(data.avatar)}&maxage=30d`}
+                        src={getImageProxyUrl(data.avatar)}
                         alt=""
                         loading="lazy"
                       />

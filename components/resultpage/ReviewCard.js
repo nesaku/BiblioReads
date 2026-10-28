@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DOMPurify from "dompurify";
 import StarIcon from "./StarIcon";
+import { getImageProxyUrl } from "../../utils/imageProxyUrl";
 
 const ReviewCard = (props) => {
   const [isReadMore, setIsReadMore] = useState(true);
@@ -50,15 +51,15 @@ const ReviewCard = (props) => {
                   {reviewer.avatar && (
                     <picture>
                       <source
-                        srcSet={`/img?url=${encodeURIComponent(reviewer.avatar)}&output=webp&maxage=30d`}
+                        srcSet={getImageProxyUrl(reviewer.avatar, true)}
                         type="image/webp"
                       />
                       <source
-                        srcSet={`/img?url=${encodeURIComponent(reviewer.avatar)}&maxage=30d`}
+                        srcSet={getImageProxyUrl(reviewer.avatar)}
                         type="image/jpeg"
                       />
                       <img
-                        src={`/img?url=${encodeURIComponent(reviewer.avatar)}&maxage=30d`}
+                        src={getImageProxyUrl(reviewer.avatar)}
                         alt=""
                         loading="lazy"
                       />

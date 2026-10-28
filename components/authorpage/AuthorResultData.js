@@ -9,6 +9,7 @@ import AuthorSeries from "./AuthorSeries";
 import Toast from "../global/Toast";
 import LibraryButton from "../global/LibraryButton";
 import { cleanImageUrl } from "../../utils/cleanImageUrl";
+import { getImageProxyUrl } from "../../utils/imageProxyUrl";
 import CoverImage from "../global/CoverImage";
 
 const AuthorResultData = ({ scrapedData }) => {
@@ -90,7 +91,7 @@ const AuthorResultData = ({ scrapedData }) => {
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
-            coverIMG={`/img?url=${encodeURIComponent(scrapedData.image)}&output=webp&maxage=30d`}
+            coverIMG={getImageProxyUrl(scrapedData.image, true)}
           />
           <div id="sideContent" className="text-center mx-auto">
             <h2 className="font-bold text-4xl uppercase max-w-2xl mx-auto">

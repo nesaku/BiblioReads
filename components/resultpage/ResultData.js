@@ -11,6 +11,7 @@ import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
 import ReviewBreakdown from "./ReviewBreakdown";
 import CoverImage from "../global/CoverImage";
+import { getImageProxyUrl } from "../../utils/imageProxyUrl";
 
 const ResultData = ({ scrapedData }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -120,7 +121,7 @@ const ResultData = ({ scrapedData }) => {
             desc={
               scrapedData.desc ? `${scrapedData.desc.slice(10, 154)}...` : ""
             }
-            coverIMG={`/img?url=${encodeURIComponent(scrapedData.cover)}&output=webp&maxage=30d`}
+            coverIMG={getImageProxyUrl(scrapedData.cover, true)}
           />
 
           <div id="sideContent" className="text-center mx-auto">
