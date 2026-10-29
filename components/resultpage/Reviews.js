@@ -3,12 +3,26 @@ import ReviewCard from "./ReviewCard";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
 
+const reviewLanguages = [
+  ["ar", "Arabic"], ["zh", "Chinese"], ["cs", "Czech"],
+  ["da", "Danish"], ["nl", "Dutch"], ["en", "English"],
+  ["fi", "Finnish"], ["fr", "French"], ["de", "German"],
+  ["el", "Greek"], ["he", "Hebrew"], ["hi", "Hindi"],
+  ["hu", "Hungarian"], ["id", "Indonesian"], ["it", "Italian"],
+  ["ja", "Japanese"], ["ko", "Korean"], ["no", "Norwegian"],
+  ["fa", "Persian"], ["pl", "Polish"], ["pt", "Portuguese"],
+  ["ro", "Romanian"], ["ru", "Russian"], ["es", "Spanish"],
+  ["sv", "Swedish"], ["th", "Thai"], ["tr", "Turkish"],
+  ["uk", "Ukrainian"], ["vi", "Vietnamese"],
+];
+
 const Reviews = (props) => {
   const [showReviews, setShowReviews] = useState(false);
   const [showAvatars, setShowAvatars] = useState(false);
 
   const [filterStars, setFilterStars] = useState();
   const [sortBy, setSortBy] = useState();
+  const [languageCode, setLanguageCode] = useState("");
 
   const [searchText, setSearchText] = useState("");
 
@@ -20,6 +34,8 @@ const Reviews = (props) => {
   const [hasFetchedOnce, setHasFetchedOnce] = useState(false);
 
   const loaderRef = useRef(null);
+  const requestRef = useRef(null);
+  const firstPageReadyRef = useRef(false);
 
   // Map filter values to numeric ratings
   const filterStarValue = filterStars
@@ -30,20 +46,27 @@ const Reviews = (props) => {
     async (pageToken) => {
       if (!props.resourceID) return;
 
+      requestRef.current?.abort();
+      const controller = new AbortController();
+      requestRef.current = controller;
       setLoading(true);
+      setError(false);
       try {
         const res = await fetch("/api/reviews-scraper", {
+          signal: controller.signal,
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             resourceID: props.resourceID,
             legacyBookID: props.legacyBookID,
             nextPageToken: pageToken,
+            ...(languageCode ? { languageCode } : {}),
           }),
         });
         const data = await res.json();
+        if (controller.signal.aborted) return;
 
-        if (data.status !== "Received" || !data.reviews) {
+        if (!res.ok || data.status !== "Received" || !data.reviews) {
           setError(true);
           return;
         }
@@ -52,24 +75,33 @@ const Reviews = (props) => {
           pageToken ? [...prev, ...data.reviews] : data.reviews,
         );
         setNextPageToken(data.nextPageToken ?? null);
-        if (totalReviewCount === null) setTotalReviewCount(data.totalCount);
+        setTotalReviewCount(data.totalCount);
+        firstPageReadyRef.current = true;
       } catch (err) {
+        if (controller.signal.aborted) return;
         console.error("Failed to fetch reviews:", err);
         setError(true);
       } finally {
-        setLoading(false);
-        setHasFetchedOnce(true);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+          setHasFetchedOnce(true);
+        }
       }
     },
-    [props.resourceID, props.legacyBookID, totalReviewCount],
+    [props.resourceID, props.legacyBookID, languageCode],
   );
 
-  // Initial fetch on mount
+  // Language changes start a new result set; stale requests must not append to it.
   useEffect(() => {
-    if (props.resourceID && !hasFetchedOnce) {
-      fetchReviews(null);
-    }
-  }, [props.resourceID, hasFetchedOnce, fetchReviews]);
+    firstPageReadyRef.current = false;
+    setReviews([]);
+    setNextPageToken(null);
+    setTotalReviewCount(null);
+    setHasFetchedOnce(false);
+    setError(false);
+    fetchReviews(null);
+    return () => requestRef.current?.abort();
+  }, [fetchReviews]);
 
   // Infinite scroll by keeping track of the element near the bottom of the list
   useEffect(() => {
@@ -81,6 +113,7 @@ const Reviews = (props) => {
       (entries) => {
         if (
           entries[0].isIntersecting &&
+          firstPageReadyRef.current &&
           nextPageToken &&
           !loading &&
           filterStars === undefined &&
@@ -157,7 +190,7 @@ const Reviews = (props) => {
           </p>
         )}
 
-        {reviews.length > 0 && (
+        {(reviews.length > 0 || hasFetchedOnce) && (
           <button
             type="button"
             onClick={() => {
@@ -188,7 +221,7 @@ const Reviews = (props) => {
             <div className="flex flex-col xl:flex-row justify-center lg:justify-start xl:justify-between items-center lg:items-start">
               <div
                 id="filterOptions"
-                className="flex flex-row justify-center items-center"
+                className="flex flex-row flex-wrap justify-center items-center"
               >
                 <p className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300">
                   Filter:
@@ -260,12 +293,33 @@ const Reviews = (props) => {
                     setFilterStars(undefined);
                     setSortBy(undefined);
                     setSearchText("");
+                    setLanguageCode("");
                   }}
                   className="m-2 p-1 font-semibold text-md text-gray-900 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark::hover:bg-gray-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                 >
                   Reset All
                 </button>
               </div>
+            </div>
+            <div className="flex flex-row justify-center lg:justify-start items-center my-2">
+              <label
+                htmlFor="review-language"
+                className="mr-2 text-md font-medium text-gray-900 dark:text-gray-300"
+              >
+                Language:
+              </label>
+              <select
+                id="review-language"
+                name="review-language"
+                value={languageCode}
+                onChange={(event) => setLanguageCode(event.target.value)}
+                className="form-control block w-40 m-2 px-3 py-1.5 text-base font-normal text-gray-900 dark:text-gray-200 bg-rose-50 dark:bg-gray-800 bg-clip-padding border-2 border-solid border-gray-400 rounded-lg transition ease-in-out focus:text-gray-900 focus:bg-gray-200 focus:border-rose-600 focus:outline-none"
+              >
+                <option value="">All languages</option>
+                {reviewLanguages.map(([code, name]) => (
+                  <option key={code} value={code}>{name}</option>
+                ))}
+              </select>
             </div>
             <div className="flex flex-col-reverse lg:flex-row justify-between items-center">
               <div
@@ -315,6 +369,7 @@ const Reviews = (props) => {
                     setFilterStars(undefined);
                     setSortBy(undefined);
                     setSearchText("");
+                    setLanguageCode("");
                   }}
                   className="block lg:hidden ml-5 py-0.5 px-1 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-md shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark::hover:bg-gray-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-300 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
                 >
@@ -341,7 +396,7 @@ const Reviews = (props) => {
                 </div>
               ))}
 
-              {displayedReviews.length === 0 && !loading && hasFetchedOnce && (
+              {displayedReviews.length === 0 && !loading && !error && hasFetchedOnce && (
                 <p className="text-center my-6 text-gray-700 dark:text-gray-300">
                   No reviews match your filters.
                 </p>
