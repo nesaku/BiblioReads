@@ -4,16 +4,16 @@ import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
 
 const reviewLanguages = [
-  ["ar", "Arabic"], ["zh", "Chinese"], ["cs", "Czech"],
-  ["da", "Danish"], ["nl", "Dutch"], ["en", "English"],
-  ["fi", "Finnish"], ["fr", "French"], ["de", "German"],
-  ["el", "Greek"], ["he", "Hebrew"], ["hi", "Hindi"],
-  ["hu", "Hungarian"], ["id", "Indonesian"], ["it", "Italian"],
-  ["ja", "Japanese"], ["ko", "Korean"], ["no", "Norwegian"],
-  ["fa", "Persian"], ["pl", "Polish"], ["pt", "Portuguese"],
-  ["ro", "Romanian"], ["ru", "Russian"], ["es", "Spanish"],
-  ["sv", "Swedish"], ["th", "Thai"], ["tr", "Turkish"],
-  ["uk", "Ukrainian"], ["vi", "Vietnamese"],
+  ["ar", "العربية"], ["zh", "中文"], ["cs", "Čeština"],
+  ["da", "Dansk"], ["nl", "Nederlands"], ["en", "English"],
+  ["fi", "Suomi"], ["fr", "Français"], ["de", "Deutsch"],
+  ["el", "Ελληνικά"], ["he", "עברית"], ["hi", "हिन्दी"],
+  ["hu", "Magyar"], ["id", "Bahasa Indonesia"], ["it", "Italiano"],
+  ["ja", "日本語"], ["ko", "한국어"], ["no", "Norsk"],
+  ["fa", "فارسی"], ["pl", "Polski"], ["pt", "Português"],
+  ["ro", "Română"], ["ru", "Русский"], ["es", "Español"],
+  ["sv", "Svenska"], ["th", "ไทย"], ["tr", "Türkçe"],
+  ["uk", "Українська"], ["vi", "Tiếng Việt"],
 ];
 
 const Reviews = (props) => {
