@@ -99,6 +99,19 @@ const ReviewsScraper = async (req, res) => {
 
   const scrapeURL = `https://www.goodreads.com/book/show/${req.body.legacyBookID}/reviews`;
   const nextPageToken = req.body.nextPageToken ?? null;
+  const languageCode = req.body.languageCode;
+
+  if (
+    languageCode != null &&
+    (typeof languageCode !== "string" ||
+      languageCode.length !== 2 ||
+      !/^[a-z]{2}$/i.test(languageCode))
+  ) {
+    res.statusCode = 400;
+    return res.json({
+      status: "Error - languageCode must be a two-letter ISO language code",
+    });
+  }
 
   const userAgent = getUserAgent();
 
@@ -107,6 +120,9 @@ const ReviewsScraper = async (req, res) => {
       filters: {
         resourceType: "WORK",
         resourceId: req.body.resourceID,
+        ...(languageCode != null
+          ? { languageCode: languageCode.toLowerCase() }
+          : {}),
       },
       pagination: {
         limit: 30,
