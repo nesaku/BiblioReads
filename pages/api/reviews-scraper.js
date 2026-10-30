@@ -1,5 +1,6 @@
 import { env } from "next-runtime-env";
 import { getUserAgent } from "@/utils/userAgent";
+import { apiVersion as version } from "@/utils/version";
 
 const GRAPHQL_URL =
   env("NEXT_PUBLIC_GRAPHQL_ENDPOINT") ||
@@ -176,6 +177,7 @@ const ReviewsScraper = async (req, res) => {
     const result = {
       status: "Received",
       statusCode: 200,
+      version: version,
       source: "https://github.com/nesaku/biblioreads",
       scrapeURL,
       totalCount: connection.totalCount ?? 0,
@@ -191,6 +193,7 @@ const ReviewsScraper = async (req, res) => {
     res.statusCode = 404;
     return res.json({
       status: "Error - Invalid Query",
+      version: version,
       scrapeURL,
     });
   }

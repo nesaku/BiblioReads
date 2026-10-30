@@ -48,7 +48,7 @@ const Slug = () => {
     const fetchData = async () => {
       try {
         const formattedSlug = decodeURIComponent(
-          (Array.isArray(slug) ? slug.join(" ") : slug).replaceAll("+", "%20")
+          (Array.isArray(slug) ? slug.join(" ") : slug).replaceAll("+", "%20"),
         );
 
         const res = await fetch(scraperPath, {
@@ -58,7 +58,7 @@ const Slug = () => {
           },
           body: JSON.stringify({
             queryURL: `https://www.goodreads.com/search?q=${encodeURIComponent(
-              formattedSlug
+              formattedSlug,
             )}`,
           }),
           signal: abortController.signal,
@@ -118,7 +118,7 @@ const Slug = () => {
                     {scrapedData.scrapeURL &&
                       scrapedData.scrapeURL.replace(
                         "https://www.goodreads.com/search?q=",
-                        ""
+                        "",
                       )}
                   </h2>
                 </div>
@@ -140,7 +140,7 @@ const Slug = () => {
                         decodeURIComponent(
                           scrapedData.scrapeURL
                             .replace("https://www.goodreads.com/search?q=", "")
-                            .replaceAll("-", " ")
+                            .replaceAll("-", " "),
                         )}
                     </h2>
 
@@ -153,7 +153,7 @@ const Slug = () => {
                 )}
                 {scrapedData.searchType === "books" && (
                   <BookResultData
-                    query={scrapedData.scrapeURL}
+                    query={scrapedData.apiURL}
                     result={scrapedData.result}
                     numberOfResults={scrapedData.numberOfResults}
                   />

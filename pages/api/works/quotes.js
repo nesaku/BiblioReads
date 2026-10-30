@@ -1,4 +1,5 @@
 import { getUserAgent } from "@/utils/userAgent";
+import { apiVersion as version } from "@/utils/version";
 
 const cheerio = require("cheerio");
 
@@ -69,6 +70,7 @@ const QuotesScraper = async (req, res) => {
       return res.json({
         status: "Received",
         source: "https://github.com/nesaku/biblioreads",
+        version: version,
         scrapeURL: scrapeURL,
         bookURL: bookURL,
         image: image,
@@ -81,6 +83,7 @@ const QuotesScraper = async (req, res) => {
       console.error("An error has occurred with the scraper.");
       return res.json({
         status: "Error - Invalid Query",
+        version: version,
         scrapeURL: scrapeURL,
       });
     }
@@ -88,6 +91,7 @@ const QuotesScraper = async (req, res) => {
     res.statusCode = 405;
     return res.json({
       status: "Error 405 - Method Not Allowed",
+      version: version,
     });
   }
 };

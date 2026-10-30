@@ -23,8 +23,11 @@ const SearchResults = (props) => {
           props.query
             ? capitalizeTitle(
                 decodeURIComponent(
-                  props.query.replace("https://www.goodreads.com/search?q=", "")
-                )
+                  props.query.replace(
+                    "https://www.goodreads.com/book/auto_complete?format=json&q=",
+                    "",
+                  ),
+                ),
               )
             : " "
         }

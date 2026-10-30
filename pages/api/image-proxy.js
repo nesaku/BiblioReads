@@ -86,6 +86,12 @@ const limitImageBytes = () => {
 };
 
 export default async function imageProxy(req, res) {
+  res.setHeader("X-BiblioReads-Version", version);
+  res.setHeader(
+    "X-BiblioReads-Source",
+    "https://github.com/nesaku/biblioreads",
+  );
+
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET");
     res.status(405).end();
@@ -149,10 +155,12 @@ export default async function imageProxy(req, res) {
     const toWebp = req.query.output === "webp" && contentType !== "image/webp";
     const maxAge = getMaxAge(req.query.maxage);
     const transformer = toWebp
-      ? (await import("sharp")).default({
-          limitInputPixels: MAX_IMAGE_PIXELS,
-          sequentialRead: true,
-      }).webp({ effort: 1 })
+      ? (await import("sharp"))
+          .default({
+            limitInputPixels: MAX_IMAGE_PIXELS,
+            sequentialRead: true,
+          })
+          .webp({ effort: 1 })
       : null;
 
     res.setHeader("Content-Type", toWebp ? "image/webp" : contentType);
