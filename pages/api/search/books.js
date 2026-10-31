@@ -1,4 +1,5 @@
 import { getUserAgent } from "@/utils/userAgent";
+import { apiVersion as version } from "@/utils/version";
 
 const SearchScraper = async (req, res) => {
   if (req.method === "POST") {
@@ -41,6 +42,7 @@ const SearchScraper = async (req, res) => {
       );
       return res.json({
         status: "Received",
+        version: version,
         source: "https://github.com/nesaku/biblioreads",
         apiURL: apiURL,
         searchType: "books",
@@ -53,6 +55,7 @@ const SearchScraper = async (req, res) => {
       console.error("An error has occurred with the scraper.");
       return res.json({
         status: "Error - Invalid Query",
+        version: version,
         apiURL: apiURL,
       });
     }
@@ -60,6 +63,7 @@ const SearchScraper = async (req, res) => {
     res.statusCode = 405;
     return res.json({
       status: "Error 405 - Method Not Allowed",
+      version: version,
     });
   }
 };

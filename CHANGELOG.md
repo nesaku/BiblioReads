@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.4.0] - Oct 29, 2026
+
+### Added
+
+- Add BiblioReads version to API responses
+- Add language filter to user reviews - [(PR)](https://github.com/nesaku/BiblioReads/pull/51)
+
+### Changed
+
+- Remove deprecated API routes
+
+### Fixed
+
+- Fix missing title on book search pages
+
 ## [4.3.1] - Oct 28, 2026
 
 ### Fixed

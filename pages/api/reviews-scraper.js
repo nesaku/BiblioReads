@@ -1,5 +1,6 @@
 import { env } from "next-runtime-env";
 import { getUserAgent } from "@/utils/userAgent";
+import { apiVersion as version } from "@/utils/version";
 
 const GRAPHQL_URL =
   env("NEXT_PUBLIC_GRAPHQL_ENDPOINT") ||
@@ -99,6 +100,19 @@ const ReviewsScraper = async (req, res) => {
 
   const scrapeURL = `https://www.goodreads.com/book/show/${req.body.legacyBookID}/reviews`;
   const nextPageToken = req.body.nextPageToken ?? null;
+  const languageCode = req.body.languageCode;
+
+  if (
+    languageCode != null &&
+    (typeof languageCode !== "string" ||
+      languageCode.length !== 2 ||
+      !/^[a-z]{2}$/i.test(languageCode))
+  ) {
+    res.statusCode = 400;
+    return res.json({
+      status: "Error - languageCode must be a two-letter ISO language code",
+    });
+  }
 
   const userAgent = getUserAgent();
 
@@ -107,6 +121,9 @@ const ReviewsScraper = async (req, res) => {
       filters: {
         resourceType: "WORK",
         resourceId: req.body.resourceID,
+        ...(languageCode != null
+          ? { languageCode: languageCode.toLowerCase() }
+          : {}),
       },
       pagination: {
         limit: 30,
@@ -160,6 +177,7 @@ const ReviewsScraper = async (req, res) => {
     const result = {
       status: "Received",
       statusCode: 200,
+      version: version,
       source: "https://github.com/nesaku/biblioreads",
       scrapeURL,
       totalCount: connection.totalCount ?? 0,
@@ -175,6 +193,7 @@ const ReviewsScraper = async (req, res) => {
     res.statusCode = 404;
     return res.json({
       status: "Error - Invalid Query",
+      version: version,
       scrapeURL,
     });
   }

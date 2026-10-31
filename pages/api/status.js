@@ -1,4 +1,4 @@
-import { version, date, versionSlug } from "@/utils/version";
+import { apiVersion as version, date, versionSlug } from "@/utils/version";
 
 const status = (req, res) => {
   res.status(200).json({

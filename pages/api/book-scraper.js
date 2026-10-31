@@ -1,5 +1,6 @@
 import { env } from "next-runtime-env";
 import { getUserAgent } from "@/utils/userAgent";
+import { apiVersion as version } from "@/utils/version";
 
 const GRAPHQL_URL =
   env("NEXT_PUBLIC_GRAPHQL_ENDPOINT") ||
@@ -115,7 +116,10 @@ const graphqlRequest = async (query, variables, userAgent) => {
 const BookScraper = async (req, res) => {
   if (req.method !== "POST") {
     res.statusCode = 405;
-    return res.json({ status: "Error 405 - Method Not Allowed" });
+    return res.json({
+      status: "Error 405 - Method Not Allowed",
+      version: version,
+    });
   }
 
   const scrapeURL = req.body.queryURL.split("?")[0];
@@ -134,7 +138,11 @@ const BookScraper = async (req, res) => {
 
     if (!bookData) {
       res.statusCode = 504;
-      return res.json({ status: "Error - Book not found", scrapeURL });
+      return res.json({
+        status: "Error - Book not found",
+        version: version,
+        scrapeURL,
+      });
     }
 
     const bookID = bookData.id;
@@ -190,6 +198,7 @@ const BookScraper = async (req, res) => {
     ];
     const result = {
       status: "Received",
+      version: version,
       statusCode: 200,
       source: "https://github.com/nesaku/biblioreads",
       scrapeURL,
@@ -238,6 +247,7 @@ const BookScraper = async (req, res) => {
     res.statusCode = 404;
     return res.json({
       status: "Error - Invalid Query",
+      version: version,
       scrapeURL,
     });
   }
