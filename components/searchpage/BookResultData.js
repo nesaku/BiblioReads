@@ -64,9 +64,15 @@ const SearchResults = (props) => {
                     <span className="ml-2 capitalize">
                       <span className="hidden md:block">
                         {data.rating.replace("—", "out of")}
+                        {data.ratingCount != null && data.ratingCount !== "" && (
+                          <> ({Number(data.ratingCount).toLocaleString("en-US")} Ratings)</>
+                        )}
                       </span>
                       <span className="block md:hidden">
                         {data.rating.split("avg")[0]}
+                        {data.ratingCount != null && data.ratingCount !== "" && (
+                          <> ({Number(data.ratingCount).toLocaleString("en-US", { notation: "compact", maximumFractionDigits: 1 })} Ratings)</>
+                        )}
                       </span>
                     </span>
                   </div>

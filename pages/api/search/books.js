@@ -29,6 +29,7 @@ const SearchScraper = async (req, res) => {
           "",
         ),
         rating: item.avgRating ? String(item.avgRating) : "0.00",
+        ratingCount: item.ratingsCount != null ? String(item.ratingsCount) : "",
       }));
 
       const numberOfResults = `${result.length} results`;
