@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import DOMPurify from "dompurify";
 import { initializeDB } from "../../db/db";
 import Toast from "../global/Toast";
 import Meta from "../global/Meta";
@@ -19,7 +20,26 @@ const ResultData = ({ scrapedData }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showToast, setShowToast] = useState("");
+  const [isReadMore, setIsReadMore] = useState(true);
   const router = useRouter();
+
+  // desc for rich text and formatting, descText for plain text and length calculation
+  const description = scrapedData.desc || scrapedData.descText || "";
+  const descriptionTextLength = (scrapedData.descText || description).length;
+  const descriptionHTML = description
+    ? DOMPurify.sanitize(
+        description
+          .replaceAll("https://www.goodreads.com", "")
+          .replaceAll(
+            "<a",
+            '<a class="text-rose-900 dark:text-rose-600 hover:underline"',
+          ),
+      )
+    : "";
+
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
 
   useEffect(() => {
     const savedBookCheck = async () => {
@@ -347,7 +367,7 @@ const ResultData = ({ scrapedData }) => {
               </span>
             </div>
 
-            {scrapedData.desc && (
+            {(scrapedData.desc || scrapedData.descText) && (
               <div
                 id="bookDescription"
                 className="max-w-2xl lg:max-w-md xl:max-w-xl 2xl:max-w-2xl m-auto lg:m-0"
@@ -356,10 +376,28 @@ const ResultData = ({ scrapedData }) => {
                   Description:
                 </h2>
 
-                {scrapedData.desc.length < 600 ? (
-                  <p id="text">{scrapedData.desc}</p>
+                {descriptionTextLength < 600 ? (
+                  <div dangerouslySetInnerHTML={{ __html: descriptionHTML }} />
                 ) : (
-                  <ReadMore>{scrapedData.desc}</ReadMore>
+                  <>
+                    <div
+                      className={isReadMore ? "hidden" : "block"}
+                      dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+                    />
+                    <div
+                      className={
+                        isReadMore ? "block h-36 overflow-hidden" : "hidden"
+                      }
+                      dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+                    />
+                    <button
+                      type="button"
+                      onClick={toggleReadMore}
+                      className="p-0.5 rounded-sm underline decoration-2 decoration-rose-800 hover:text-white hover:bg-rose-800 transition duration-150 delay-150 hover:delay-100 cursor-pointer"
+                    >
+                      {isReadMore ? " ...read more." : "(Show less)"}
+                    </button>
+                  </>
                 )}
               </div>
             )}

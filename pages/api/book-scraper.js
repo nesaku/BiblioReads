@@ -22,7 +22,8 @@ const BOOK_QUERY = `
       id
       legacyId
       title
-      description(stripped: true)
+      description(stripped: false)
+      descriptionText: description(stripped: true)
       imageUrl
       webUrl
       details {
@@ -218,6 +219,7 @@ const BookScraper = async (req, res) => {
       ratingCount: ratingStats?.ratingsCount?.toLocaleString() ?? "0",
       reviewsCount: ratingStats?.textReviewsCount?.toLocaleString() ?? "0",
       desc: bookData.description ?? "",
+      descText: bookData.descriptionText ?? "",
       genres,
       bookEdition: `${bookData.details?.numPages ?? "?"} pages, ${bookData.details?.format ?? "Unknown"}`,
       publishDate: bookData.details?.publicationTime
