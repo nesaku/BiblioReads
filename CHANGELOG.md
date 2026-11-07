@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add support for rich HTML in book descriptions - [(ISSUE)](https://github.com/nesaku/BiblioReads/issues/54)
 
+### Changed
+
+- Use the same user-agent for the local image proxy
+- Hide the quotes and questions buttons on the book page separately when there are no quotes and/or 0 questions
+- Hide reviews section and reviews breakdown if there are no reviews
+
 ## [4.4.0] - Oct 29, 2026
 
 ### Added

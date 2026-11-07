@@ -27,7 +27,7 @@ const ReviewBreakdown = ({ data }) => {
               width: `${Math.round(
                 (data.reviewBreakdown.rating5.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               )}%`,
               backgroundColor: "#9E1239",
               height: "28px",
@@ -40,7 +40,7 @@ const ReviewBreakdown = ({ data }) => {
             {Math.round(
               (data.reviewBreakdown.rating5.replaceAll(",", "") /
                 data.ratingCount.replaceAll(",", "")) *
-                100
+                100,
             )}
             %
           </span>
@@ -57,7 +57,7 @@ const ReviewBreakdown = ({ data }) => {
               width: `${Math.round(
                 (data.reviewBreakdown.rating4.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               )}%`,
               backgroundColor: "#9E1239",
               height: "28px",
@@ -70,7 +70,7 @@ const ReviewBreakdown = ({ data }) => {
             {Math.round(
               (data.reviewBreakdown.rating4.replaceAll(",", "") /
                 data.ratingCount.replaceAll(",", "")) *
-                100
+                100,
             )}
             %
           </span>
@@ -87,7 +87,7 @@ const ReviewBreakdown = ({ data }) => {
               width: `${Math.round(
                 (data.reviewBreakdown.rating3.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               )}%`,
               backgroundColor: "#9E1239",
               height: "28px",
@@ -100,7 +100,7 @@ const ReviewBreakdown = ({ data }) => {
             {Math.round(
               (data.reviewBreakdown.rating3.replaceAll(",", "") /
                 data.ratingCount.replaceAll(",", "")) *
-                100
+                100,
             )}
             %
           </span>
@@ -117,7 +117,7 @@ const ReviewBreakdown = ({ data }) => {
               width: `${Math.round(
                 (data.reviewBreakdown.rating2.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               )}%`,
               backgroundColor: "#9E1239",
               height: "28px",
@@ -131,7 +131,7 @@ const ReviewBreakdown = ({ data }) => {
               Math.round(
                 (data.reviewBreakdown.rating2.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               ) < 10
                 ? { marginLeft: "20px" }
                 : { marginLeft: "10px" }
@@ -140,7 +140,7 @@ const ReviewBreakdown = ({ data }) => {
             {Math.round(
               (data.reviewBreakdown.rating2.replaceAll(",", "") /
                 data.ratingCount.replaceAll(",", "")) *
-                100
+                100,
             )}
             %
           </span>
@@ -157,7 +157,7 @@ const ReviewBreakdown = ({ data }) => {
               width: `${Math.round(
                 (data.reviewBreakdown.rating1.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               )}%`,
               backgroundColor: "#9E1239",
               height: "28px",
@@ -171,7 +171,7 @@ const ReviewBreakdown = ({ data }) => {
               Math.round(
                 (data.reviewBreakdown.rating1.replaceAll(",", "") /
                   data.ratingCount.replaceAll(",", "")) *
-                  100
+                  100,
               ) < 10
                 ? { marginLeft: "20px" }
                 : { marginLeft: "10px" }
@@ -180,7 +180,7 @@ const ReviewBreakdown = ({ data }) => {
             {Math.round(
               (data.reviewBreakdown.rating1.replaceAll(",", "") /
                 data.ratingCount.replaceAll(",", "")) *
-                100
+                100,
             )}
             %
           </span>

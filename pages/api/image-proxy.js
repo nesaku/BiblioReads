@@ -1,5 +1,6 @@
 import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
+import { getUserAgent } from "@/utils/userAgent";
 import { version } from "@/utils/version";
 
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
@@ -50,6 +51,9 @@ const fetchImage = async (url) => {
       redirect: "manual",
       referrerPolicy: "no-referrer",
       signal,
+      headers: {
+        "User-Agent": getUserAgent(),
+      },
     });
 
     if (!REDIRECT_STATUSES.has(response.status)) return response;

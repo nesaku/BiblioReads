@@ -300,19 +300,22 @@ const ResultData = ({ scrapedData }) => {
                   id="quotes-questions"
                   className="flex justify-around mt-2 mb-4"
                 >
-                  {scrapedData.quotes !== "Add" && scrapedData.quotesURL && (
-                    <div className="mt-4 items-center justify-center flex">
-                      <Link
-                        href={`/work/quotes/${scrapedData.legacyBookID}`}
-                        className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
-                      >
-                        {scrapedData.quotes}{" "}
-                        {scrapedData.quotes === "1" ? "Quote" : "Quotes"}
-                        {arrowSVG}
-                      </Link>
-                    </div>
-                  )}
+                  {scrapedData.quotes !== "Add" &&
+                    scrapedData.quotes !== "0" &&
+                    scrapedData.quotesURL && (
+                      <div className="mt-4 items-center justify-center flex">
+                        <Link
+                          href={`/work/quotes/${scrapedData.legacyBookID}`}
+                          className="flex items-center py-5 px-4 mx-2 xl:mx-0 font-semibold text-md text-gray-900 dark:text-gray-300 bg-rose-50 dark:bg-gray-800 rounded-full shadow-sm shadow-rose-800 hover:shadow-xl hover:bg-rose-300 dark:hover:bg-slate-800 transition duration-300 delay-40 hover:delay-40 ring ring-gray-400 dark:ring-gray-500 hover:ring-rose-600 dark:hover:ring-rose-600"
+                        >
+                          {scrapedData.quotes}{" "}
+                          {scrapedData.quotes === "1" ? "Quote" : "Quotes"}
+                          {arrowSVG}
+                        </Link>
+                      </div>
+                    )}
                   {scrapedData.questions !== "Ask" &&
+                    scrapedData.questions !== "0" &&
                     scrapedData.questionsURL && (
                       <div className="mt-4 items-center justify-center flex">
                         <Link
@@ -487,7 +490,7 @@ const ResultData = ({ scrapedData }) => {
               </div>
             )}
 
-            {scrapedData.reviewBreakdown && (
+            {scrapedData.reviewBreakdown && scrapedData.ratingCount != "0" && (
               <ReviewBreakdown data={scrapedData} />
             )}
           </div>
@@ -501,7 +504,7 @@ const ResultData = ({ scrapedData }) => {
           />
         )}
 
-        {scrapedData.resourceID && (
+        {scrapedData.resourceID && scrapedData.ratingCount != "0" && (
           <Reviews
             resourceID={scrapedData.resourceID}
             legacyBookID={scrapedData.legacyBookID}
