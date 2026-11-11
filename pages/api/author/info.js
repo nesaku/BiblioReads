@@ -42,7 +42,11 @@ const AuthorScraper = async (req, res) => {
       const deathDate = $(
         "div.rightContainer > div[itemprop = 'deathDate']",
       ).text();
-      const desc = $(".aboutAuthorInfo > span").html();
+      // Long descriptions come in a truncated span followed by a hidden span with the full text
+      const desc =
+        $(
+          ".aboutAuthorInfo > span[id^='freeText']:not([id^='freeTextContainer'])",
+        ).html() || $(".aboutAuthorInfo > span").html();
       const books = $("table.stacked> tbody > tr")
         .map((i, el) => {
           const $el = $(el);
