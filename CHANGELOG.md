@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.1] - Nov 15, 2026
+
+### Changed
+
+- Return full author descriptions instead of truncated previews - [(PR)](https://github.com/nesaku/BiblioReads/pull/55)
+
+### Fixed
+
+- Fix ASIN not being shown when there is no ISBN
+
 ## [4.5.0] - Nov 6, 2026
 
 ### Added

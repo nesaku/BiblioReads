@@ -448,9 +448,9 @@ const ResultData = ({ scrapedData }) => {
               scrapedData.asin && (
                 <div id="bookASIN">
                   <h2 className="font-bold text-2xl my-2 capitalize underline decoration-rose-600">
-                    ISBN:
+                    ASIN:
                   </h2>
-                  <span className="text-md">{scrapedData.isbn13}</span>
+                  <span className="text-md">{scrapedData.asin}</span>
                 </div>
               )
             )}
