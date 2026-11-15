@@ -1,0 +1,88 @@
+name: Publish Release
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - CHANGELOG.md
+      - utils/version.js
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare release notes
+        id: release
+        shell: bash
+        env:
+          PREVIOUS_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          echo "should_publish=false" >> "$GITHUB_OUTPUT"
+
+          version="$(sed -nE 's/^export const version = "v?([^"]+)";$/\1/p' utils/version.js)"
+          changelog_version="$(awk '/^## \[[0-9]/ { sub(/^## \[/, ""); sub(/\].*/, ""); print; exit }' CHANGELOG.md)"
+          release_date="$(awk '/^## \[[0-9]/ { sub(/^.*\] - /, ""); print; exit }' CHANGELOG.md)"
+
+          if [[ -z "$version" || -z "$changelog_version" || -z "$release_date" ]]; then
+            echo "Could not read the version, date, or release heading." >&2
+            exit 1
+          fi
+
+          if [[ "$version" != "$changelog_version" ]]; then
+            echo "Version mismatch: utils/version.js has $version but CHANGELOG.md has $changelog_version." >&2
+            exit 1
+          fi
+
+          previous_version="$(git show "$PREVIOUS_SHA:utils/version.js" 2>/dev/null | sed -nE 's/^export const version = "v?([^"]+)";$/\1/p' || true)"
+          if [[ "$previous_version" == "$version" ]]; then
+            echo "Version $version is unchanged; skipping release."
+            exit 0
+          fi
+
+          notes_body="$RUNNER_TEMP/release-notes-body.md"
+          awk '
+            /^## \[[0-9]/ {
+              if (found) exit
+              found = 1
+              next
+            }
+            found { print }
+          ' CHANGELOG.md > "$notes_body"
+
+          if ! grep -q '[^[:space:]]' "$notes_body"; then
+            echo "The latest CHANGELOG.md release section is empty." >&2
+            exit 1
+          fi
+
+          notes_file="$RUNNER_TEMP/release-notes.md"
+          printf '_Released %s_\n\n' "$release_date" > "$notes_file"
+          cat "$notes_body" >> "$notes_file"
+
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+          echo "notes_file=$notes_file" >> "$GITHUB_OUTPUT"
+          echo "should_publish=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        if: steps.release.outputs.should_publish == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          NOTES_FILE: ${{ steps.release.outputs.notes_file }}
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists; skipping."
+          else
+            gh release create "$RELEASE_TAG" \
+              --target "$GITHUB_SHA" \
+              --title "$RELEASE_TAG" \
+              --notes-file "$NOTES_FILE"
+          fi
