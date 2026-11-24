@@ -57,7 +57,7 @@ Inspired by [Nitter](https://github.com/zedeus/nitter), [libremdb](https://githu
 | [br.bloat.cat](https://br.bloat.cat)                                                                                                          |          :de:          | Datalix         | Run by [bloat.cat](https://bloat.cat)                       |
 | [biblioreads.canine.tools](https://biblioreads.canine.tools)                                                                                  |          :us:          | OVH             | Run by [canine.tools](https://canine.tools)                 |
 | [biblioreads.franklyflawless.org](https://biblioreads.franklyflawless.org)                                                                    |          :de:          | Hetzner         | Run by [FranklyFlawless](https://franklyflawless.org)       |
-| [biblioreads.utilibre.org](https://biblioreads.utilibre.org)                                                                                  |          :de:          | Hetzner         | Run by [utilibre](https://utilibre.org)       |
+| [biblioreads.utilibre.org](https://biblioreads.utilibre.org)                                                                                  |          :de:          | Hetzner         | Run by [utilibre](https://utilibre.org)                     |
 | Onion:                                                                                                                                        |                        |                 |                                                             |
 | [bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) |          :us:          | Hetzner         | Run by [~vern](https://vern.cc)                             |
 | I2P:                                                                                                                                          |                        |                 |                                                             |
@@ -131,7 +131,7 @@ You can use the [Redirector](https://github.com/einaregilsson/Redirector) extens
 
 There are two ways you can use BiblioReads:
 
-1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste the Goodreads book URL into the input box or search for a book using the input box.
+1. Visit [biblioreads.eu.org](https://biblioreads.eu.org) (or another instance) and paste a Goodreads book URL, Libby share link into the input box, or search for a book by name.
 2. Replace the `https://www.goodreads.com` of any book page URL with `https://biblioreads.eu.org` (or another instance URL). For example: [www.goodreads.com/book/show/5907.The_Hobbit](https://www.goodreads.com/book/show/5907.The_Hobbit) to [biblioreads.eu.org/book/show/5907.The_Hobbit](https://biblioreads.eu.org/book/show/5907.The_Hobbit).
 
 ### How Does This Work? - Scraping

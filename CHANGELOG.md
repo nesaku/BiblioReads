@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] - Nov 24, 2026
+
+### Added
+
+- Add support for Libby share links
+
+### Fixed
+
+- Fix "Search Results For" label on book search pages
+
 ## [4.5.1] - Nov 15, 2026
 
 ### Changed

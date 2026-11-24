@@ -44,6 +44,7 @@ const SearchScraper = async (req, res) => {
         status: "Received",
         version: version,
         source: "https://github.com/nesaku/biblioreads",
+        scrapeURL: scrapeURL,
         apiURL: apiURL,
         searchType: "books",
         numberOfResults: numberOfResults,
@@ -56,6 +57,7 @@ const SearchScraper = async (req, res) => {
       return res.json({
         status: "Error - Invalid Query",
         version: version,
+        scrapeURL: scrapeURL,
         apiURL: apiURL,
       });
     }

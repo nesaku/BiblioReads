@@ -11,17 +11,25 @@ const SearchBox = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.startsWith("https://www.goodreads.com")) {
-      router.push(inputValue.replace("https://www.goodreads.com", ""));
+    const trimmedInput = inputValue.trim();
+    const libbyMatch = trimmedInput.match(
+      /^https?:\/\/(?:www\.)?share\.libbyapp\.com\/title\/([^/?#]+)/i,
+    );
+
+    if (libbyMatch) {
+      setValidQuery(true);
+      router.push(`/libby/title/${encodeURIComponent(libbyMatch[1])}`);
+    } else if (trimmedInput.startsWith("https://www.goodreads.com")) {
+      router.push(trimmedInput.replace("https://www.goodreads.com", ""));
     } else if (
-      inputValue.startsWith("http://") ||
-      inputValue.startsWith("https://") ||
-      inputValue.startsWith("www.")
+      trimmedInput.startsWith("http://") ||
+      trimmedInput.startsWith("https://") ||
+      trimmedInput.startsWith("www.")
     ) {
       setValidQuery(false);
     } else {
       router.push({
-        pathname: `/search/${inputValue.replaceAll("/", "-")}`,
+        pathname: `/search/${trimmedInput.replaceAll("/", "-")}`,
         query: { type: queryType || "books" },
       });
     }

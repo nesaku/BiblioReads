@@ -63,8 +63,8 @@ const FAQ = () => {
               >
                 {env("NEXT_PUBLIC_HOST_URL") || "http://localhost:3000"}
               </a>{" "}
-              and either paste the Goodreads book URL into the input box or
-              search for a book using the input box.
+              and paste a Goodreads book URL, Libby share link into the input
+              box, or search for a book by name.
               <br />
               <br />
               2. Replace the{" "}
